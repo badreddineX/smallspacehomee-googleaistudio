@@ -1,0 +1,6 @@
+{
+  "name": "SmallSpaceHome Digital Ecosystem",
+  "description": "Strategic digital product ecosystem, interactive product planners, revenue simulators, blog funnel architecture, and flagship blueprint for SmallSpaceHome.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
