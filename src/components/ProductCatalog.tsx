@@ -2,13 +2,14 @@ import React, { useState, useMemo } from 'react';
 import { TOP_20_PRODUCTS } from '../data/strategyData';
 import { DigitalProduct, ProductLevel } from '../types';
 import { ProductDetailModal } from './ProductDetailModal';
-import { Search, Filter, Sparkles, CheckCircle2, ChevronRight, BarChart2, Star, Layers, AlertCircle } from 'lucide-react';
+import { Search, Filter, Sparkles, CheckCircle2, ChevronRight, BarChart2, Star, Layers, AlertCircle, ShoppingBag } from 'lucide-react';
 
 interface ProductCatalogProps {
   onSelectFlagship: () => void;
+  onSelectProductStudio?: (productId: string) => void;
 }
 
-export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectFlagship }) => {
+export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectFlagship, onSelectProductStudio }) => {
   const [selectedProduct, setSelectedProduct] = useState<DigitalProduct | null>(null);
   const [viewMode, setViewMode] = useState<'top10' | 'all20'>('top10');
   const [searchQuery, setSearchQuery] = useState('');
@@ -210,16 +211,32 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectFlagship
                   <span className="font-medium text-[#1A1A1A]/80 truncate max-w-[140px] block">{product.format}</span>
                 </div>
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedProduct(product);
-                  }}
-                  className="flex items-center gap-1 text-xs font-bold text-[#1A1A1A] group-hover:text-[#5A5A40] pl-2 cursor-pointer uppercase tracking-wider text-[10px]"
-                >
-                  <span>Inspect</span>
-                  <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform text-[#5A5A40]" />
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (onSelectProductStudio) {
+                        onSelectProductStudio(product.id);
+                      } else {
+                        setSelectedProduct(product);
+                      }
+                    }}
+                    className="px-2.5 py-1 bg-[#1A1A1A] hover:bg-[#5A5A40] text-white text-[10px] font-bold uppercase tracking-wider transition-colors cursor-pointer border border-[#1A1A1A] flex items-center gap-1 shadow-xs"
+                  >
+                    <ShoppingBag className="w-3 h-3" />
+                    <span>Store Kit</span>
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedProduct(product);
+                    }}
+                    className="flex items-center gap-0.5 text-xs font-bold text-[#1A1A1A] hover:text-[#5A5A40] cursor-pointer uppercase tracking-wider text-[10px]"
+                  >
+                    <span>Inspect</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-[#5A5A40]" />
+                  </button>
+                </div>
               </div>
             </div>
           );
@@ -251,6 +268,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectFlagship
       <ProductDetailModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
+        onLaunchStudio={onSelectProductStudio}
       />
     </div>
   );

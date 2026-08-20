@@ -5,9 +5,10 @@ import { X, CheckCircle, Sparkles, Layers, BookOpen, ShoppingBag, BarChart3, Hel
 interface ProductDetailModalProps {
   product: DigitalProduct | null;
   onClose: () => void;
+  onLaunchStudio?: (productId: string) => void;
 }
 
-export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClose }) => {
+export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClose, onLaunchStudio }) => {
   if (!product) return null;
 
   const scoreCriteria = [
@@ -191,10 +192,36 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
         </div>
 
         {/* Footer */}
-        <div className="bg-[#FAF9F6] px-6 py-3 border-t border-[#1A1A1A] flex justify-end">
+        <div className="bg-[#FAF9F6] px-6 py-3 border-t border-[#1A1A1A] flex flex-wrap items-center justify-between gap-3">
+          {onLaunchStudio ? (
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => {
+                  onClose();
+                  onLaunchStudio(product.id);
+                }}
+                className="px-4 py-2 bg-[#1A1A1A] hover:bg-[#5A5A40] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border border-[#1A1A1A] shadow-[2px_2px_0_0_#5A5A40] flex items-center gap-1.5"
+              >
+                <ShoppingBag className="w-3.5 h-3.5" />
+                <span>Open Store Posting Kit</span>
+              </button>
+              <button
+                onClick={() => {
+                  onClose();
+                  onLaunchStudio(product.id);
+                }}
+                className="px-3 py-2 bg-white hover:bg-[#FAF9F6] text-[#1A1A1A] text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border border-[#1A1A1A] flex items-center gap-1.5"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#5A5A40]" />
+                <span>Live Simulator</span>
+              </button>
+            </div>
+          ) : (
+            <div />
+          )}
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-[#1A1A1A] hover:bg-[#5A5A40] text-[#FAF9F6] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer border border-[#1A1A1A]"
+            className="px-4 py-2 bg-[#FAF9F6] hover:bg-[#1A1A1A] hover:text-white text-[#1A1A1A] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer border border-[#1A1A1A]"
           >
             Close Inspector
           </button>

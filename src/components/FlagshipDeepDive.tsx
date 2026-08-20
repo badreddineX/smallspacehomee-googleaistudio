@@ -3,7 +3,11 @@ import { FLAGSHIP_DETAILED_SPEC } from '../data/strategyData';
 import { FlagshipModule } from '../types';
 import { ShieldCheck, CheckCircle2, Calculator, Layers, BookOpen, Sparkles, FileText, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 
-export const FlagshipDeepDive: React.FC = () => {
+interface FlagshipDeepDiveProps {
+  onOpenLiveProduct?: () => void;
+}
+
+export const FlagshipDeepDive: React.FC<FlagshipDeepDiveProps> = ({ onOpenLiveProduct }) => {
   const [activeModule, setActiveModule] = useState<string>(FLAGSHIP_DETAILED_SPEC.modules[0].id);
 
   // Clearance Simulator State
@@ -57,6 +61,19 @@ export const FlagshipDeepDive: React.FC = () => {
               <span className="text-white font-semibold text-xs mt-1 block">&lt; 800 Sq Ft Dwellers</span>
             </div>
           </div>
+
+          {onOpenLiveProduct && (
+            <div className="pt-4">
+              <button
+                onClick={onOpenLiveProduct}
+                className="inline-flex items-center gap-2.5 px-5 py-3 bg-[#5A5A40] hover:bg-white hover:text-[#1A1A1A] text-white font-bold text-xs uppercase tracking-wider transition-all cursor-pointer border border-[#FAF9F6]/40 shadow-[3px_3px_0_0_#FAF9F6]"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Launch Complete SS-OS Interactive Suite (Customer Experience)</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
         </div>
       </section>
 

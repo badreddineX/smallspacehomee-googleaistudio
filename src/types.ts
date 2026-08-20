@@ -17,6 +17,8 @@ export interface ProductScore {
 }
 
 export type TabId = 
+  | 'all-products'
+  | 'first-product'
   | 'audience' 
   | 'top-20' 
   | 'top-10' 

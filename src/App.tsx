@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
+import { AllProductsStudio } from './components/AllProductsStudio';
+import { FirstProductExperience } from './components/FirstProductExperience';
 import { AudienceSection } from './components/AudienceSection';
 import { ProductCatalog } from './components/ProductCatalog';
 import { EcosystemFlow } from './components/EcosystemFlow';
@@ -13,20 +15,35 @@ import { TabId } from './types';
 import { Sparkles, ArrowRight, ShieldCheck, ShoppingBag, BookOpen, Layers, Star, TrendingUp, Calendar, HelpCircle } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('top-10');
+  const [activeTab, setActiveTab] = useState<TabId>('all-products');
+  const [selectedStudioProductId, setSelectedStudioProductId] = useState<string>('flagship-ss-os');
   const [isSimulatorOpen, setIsSimulatorOpen] = useState(false);
+
+  const handleLaunchProductStudio = (productId: string) => {
+    setSelectedStudioProductId(productId);
+    setActiveTab('all-products');
+  };
 
   const renderActiveSection = () => {
     switch (activeTab) {
+      case 'all-products':
+        return <AllProductsStudio initialProductId={selectedStudioProductId} />;
+      case 'first-product':
+        return <FirstProductExperience />;
       case 'audience':
         return <AudienceSection />;
       case 'top-20':
       case 'top-10':
-        return <ProductCatalog onSelectFlagship={() => setActiveTab('flagship')} />;
+        return (
+          <ProductCatalog 
+            onSelectFlagship={() => handleLaunchProductStudio('flagship-ss-os')}
+            onSelectProductStudio={handleLaunchProductStudio}
+          />
+        );
       case 'ecosystem':
         return <EcosystemFlow />;
       case 'flagship':
-        return <FlagshipDeepDive />;
+        return <FlagshipDeepDive onOpenLiveProduct={() => handleLaunchProductStudio('flagship-ss-os')} />;
       case 'bundles':
         return <BundleArchitecture />;
       case 'blog-funnel':
@@ -36,7 +53,7 @@ export default function App() {
       case 'roadmap':
         return <ProductionRoadmap />;
       default:
-        return <ProductCatalog onSelectFlagship={() => setActiveTab('flagship')} />;
+        return <AllProductsStudio initialProductId={selectedStudioProductId} />;
     }
   };
 
