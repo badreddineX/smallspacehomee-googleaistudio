@@ -36,10 +36,10 @@ export const PRODUCT_ASSET_BUNDLES: Record<string, ProductAssetBundle> = {
     title: 'The Small Space Operating System (SS-OS)',
     photography: {
       url: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1600&q=85',
-      alt: 'Bright sunlit Japandi compact studio apartment with warm wood accents, linen sofa, and modular partition',
-      caption: '520 sq ft Scandinavian studio layout featuring 36" primary walkway clearance, oak slatted privacy partition, and low-profile modular seating.',
-      spatialSpecs: '520 sq ft Studio • 9.5 ft Ceilings • East-Facing Morning Sun • Oak & Bouclé Textures',
-      palette: ['#FAF9F6', '#5A5A40', '#D4CEBE', '#8C857B', '#1A1A1A'],
+      alt: 'Bright sunlit Japandi compact studio apartment in Toronto with warm wood accents, linen sofa, and modular partition',
+      caption: 'Tested in a 510 sq ft Toronto rental apartment: 36" primary walkway clearance, oak slatted privacy partition, and low-profile modular seating with hidden storage.',
+      spatialSpecs: '510 sq ft Studio • 9.5 ft Ceilings • East-Facing Morning Sun • Oak & Bouclé Textures',
+      palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Japandi Minimal', 'Warm Oak Slats', 'Natural Linen', 'Concealed Storage']
     },
     deliverablesOverview: 'Complete 5-part master digital asset delivery bundle containing the comprehensive 120-page architectural PDF master guide, automated clearance Google Sheets, connected 6-database Notion workspace, and printable A4 room blueprint cards.',
@@ -55,7 +55,7 @@ export const PRODUCT_ASSET_BUNDLES: Record<string, ProductAssetBundle> = {
         description: 'Complete 6-module architectural master handbook covering spatial zoning, vertical load engineering, ruthless 30-day declutter protocol, and renter-safe aesthetic upgrades.',
         previewSnippet: 'MODULE 1: Spatial Assessment & 2D Floorplan Mapping\n- The 36-Inch Rule for primary transit paths\n- Visual sightline calibration from entrance doorway\n- Calculating the Real Estate Rent Tax ($/sq ft of clutter)',
         downloadableContent: `# The Small Space Operating System (SS-OS) - Master Architecture Guide
-Author: SmallSpaceHome Editorial & Architecture Team
+Author: SmallSpaceHome Editorial & Architecture Team (Tested in 510 sq ft Toronto Rental Lab)
 Scope: Complete 6-Module Digital System for Compact Living (Under 800 sq ft)
 
 ---
@@ -259,7 +259,7 @@ DAY 7: SUSTAINED SANCTUARY REVIEW
       alt: 'Minimalist living room layout with precise furniture spacing, low credenza, and architectural scale drawing tools',
       caption: 'Architectural scale grid layout in a 420 sq ft condo living room demonstrating the 18" coffee table clearance and 36" primary walkway.',
       spatialSpecs: '420 sq ft Layout • 1/4" Scale Grid • Natural Oak & Warm Grey Tones • High Ergonomic Flow',
-      palette: ['#EFECE6', '#3D3D2B', '#A8A293', '#1A1A1A', '#C2BCB0'],
+      palette: ['#FAF8F5', '#4A533E', '#A8A293', '#1C1917', '#C2BCB0'],
       stylingKeywords: ['Scale Grid', 'Floor Plan Block', 'Clearance Formulas', 'Pinch-Point Audit']
     },
     deliverablesOverview: 'Complete 4-component architectural planning kit containing the interactive Walkway & Clearance Google Sheet with automated warning thresholds, printable 1/4-inch scale grid sheets with 60+ pre-scaled furniture cutouts, Canva floorplan templates, and multi-functional furniture buying matrix.',
@@ -367,7 +367,7 @@ Expandable_Console_Table,Telescopic_Aluminum_Rails,18 (expands to 90"),180,Acts 
       alt: 'Clean modern apartment living room with neat labeled kraft moving boxes, hardwood floors, and serene lighting',
       caption: 'Organized move-in sequence in a 500 sq ft downtown condo with color-coded zone labeling and elevator booking coordination.',
       spatialSpecs: '500 sq ft Condo • 48-Hour Unpacking Sequence • Color-Coded Room Zones',
-      palette: ['#FAF8F5', '#8C827A', '#DCD6CD', '#1A1A1A', '#605C4E'],
+      palette: ['#FAF8F5', '#4A533E', '#DCD6CD', '#1C1917', '#605C4E'],
       stylingKeywords: ['Move-In Protocol', 'Box Labeling', 'Elevator Window', 'Survival Capsule']
     },
     deliverablesOverview: 'Complete 4-module moving system including the 8-Week Countdown Notion Moving Checklist, printable QR-Code Box Labeling sheets, Elevator & Landlord COI Checklist, and 48-Hour Rapid Unpacking Sequence.',
@@ -514,7 +514,7 @@ CERTIFICATE OF INSURANCE (COI) CHECKLIST:
       alt: 'Stylish renter-friendly modern apartment with sleek matte black hardware, tool-free lighting, and warm aesthetic decor',
       caption: 'Zero-damage renter upgrades including matte black replacement cabinet pulls, plug-in brass sconces, and removable peel-and-stick subway tile backsplash.',
       spatialSpecs: 'Rental Apartment • 100% Deposit Safe • 5-Minute Restore Time • Zero Drywall Damage',
-      palette: ['#F5F4EE', '#2D2D2A', '#D0C9B8', '#989284', '#C9A050'],
+      palette: ['#FAF8F5', '#4A533E', '#D0C9B8', '#989284', '#C9A050'],
       stylingKeywords: ['Renter Friendly', 'Peel and Stick', 'Plug-In Lighting', 'Deposit Safe']
     },
     deliverablesOverview: 'Complete 4-component action kit containing the 68-page visual PDF guide, hardware gauge spec sheet, damage-free adhesive load formula matrix, and 5-minute move-out restoration checklist.',
@@ -629,79 +629,406 @@ Smooth_Metal_Appliance,Magnetic_Hooks,15.0,Dry_Microfiber,Pull_Up_Release,ZERO`
 `
       }
     ]
+  },
+
+  'declutter-system': {
+    productId: 'declutter-system',
+    rank: 5,
+    title: 'Small Space 30-Day Ruthless Declutter System',
+    photography: {
+      url: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1600&q=85',
+      alt: 'Pristine minimalist Scandinavian living room with zero countertop clutter, warm oak shelves, and soft linen sofa',
+      caption: 'Tested in a 510 sq ft Toronto apartment: Zero-countertop policy and 14-day quarantine box system freeing up 35 cu ft of living space.',
+      spatialSpecs: '480 sq ft Studio • Zero Counter Clutter • 14-Day Quarantine System',
+      palette: ['#FAF8F5', '#4A533E', '#D5D0C7', '#1C1917', '#A39D93'],
+      stylingKeywords: ['Minimalist Declutter', 'Quarantine Box', 'Zero Clutter', 'Rent Tax Calculator']
+    },
+    deliverablesOverview: '4-part complete decluttering operating system containing the 30-Day Step-by-Step Declutter Handbook, Automated Clutter Rent Tax Calculator, Printable 14-Day Quarantine Box Labels, and Notion Item Disposition Ledger.',
+    totalAssetsCount: 4,
+    files: [
+      {
+        id: 'dec-1',
+        fileName: '01_Thirty_Day_Declutter_Action_Handbook.md',
+        fileType: 'PDF Master Guide',
+        extension: '.md',
+        fileSize: '48 Pages • 3.1 MB',
+        badge: 'Core Declutter Guide',
+        description: 'Daily 15-minute micro-decluttering assignments designed specifically for small apartments without creating giant messy piles.',
+        previewSnippet: 'DAY 1: Medicine cabinet expiration purge\nDAY 2: Mismatched coffee mug and tupperware lid purge\nDAY 3: Cable snake and redundant charger audit',
+        downloadableContent: `# 30-Day Ruthless Declutter System for Compact Homes
+
+## THE SMALL SPACE DECLUTTER LAW
+In a 500 sq ft home, every unessential physical item is a recurring rent tax. You are paying $3.50 to $5.50 per square foot per month in Toronto/Vancouver just to warehouse items you have not touched in 6 months.
+
+## WEEK 1: HIGH-VELOCITY LOW-EMOTION WINS
+- Day 1: Medicine cabinet & bathroom vanity bottles (discard expired creams).
+- Day 2: Tupperware & storage containers (discard orphan lids).
+- Day 3: Junk drawer cables, mystery keys, and dead batteries.
+- Day 4: Entryway shoes & coats (relocate off-season garments).
+- Day 5: Cleaning supplies & half-empty chemical bottles.
+- Day 6: Spices past 12-month potency date.
+- Day 7: Linen closet & worn towel downsize (limit to 2 bath towels per person).
+
+## WEEK 2: THE 14-DAY QUARANTINE BOX ENGINE
+- Place duplicate kitchenware, sentimental books, and questionable hobbies into sealed kraft boxes.
+- Date them 14 days out. If unopened, donate without reopening.
+`
+      },
+      {
+        id: 'dec-2',
+        fileName: '02_Clutter_Rent_Tax_Calculator.csv',
+        fileType: 'Spreadsheet (CSV/Excel)',
+        extension: '.csv',
+        fileSize: 'Spreadsheet • 110 KB',
+        badge: 'Financial Audit',
+        description: 'Calculates the real annual rent dollars wasted on stored clutter items based on your monthly rent and square footage.',
+        previewSnippet: 'Item_Category,Area_Occupied_SqFt,Monthly_Rent_SqFt,Annual_Rent_Wasted_CAD\nOld Textbooks & Notes,4.5 sq ft,$4.50,$243.00 CAD\nUnused Exercise Gear,8.0 sq ft,$4.50,$432.00 CAD',
+        downloadableContent: `Item_Category,Area_Occupied_SqFt,Monthly_Rent_Per_SqFt_CAD,Annual_Cost_To_Store_CAD,Disposition_Decision
+Old_College_Textbooks,3.5,4.80,201.60,Sell_Or_Recycle
+Unused_Treadmill_Bike,12.0,4.80,691.20,Sell_Immediately
+Duplicate_Kitchen_Pots,4.0,4.80,230.40,Donate
+Off_Season_Luggage_Empty,6.0,4.80,345.60,Use_As_Off_Season_Storage
+Broken_Electronics_Box,2.5,4.80,144.00,E_Waste_Depot`
+      },
+      {
+        id: 'dec-3',
+        fileName: '03_Printable_Quarantine_Box_Stickers.pdf',
+        fileType: 'Printable Cheatsheet',
+        extension: '.pdf',
+        fileSize: 'Printable Sheet • 900 KB',
+        badge: 'Box Labels',
+        description: 'Printable labels with mandatory countdown dates, disposal instructions, and charity donation receipts.',
+        previewSnippet: 'QUARANTINE SEAL DATE: [____/____/____]\nAUTO-DONATE DATE: [____/____/____]\nIF THIS BOX IS STILL SEALED ON THE DATE ABOVE, DO NOT OPEN. DONATE IMMEDIATELY.',
+        downloadableContent: `# Printable 14-Day Quarantine Box Seals
+
+=== QUARANTINE PROTOCOL SEAL ===
+BOX ID: Q-______
+SEALED DATE: _____ / _____ / 2026
+AUTO-DONATE DATE: _____ / _____ / 2026 (14 Days from seal)
+
+RULES OF ENGAGEMENT:
+1. If you need an item inside, open the box, retrieve that specific item only, and re-seal.
+2. If this box remains unopened when the Auto-Donate Date arrives, you have proven you do not need it.
+3. Transport directly to donation centre without opening or second-guessing.
+`
+      },
+      {
+        id: 'dec-4',
+        fileName: '04_Notion_Item_Disposition_Ledger.json',
+        fileType: 'Notion Template',
+        extension: '.json',
+        fileSize: 'Notion Database • 140 KB',
+        badge: 'Notion Vault',
+        description: 'Digital tracking hub for items listed on Facebook Marketplace, Kijiji, Poshmark, or scheduled for community donation pickups.',
+        previewSnippet: '{\n  "databases": ["Items For Sale", "Donation Ledger", "Quarantine Countdown"]\n}',
+        downloadableContent: JSON.stringify({
+          databaseName: "Small Space Declutter & Disposition Hub",
+          tables: [
+            {
+              tableName: "Marketplace & Resale Vault",
+              columns: ["Item", "Platform (Kijiji/FB)", "Listed Price CAD", "Sold Price CAD", "Buyer Pickup Date", "Status"]
+            },
+            {
+              tableName: "Charity Donation Drop-off Log",
+              columns: ["Organization", "Box Count", "Drop-off Date", "Tax Receipt Value CAD"]
+            }
+          ]
+        }, null, 2)
+      }
+    ]
+  },
+
+  'vertical-storage-blueprints': {
+    productId: 'vertical-storage-blueprints',
+    rank: 6,
+    title: 'Vertical Storage & Wall Engineering Blueprints',
+    photography: {
+      url: 'https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=1600&q=85',
+      alt: 'Modern high-ceiling apartment with floor-to-ceiling modular oak shelving unit and stylish woven baskets',
+      caption: 'Modular floor-to-ceiling vertical storage unit utilizing full 9.5 ft vertical wall volume without floor crowding in an urban rental.',
+      spatialSpecs: '460 sq ft Living • 9.5 ft Ceilings • Vertical Wall Rail System',
+      palette: ['#FAF8F5', '#4A533E', '#938B7E', '#1C1917', '#DCD4C7'],
+      stylingKeywords: ['Vertical Shelving', 'Tension Rail', 'Anchor Load', 'Over-Door Storage']
+    },
+    deliverablesOverview: '4-part engineering manual including the 54-page Vertical Blueprint Guide, Wall Anchor Load Calculator, 12 Renter-Safe Vertical Storage Layout Schematics, and Hardware Compatibility Sheet.',
+    totalAssetsCount: 4,
+    files: [
+      {
+        id: 'vert-1',
+        fileName: '01_Vertical_Wall_Storage_Master_Blueprint.md',
+        fileType: 'PDF Master Guide',
+        extension: '.md',
+        fileSize: '54 Pages • 3.6 MB',
+        badge: 'Engineering Guide',
+        description: 'Complete visual blueprint guide for capturing the upper 40% of room volume between 5 ft and 9 ft ceiling heights.',
+        previewSnippet: 'PRINCIPLE 1: The Eyeline Threshold (Keep solid credenzas below 32")\nPRINCIPLE 2: Floor-to-Ceiling Spring Tension Columns\nPRINCIPLE 3: Over-Door Transom Shelf Brackets',
+        downloadableContent: `# Vertical Storage & Wall Engineering Blueprints
+
+## THE FORGOTTEN CUBIC AIRSPACE
+Most small apartments only utilize the bottom 4 feet of room height. The space between 5 feet and 9 feet represents 45% of total room cubic capacity that sits completely empty while floor space is choked.
+
+## 01: TENSION COLUMN ARCHITECTURE
+- Install vertical tension poles (such as floor-to-ceiling pressure posts) that lock between floor and ceiling joists.
+- Zero wall anchors required; holds up to 85 lbs across 4 modular wooden shelves.
+
+## 02: OVER-DOOR TRANSOM STORAGE
+- The 14-inch space above bathroom and bedroom door headers can support a shallow 10-inch deep floating shelf for extra linens, off-season blankets, or paper goods.
+
+## 03: INSIDE-CABINET VERTICAL DIVIDERS
+- Standard kitchen cabinets are 24 inches tall but only hold 8-inch plates, wasting 60% vertical airspace.
+- Use expandable wire shelf risers to double plate and bowl stacking without stacking dishes on top of each other.
+`
+      },
+      {
+        id: 'vert-2',
+        fileName: '02_Drywall_and_Adhesive_Load_Matrix.csv',
+        fileType: 'Spreadsheet (CSV/Excel)',
+        extension: '.csv',
+        fileSize: 'Spreadsheet • 88 KB',
+        badge: 'Load Matrix',
+        description: 'Engineered safe working weight ratings for monkey hooks, hollow wall anchors, drywall toggle bolts, and heavy tension poles.',
+        previewSnippet: 'Mounting_Hardware,Drywall_Thickness,Max_Safe_Load_Lbs,Hole_Size_To_Patch,Renter_Rating\nMonkey Hook (Wire),1/2 inch,35 lbs,1mm pinhole,EXCELLENT\nSnap-Toggle Bolt,1/2 inch,80 lbs,1/2 inch hole,REQUIRES_SPACKLE',
+        downloadableContent: `Hardware_Type,Drywall_Thickness_In,Max_Dynamic_Load_Lbs,Drywall_Damage_Profile,Deposit_Safety_Grade
+Micro_Pin_Picture_Ledge,0.5,25,Pinholes_Rub_With_Bar_Soap,GRADE_A_RENTER_SAFE
+Spring_Tension_Pole,N_A,65,Zero_Holes_Rubber_Gasket,GRADE_A_PLUS_ZERO_DAMAGE
+Monkey_Wire_Hook,0.5,35,Tiny_1mm_Slit,GRADE_A_RENTER_SAFE
+Self_Drilling_Zinc_Anchor,0.5,50,6mm_Hole_Needs_Spackle,GRADE_B_MODERATE_PATCH
+Over_Door_Flat_Bracket,N_A,30,Zero_Damage_Felt_Padded,GRADE_A_PLUS_ZERO_DAMAGE`
+      },
+      {
+        id: 'vert-3',
+        fileName: '03_Twelve_Vertical_Zone_Schematics.pdf',
+        fileType: 'Printable Cheatsheet',
+        extension: '.pdf',
+        fileSize: '12 Pages • 2.4 MB',
+        badge: 'Zone Schematics',
+        description: 'Detailed dimensional schematics for above-toilet shelving, reach-in closet vertical risers, entryway vertical drop zones, and micro-kitchen wall rails.',
+        previewSnippet: 'Zone 1: Above-Toilet 3-Tier Shelving (Clearance: 24" above tank lid)\nZone 2: Kitchen Backsplash Magnetic Knife & Spice Rails\nZone 3: Headboard Vertical Sconce Shelf',
+        downloadableContent: `# 12 Renter-Safe Vertical Zone Schematics
+
+=== ZONE 01: OVER-THE-TOILET VERTICAL LADDER ===
+• Bottom Shelf Height: Min 24" above toilet tank to allow flapper maintenance.
+• Shelf Depth: Max 8" to prevent head-bump hazard when standing.
+• Material: Water-resistant bamboo or sealed oak.
+
+=== ZONE 02: KITCHEN WALL MAGNETIC STRIP ===
+• Mount Height: 4" above countertop backsplash.
+• Load Rating: Neodymium magnetic bar holding up to 8 kitchen chef knives.
+
+=== ZONE 03: CLOSET DOUBLE-HANG TENSION RAIL ===
+• Lower Rail Height: 40" from floor for pants and skirts.
+• Upper Rail Height: 80" from floor for shirts and jackets.
+• Multiplies closet capacity by exactly 200%.
+`
+      },
+      {
+        id: 'vert-4',
+        fileName: '04_IKEA_and_Amazon_Hardware_Sourcing_Matrix.csv',
+        fileType: 'Spreadsheet (CSV/Excel)',
+        extension: '.csv',
+        fileSize: 'Matrix Data • 120 KB',
+        badge: 'Product Sourcing',
+        description: 'Direct model numbers, exact dimensions, and price comparisons for top-rated vertical organization hardware available in Canada.',
+        previewSnippet: 'Item_Name,Retailer,Model_ID,Width_In,Depth_In,Height_In,Price_CAD\nKUNGSFORS Wall Grid,IKEA Canada,403.349.16,22,4,10,$24.99 CAD\nCommand Large Caddy,Amazon.ca,B01C60C3CC,12,3.5,4,$16.99 CAD',
+        downloadableContent: `Product_Name,Retailer,SKU_Or_Model,Width_In,Depth_In,Height_In,Price_CAD,Mount_Method
+KUNGSFORS_Wall_Grid,IKEA_Canada,403.349.16,22.0,4.0,10.0,24.99,Screw_Or_Adhesive
+BOAXEL_Wall_Upright,IKEA_Canada,104.487.31,2.0,1.0,78.0,12.00,Stud_Mount
+Command_Large_Picture_Ledge,Amazon_Canada,B07528JPS6,21.0,3.5,2.0,19.99,Zero_Damage_Adhesive
+InterDesign_Over_Cabinet_Basket,Amazon_Canada,B0014RBXMQ,11.0,5.0,14.0,18.50,No_Tools_Drop_Over`
+      }
+    ]
+  },
+
+  'landlord-vault': {
+    productId: 'landlord-vault',
+    rank: 10,
+    title: 'Small-Space Tenant Rights & Landlord Notice Vault',
+    photography: {
+      url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=85',
+      alt: 'Modern organized desk setup with leather notebook, gold brass pen, apartment lease binder, and designer lamp',
+      caption: 'Tested administrative tenant station: Legal-grade maintenance demand letters, Canadian tenancy board notice citations, and move-in inspection logs.',
+      spatialSpecs: 'Tenant Administrative Vault • Legal-Grade Notices • Deposit Recovery System',
+      palette: ['#FAF8F5', '#4A533E', '#9E988E', '#1C1917', '#CFCAC0'],
+      stylingKeywords: ['Landlord Vault', 'Maintenance Letter', 'Deposit Return', 'Lease Ledger']
+    },
+    deliverablesOverview: '5-part legal-grade administrative toolkit for Canadian and US tenants including 14 Fill-in-the-Blank Notice Templates, Move-In Video Inspection Script, Rent Increase & Maintenance Dispute Playbook, and Security Deposit Recovery Vault.',
+    totalAssetsCount: 4,
+    files: [
+      {
+        id: 'land-1',
+        fileName: '01_Tenant_Notice_Templates_Binder.md',
+        fileType: 'PDF Master Guide',
+        extension: '.md',
+        fileSize: '14 Templates • 2.5 MB',
+        badge: 'Legal Templates',
+        description: '14 legally formatted notice letters for urgent repairs, heating failures, illegal landlord entry, and full deposit return demands.',
+        previewSnippet: 'TEMPLATE 01: Formal 24-Hour Notice of Urgent Maintenance Defect\nTEMPLATE 02: Notice of Objection to Unlawful Rent Increase\nTEMPLATE 03: Demand for Full Security Deposit Return with Statutory Interest',
+        downloadableContent: `# The Small Space Tenant Rights & Landlord Notice Binder
+Author: SmallSpaceHome Legal & Tenancy Advisory
+
+---
+
+## NOTICE 01: FORMAL REQUEST FOR URGENT REPAIRS / MAINTENANCE
+Date: [DATE]
+To: [LANDLORD / PROPERTY MANAGEMENT COMPANY NAME]
+Property Address: [RENTAL UNIT ADDRESS & UNIT NUMBER]
+
+Dear [LANDLORD / PROPERTY MANAGER NAME],
+
+This letter serves as formal written notice regarding an urgent maintenance defect in the above-referenced rental unit. 
+
+DESCRIPTION OF DEFECT:
+[Describe defect clearly, e.g. plumbing leak under kitchen sink / heat failure / window seal draft].
+
+Under applicable Residential Tenancy legislation (e.g. Ontario RTA Section 20 / BC RTA Section 32 / Quebec TAL regulations), landlords are legally required to provide and maintain residential premises in a good state of repair, fit for habitation, and complying with all health, safety, and housing standards.
+
+I request that a certified repair professional inspect and repair this condition within [48 HOURS / 5 BUSINESS DAYS]. 
+
+Please confirm in writing the scheduled repair date and time with at least 24 hours written notice of entry.
+
+Sincerely,
+[TENANT NAME]
+[PHONE NUMBER]
+[EMAIL]
+
+---
+
+## NOTICE 02: NOTICE OF UNLAWFUL ENTRY / PRIVACY BREACH
+Date: [DATE]
+To: [LANDLORD NAME]
+
+Dear [LANDLORD NAME],
+
+On [DATE] at approximately [TIME], an entry into my rental unit occurred without the mandatory 24-hour advance written notice specifying date, time window, and legitimate purpose.
+
+Please be reminded that under Tenancy law, a tenant is entitled to quiet enjoyment and reasonable privacy. Except in extreme life-threatening emergencies, landlord entry requires proper 24-hour advance written notice between 8:00 AM and 8:00 PM.
+
+Thank you for your cooperation and respect for tenancy boundaries.
+
+Sincerely,
+[TENANT NAME]
+`
+      },
+      {
+        id: 'land-2',
+        fileName: '02_MoveIn_MoveOut_Inspection_Checklist.pdf',
+        fileType: 'Printable Cheatsheet',
+        extension: '.pdf',
+        fileSize: 'Inspection Sheet • 1.4 MB',
+        badge: 'Inspection Vault',
+        description: 'Comprehensive 80-point photographic move-in inspection checklist preventing landlords from charging you for pre-existing scratches or scuffs.',
+        previewSnippet: '[ ] Front Door: Deadbolt alignment, weather stripping, scratches\n[ ] Kitchen: Stove burners all light, oven interior, fridge gasket seal\n[ ] Bathroom: Water pressure, caulk mold check, vanity drawer glides',
+        downloadableContent: `# Move-In / Move-Out Condition Inspection Protocol
+
+ROOM-BY-ROOM AUDIT SHEET:
+
+1. ENTRYWAY / FOYER:
+[ ] Door finish & peephole condition
+[ ] Lock & deadbolt operation
+[ ] Baseboards & hardwood floor scratches
+[ ] Light fixture & wall switch plate
+
+2. KITCHEN:
+[ ] Refrigerator temperature & shelf integrity (Take photo of interior)
+[ ] Freezer defrost state & ice tray
+[ ] Stove elements & oven light
+[ ] Range hood exhaust fan & grease filter
+[ ] Under-sink shutoff valves & leak check
+
+3. LIVING ROOM:
+[ ] Window crank operation & screen mesh holes
+[ ] Radiator / baseboard heater control knob
+[ ] Drywall nail holes or paint discoloration from prior tenant
+`
+      },
+      {
+        id: 'land-3',
+        fileName: '03_Canadian_Tenancy_Board_Rights_Matrix.csv',
+        fileType: 'Spreadsheet (CSV/Excel)',
+        extension: '.csv',
+        fileSize: 'Spreadsheet • 98 KB',
+        badge: 'Tenancy Laws',
+        description: 'Direct statutory comparison of maximum rent increase guidelines, deposit rules, and notice periods across Ontario (LTB), BC (RTB), and Quebec (TAL).',
+        previewSnippet: 'Province,Governing_Body,Security_Deposit_Allowed,Pet_Ban_Enforceable,Annual_Rent_Guideline_2026\nOntario,LTB,NO (Last Month Rent Only),NO (Void by Law),2.5%\nBritish Columbia,RTB,YES (Max 50% Month Rent),YES,3.0%\nQuebec,TAL,NO (Zero Deposit Allowed),YES,TAL Formula',
+        downloadableContent: `Province,Governing_Tribunal,Deposit_Permitted,Pet_Prohibition_Clause_Validity,Max_Rent_Increase_Notice_Days,Standard_Repair_Notice_Hours
+Ontario,Landlord_and_Tenant_Board_LTB,Rent_Deposit_Only_No_Security,VOID_BY_LAW_Section_14,90_Days_N1_Form,24_Hours_Written
+British_Columbia,Residential_Tenancy_Branch_RTB,50_Percent_One_Month_Max,Permitted_In_Lease,90_Days_Official_Form,24_Hours_Written
+Quebec,Tribunal_Administratif_du_Logement_TAL,STRICTLY_PROHIBITED,Permitted_In_Lease,3_To_6_Months_Before_Renewal,24_Hours_Notice
+Alberta,Residential_Tenancy_Dispute_RTDRS,One_Month_Rent_Max,Permitted_In_Lease,90_Days_Notice,24_Hours_Notice`
+      },
+      {
+        id: 'land-4',
+        fileName: '04_Notion_Lease_and_Maintenance_Tracker.json',
+        fileType: 'Notion Template',
+        extension: '.json',
+        fileSize: 'Notion Database • 160 KB',
+        badge: 'Notion Vault',
+        description: 'Complete digital vault storing your lease contract PDF, photos of pre-existing damages, maintenance tickets, and rent payment receipts.',
+        previewSnippet: '{\n  "databases": ["Lease Records", "Maintenance Request Log", "Rent Payment Receipts"]\n}',
+        downloadableContent: JSON.stringify({
+          databaseName: "Tenant Rights & Property Vault",
+          tables: [
+            {
+              tableName: "Maintenance Ticket Ledger",
+              columns: ["Ticket #", "Issue Summary", "Date Reported", "Landlord Response Date", "Status", "Photo Proof Link"]
+            },
+            {
+              tableName: "Rent Payment Log",
+              columns: ["Month/Year", "Amount Paid CAD", "Payment Method (Interac/Cheque)", "Confirmation Ref", "Receipt On File"]
+            }
+          ]
+        }, null, 2)
+      }
+    ]
   }
 };
 
-// Fill out remaining products 5 through 20 with comprehensive photography and complete deliverable files
+// Generates complete, detailed deliverable files & photography for any product 1 to 20
 export const getProductAssetBundle = (productId: string): ProductAssetBundle => {
   if (PRODUCT_ASSET_BUNDLES[productId]) {
     return PRODUCT_ASSET_BUNDLES[productId];
   }
 
-  // Curated photography database for Products 5 to 20
+  // Curated high-resolution photography catalog for products 7 through 20
   const photographyMap: Record<string, ProductPhotography> = {
-    'declutter-system': {
-      url: 'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1600&q=85',
-      alt: 'Clean minimalist studio interior with immaculate negative space, floating credenza, and zero clutter',
-      caption: 'Pristine minimalist living zone illustrating the 30-day declutter protocol and zero-countertop policy.',
-      spatialSpecs: '480 sq ft Studio • Zero Counter Clutter • 14-Day Quarantine System',
-      palette: ['#FAF9F6', '#646059', '#D5D0C7', '#1A1A1A', '#A39D93'],
-      stylingKeywords: ['Minimalist Declutter', 'Quarantine Box', 'Zero Clutter', 'Rent Tax Calculator']
-    },
-    'vertical-storage-blueprints': {
-      url: 'https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=1600&q=85',
-      alt: 'Modern high-ceiling apartment with floor-to-ceiling modular oak shelving unit and stylish woven baskets',
-      caption: 'Modular floor-to-ceiling vertical storage unit utilizing full 9.5 ft vertical wall volume without floor crowding.',
-      spatialSpecs: '460 sq ft Living • 9.5 ft Ceilings • Vertical Wall Rail System',
-      palette: ['#F2EEE9', '#423E37', '#938B7E', '#1A1A1A', '#DCD4C7'],
-      stylingKeywords: ['Vertical Shelving', 'Tension Rail', 'Anchor Load', 'Over-Door Storage']
-    },
     'studio-divider-handbook': {
       url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=85',
       alt: 'Stylish Japandi apartment with acoustic slatted oak room divider separating living room and bedroom',
-      caption: 'Acoustic slatted timber room screen providing physical and visual separation between bedroom and living zones.',
-      spatialSpecs: '550 sq ft Studio • Acoustic Timber Screen • Dual-Zone Lighting',
-      palette: ['#FAF8F5', '#57524A', '#CFC8BD', '#1A1A1A', '#8F877B'],
+      caption: 'Tested in a 510 sq ft rental: Acoustic slatted timber room screen providing physical and visual separation between bedroom and living zones.',
+      spatialSpecs: '510 sq ft Studio • Acoustic Timber Screen • Dual-Zone Lighting',
+      palette: ['#FAF8F5', '#4A533E', '#CFC8BD', '#1C1917', '#8F877B'],
       stylingKeywords: ['Room Divider', 'Slatted Wood Screen', 'Zoning Blueprint', 'Visual Privacy']
     },
     'first-apartment-budget': {
       url: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=85',
       alt: 'Warm sunlit kitchen with minimalist stainless steel and ceramic essentials on clean quartz countertop',
-      caption: 'Curated first-apartment kitchen setup featuring durable essential cooking utensils and zero duplicate gadgets.',
+      caption: 'Curated first-apartment kitchen setup tested in Toronto: durable essential cookware and zero duplicate gadgets.',
       spatialSpecs: 'First Rental Apartment • $1,200 - $3,500 Budget Tiers • 50 Essential Items',
-      palette: ['#F6F5F2', '#3B3835', '#A6A097', '#D1CCC4', '#55514C'],
+      palette: ['#FAF8F5', '#4A533E', '#A6A097', '#D1CCC4', '#55514C'],
       stylingKeywords: ['Starter Checklist', 'Essential Hardware', 'Budget Matrix', 'No-Waste Shopping']
     },
     '10-min-reset-routine': {
       url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85',
       alt: 'Immaculate Scandinavian living room at evening with soft 2700K ambient lighting and folded throw blanket',
-      caption: 'Evening visual state following the 10-minute closing shift routine: zero floor clutter and warm accent lighting.',
+      caption: 'Evening visual state following the 10-minute closing shift routine: zero floor clutter and warm 2700K ambient glow.',
       spatialSpecs: 'Evening Reset • 10-Minute Timer • 4 Visual Zones • 2700K Ambient Glow',
-      palette: ['#FAF9F6', '#4A463F', '#BEB7AA', '#1A1A1A', '#7A7367'],
+      palette: ['#FAF8F5', '#4A533E', '#BEB7AA', '#1C1917', '#7A7367'],
       stylingKeywords: ['10-Min Reset', 'Closing Shift', 'Drop Zone', 'Evening Lighting']
-    },
-    'landlord-vault': {
-      url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=85',
-      alt: 'Modern organized desk setup with leather notebook, gold brass pen, apartment lease binder, and designer lamp',
-      caption: 'Organized tenant administrative station with legal-grade maintenance notices, rent ledger, and move-in inspection logs.',
-      spatialSpecs: 'Tenant Administrative Vault • Legal-Grade Notices • Deposit Recovery System',
-      palette: ['#F7F6F2', '#33312E', '#9E988E', '#1A1A1A', '#CFCAC0'],
-      stylingKeywords: ['Landlord Vault', 'Maintenance Letter', 'Deposit Return', 'Lease Ledger']
     },
     'micro-kitchen-pantry': {
       url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=85',
       alt: 'Compact galley kitchen with magnetic knife strip, vertical tiered spice racks, and glass airtight storage jars',
-      caption: 'High-density micro-kitchen organization with vertical tiered spice risers and airtight glass decanting jars.',
+      caption: 'Tested in a 65 sq ft Toronto rental galley kitchen: vertical tiered spice risers and airtight glass decanting jars.',
       spatialSpecs: '65 sq ft Galley Kitchen • Tiered Spice Risers • Vertical Magnetic Rails',
-      palette: ['#F9F8F5', '#45413B', '#B4ADA1', '#1A1A1A', '#746E63'],
+      palette: ['#FAF8F5', '#4A533E', '#B4ADA1', '#1C1917', '#746E63'],
       stylingKeywords: ['Micro Kitchen', 'Vertical Pantry', 'Decanting Jars', 'Magnetic Rail']
     },
     'capsule-wardrobe-closet': {
       url: 'https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1600&q=85',
       alt: 'Compact reach-in wardrobe with slim velvet hangers, neutral linen capsule collection, and acrylic shoe bins',
-      caption: '4-foot reach-in closet organized with double hanging tension rods and 35-piece neutral garment capsule.',
+      caption: 'Tested in a 4-foot reach-in closet: double hanging tension rods and 35-piece neutral garment capsule.',
       spatialSpecs: '4-Foot Reach-In Closet • Double Hanging Tension • 35-Piece Capsule',
-      palette: ['#F8F7F4', '#3E3A35', '#AFA89D', '#1A1A1A', '#6D675E'],
+      palette: ['#FAF8F5', '#4A533E', '#AFA89D', '#1C1917', '#6D675E'],
       stylingKeywords: ['Capsule Wardrobe', 'Slim Hangers', 'Reach-In Closet', 'Double Tension']
     },
     'acoustic-echo-soften': {
@@ -709,23 +1036,23 @@ export const getProductAssetBundle = (productId: string): ProductAssetBundle => 
       alt: 'Scandinavian living room with plush wool bouclé rug, acoustic fluted timber wall panel, and linen curtains',
       caption: 'Acoustic softening treatment in an open condo living room featuring high-pile wool rug and acoustic felt wall slats.',
       spatialSpecs: 'Hardwood Condo • 60% Sound Dampening • Wool Bouclé & Felt Slats',
-      palette: ['#F5F4F0', '#48443E', '#BAB3A7', '#1A1A1A', '#817A6F'],
+      palette: ['#FAF8F5', '#4A533E', '#BAB3A7', '#1C1917', '#817A6F'],
       stylingKeywords: ['Acoustic Soften', 'Sound Dampening', 'Felt Panels', 'Wool Rug']
     },
     'balcony-garden-blueprint': {
       url: 'https://images.unsplash.com/photo-1598880940371-c756e015fea1?auto=format&fit=crop&w=1600&q=85',
       alt: 'Small 40 sq ft condo balcony with cedar railing planter boxes, herb garden, bistro table, and warm string lights',
-      caption: '40 sq ft condo balcony equipped with weather-treated vertical cedar planter rails and drip irrigation kit.',
+      caption: '40 sq ft condo balcony equipped with weather-treated vertical cedar planter rails and micro drip irrigation.',
       spatialSpecs: '40 sq ft Balcony • Railing Planter Boxes • Herb Micro-Garden',
-      palette: ['#F6F5F2', '#3E4232', '#A1A892', '#1A1A1A', '#666B59'],
+      palette: ['#FAF8F5', '#3E4232', '#A1A892', '#1C1917', '#666B59'],
       stylingKeywords: ['Balcony Garden', 'Cedar Railing Box', 'Urban Herbs', 'Drip Irrigation']
     },
     'wfh-ergonomic-nook': {
       url: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1600&q=85',
       alt: 'Minimalist floating wall desk with ultra-slim monitor, ergonomic chair, and concealed cable channel',
-      caption: '20-inch shallow floating desk with concealed cable conduit and monitor arm in an alcove home office.',
+      caption: 'Tested in a 20-inch alcove: shallow floating desk with concealed cable conduit and gas-spring monitor arm.',
       spatialSpecs: 'Micro Office Nook • 20" Depth Desk • Concealed Cable Raceway',
-      palette: ['#F7F6F3', '#393633', '#A59F95', '#1A1A1A', '#5C5750'],
+      palette: ['#FAF8F5', '#4A533E', '#A59F95', '#1C1917', '#5C5750'],
       stylingKeywords: ['Micro Desk', 'Ergonomic Nook', 'Cable Raceway', 'Monitor Arm']
     },
     'pet-small-space-protocol': {
@@ -733,7 +1060,7 @@ export const getProductAssetBundle = (productId: string): ProductAssetBundle => 
       alt: 'Clean modern apartment living room with sleek walnut enclosed cat litter credenza and neutral pet bed',
       caption: 'Hidden furniture-integrated litter box credenza with activated carbon ventilation and anti-tracking mat.',
       spatialSpecs: 'Pet Living Protocol • Activated Carbon Air • Hidden Litter Credenza',
-      palette: ['#F7F6F2', '#413D37', '#ABA499', '#1A1A1A', '#726B61'],
+      palette: ['#FAF8F5', '#4A533E', '#ABA499', '#1C1917', '#726B61'],
       stylingKeywords: ['Pet Living', 'Hidden Litter', 'Carbon Filter', 'Odor Control']
     },
     'hosting-entertaining-kit': {
@@ -741,7 +1068,7 @@ export const getProductAssetBundle = (productId: string): ProductAssetBundle => 
       alt: 'Cozy 4-person folding drop-leaf dining table with linen runner, ceramic candleholders, and wine glasses',
       caption: 'Compact 4-person dinner party setup utilizing folding drop-leaf table and stackable oak dining chairs.',
       spatialSpecs: '4-6 Guest Capacity • Folding Drop-Leaf Table • Buffet Staging Matrix',
-      palette: ['#F6F5F2', '#49443D', '#B5AEA2', '#1A1A1A', '#7E766B'],
+      palette: ['#FAF8F5', '#4A533E', '#B5AEA2', '#1C1917', '#7E766B'],
       stylingKeywords: ['Small Space Hosting', 'Drop-Leaf Table', 'Buffet Staging', 'Dinner Party']
     },
     'circadian-lighting-blueprint': {
@@ -749,7 +1076,7 @@ export const getProductAssetBundle = (productId: string): ProductAssetBundle => 
       alt: 'Modern warm bedroom with 3-tier lighting: paper lantern pendant, 2200K mushroom bedside lamp, and warm glow',
       caption: '3-tier circadian lighting arrangement: 2700K ambient wash, 3000K desk task beam, and 2200K evening glow.',
       spatialSpecs: '3-Tier Lighting Architecture • 2700K / 3000K / 2200K • Zero Glare Lumens',
-      palette: ['#FBF9F4', '#423D32', '#C4BCA8', '#1A1A1A', '#8E846F'],
+      palette: ['#FAF8F5', '#4A533E', '#C4BCA8', '#1C1917', '#8E846F'],
       stylingKeywords: ['Circadian Light', '3-Tier Lighting', '2200K Evening Glow', 'Lumen Matrix']
     },
     'seasonal-garment-compression': {
@@ -757,7 +1084,7 @@ export const getProductAssetBundle = (productId: string): ProductAssetBundle => 
       alt: 'Clean under-bed storage drawer with vacuum-sealed wool blankets and cedar wood blocks in linen cubes',
       caption: 'Under-bed garment compression system shrinking bulky winter parkas and duvets by 70% volume.',
       spatialSpecs: 'Under-Bed Vault (6.5" clearance) • 70% Vacuum Compression • Cedar Defense',
-      palette: ['#F7F6F3', '#3F3B36', '#ADA69B', '#1A1A1A', '#6F695F'],
+      palette: ['#FAF8F5', '#4A533E', '#ADA69B', '#1C1917', '#6F695F'],
       stylingKeywords: ['Seasonal Storage', 'Vacuum Compression', 'Cedar Defense', 'Under-Bed Bin']
     },
     'roommate-harmony-system': {
@@ -765,7 +1092,7 @@ export const getProductAssetBundle = (productId: string): ProductAssetBundle => 
       alt: 'Modern 2-bedroom shared living room with clean divided chore ledger, dual desk setup, and serene neutral decor',
       caption: 'Co-living shared apartment management featuring digital chore rotation boards and quiet hours agreement.',
       spatialSpecs: 'Shared 2-Bed Condo • Legal Living Agreement • Automated Split Expense DB',
-      palette: ['#FAF9F6', '#433F39', '#B8B2A6', '#1A1A1A', '#797267'],
+      palette: ['#FAF8F5', '#4A533E', '#B8B2A6', '#1C1917', '#797267'],
       stylingKeywords: ['Roommate Harmony', 'Chore Rotation', 'Living Agreement', 'Expense Splitter']
     }
   };
@@ -773,52 +1100,123 @@ export const getProductAssetBundle = (productId: string): ProductAssetBundle => 
   const photo = photographyMap[productId] || {
     url: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1600&q=85',
     alt: 'Minimalist compact interior layout with intentional design and architectural flow',
-    caption: 'Modern compact living interior designed with spatial proportion formulas and high functionality.',
+    caption: 'Tested in a 510 sq ft Toronto apartment: Clean architectural flow, high functionality, and calm neutral finishes.',
     spatialSpecs: 'Compact Living Sanctuary • High-End Minimalist Aesthetics',
-    palette: ['#FAF9F6', '#5A5A40', '#D4CEBE', '#1A1A1A', '#8C857B'],
+    palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#1C1917', '#8C857B'],
     stylingKeywords: ['Small Space Design', 'Modular Flow', 'Aesthetic Calm']
   };
 
+  const formattedName = productId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
   return {
     productId,
-    rank: 5,
-    title: 'SmallSpaceHome Product Asset Package',
+    rank: 7,
+    title: formattedName,
     photography: photo,
-    deliverablesOverview: 'Complete digital asset bundle with itemized deliverable files, full text downloads, Notion database templates, and printable sheets.',
-    totalAssetsCount: 3,
+    deliverablesOverview: `Complete actionable digital asset bundle containing the ${formattedName} Master Guide, interactive calculators, Notion system database, and print-ready quick-reference cards.`,
+    totalAssetsCount: 4,
     files: [
       {
         id: `${productId}-1`,
-        fileName: `01_${productId.replace(/-/g, '_')}_Master_Guide.md`,
+        fileName: `01_${productId.replace(/-/g, '_')}_Master_Handbook.md`,
         fileType: 'PDF Master Guide',
         extension: '.md',
-        fileSize: '45 Pages • 3.2 MB',
-        badge: 'Core Guide',
-        description: 'Complete tactical handbook with step-by-step procedures, measurement standards, and high-impact visual examples.',
-        previewSnippet: 'Comprehensive procedures and architectural formulas designed specifically for small space dwellers.',
-        downloadableContent: `# ${productId.toUpperCase().replace(/-/g, ' ')} - Complete Master Guide\nAuthor: SmallSpaceHome Editorial & Architecture Team\n\n## Core Principles\n1. Measure twice, purchase once.\n2. Optimize vertical cubic volume.\n3. Eliminate visual clutter at room transitions.`
+        fileSize: '42 Pages • 3.2 MB',
+        badge: 'Master Guide',
+        description: `Complete tactical master handbook with step-by-step procedures, spatial formulas, and tested renter solutions for ${formattedName}.`,
+        previewSnippet: `SECTION 1: Core Spatial Rules & Tolerances\nSECTION 2: Step-by-Step Implementation Workflow\nSECTION 3: Renter-Safe Hardware & Maintenance Protocols`,
+        downloadableContent: `# ${formattedName} - Complete Master Guide
+Author: SmallSpaceHome Editorial & Architecture Team (Tested in 510 sq ft Toronto Rental Lab)
+Scope: Tactical Framework for Compact Urban Dwellers
+
+---
+
+## 01: CORE PRINCIPLES & SPATIAL TOLERANCES
+1. The 36-Inch Rule: Preserve primary human walkway clearance throughout transit corridors.
+2. Vertical Volume Utilization: Prioritize the 5 ft to 9 ft wall airspace without cluttering ground surfaces.
+3. Renter-Safe Integrity: Never drill into landlord drywall unless utilizing micro-pin ledges or non-damaging adhesive shear engineering.
+
+---
+
+## 02: STEP-BY-STEP IMPLEMENTATION PROTOCOL
+- Step 1: Measure existing room dimensions and map door swings with laser or steel tape.
+- Step 2: Establish dedicated zones for living, resting, dining, and storage.
+- Step 3: Implement multi-functional furniture mechanisms that fold or nest when not in active use.
+- Step 4: Perform the 10-minute closing shift routine to maintain visual calm.
+
+---
+
+## 03: CANADIAN RENTAL SPECIFICS & SOURCING
+- Recommended hardware vetted for IKEA Canada and Canadian hardware suppliers.
+- Non-damaging installation methods compliant with provincial tenancy guidelines.
+`
       },
       {
         id: `${productId}-2`,
-        fileName: `02_${productId.replace(/-/g, '_')}_Calculators_and_Specs.csv`,
+        fileName: `02_${productId.replace(/-/g, '_')}_Calculators_and_Formulas.csv`,
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
-        fileSize: 'Spreadsheet Sheet • 120 KB',
-        badge: 'Calculators & Specs',
-        description: 'Automated formulas, dimensional lookup matrices, and budget allocations for immediate implementation.',
-        previewSnippet: 'Parameter,Recommended_Spec,Tolerance,Status\nClearance,36 in,2 in,OPTIMAL',
-        downloadableContent: `Metric_Name,Ideal_Value,Minimum_Safe,Unit,Notes\nPrimary_Clearance,36,30,Inches,Main human traffic corridor\nSecondary_Clearance,24,20,Inches,Bedside and side table access\nVertical_Buffer,12,6,Inches,Clearance above door frame storage`
+        fileSize: 'Spreadsheet • 115 KB',
+        badge: 'Automated Calculators',
+        description: `Automated spreadsheet formulas, clearance verification checks, and budget allocation estimators for ${formattedName}.`,
+        previewSnippet: `Metric_Name,Target_Spec,Minimum_Safe,Unit,Clearance_Status\nCorridor_Clearance,36,30,Inches,APPROVED\nVertical_Buffer,14,8,Inches,APPROVED`,
+        downloadableContent: `Metric_Name,Target_Spec,Minimum_Safe,Unit,Clearance_Status,Recommendation
+Primary_Corridor_Clearance,36,30,Inches,OPTIMAL_A,Ensure direct path from entry to destination
+Secondary_Side_Clearance,24,18,Inches,OPTIMAL_A,Bedside and side table access
+Wall_Anchor_Load_Limit,35,15,Lbs,SAFE,Do not exceed 60% rated hook capacity
+Daily_Reset_Target_Time,10,5,Minutes,OPTIMAL_A,Evening closing shift sequence`
       },
       {
         id: `${productId}-3`,
-        fileName: `03_${productId.replace(/-/g, '_')}_Printable_Cheatsheet.pdf`,
+        fileName: `03_${productId.replace(/-/g, '_')}_Notion_System_Schema.json`,
+        fileType: 'Notion Template',
+        extension: '.json',
+        fileSize: 'Notion Database • 150 KB',
+        badge: 'Notion Schema',
+        description: `Complete Notion workspace database schema with pre-built properties, views, filters, and relationship links.`,
+        previewSnippet: `{\n  "system": "${formattedName}",\n  "databases": ["Inventory Ledger", "Action Protocol", "Maintenance Log"]\n}`,
+        downloadableContent: JSON.stringify({
+          systemName: formattedName,
+          version: "2.1.0",
+          author: "SmallSpaceHome",
+          databases: [
+            {
+              name: `${formattedName} Master Ledger`,
+              columns: ["Item / Area", "Zone Tag", "Dimensions", "Priority Tier", "Status"]
+            },
+            {
+              name: "Daily & Weekly Action Checkers",
+              columns: ["Task", "Frequency", "Time Required", "Done"]
+            }
+          ]
+        }, null, 2)
+      },
+      {
+        id: `${productId}-4`,
+        fileName: `04_${productId.replace(/-/g, '_')}_Printable_Cheatsheet_A4.pdf`,
         fileType: 'Printable Cheatsheet',
         extension: '.pdf',
-        fileSize: 'Printable Sheet • 1.1 MB',
-        badge: 'Print-Ready',
-        description: 'Printable summary card formatted for standard A4 and Letter paper for quick reference in your home.',
-        previewSnippet: 'Quick reference rules, checklists, and daily action cards ready for direct printing.',
-        downloadableContent: `# ${productId.toUpperCase().replace(/-/g, ' ')} - Printable Cheatsheet\n\n- Standard Rule 1: Keep walkways 36" wide.\n- Standard Rule 2: Zero items on kitchen counters overnight.\n- Standard Rule 3: Use 2700K lighting for evening calm.`
+        fileSize: 'Printable Card • 1.1 MB',
+        badge: 'Print-Ready A4',
+        description: `High-contrast printable quick-reference sheet formatted for standard A4 and US Letter paper for easy fridge hanging.`,
+        previewSnippet: `=== ${formattedName.toUpperCase()} QUICK REFERENCE ===\n• Core Rule: 36" Main Walkway\n• Evening Reset: 10-Minute Closing Shift\n• Hardware: 100% Renter Deposit Safe`,
+        downloadableContent: `# ${formattedName} - Printable Quick-Reference Card (A4 / US Letter)
+
+=== CORE DIMENSIONAL MANDATES ===
+• Primary Walkway: 36 in (91 cm) minimum unobstructed path.
+• Coffee Table Clearance: 16 - 18 in from sofa cushions.
+• Dining Chair Pullout: 32 in clearance behind table edge.
+
+=== 10-MINUTE EVENING CLOSING SHIFT ===
+[ ] 1. Clean and dry sink; sponge in ventilated holder.
+[ ] 2. Wipe flat counter and table surfaces to 100% blank state.
+[ ] 3. Hang outerwear in drop-zone; return footwear to lower tray.
+[ ] 4. Switch off overhead harsh lights; activate 2700K warm ambient glow.
+
+=== RENTER SAFE DEPOSIT PROTECTION ===
+• Always use stretch-release adhesive hooks or tension poles.
+• Keep original hardware in labeled bags for move-out restoration.
+`
       }
     ]
   };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TOP_20_PRODUCTS } from '../data/strategyData';
-import { getProductAssetBundle, DetailedDeliverableFile, ProductPhotography } from '../data/productAssetsData';
+import { getProductAssetBundle, DetailedDeliverableFile } from '../data/productAssetsData';
 import { 
   Download, 
   Copy, 
@@ -13,16 +13,12 @@ import {
   Eye, 
   Layers, 
   Search, 
-  ChevronLeft, 
-  ChevronRight, 
   Maximize2, 
   FolderDown, 
-  ExternalLink,
-  ShieldCheck,
-  Tag,
-  Clock,
-  Compass,
+  ShieldCheck, 
+  Compass, 
   ArrowRight,
+  ExternalLink,
   Info
 } from 'lucide-react';
 
@@ -40,7 +36,6 @@ export const DeliverablesAndPhotographyCenter: React.FC<DeliverablesAndPhotograp
   const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [isPhotoZoomed, setIsPhotoZoomed] = useState(false);
-  const [viewMode, setViewMode] = useState<'all' | 'photography-only' | 'files-only'>('all');
 
   const activeProduct = TOP_20_PRODUCTS.find(p => p.id === selectedProductId) || TOP_20_PRODUCTS[0];
   const assetBundle = getProductAssetBundle(selectedProductId);
@@ -100,81 +95,81 @@ ${file.downloadableContent}
     if (fileType.includes('Spreadsheet')) return <Table className="w-4 h-4 text-emerald-700" />;
     if (fileType.includes('Checklist')) return <CheckSquare className="w-4 h-4 text-amber-700" />;
     if (fileType.includes('Notion')) return <Layers className="w-4 h-4 text-indigo-700" />;
-    return <FileText className="w-4 h-4 text-[#5A5A40]" />;
+    return <FileText className="w-4 h-4 text-[#4A533E]" />;
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-200">
+    <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-200">
       
-      {/* Top Banner */}
-      <div className="bg-[#FAF9F6] border-2 border-[#1A1A1A] p-6 sm:p-8 shadow-[4px_4px_0_0_#1A1A1A]">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      {/* Top Banner with smallspacehome.ca brand styling */}
+      <div className="bg-[#FAF8F5] border border-[#E5DFD5] p-5 sm:p-8 shadow-xs">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 bg-[#5A5A40]" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#5A5A40]">
-                Deliverable Asset Vault & Architectural Photography
+              <span className="w-2 h-2 rounded-full bg-[#4A533E]" />
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] text-[#4A533E]">
+                SmallSpaceHome.ca • Digital Asset Vault & Architectural Photography
               </span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-serif font-black text-[#1A1A1A] tracking-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
               Product Deliverable Files & Photography (1–20)
             </h1>
-            <p className="text-sm sm:text-base text-[#1A1A1A]/80 max-w-3xl leading-relaxed">
-              Access the complete, tangible deliverable files (master guides, automated spreadsheets, Notion databases, printable cards) and curated architectural interior photography for every single product in the SmallSpaceHome catalog.
+            <p className="text-xs sm:text-sm text-[#1C1917]/80 max-w-3xl leading-relaxed">
+              Every product in the SmallSpaceHome catalog includes tangible, downloadable master deliverable files (Markdown guides, automated Excel/Sheets formulas, Notion system schemas, printable cards) and curated architectural interior photography tested in our 510 sq ft Toronto rental test lab.
             </p>
           </div>
 
-          {/* Quick Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          {/* Action Buttons */}
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0">
             <button
               onClick={handleDownloadAllFiles}
-              className="px-4 py-2.5 bg-[#1A1A1A] hover:bg-[#5A5A40] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border border-[#1A1A1A] shadow-[2px_2px_0_0_#5A5A40] flex items-center gap-2"
+              className="w-full sm:w-auto px-4 py-2.5 bg-[#4A533E] hover:bg-[#1C1917] text-[#FAF8F5] text-xs font-bold tracking-wider transition-all cursor-pointer border border-[#4A533E] shadow-xs flex items-center justify-center gap-2"
             >
               <FolderDown className="w-4 h-4" />
-              <span>Download Product #{activeProduct.rank} Bundle (.md)</span>
+              <span>Download Product #{activeProduct.rank} All Files (.md)</span>
             </button>
             {onOpenStoreKit && (
               <button
                 onClick={() => onOpenStoreKit(selectedProductId)}
-                className="px-3.5 py-2.5 bg-white hover:bg-[#FAF9F6] text-[#1A1A1A] text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border border-[#1A1A1A] flex items-center gap-1.5"
+                className="w-full sm:w-auto px-3.5 py-2.5 bg-white hover:bg-[#FAF8F5] text-[#1C1917] text-xs font-bold tracking-wider transition-all cursor-pointer border border-[#E5DFD5] flex items-center justify-center gap-1.5"
               >
                 <span>Store Posting Kit</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#4A533E]" />
               </button>
             )}
           </div>
         </div>
       </div>
 
-      {/* Catalog Product Grid / Switcher */}
-      <div className="bg-white border-2 border-[#1A1A1A] p-4 shadow-[3px_3px_0_0_#1A1A1A] space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#1A1A1A]/10 pb-3">
+      {/* Product Selection Bar with Responsive Grid */}
+      <div className="bg-white border border-[#E5DFD5] p-4 sm:p-5 shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E5DFD5] pb-3">
           <div className="flex items-center gap-2">
-            <ImageIcon className="w-4 h-4 text-[#5A5A40]" />
-            <span className="text-xs font-bold uppercase tracking-wider text-[#1A1A1A]">
-              Select from All 20 Products to View Photography & Deliverable Files
+            <ImageIcon className="w-4 h-4 text-[#4A533E]" />
+            <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">
+              Select from All 20 Products
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="relative w-full sm:w-64">
-              <Search className="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-[#1A1A1A]/50" />
+          <div className="flex items-center gap-2.5 w-full sm:w-auto">
+            <div className="relative flex-1 sm:w-64">
+              <Search className="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-[#1C1917]/50" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search 20 products..."
-                className="w-full bg-[#FAF9F6] border border-[#1A1A1A] pl-8 pr-2.5 py-1 text-xs font-medium focus:outline-hidden"
+                placeholder="Search products..."
+                className="w-full bg-[#FAF8F5] border border-[#E5DFD5] pl-8 pr-2.5 py-1.5 text-xs font-medium focus:outline-hidden focus:border-[#4A533E]"
               />
             </div>
-            <span className="text-[10px] font-bold bg-[#FAF9F6] px-2 py-1 border border-[#1A1A1A]/20 shrink-0">
-              {filteredProducts.length} Items
+            <span className="text-[10px] font-bold bg-[#FAF8F5] px-2 py-1.5 border border-[#E5DFD5] text-[#4A533E] shrink-0">
+              {filteredProducts.length} Products
             </span>
           </div>
         </div>
 
-        {/* Thumbnail Selector Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-2">
+        {/* Responsive Grid for all 20 products */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-2 sm:gap-2.5">
           {filteredProducts.map((p) => {
             const isSelected = p.id === selectedProductId;
             const bundle = getProductAssetBundle(p.id);
@@ -185,31 +180,32 @@ ${file.downloadableContent}
                   setSelectedProductId(p.id);
                   setSelectedFileId(null);
                 }}
-                className={`text-left p-1.5 border transition-all cursor-pointer flex flex-col justify-between group ${
+                className={`text-left p-1.5 sm:p-2 border transition-all cursor-pointer flex flex-col justify-between group rounded-xs ${
                   isSelected 
-                    ? 'bg-[#1A1A1A] text-white border-[#1A1A1A] shadow-[2px_2px_0_0_#5A5A40] scale-[1.02]' 
-                    : 'bg-[#FAF9F6] text-[#1A1A1A] border-[#1A1A1A]/20 hover:border-[#1A1A1A]'
+                    ? 'bg-[#1C1917] text-[#FAF8F5] border-[#1C1917] shadow-xs scale-[1.02]' 
+                    : 'bg-[#FAF8F5] text-[#1C1917] border-[#E5DFD5] hover:border-[#4A533E]/50 hover:bg-white'
                 }`}
               >
                 {/* Photo Thumbnail */}
-                <div className="relative aspect-4/3 w-full overflow-hidden bg-stone-200 border border-black/10 mb-1.5">
+                <div className="relative aspect-4/3 w-full overflow-hidden bg-stone-200 border border-black/10 mb-1.5 rounded-xs">
                   <img 
                     src={bundle.photography.url} 
                     alt={bundle.photography.alt}
                     referrerPolicy="no-referrer"
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <span className={`absolute top-0.5 left-0.5 text-[8px] font-black px-1 py-0.2 ${
-                    isSelected ? 'bg-[#5A5A40] text-white' : 'bg-black/70 text-white'
+                    isSelected ? 'bg-[#4A533E] text-white' : 'bg-black/70 text-white'
                   }`}>
                     #{p.rank}
                   </span>
                 </div>
                 <div className="leading-tight">
-                  <span className="block text-[9px] font-bold line-clamp-1">
+                  <span className="block text-[10px] font-bold line-clamp-1">
                     {p.title}
                   </span>
-                  <span className={`text-[8px] block mt-0.5 ${isSelected ? 'text-[#FAF9F6]/70' : 'text-[#5A5A40]'}`}>
+                  <span className={`text-[9px] block mt-0.5 ${isSelected ? 'text-[#FAF8F5]/80' : 'text-[#4A533E]'}`}>
                     ${p.recommendedPrice} CAD • {bundle.files.length} Files
                   </span>
                 </div>
@@ -219,32 +215,32 @@ ${file.downloadableContent}
         </div>
       </div>
 
-      {/* Main Focus Split: Photography (Left) & Deliverable Files Explorer (Right) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      {/* Main Focus: Photography & Deliverable Files Explorer */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         
         {/* Left Column: Architectural Photography & Styling Specs (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
           
-          <div className="bg-white border-2 border-[#1A1A1A] shadow-[4px_4px_0_0_#1A1A1A] overflow-hidden">
+          <div className="bg-white border border-[#E5DFD5] shadow-xs overflow-hidden rounded-xs">
             
             {/* Photography Header */}
-            <div className="bg-[#1A1A1A] text-[#FAF9F6] px-4 py-3 border-b border-[#1A1A1A] flex items-center justify-between">
+            <div className="bg-[#1C1917] text-[#FAF8F5] px-4 py-3 border-b border-[#1C1917] flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <ImageIcon className="w-4 h-4 text-[#A0A090]" />
-                <span className="text-xs font-bold uppercase tracking-wider">
+                <ImageIcon className="w-4 h-4 text-[#D9D3C7]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-white">
                   Product #{activeProduct.rank} Architectural Photography
                 </span>
               </div>
               <button
                 onClick={() => setIsPhotoZoomed(!isPhotoZoomed)}
-                className="text-[10px] uppercase font-bold text-[#A0A090] hover:text-white flex items-center gap-1 cursor-pointer"
+                className="text-[10px] uppercase font-bold text-[#D9D3C7] hover:text-white flex items-center gap-1 cursor-pointer"
               >
                 <Maximize2 className="w-3 h-3" />
                 <span>{isPhotoZoomed ? 'Reset' : 'Zoom'}</span>
               </button>
             </div>
 
-            {/* Main High-Res Photo Container */}
+            {/* High-Res Photo Container */}
             <div className="relative aspect-16/10 sm:aspect-16/11 bg-stone-900 overflow-hidden group">
               <img 
                 src={assetBundle.photography.url} 
@@ -256,53 +252,53 @@ ${file.downloadableContent}
                 onClick={() => setIsPhotoZoomed(!isPhotoZoomed)}
               />
               
-              {/* Product Rank & Format Floating Badge */}
-              <div className="absolute top-3 left-3 bg-[#1A1A1A]/90 backdrop-blur-xs text-[#FAF9F6] px-2.5 py-1 border border-white/20 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#5A5A40]" />
+              {/* Product Rank & Format Badge */}
+              <div className="absolute top-3 left-3 bg-[#1C1917]/90 backdrop-blur-xs text-[#FAF8F5] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs border border-white/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#4A533E]" />
                 <span>Product #{activeProduct.rank} • {activeProduct.format}</span>
               </div>
 
-              {/* Price Tag */}
-              <div className="absolute bottom-3 right-3 bg-[#5A5A40] text-white px-2.5 py-1 text-xs font-bold uppercase tracking-wider shadow-md">
+              {/* Price Tag in CAD */}
+              <div className="absolute bottom-3 right-3 bg-[#4A533E] text-white px-2.5 py-1 text-xs font-bold uppercase tracking-wider shadow-xs">
                 ${activeProduct.recommendedPrice} CAD
               </div>
             </div>
 
-            {/* Photography Architectural Caption & Specs */}
-            <div className="p-4 sm:p-5 space-y-4 bg-[#FAF9F6]">
+            {/* Caption & Specs */}
+            <div className="p-4 sm:p-5 space-y-4 bg-[#FAF8F5]">
               <div>
-                <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#5A5A40] block mb-1">
+                <span className="text-[9px] font-bold uppercase tracking-[0.15em] text-[#4A533E] block mb-1">
                   Architectural Spatial Context
                 </span>
-                <p className="text-xs sm:text-sm text-[#1A1A1A] leading-relaxed font-serif italic">
+                <p className="text-xs sm:text-sm text-[#1C1917] leading-relaxed font-serif italic">
                   "{assetBundle.photography.caption}"
                 </p>
               </div>
 
               {/* Spatial Specs */}
-              <div className="bg-white p-3 border border-[#1A1A1A]/20 space-y-2">
-                <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#5A5A40]">
+              <div className="bg-white p-3 border border-[#E5DFD5] space-y-1.5">
+                <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-[#4A533E]">
                   <Compass className="w-3.5 h-3.5" />
-                  <span>Room Blueprint & Spatial Spec</span>
+                  <span>Room Blueprint & Spatial Specs</span>
                 </div>
-                <p className="text-xs font-semibold text-[#1A1A1A]">
+                <p className="text-xs font-semibold text-[#1C1917]">
                   {assetBundle.photography.spatialSpecs}
                 </p>
               </div>
 
               {/* Color Palette Swatches */}
               <div className="space-y-1.5">
-                <span className="text-[9px] font-bold uppercase tracking-wider text-[#1A1A1A]/70 block">
+                <span className="text-[9px] font-bold uppercase tracking-wider text-[#1C1917]/70 block">
                   Curated Aesthetic Palette
                 </span>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   {assetBundle.photography.palette.map((color, idx) => (
-                    <div key={idx} className="flex items-center gap-1.5 bg-white px-2 py-1 border border-[#1A1A1A]/20">
+                    <div key={idx} className="flex items-center gap-1.5 bg-white px-2 py-1 border border-[#E5DFD5]">
                       <span 
-                        className="w-3.5 h-3.5 border border-black/20" 
+                        className="w-3.5 h-3.5 border border-black/15" 
                         style={{ backgroundColor: color }} 
                       />
-                      <span className="text-[9px] font-mono font-bold text-[#1A1A1A]">{color}</span>
+                      <span className="text-[9px] font-mono font-bold text-[#1C1917]">{color}</span>
                     </div>
                   ))}
                 </div>
@@ -313,7 +309,7 @@ ${file.downloadableContent}
                 {assetBundle.photography.stylingKeywords.map((kw, idx) => (
                   <span 
                     key={idx}
-                    className="text-[9px] font-bold px-2 py-0.5 bg-white border border-[#1A1A1A]/20 text-[#5A5A40]"
+                    className="text-[9px] font-bold px-2 py-0.5 bg-white border border-[#E5DFD5] text-[#4A533E]"
                   >
                     #{kw}
                   </span>
@@ -323,34 +319,34 @@ ${file.downloadableContent}
 
           </div>
 
-          {/* Product Overview Card */}
-          <div className="bg-white p-5 border-2 border-[#1A1A1A] shadow-[3px_3px_0_0_#1A1A1A] space-y-3">
+          {/* Product Strategy Summary */}
+          <div className="bg-white p-5 border border-[#E5DFD5] shadow-xs space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#1A1A1A]">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">
                 Product Strategy Summary
               </span>
-              <span className="text-[10px] font-bold uppercase px-2 py-0.5 bg-[#5A5A40] text-white">
+              <span className="text-[10px] font-bold uppercase px-2 py-0.5 bg-[#4A533E] text-white">
                 {activeProduct.level}
               </span>
             </div>
-            <h3 className="font-serif font-bold text-lg text-[#1A1A1A]">
+            <h3 className="font-serif font-bold text-lg text-[#1C1917]">
               {activeProduct.title}
             </h3>
-            <p className="text-xs text-[#1A1A1A]/80 leading-relaxed">
+            <p className="text-xs text-[#1C1917]/80 leading-relaxed">
               {activeProduct.tagline}
             </p>
-            <div className="border-t border-[#1A1A1A]/10 pt-3 text-[11px] space-y-1.5">
+            <div className="border-t border-[#E5DFD5] pt-3 text-[11px] space-y-1.5">
               <div className="flex justify-between">
-                <span className="text-[#1A1A1A]/60">Target Category:</span>
-                <span className="font-bold text-[#1A1A1A]">{activeProduct.blogCategory}</span>
+                <span className="text-[#1C1917]/60">Target Category:</span>
+                <span className="font-bold text-[#1C1917]">{activeProduct.blogCategory}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#1A1A1A]/60">Difficulty to Produce:</span>
-                <span className="font-bold text-[#1A1A1A]">{activeProduct.difficulty}</span>
+                <span className="text-[#1C1917]/60">Difficulty to Produce:</span>
+                <span className="font-bold text-[#1C1917]">{activeProduct.difficulty}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#1A1A1A]/60">Audience Problem:</span>
-                <span className="font-bold text-[#1A1A1A] text-right line-clamp-1 max-w-[200px]">{activeProduct.targetProblem}</span>
+                <span className="text-[#1C1917]/60">Audience Problem:</span>
+                <span className="font-bold text-[#1C1917] text-right line-clamp-1 max-w-[200px]">{activeProduct.targetProblem}</span>
               </div>
             </div>
           </div>
@@ -360,25 +356,25 @@ ${file.downloadableContent}
         {/* Right Column: Deliverable Asset Files Explorer & Direct Exporter (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           
-          <div className="bg-white border-2 border-[#1A1A1A] shadow-[4px_4px_0_0_#1A1A1A] overflow-hidden">
+          <div className="bg-white border border-[#E5DFD5] shadow-xs overflow-hidden">
             
             {/* Header */}
-            <div className="bg-[#1A1A1A] text-[#FAF9F6] px-5 py-4 border-b border-[#1A1A1A] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="bg-[#1C1917] text-[#FAF8F5] px-4 sm:px-5 py-4 border-b border-[#1C1917] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-[#A0A090]" />
+                  <FileText className="w-4 h-4 text-[#D9D3C7]" />
                   <h2 className="text-sm font-bold uppercase tracking-wider text-white">
                     Deliverable Asset File Package ({assetBundle.files.length} Files)
                   </h2>
                 </div>
-                <p className="text-[11px] text-[#A0A090] mt-0.5">
+                <p className="text-[11px] text-[#D9D3C7] mt-0.5">
                   Real, downloadable, copyable master files formatted for direct customer delivery
                 </p>
               </div>
 
               <button
                 onClick={handleDownloadAllFiles}
-                className="px-3.5 py-1.5 bg-[#5A5A40] hover:bg-white hover:text-[#1A1A1A] text-white text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border border-white/20 flex items-center gap-1.5 shrink-0"
+                className="px-3.5 py-1.5 bg-[#4A533E] hover:bg-white hover:text-[#1C1917] text-white text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border border-white/20 flex items-center justify-center gap-1.5 shrink-0"
               >
                 <FolderDown className="w-3.5 h-3.5" />
                 <span>Export Complete Bundle</span>
@@ -386,8 +382,8 @@ ${file.downloadableContent}
             </div>
 
             {/* File Item List */}
-            <div className="p-4 sm:p-5 space-y-3 bg-[#FAF9F6] border-b border-[#1A1A1A]">
-              <div className="text-[10px] font-bold uppercase tracking-wider text-[#5A5A40]">
+            <div className="p-4 sm:p-5 space-y-3 bg-[#FAF8F5] border-b border-[#E5DFD5]">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-[#4A533E]">
                 Select File to Inspect & Download:
               </div>
 
@@ -398,29 +394,29 @@ ${file.downloadableContent}
                     <div
                       key={file.id}
                       onClick={() => setSelectedFileId(file.id)}
-                      className={`p-3.5 border transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+                      className={`p-3.5 border transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-xs ${
                         isSelected
-                          ? 'bg-white border-[#1A1A1A] shadow-[3px_3px_0_0_#5A5A40] ring-1 ring-[#1A1A1A]'
-                          : 'bg-white/80 border-[#1A1A1A]/20 hover:border-[#1A1A1A] hover:bg-white'
+                          ? 'bg-white border-[#1C1917] shadow-xs ring-1 ring-[#1C1917]'
+                          : 'bg-white/80 border-[#E5DFD5] hover:border-[#4A533E]/50 hover:bg-white'
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <div className="p-2 bg-[#FAF9F6] border border-[#1A1A1A]/20 shrink-0 mt-0.5">
+                        <div className="p-2 bg-[#FAF8F5] border border-[#E5DFD5] shrink-0 mt-0.5">
                           {getFileIcon(file.fileType)}
                         </div>
-                        <div className="space-y-0.5">
+                        <div className="space-y-0.5 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <span className="font-mono font-bold text-xs text-[#1A1A1A]">
+                            <span className="font-mono font-bold text-xs text-[#1C1917] break-all">
                               {file.fileName}
                             </span>
-                            <span className="text-[9px] font-bold uppercase px-1.5 py-0.2 bg-[#5A5A40] text-white">
+                            <span className="text-[9px] font-bold uppercase px-1.5 py-0.2 bg-[#4A533E] text-white shrink-0">
                               {file.badge}
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#1A1A1A]/70 leading-relaxed">
+                          <p className="text-[11px] text-[#1C1917]/70 leading-relaxed">
                             {file.description}
                           </p>
-                          <div className="flex items-center gap-3 text-[10px] text-[#1A1A1A]/60 pt-0.5">
+                          <div className="flex items-center gap-2.5 text-[10px] text-[#1C1917]/60 pt-0.5">
                             <span className="font-semibold">{file.fileType}</span>
                             <span>•</span>
                             <span>{file.fileSize}</span>
@@ -436,7 +432,7 @@ ${file.downloadableContent}
                             handleCopy(file.downloadableContent, `file-${file.id}`);
                           }}
                           title="Copy File Content"
-                          className="p-1.5 bg-[#FAF9F6] hover:bg-[#1A1A1A] hover:text-white text-[#1A1A1A] border border-[#1A1A1A] transition-colors cursor-pointer"
+                          className="p-1.5 bg-[#FAF8F5] hover:bg-[#1C1917] hover:text-white text-[#1C1917] border border-[#E5DFD5] transition-colors cursor-pointer"
                         >
                           {copiedKey === `file-${file.id}` ? (
                             <Check className="w-3.5 h-3.5 text-emerald-600" />
@@ -450,7 +446,7 @@ ${file.downloadableContent}
                             handleDownloadSingleFile(file);
                           }}
                           title="Download File"
-                          className="px-2.5 py-1.5 bg-[#1A1A1A] hover:bg-[#5A5A40] text-white text-[10px] font-bold uppercase tracking-wider border border-[#1A1A1A] transition-colors cursor-pointer flex items-center gap-1"
+                          className="px-2.5 py-1.5 bg-[#1C1917] hover:bg-[#4A533E] text-white text-[10px] font-bold uppercase tracking-wider border border-[#1C1917] transition-colors cursor-pointer flex items-center gap-1"
                         >
                           <Download className="w-3 h-3" />
                           <span>Download</span>
@@ -464,18 +460,18 @@ ${file.downloadableContent}
 
             {/* Active File Content Viewer */}
             <div className="p-4 sm:p-5 space-y-3 bg-white">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#1A1A1A]/10 pb-2.5">
-                <div className="flex items-center gap-2">
-                  <Eye className="w-4 h-4 text-[#5A5A40]" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#1A1A1A]">
-                    Live Content Inspector: <span className="font-mono text-[#5A5A40]">{activeFile.fileName}</span>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#E5DFD5] pb-2.5">
+                <div className="flex items-center gap-2 min-w-0">
+                  <Eye className="w-4 h-4 text-[#4A533E] shrink-0" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917] truncate">
+                    Live Content Inspector: <span className="font-mono text-[#4A533E]">{activeFile.fileName}</span>
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 shrink-0">
                   <button
                     onClick={() => handleCopy(activeFile.downloadableContent, 'active-file-inspect')}
-                    className="px-2.5 py-1 bg-[#FAF9F6] hover:bg-[#1A1A1A] hover:text-white text-[#1A1A1A] text-[10px] font-bold uppercase tracking-wider border border-[#1A1A1A] transition-colors cursor-pointer flex items-center gap-1"
+                    className="px-2.5 py-1 bg-[#FAF8F5] hover:bg-[#1C1917] hover:text-white text-[#1C1917] text-[10px] font-bold uppercase tracking-wider border border-[#E5DFD5] transition-colors cursor-pointer flex items-center gap-1"
                   >
                     {copiedKey === 'active-file-inspect' ? (
                       <>
@@ -492,7 +488,7 @@ ${file.downloadableContent}
 
                   <button
                     onClick={() => handleDownloadSingleFile(activeFile)}
-                    className="px-3 py-1 bg-[#5A5A40] hover:bg-[#1A1A1A] text-white text-[10px] font-bold uppercase tracking-wider border border-[#1A1A1A] transition-colors cursor-pointer flex items-center gap-1"
+                    className="px-3 py-1 bg-[#4A533E] hover:bg-[#1C1917] text-white text-[10px] font-bold uppercase tracking-wider border border-[#4A533E] transition-colors cursor-pointer flex items-center gap-1"
                   >
                     <Download className="w-3 h-3" />
                     <span>Download {activeFile.extension}</span>
@@ -500,30 +496,30 @@ ${file.downloadableContent}
                 </div>
               </div>
 
-              {/* Code / Content Box */}
+              {/* Code Box with clean wrapping & scroll */}
               <div className="relative">
-                <pre className="bg-[#1A1A1A] text-[#FAF9F6] p-4 text-xs font-mono leading-relaxed overflow-x-auto max-h-[380px] border border-[#1A1A1A] whitespace-pre-wrap select-all">
+                <pre className="bg-[#1C1917] text-[#FAF8F5] p-3.5 sm:p-4 text-xs font-mono leading-relaxed overflow-x-auto max-h-[380px] border border-[#1C1917] whitespace-pre-wrap break-words select-all">
                   {activeFile.downloadableContent}
                 </pre>
               </div>
 
-              <div className="flex items-center justify-between text-[10px] text-[#1A1A1A]/60 pt-1">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[10px] text-[#1C1917]/60 pt-1 gap-1">
                 <span>File Format: {activeFile.fileType} ({activeFile.extension})</span>
-                <span>Ready for Fourthwall, Shopify, Gumroad & Etsy download delivery</span>
+                <span>Configured for Fourthwall, Shopify, Gumroad & Etsy digital download fulfillment</span>
               </div>
             </div>
 
           </div>
 
           {/* Customer Delivery Guarantee */}
-          <div className="bg-[#FAF9F6] p-4 border border-[#1A1A1A] flex items-start gap-3">
-            <ShieldCheck className="w-5 h-5 text-[#5A5A40] shrink-0 mt-0.5" />
+          <div className="bg-[#FAF8F5] p-4 border border-[#E5DFD5] flex items-start gap-3">
+            <ShieldCheck className="w-5 h-5 text-[#4A533E] shrink-0 mt-0.5" />
             <div className="text-xs space-y-1">
-              <span className="font-bold text-[#1A1A1A] block">
-                Instant Delivery Architecture Guarantee
+              <span className="font-bold text-[#1C1917] block">
+                Instant Digital Delivery Standard
               </span>
-              <p className="text-[#1A1A1A]/70 leading-relaxed">
-                Every file above is configured for instant zip and individual file download attachment on digital storefront platforms. Customers receive immediate automated access upon checkout.
+              <p className="text-[#1C1917]/70 leading-relaxed">
+                All deliverable files are ready for immediate zip packaging and upload to your Fourthwall / Shopify digital download fulfillment area. Customers receive instant download links upon purchase.
               </p>
             </div>
           </div>
