@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
+import { DeliverablesAndPhotographyCenter } from './components/DeliverablesAndPhotographyCenter';
 import { AllProductsStudio } from './components/AllProductsStudio';
 import { FirstProductExperience } from './components/FirstProductExperience';
 import { AudienceSection } from './components/AudienceSection';
@@ -12,10 +13,10 @@ import { StoreArchitecture } from './components/StoreArchitecture';
 import { ProductionRoadmap } from './components/ProductionRoadmap';
 import { RevenueSimulator } from './components/RevenueSimulator';
 import { TabId } from './types';
-import { Sparkles, ArrowRight, ShieldCheck, ShoppingBag, BookOpen, Layers, Star, TrendingUp, Calendar, HelpCircle } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, ShoppingBag, BookOpen, Layers, Star, TrendingUp, Calendar, HelpCircle, Image as ImageIcon } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('all-products');
+  const [activeTab, setActiveTab] = useState<TabId>('deliverables-photography');
   const [selectedStudioProductId, setSelectedStudioProductId] = useState<string>('flagship-ss-os');
   const [isSimulatorOpen, setIsSimulatorOpen] = useState(false);
 
@@ -24,8 +25,20 @@ export default function App() {
     setActiveTab('all-products');
   };
 
+  const handleOpenDeliverables = (productId: string) => {
+    setSelectedStudioProductId(productId);
+    setActiveTab('deliverables-photography');
+  };
+
   const renderActiveSection = () => {
     switch (activeTab) {
+      case 'deliverables-photography':
+        return (
+          <DeliverablesAndPhotographyCenter 
+            initialProductId={selectedStudioProductId} 
+            onOpenStoreKit={handleLaunchProductStudio}
+          />
+        );
       case 'all-products':
         return <AllProductsStudio initialProductId={selectedStudioProductId} />;
       case 'first-product':
@@ -53,7 +66,12 @@ export default function App() {
       case 'roadmap':
         return <ProductionRoadmap />;
       default:
-        return <AllProductsStudio initialProductId={selectedStudioProductId} />;
+        return (
+          <DeliverablesAndPhotographyCenter 
+            initialProductId={selectedStudioProductId} 
+            onOpenStoreKit={handleLaunchProductStudio}
+          />
+        );
     }
   };
 

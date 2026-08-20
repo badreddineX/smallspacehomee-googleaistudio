@@ -1,6 +1,6 @@
 import React from 'react';
 import { TabId } from '../types';
-import { Home, Compass, Layers, Package, Sparkles, BookOpen, ShoppingBag, Calendar, DollarSign, ExternalLink } from 'lucide-react';
+import { Home, Compass, Layers, Package, Sparkles, BookOpen, ShoppingBag, Calendar, DollarSign, ExternalLink, Image as ImageIcon } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: TabId;
@@ -10,16 +10,17 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab, onOpenSimulator }) => {
   const navItems: { id: TabId; label: string; number: string; icon: React.ElementType }[] = [
-    { id: 'all-products', label: 'Store Posting Kits & Studio (1–20)', number: '01', icon: Layers },
-    { id: 'first-product', label: 'Product 01: SS-OS (Flagship)', number: '02', icon: Sparkles },
-    { id: 'top-10', label: 'Top 10 & Catalog', number: '03', icon: Home },
-    { id: 'audience', label: 'Audience & Problem Map', number: '04', icon: Compass },
-    { id: 'ecosystem', label: 'Ecosystem Flow', number: '05', icon: Package },
-    { id: 'flagship', label: 'Flagship Strategy', number: '06', icon: BookOpen },
-    { id: 'bundles', label: 'Bundles & Physical Merch', number: '07', icon: ShoppingBag },
-    { id: 'blog-funnel', label: 'Blog Funnel & CTAs', number: '08', icon: Calendar },
-    { id: 'store-architecture', label: 'Fourthwall Store Layout', number: '09', icon: DollarSign },
-    { id: 'roadmap', label: 'Roadmap', number: '10', icon: ExternalLink },
+    { id: 'deliverables-photography', label: 'Deliverable Files & Photography (1–20)', number: '01', icon: ImageIcon },
+    { id: 'all-products', label: 'Store Posting Kits & Studio (1–20)', number: '02', icon: Layers },
+    { id: 'first-product', label: 'Product 01: SS-OS (Flagship)', number: '03', icon: Sparkles },
+    { id: 'top-10', label: 'Top 10 & Catalog', number: '04', icon: Home },
+    { id: 'audience', label: 'Audience & Problem Map', number: '05', icon: Compass },
+    { id: 'ecosystem', label: 'Ecosystem Flow', number: '06', icon: Package },
+    { id: 'flagship', label: 'Flagship Strategy', number: '07', icon: BookOpen },
+    { id: 'bundles', label: 'Bundles & Physical Merch', number: '08', icon: ShoppingBag },
+    { id: 'blog-funnel', label: 'Blog Funnel & CTAs', number: '09', icon: Calendar },
+    { id: 'store-architecture', label: 'Fourthwall Store Layout', number: '10', icon: DollarSign },
+    { id: 'roadmap', label: 'Roadmap', number: '11', icon: ExternalLink },
   ];
 
   return (

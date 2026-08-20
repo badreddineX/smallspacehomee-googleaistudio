@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TOP_20_PRODUCTS } from '../data/strategyData';
 import { INTERACTIVE_PRODUCTS_MAP, InteractiveProductData } from '../data/productInteractiveData';
+import { getProductAssetBundle } from '../data/productAssetsData';
 import { FirstProductExperience } from './FirstProductExperience';
 import { 
   Sparkles, 
@@ -35,7 +36,9 @@ import {
   HelpCircle,
   Share2,
   Terminal,
-  Code
+  Code,
+  FolderDown,
+  Image as ImageIcon
 } from 'lucide-react';
 
 interface AllProductsStudioProps {
@@ -478,58 +481,102 @@ ${interactiveData.storeFaq.map(faq => `**Q: ${faq.question}**\nA: ${faq.answer}`
               )}
 
               {/* Subtab 2: Deliverable Files Pack */}
-              {storeTab === 'files' && (
-                <div className="bg-white border-2 border-[#1A1A1A] p-6 shadow-[4px_4px_0_0_#1A1A1A] space-y-6">
-                  <div className="flex items-center justify-between pb-3 border-b border-[#1A1A1A]/20">
-                    <div>
-                      <h3 className="font-serif font-bold text-lg text-[#1A1A1A]">
-                        Digital Asset Files Manifest (Fourthwall File Uploader)
-                      </h3>
-                      <p className="text-xs text-[#1A1A1A]/70">
-                        Upload these files to your Fourthwall digital download fulfillment area.
-                      </p>
+              {storeTab === 'files' && (() => {
+                const assetBundle = getProductAssetBundle(selectedProductId);
+                const handleDownloadSingle = (fileName: string, content: string) => {
+                  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+                  const url = URL.createObjectURL(blob);
+                  const link = document.createElement('a');
+                  link.href = url;
+                  link.download = fileName;
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                  URL.revokeObjectURL(url);
+                };
+
+                const handleDownloadBundle = () => {
+                  const combinedContent = assetBundle.files.map((f, i) => `=== FILE ${i+1}: ${f.fileName} ===\n\n${f.downloadableContent}`).join('\n\n\n');
+                  const blob = new Blob([combinedContent], { type: 'text/markdown;charset=utf-8' });
+                  const url = URL.createObjectURL(blob);
+                  const link = document.createElement('a');
+                  link.href = url;
+                  link.download = `SmallSpaceHome_Product_${activeProduct.rank}_Deliverable_Package.md`;
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                  URL.revokeObjectURL(url);
+                };
+
+                return (
+                  <div className="bg-white border-2 border-[#1A1A1A] p-6 shadow-[4px_4px_0_0_#1A1A1A] space-y-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#1A1A1A]/20">
+                      <div>
+                        <h3 className="font-serif font-bold text-lg text-[#1A1A1A]">
+                          Digital Asset Files Manifest & Real Downloads ({assetBundle.files.length} Files)
+                        </h3>
+                        <p className="text-xs text-[#1A1A1A]/70">
+                          Instant downloadable deliverable files for Fourthwall digital delivery attachment.
+                        </p>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={handleDownloadBundle}
+                          className="px-3.5 py-1.5 bg-[#1A1A1A] hover:bg-[#5A5A40] text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer border border-[#1A1A1A]"
+                        >
+                          <FolderDown className="w-3.5 h-3.5" />
+                          <span>Download All Files (.md)</span>
+                        </button>
+                        <button
+                          onClick={() => handleCopy(assetBundle.files.map(f => `${f.fileName} (${f.fileType}) - ${f.fileSize}`).join('\n'), 'files-manifest')}
+                          className="px-3 py-1.5 bg-[#FAF9F6] hover:bg-[#1A1A1A] hover:text-white text-[#1A1A1A] border border-[#1A1A1A] text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                        >
+                          {copyState === 'files-manifest' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                          <span>Copy Manifest</span>
+                        </button>
+                      </div>
                     </div>
 
-                    <button
-                      onClick={() => handleCopy(interactiveData.deliverableFiles.map(f => `${f.name} (${f.format})`).join('\n'), 'files-manifest')}
-                      className="px-3 py-1.5 bg-[#FAF9F6] hover:bg-[#1A1A1A] hover:text-white text-[#1A1A1A] border border-[#1A1A1A] text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
-                    >
-                      {copyState === 'files-manifest' ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                      <span>Copy Manifest</span>
-                    </button>
-                  </div>
-
-                  <div className="space-y-3">
-                    {interactiveData.deliverableFiles.map((file, idx) => (
-                      <div key={idx} className="p-4 bg-[#FAF9F6] border border-[#1A1A1A] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-[2px_2px_0_0_#1A1A1A]">
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <Box className="w-4 h-4 text-[#5A5A40]" />
-                            <span className="font-mono text-xs font-bold text-[#1A1A1A]">{file.name}</span>
-                            <span className="bg-white px-2 py-0.5 border border-[#1A1A1A]/30 text-[10px] font-bold text-[#5A5A40]">
-                              {file.format}
-                            </span>
-                            <span className="text-[10px] text-stone-500 font-mono">({file.size})</span>
+                    <div className="space-y-3">
+                      {assetBundle.files.map((file, idx) => (
+                        <div key={file.id || idx} className="p-4 bg-[#FAF9F6] border border-[#1A1A1A] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-[2px_2px_0_0_#1A1A1A]">
+                          <div className="space-y-1">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <Box className="w-4 h-4 text-[#5A5A40]" />
+                              <span className="font-mono text-xs font-bold text-[#1A1A1A]">{file.fileName}</span>
+                              <span className="bg-white px-2 py-0.5 border border-[#1A1A1A]/30 text-[10px] font-bold text-[#5A5A40]">
+                                {file.fileType}
+                              </span>
+                              <span className="text-[10px] text-stone-500 font-mono">({file.fileSize})</span>
+                            </div>
+                            <p className="text-xs text-[#1A1A1A]/80 pl-6 leading-relaxed">
+                              {file.description}
+                            </p>
                           </div>
-                          <p className="text-xs text-[#1A1A1A]/80 pl-6">
-                            {file.description}
-                          </p>
-                        </div>
 
-                        <div className="flex items-center gap-2 pl-6 sm:pl-0">
-                          <button
-                            onClick={() => handleCopy(file.name, `fname-${idx}`)}
-                            className="px-2.5 py-1 bg-white hover:bg-[#1A1A1A] hover:text-white border border-[#1A1A1A] text-[11px] font-bold transition-colors cursor-pointer flex items-center gap-1"
-                          >
-                            {copyState === `fname-${idx}` ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
-                            <span>Copy Filename</span>
-                          </button>
+                          <div className="flex items-center gap-2 pl-6 sm:pl-0 shrink-0">
+                            <button
+                              onClick={() => handleCopy(file.downloadableContent, `fcontent-${idx}`)}
+                              className="px-2.5 py-1 bg-white hover:bg-[#1A1A1A] hover:text-white border border-[#1A1A1A] text-[11px] font-bold transition-colors cursor-pointer flex items-center gap-1"
+                            >
+                              {copyState === `fcontent-${idx}` ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
+                              <span>Copy Content</span>
+                            </button>
+                            <button
+                              onClick={() => handleDownloadSingle(file.fileName, file.downloadableContent)}
+                              className="px-3 py-1 bg-[#5A5A40] hover:bg-[#1A1A1A] text-white border border-[#1A1A1A] text-[11px] font-bold transition-colors cursor-pointer flex items-center gap-1"
+                            >
+                              <Download className="w-3 h-3" />
+                              <span>Download</span>
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
 
               {/* Subtab 3: Customer Welcome Email */}
               {storeTab === 'email' && (
