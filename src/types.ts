@@ -63,6 +63,11 @@ export interface DigitalProduct {
   blogTriggers: string[];
   fourthwallCategory: string;
   isTop10: boolean;
+  viralHook?: string;
+  secretHacks?: string[];
+  proTips?: string[];
+  renterSafetyRating?: string;
+  roomZone?: 'Entryway' | 'Living & Studio' | 'Kitchen' | 'Closet & Bedroom' | 'Bathroom' | 'Balcony' | 'Universal';
 }
 
 export interface ProductBundle {

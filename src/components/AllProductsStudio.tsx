@@ -45,7 +45,7 @@ interface AllProductsStudioProps {
   initialProductId?: string;
 }
 
-export const AllProductsStudio: React.FC<AllProductsStudioProps> = ({ initialProductId = 'flagship-ss-os' }) => {
+export const AllProductsStudio: React.FC<AllProductsStudioProps> = ({ initialProductId = 'kit-zero-damage-mounting' }) => {
   const [selectedProductId, setSelectedProductId] = useState<string>(initialProductId);
   const [activeTab, setActiveTab] = useState<'store-post' | 'interactive-tool' | 'notion-schema' | 'printable-sheet'>('store-post');
   const [storeTab, setStoreTab] = useState<'description' | 'files' | 'email' | 'seo' | 'faq'>('description');
@@ -79,7 +79,7 @@ export const AllProductsStudio: React.FC<AllProductsStudioProps> = ({ initialPro
 
   // Active product details
   const activeProduct = TOP_20_PRODUCTS.find(p => p.id === selectedProductId) || TOP_20_PRODUCTS[0];
-  const interactiveData: InteractiveProductData = INTERACTIVE_PRODUCTS_MAP[selectedProductId] || INTERACTIVE_PRODUCTS_MAP['flagship-ss-os'];
+  const interactiveData: InteractiveProductData = INTERACTIVE_PRODUCTS_MAP[selectedProductId] || INTERACTIVE_PRODUCTS_MAP['kit-zero-damage-mounting'];
 
   const currentIndex = TOP_20_PRODUCTS.findIndex(p => p.id === selectedProductId);
   const prevProduct = currentIndex > 0 ? TOP_20_PRODUCTS[currentIndex - 1] : null;

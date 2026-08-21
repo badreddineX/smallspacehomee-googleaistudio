@@ -34,7 +34,7 @@ interface DeliverablesAndPhotographyCenterProps {
 }
 
 export const DeliverablesAndPhotographyCenter: React.FC<DeliverablesAndPhotographyCenterProps> = ({
-  initialProductId = 'flagship-ss-os',
+  initialProductId = 'kit-zero-damage-mounting',
   onOpenStoreKit
 }) => {
   const [selectedProductId, setSelectedProductId] = useState<string>(initialProductId);
@@ -191,14 +191,14 @@ ${file.downloadableContent}
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#4A533E]" />
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] text-[#4A533E]">
-                SmallSpaceHome.ca • Digital Asset Vault & Architectural Photography
+                SmallSpaceHome.ca • Tactical Action Kits & Renter Hacks Vault
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
-              Product Deliverable Files & Photography (1–20)
+              Tactical Action Kits & Deliverable Formats (1–12)
             </h1>
             <p className="text-xs sm:text-sm text-[#1C1917]/80 max-w-3xl leading-relaxed">
-              Every product in the SmallSpaceHome catalog includes tangible, downloadable master deliverable files (Markdown guides, automated Excel/Sheets formulas, Notion system schemas, printable cards) and curated architectural interior photography tested in our 510 sq ft Toronto rental test lab.
+              Every digital product is engineered as an actionable, high-converting <strong>Tactical Action Kit</strong> loaded with tested renter hacks, zero-damage hardware tricks, printable pocket cheat sheets, and plug-and-play dimension calculators tested in our 510 sq ft Toronto rental test lab.
             </p>
           </div>
 
@@ -209,7 +209,7 @@ ${file.downloadableContent}
               className="w-full sm:w-auto px-4 py-2.5 bg-[#4A533E] hover:bg-[#1C1917] text-[#FAF8F5] text-xs font-bold tracking-wider transition-all cursor-pointer border border-[#4A533E] shadow-xs flex items-center justify-center gap-2"
             >
               <FolderDown className="w-4 h-4" />
-              <span>Download Product #{activeProduct.rank} All Files (.md)</span>
+              <span>Download Kit #{activeProduct.rank} All Files (.md)</span>
             </button>
             {onOpenStoreKit && (
               <button
@@ -230,7 +230,7 @@ ${file.downloadableContent}
           <div className="flex items-center gap-2">
             <ImageIcon className="w-4 h-4 text-[#4A533E]" />
             <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">
-              Select from All 20 Products
+              Select from All 12 Tactical Action Kits
             </span>
           </div>
 
@@ -241,12 +241,12 @@ ${file.downloadableContent}
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search products..."
+                placeholder="Search kits, hacks, rooms..."
                 className="w-full bg-[#FAF8F5] border border-[#E5DFD5] pl-8 pr-2.5 py-1.5 text-xs font-medium focus:outline-hidden focus:border-[#4A533E]"
               />
             </div>
             <span className="text-[10px] font-bold bg-[#FAF8F5] px-2 py-1.5 border border-[#E5DFD5] text-[#4A533E] shrink-0">
-              {filteredProducts.length} Products
+              {filteredProducts.length} Action Kits
             </span>
           </div>
         </div>
@@ -402,33 +402,87 @@ ${file.downloadableContent}
 
           </div>
 
-          {/* Product Strategy Summary */}
-          <div className="bg-white p-5 border border-[#E5DFD5] shadow-xs space-y-3">
+          {/* Product Strategy & Secret Hacks Summary */}
+          <div className="bg-white p-5 border border-[#E5DFD5] shadow-xs space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">
-                Product Strategy Summary
-              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#4A533E]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">
+                  Tactical Kit Details
+                </span>
+              </div>
               <span className="text-[10px] font-bold uppercase px-2 py-0.5 bg-[#4A533E] text-white">
-                {activeProduct.level}
+                {activeProduct.renterSafetyRating || '100% Renter Safe'}
               </span>
             </div>
-            <h3 className="font-serif font-bold text-lg text-[#1C1917]">
-              {activeProduct.title}
-            </h3>
-            <p className="text-xs text-[#1C1917]/80 leading-relaxed">
-              {activeProduct.tagline}
-            </p>
+
+            <div>
+              <h3 className="font-serif font-bold text-lg text-[#1C1917]">
+                {activeProduct.title}
+              </h3>
+              <p className="text-xs text-[#1C1917]/80 leading-relaxed mt-1">
+                {activeProduct.tagline}
+              </p>
+            </div>
+
+            {/* Viral Social Hook Callout */}
+            {activeProduct.viralHook && (
+              <div className="bg-[#FAF8F5] border-l-2 border-[#4A533E] p-2.5 space-y-1">
+                <span className="text-[9px] font-bold uppercase tracking-wider text-[#4A533E] flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-[#4A533E]" />
+                  Viral Hook / High-Converting Search Angle:
+                </span>
+                <p className="text-xs font-serif italic text-[#1C1917]">
+                  "{activeProduct.viralHook}"
+                </p>
+              </div>
+            )}
+
+            {/* Secret Hacks Inside Deck */}
+            {activeProduct.secretHacks && activeProduct.secretHacks.length > 0 && (
+              <div className="space-y-2 pt-1 border-t border-[#E5DFD5]">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#1C1917] flex items-center gap-1">
+                  <span>⚡ Secret Hacks & Hardware Tricks:</span>
+                </span>
+                <div className="space-y-1.5">
+                  {activeProduct.secretHacks.map((hack, idx) => (
+                    <div key={idx} className="flex items-start gap-2 bg-[#FAF8F5] p-2 border border-[#E5DFD5] text-xs">
+                      <span className="w-4 h-4 rounded-full bg-[#4A533E] text-white font-bold text-[9px] flex items-center justify-center shrink-0 mt-0.5">
+                        {idx + 1}
+                      </span>
+                      <span className="text-[#1C1917] text-[11px] leading-snug font-medium">
+                        {hack}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Pro Tips Inside Deck */}
+            {activeProduct.proTips && activeProduct.proTips.length > 0 && (
+              <div className="space-y-2 pt-1 border-t border-[#E5DFD5]">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#4A533E] flex items-center gap-1">
+                  <span>💡 Field Tested Pro Tips:</span>
+                </span>
+                <div className="space-y-1">
+                  {activeProduct.proTips.map((tip, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-[11px] text-[#1C1917]/80">
+                      <Check className="w-3 h-3 text-[#4A533E] shrink-0" />
+                      <span>{tip}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="border-t border-[#E5DFD5] pt-3 text-[11px] space-y-1.5">
               <div className="flex justify-between">
                 <span className="text-[#1C1917]/60">Target Category:</span>
                 <span className="font-bold text-[#1C1917]">{activeProduct.blogCategory}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#1C1917]/60">Difficulty to Produce:</span>
-                <span className="font-bold text-[#1C1917]">{activeProduct.difficulty}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#1C1917]/60">Audience Problem:</span>
+                <span className="text-[#1C1917]/60">Target Problem:</span>
                 <span className="font-bold text-[#1C1917] text-right line-clamp-1 max-w-[200px]">{activeProduct.targetProblem}</span>
               </div>
             </div>

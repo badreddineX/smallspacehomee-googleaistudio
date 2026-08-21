@@ -10,17 +10,17 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab, onOpenSimulator }) => {
   const navItems: { id: TabId; label: string; number: string; icon: React.ElementType }[] = [
-    { id: 'deliverables-photography', label: 'Deliverable Files & Photography (1–20)', number: '01', icon: ImageIcon },
-    { id: 'all-products', label: 'Store Posting Kits & Studio (1–20)', number: '02', icon: Layers },
-    { id: 'first-product', label: 'Product 01: SS-OS (Flagship)', number: '03', icon: Sparkles },
-    { id: 'top-10', label: 'Top 10 & Catalog', number: '04', icon: Home },
+    { id: 'deliverables-photography', label: 'Tactical Action Kits & Files (1–12)', number: '01', icon: ImageIcon },
+    { id: 'all-products', label: 'Store Posting Kits & Studio', number: '02', icon: Layers },
+    { id: 'first-product', label: '#1 Starter Kit: Zero-Damage Mounting', number: '03', icon: Sparkles },
+    { id: 'top-10', label: '12-Kit Catalog & Hacks', number: '04', icon: Home },
     { id: 'audience', label: 'Audience & Problem Map', number: '05', icon: Compass },
-    { id: 'ecosystem', label: 'Ecosystem Flow', number: '06', icon: Package },
-    { id: 'flagship', label: 'Flagship Strategy', number: '07', icon: BookOpen },
+    { id: 'ecosystem', label: 'Ecosystem & Funnel Flow', number: '06', icon: Package },
+    { id: 'flagship', label: 'Master Kit Strategy', number: '07', icon: BookOpen },
     { id: 'bundles', label: 'Bundles & Physical Merch', number: '08', icon: ShoppingBag },
     { id: 'blog-funnel', label: 'Blog Funnel & CTAs', number: '09', icon: Calendar },
     { id: 'store-architecture', label: 'Fourthwall Store Layout', number: '10', icon: DollarSign },
-    { id: 'roadmap', label: 'Roadmap', number: '11', icon: ExternalLink },
+    { id: 'roadmap', label: 'Launch Roadmap', number: '11', icon: ExternalLink },
   ];
 
   return (

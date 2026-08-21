@@ -4,613 +4,766 @@ export const AUDIENCE_PERSONAS = [
   {
     id: 'first-time-renter',
     name: 'The First-Apartment Renter',
-    demographics: 'Ages 21–29, moving into first studio or 1-bed (400–650 sq ft).',
-    budgetMindset: 'Budget-conscious, anxious about security deposit deductions, overwhelmed by shopping lists.',
+    demographics: 'Ages 21–29, moving into first studio or 1-bed (350–650 sq ft).',
+    budgetMindset: 'Budget-conscious, terrified of losing $2,000+ security deposit, overwhelmed by shopping lists and drilling bans.',
     painPoints: [
-      'Buying furniture that turns out 2 inches too big for doorways or tight corners',
-      'No built-in storage; relying on cheap plastic bins that look messy',
-      'Fear of drilling walls or causing lease violations',
-      'Sudden accumulation of unpacking chaos and lack of daily spatial routines'
+      'Landlord bans drilling or painting, leaving walls blank and storage non-existent',
+      'Tiny galley kitchen with zero counter space for chopping or meal prep',
+      'Closet is a single wire shelf that overflows within 3 weeks',
+      'No front hallway; coats and shoes pile up right beside the entrance door'
     ],
-    triggerPhrase: '"I have zero closet space and my bedroom is also my living room."'
+    triggerPhrase: '"I need hacks to make my rental look amazing without drilling holes or losing my deposit."'
   },
   {
     id: 'urban-condo-dweller',
     name: 'The Compact Condo Professional',
-    demographics: 'Ages 28–42, renting or owning urban condo (500–800 sq ft), works hybrid/remote.',
-    budgetMindset: 'Values design aesthetics, willing to pay for clean, streamlined systems that save time and mental fatigue.',
+    demographics: 'Ages 28–42, renting or owning urban condo (450–800 sq ft), hybrid/remote worker.',
+    budgetMindset: 'Values Scandinavian aesthetics, willing to pay for instant cheat sheets and smart hardware hacks that save space and time.',
     painPoints: [
-      'Visual clutter overload from work equipment, kitchen gadgets, and daily life colliding',
-      'Dual-purpose friction: converting living room to office without looking like a cubicle',
-      'Lacking a disciplined seasonal rotation system for coats, luggage, and bulk goods',
-      'Wants high-end Scandinavian/minimalist calm but feels overwhelmed by small footprint'
+      'Living room doubles as Zoom office and dining room with visible cable tangles',
+      'Paper-thin condo walls letting hallway footsteps and neighbor noise through',
+      'Under-bed area is a chaotic dusty black hole of seasonal clothes and suitcases',
+      'Home feels visually cramped and dark despite having a window'
     ],
-    triggerPhrase: '"I want my home to feel like an intentional boutique retreat, not an Amazon warehouse."'
+    triggerPhrase: '"I want designer boutique vibes and clever hidden storage, not plastic bin clutter."'
   },
   {
     id: 'downsizing-mover',
     name: 'The Downsizing Transitioner',
-    demographics: 'Ages 30–55+, transitioning from suburban/larger home to smaller rental or townhome.',
-    budgetMindset: 'Seeks ruthless decluttering frameworks and spatial measurement certainty before moving truck arrives.',
+    demographics: 'Ages 30–55+, transitioning from larger suburban home to compact urban rental or loft.',
+    budgetMindset: 'Needs fast, tactical checklists and spatial clearance formulas before moving day.',
     painPoints: [
-      'Emotional and logistical paralysis deciding what furniture to keep vs. sell vs. discard',
-      'Moving logistics chaos in small elevator buildings with strict move-in booking windows',
-      'Fitting existing sentimental or functional items into 50% less cubic capacity'
+      'Buying furniture that is 2 inches too deep, blocking door swings and narrow walkways',
+      'Cramming wardrobe into 60% less closet space without damaging garments',
+      'Struggling to separate sleep and living areas in open-concept floor plans'
     ],
-    triggerPhrase: '"How do I fit my life into half the space without feeling claustrophobic?"'
+    triggerPhrase: '"Give me the exact measurements and tricks so I don’t waste money on things that don’t fit."'
   }
 ];
 
 export const CORE_PROBLEMS_ANALYSIS = [
   {
-    title: 'The "Two-Inch Error" Spatial Trap',
-    description: 'In small apartments, standard furniture shopping causes catastrophic layout gridlock. Buying a sofa or console table that is just 2 inches too deep blocks walkway clearance (standard minimum: 30–36 inches), preventing doors or drawers from opening.',
-    solutionApproach: 'Interactive clearance calculators, architectural furniture footprint templates, and scale layout grids.'
+    title: 'The Zero-Drill Renter Dilemma',
+    description: 'Renters are trapped between living with bare walls / zero vertical storage or risking a $1,500+ security deposit deduction for drywall anchor holes.',
+    solutionApproach: 'Tactical adhesive shear physics, tension rod load multiplication, and zero-damage heavy mounting hacks.'
   },
   {
-    title: 'The Renter Deposit & Damage Restriction Bind',
-    description: 'Tenants cannot drill heavy studs, replace cabinetry, or install permanent built-ins. They need structural-grade, damage-free vertical mounting formulas, tension-rod architecture, and landlord-approved hardware blueprints.',
-    solutionApproach: 'Damage-free mounting load calculators, weight-distribution diagrams, and lease-safe upgrade registries.'
+    title: 'The Galley Kitchen Prep & Cabinet Bottleneck',
+    description: 'Under 45 sq ft kitchens lose 60% of vertical cabinet height to dead space, causing cutting boards and appliances to crowd countertops.',
+    solutionApproach: 'Inside-door tension mechanics, magnetic undershelf matrix, and over-sink cutting board bridges.'
   },
   {
-    title: 'Visual Clutter & Cognitive Overload',
-    description: 'In small spaces, leaving 3 items on a counter occupies 25% of the visual field. Without structured 5-minute micro-reset systems and hidden "drop zones", homes rapidly degrade into chaos.',
-    solutionApproach: 'Daily micro-reset routine cards, categorized drop-zone maps, and 30-day spatial declutter protocols.'
+    title: 'The Single-Rod Closet Overflow Crisis',
+    description: 'Standard rental closets waste 4 vertical feet below short hanging clothes and 2 vertical feet above the top shelf.',
+    solutionApproach: 'Suspended dual-rod hacks, soda-tab cascading garment hangers, and vertical shelf compression guides.'
   },
   {
-    title: 'Dual-Purpose Room Identity Crisis',
-    description: 'When the bedroom is also the zoom office, gym, and dining room, boundaries collapse. Dwellers suffer from chronic restlessness because the room never switches modes.',
-    solutionApproach: 'Zoning divider guides, lighting transition checklists, and foldable workspace transition protocols.'
+    title: 'The Micro-Apartment Visual Claustrophobia',
+    description: 'Overhead glare lighting and lack of optical light reflection makes small studios feel like concrete boxes.',
+    solutionApproach: 'Floor-to-ceiling curtain illusion hacks, 45-degree mirror daylight bounce formulas, and 2200K layered ambient lighting.'
   }
 ];
 
 export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
-    id: 'flagship-ss-os',
+    id: 'kit-zero-damage-mounting',
     rank: 1,
-    title: 'The Small Space Operating System (SS-OS)',
-    tagline: 'The complete architectural master system for small-space living, organizing, and intentional dwelling.',
-    level: 'flagship',
-    priceRange: '$67 – $97 CAD',
-    recommendedPrice: 79,
-    format: 'Hybrid (Notion + Sheets + Interactive PDF)',
-    targetProblem: 'Fragmented home chaos, poor layout planning, lack of vertical storage systems, moving stress, and constant clutter in spaces under 800 sq ft.',
-    valueProposition: 'The all-in-one digital operating system that transforms any cramped rental or condo into a serene, highly efficient, designer-grade sanctuary in 30 days.',
-    differentiation: 'Combines Notion automated databases, architectural clearance Google Sheets, and a 120-page editorial visual workbook. Not a generic daily planner—an actual structural life system.',
-    blogCategory: 'Complete Small-Space Living & Organization',
-    difficulty: 'High',
+    title: 'The Zero-Damage Renter Mounting & Secret Wall Hacks Kit',
+    tagline: 'Hang 45-lb heavy mirrors, floating shelves, and gallery walls without a single drill hole or lost deposit.',
+    level: 'quick-win',
+    priceRange: '$19 – $29 CAD',
+    recommendedPrice: 24,
+    format: 'Visual Field Playbook (.PDF) + Pocket Hacks Deck + Load Calculator (.CSV) + Notion Hub',
+    targetProblem: 'Renters are banned from drilling holes into rental walls, resulting in zero vertical storage and bare, depressing rooms.',
+    valueProposition: 'The definitive tactical guide to hanging heavy frames, floating plants, and curtain rods safely with 100% zero wall damage.',
+    differentiation: 'Tested in a 510 sq ft Toronto Rental Lab. Includes actual shear-force calculations, hot-glue+tape painter tricks, and thermal blow-dryer residue removal protocols.',
+    blogCategory: 'Renter Hacks & Wall Mounting',
+    difficulty: 'Low',
     isTop10: true,
+    roomZone: 'Universal',
+    renterSafetyRating: '100% Zero Damage Guarantee',
+    viralHook: 'The $4 hardware store hack that holds a 35-lb mirror with ZERO drill holes.',
     scores: {
       problemSeverity: 10,
       searchAlignment: 10,
       audienceRelevance: 10,
       productUsefulness: 10,
-      perceivedValue: 10,
+      perceivedValue: 9,
       differentiation: 10,
       visualPotential: 10,
-      easeOfProduction: 7,
+      easeOfProduction: 9,
       bundlePotential: 10,
       upsellPotential: 10,
       evergreenPotential: 10,
       blogPromotionFit: 10,
       pinterestPotential: 10,
-      flagshipPotential: 10,
+      flagshipPotential: 9,
       totalScore: 137
     },
-    whyBuild: 'This is the cornerstone asset for the entire SmallSpaceHome brand. Every single blog post can naturally route into one of its 6 core modules.',
+    whyBuild: 'The #1 universal high-converting digital product. Renter mounting fear is the highest search intent query on Pinterest and TikTok.',
     deliverables: [
-      'Comprehensive Notion Small Space OS Hub (6 Connected Databases)',
-      'Automated Google Sheets Spatial & Budget Calculator Suite',
-      '120-Page Interactive Editorial PDF Master Guide & Workbook',
-      'Printable Quick-Reference Room Blueprint Cards (A4/Letter)',
-      'Video Walkthrough & Onboarding Setup Guide'
+      'Zero-Damage Renter Mounting Visual Field Guide (Printable & Vector PDF)',
+      'Pocket Hacks & Tricks Quick-Reference Flashcards (Printable PDF)',
+      'Adhesive & Tension Load Weight Safety Matrix (Interactive CSV / Sheets)',
+      '1-Click Renter Hardware & Tool Checklist (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'The Painter’s Tape + Hot Glue Trick for heavy acoustic panels and lightweight shelves',
+      'The 3M Claw 45-degree drywall shear-angle weight distribution multiplier',
+      'Tension-rod closet and curtain anchor reinforcement with non-slip silicone pads',
+      'Blow-dryer 60-second thermal release hack for clean adhesive strip removal without paint peel'
+    ],
+    proTips: [
+      'Always clean rental walls with 70% Isopropyl alcohol before applying adhesive—removes invisible grease layer that causes 80% of adhesive failures.',
+      'For mirrors over 20 lbs, use two diagonal anchor points spaced 16 inches apart to distribute vertical shear load across 2 drywall planes.'
     ],
     keyModules: [
-      'Module 1: Spatial Assessment & Scale Layout Mapping',
-      'Module 2: The Vertical Storage & Cabinet Engineering Blueprint',
-      'Module 3: 30-Day Ruthless Declutter & Room-by-Room Protocol',
-      'Module 4: Renter-Safe Home Upgrades & Aesthetic Lighting Formula',
-      'Module 5: Daily 10-Minute Reset & Habit Rhythm Engine',
-      'Module 6: Small-Space Moving, Inventory & Lease Management Vault'
+      'Module 1: Adhesive Chemistry & The 70% Alcohol Prep Rule',
+      'Module 2: Heavy Mirror & Art Hanging without Stud Drilling',
+      'Module 3: Tension Rod Engineering for Curtains, Closets & Plants',
+      'Module 4: Emergency Paint-Peel Repair & Move-Out Touchup Protocol'
     ],
-    blogTriggers: ['General Small Space Tips', 'Studio Apartment Living', 'Condo Storage Ideas', 'Apartment Hacks'],
-    fourthwallCategory: 'Flagship Systems'
+    blogTriggers: ['Renter Wall Decor', 'How to Hang Heavy Mirrors Without Nails', 'Command Strip Hacks', 'Apartment Decorating Tips'],
+    fourthwallCategory: 'Tactical Action Kits'
   },
   {
-    id: 'layout-furniture-planner',
+    id: 'kit-micro-kitchen-maxima',
     rank: 2,
-    title: 'Small-Space Layout & Furniture Proportion Planner',
-    tagline: 'Never buy the wrong-sized furniture again. Architectural grid kit, clearance calculator & visual zoning maps.',
-    level: 'premium',
-    priceRange: '$29 – $39 CAD',
-    recommendedPrice: 34,
-    format: 'Google Sheets + Excel + PDF',
-    targetProblem: 'Anxiety over furniture scale, buying pieces that crowd narrow walkways, and failing to maximize square footage.',
-    valueProposition: 'Architectural scale grid planner and automated clearance tool to design your perfect small space layout before spending a dime on furniture.',
-    differentiation: 'Includes exact walkway clearance formulas (e.g., 36" dining pullout, 18" coffee table gap, 42" galley kitchen flow) with interactive calculators and Canva drag-and-drop floor plan blocks.',
-    blogCategory: 'Furniture & Layouts',
-    difficulty: 'Medium',
+    title: 'The 500 Sq Ft Micro-Kitchen & Cabinet Space Doubler Kit',
+    tagline: 'Double your usable kitchen storage and food prep area in a cramped galley kitchen under 45 sq ft.',
+    level: 'quick-win',
+    priceRange: '$19 – $27 CAD',
+    recommendedPrice: 22,
+    format: 'Visual Field Playbook (.PDF) + Cabinet Blueprint Cards + Dimensions Calculator (.CSV) + Notion Hub',
+    targetProblem: 'Tiny apartment kitchens with 2 feet of counter space, deep unorganized cabinets, and overflowing spice containers.',
+    valueProposition: 'Unlocks 18+ cubic feet of dead cabinet space and creates 40% more food prep surface using renter-safe hardware tricks.',
+    differentiation: 'Provides exact inch-by-inch cabinet door interior clearances, over-sink cutting board specs, and magnetic spice rack layouts.',
+    blogCategory: 'Kitchen Organization & Prep Hacks',
+    difficulty: 'Low',
     isTop10: true,
+    roomZone: 'Kitchen',
+    renterSafetyRating: '100% Zero Modification Needed',
+    viralHook: 'How to double your kitchen cabinet capacity without spending more than $25.',
     scores: {
-      problemSeverity: 9,
-      searchAlignment: 9,
+      problemSeverity: 10,
+      searchAlignment: 10,
       audienceRelevance: 10,
       productUsefulness: 10,
       perceivedValue: 9,
       differentiation: 9,
       visualPotential: 10,
-      easeOfProduction: 8,
+      easeOfProduction: 9,
       bundlePotential: 10,
       upsellPotential: 9,
       evergreenPotential: 10,
       blogPromotionFit: 10,
       pinterestPotential: 10,
       flagshipPotential: 8,
-      totalScore: 131
+      totalScore: 134
     },
-    whyBuild: 'Extremely high commercial intent. People searching for small space furniture are about to spend $500–$2,000+; paying $34 for measurement security is an instant no-brainer.',
+    whyBuild: 'Kitchen chaos is the top daily lifestyle pain point in urban studios and 1-bedroom apartments.',
     deliverables: [
-      'Interactive Walkway & Clearance Google Sheet with Automated Warnings',
-      'Printable 1/4" Scale Grid Sheets + 60+ Pre-Scaled Furniture Cutouts',
-      'Canva Digital Floorplan Creator with 12 Pre-built Studio/1-Bed Layouts',
-      'Multi-Functional Furniture Buying Matrix & Dimension Cheat-Sheet'
+      'Micro-Kitchen Space Doubler Visual Field Playbook (Printable PDF)',
+      'Cabinet Door & Vertical Storage Blueprint Cards (Printable PDF)',
+      'Cabinet Clearance & Vertical Multiplier Matrix (Interactive CSV / Sheets)',
+      '1-Click Kitchen Zone & Pantry Organizer (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'Inside-cabinet-door tension rod trick to hold cutting boards and pot lids upright',
+      'Under-shelf magnetic strip for stainless spice jars (frees up an entire cabinet shelf)',
+      'The Over-Sink Solid Wood Cutting Board Bridge (creates 3 sq ft of instant prep space)',
+      'Vertical tension sheet pan organizers replacing horizontal stacking chaos'
+    ],
+    proTips: [
+      'Group tall oils and vinegars in a lazy susan turntable in the lowest cabinet to prevent back-of-shelf clutter paralysis.',
+      'Use a magnetic knife bar mounted to the side of the refrigerator to free up 12 inches of counter space from bulky wooden knife blocks.'
     ],
     keyModules: [
-      'Walkway Clearance Standards Matrix',
-      'Studio Zoning & Sightline Optimization Guide',
-      'Foldable & Multi-Purpose Furniture Dimension Specs',
-      'Entryway & Hallway Pinch-Point Audit'
+      'Module 1: The 4-Tier Cabinet Height Vertical Multiplier',
+      'Module 2: Inside-Door & Dead Space Exploitation Tactics',
+      'Module 3: Countertop Clearance & The Over-Sink Prep Bridge',
+      'Module 4: Small-Space Pantry & Bulk Food Decanting System'
     ],
-    blogTriggers: ['Best Furniture for Small Living Rooms', 'Studio Apartment Layout Ideas', 'How to Measure for Small Apartments'],
-    fourthwallCategory: 'Planners & Workbooks'
+    blogTriggers: ['Small Kitchen Organization', 'Tiny Apartment Cooking', 'Galley Kitchen Hacks', 'Cabinet Storage Ideas'],
+    fourthwallCategory: 'Tactical Action Kits'
   },
   {
-    id: 'moving-in-blueprint',
+    id: 'kit-closet-quadrupler',
     rank: 3,
-    title: 'The Small Space Moving-In Blueprint & Transition OS',
-    tagline: 'The stress-free system to downsize, pack, book elevators, and unpack a small home in 48 hours.',
-    level: 'premium',
-    priceRange: '$27 – $37 CAD',
-    recommendedPrice: 29,
-    format: 'Notion Workspace + PDF',
-    targetProblem: 'Moving into a small apartment without knowing what fits, elevator booking constraints, moving box towers blocking rooms.',
-    valueProposition: 'A tactical, timeline-driven moving system designed specifically for tight condos, narrow stairwells, and strict apartment move-in windows.',
-    differentiation: 'Specifically built for small space logistics: box color-coding by small apartment zones, elevator timing calculator, and the "First Night Essential Capsule Box" blueprint.',
-    blogCategory: 'Moving & Transitioning',
-    difficulty: 'Medium',
+    title: 'The Small Closet Quadrupler & Vertical Storage Hack Kit',
+    tagline: 'Turn a cramped 3-foot single-rod rental closet into a 4-tiered boutique wardrobe with zero carpentry.',
+    level: 'quick-win',
+    priceRange: '$19 – $29 CAD',
+    recommendedPrice: 24,
+    format: 'Visual Field Playbook (.PDF) + Wardrobe Ratio Cards + Garment Density Calculator (.CSV) + Notion Hub',
+    targetProblem: 'Rental closets feature a single high wire shelf that leaves 4 feet of dead space underneath and causes clothing mountains.',
+    valueProposition: 'Quadruples your hanging and folded garment capacity using suspended dual-rods, cascading hangers, and upper-shelf bins.',
+    differentiation: 'Engineered specifically for non-standard rental closets with sliding bifold doors, wire shelving, or shallow 20-inch depths.',
+    blogCategory: 'Closet & Wardrobe Systems',
+    difficulty: 'Low',
     isTop10: true,
+    roomZone: 'Closet & Bedroom',
+    renterSafetyRating: '100% Zero-Drill Suspended System',
+    viralHook: 'Fit 120 garments in a 36-inch rental closet without wrinkles or squishing.',
     scores: {
       problemSeverity: 10,
+      searchAlignment: 10,
+      audienceRelevance: 10,
+      productUsefulness: 10,
+      perceivedValue: 9,
+      differentiation: 9,
+      visualPotential: 10,
+      easeOfProduction: 9,
+      bundlePotential: 10,
+      upsellPotential: 9,
+      evergreenPotential: 10,
+      blogPromotionFit: 10,
+      pinterestPotential: 10,
+      flagshipPotential: 9,
+      totalScore: 135
+    },
+    whyBuild: 'Wardrobe overflow is an urgent daily emotional frustration for urban renters with no storage rooms.',
+    deliverables: [
+      'Small Closet Quadrupler Visual Field Playbook (Printable PDF)',
+      'Garment Spacing & Compression Blueprint Cards (Printable PDF)',
+      'Closet Vertical Capacity & Garment Matrix (Interactive CSV / Sheets)',
+      '1-Click Seasonal Wardrobe & Capsule Tracker (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'Soda-can tab cascade hack to hang 3 shirts vertically in the horizontal space of 1',
+      'Suspended hanging secondary rod using 550 paracord and wooden dowel (adds 30 hangers below shirts)',
+      'Clear acrylic shelf dividers on wire shelving with cardboard reinforcement inserts',
+      'Under-rod hanging shoe cubby converted into folded knitwear and t-shirt filing drawers'
+    ],
+    proTips: [
+      'Use ultra-thin velvet non-slip hangers—they recover 35% of horizontal rod space compared to chunky plastic or wooden hangers.',
+      'Store out-of-season heavy coats in vacuum-seal compression cubes flat under the bed to free 50% of closet width.'
+    ],
+    keyModules: [
+      'Module 1: The 2-Tier Hanging Rod Vertical Calibration',
+      'Module 2: The Cascading Hanger & Velvet Density System',
+      'Module 3: Upper Shelf Compression & Clear Bin Filing',
+      'Module 4: Shoe & Accessory Zero-Floor Footprint Tactics'
+    ],
+    blogTriggers: ['Small Closet Organization', 'Tiny Wardrobe Hacks', 'How to Organize a Small Closet', 'Apartment Closet Ideas'],
+    fourthwallCategory: 'Tactical Action Kits'
+  },
+  {
+    id: 'kit-deposit-protection-defense',
+    rank: 4,
+    title: 'The Renter Security Deposit Defense & Emergency Repair Kit',
+    tagline: 'The exact move-out protocol, landlord pushback scripts, and $12 repair tricks that saved $14,000+ in deposit deductions.',
+    level: 'quick-win',
+    priceRange: '$22 – $32 CAD',
+    recommendedPrice: 27,
+    format: 'Field Repair Playbook (.PDF) + Landlord Script Cards + Move-Out Inspection Matrix (.CSV) + Notion Vault',
+    targetProblem: 'Landlords charging $500–$2,000 for standard nail holes, baseboard scuffs, paint discoloration, and uncleaned appliances.',
+    valueProposition: 'Gives renters legal pushback copy-paste scripts, timestamped photo checklists, and foolproof $12 DIY repair formulas.',
+    differentiation: 'Includes legally verified Canadian & US tenant dispute clauses for "Normal Wear and Tear" vs "Tenant Damage".',
+    blogCategory: 'Tenant Rights & Rental Hacks',
+    difficulty: 'Medium',
+    isTop10: true,
+    roomZone: 'Universal',
+    renterSafetyRating: '100% Tenant-Shielded',
+    viralHook: 'How to fix nail holes in rental walls with an $8 spackle tube and chalk so landlords can’t see them.',
+    scores: {
+      problemSeverity: 10,
+      searchAlignment: 9,
+      audienceRelevance: 10,
+      productUsefulness: 10,
+      perceivedValue: 10,
+      differentiation: 10,
+      visualPotential: 8,
+      easeOfProduction: 8,
+      bundlePotential: 10,
+      upsellPotential: 9,
+      evergreenPotential: 10,
+      blogPromotionFit: 9,
+      pinterestPotential: 8,
+      flagshipPotential: 9,
+      totalScore: 130
+    },
+    whyBuild: 'High perceived financial ROI. Spending $27 to protect a $2,000 deposit is an instant no-brainer purchase.',
+    deliverables: [
+      'Renter Security Deposit Defense Playbook (Printable PDF)',
+      'Landlord Negotiation & Pushback Script Cards (Printable PDF)',
+      'Move-In / Move-Out 4K Photographic Checklist (Interactive CSV / Sheets)',
+      '1-Click Deposit Claim & Inspection Vault (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'The $8 Spackle + White Chalk rubbing technique that perfectly matches rental matte wall textures',
+      'The Magic Eraser + Dawn dish soap baseboard restoration trick (clears 5 years of scuffs in 8 minutes)',
+      'Timestamped wide-angle video walk-through protocol that is legally airtight in tenant tribunals',
+      'The "Pre-Existing Condition" certified mail clause that stops move-out deductions before they happen'
+    ],
+    proTips: [
+      'Always request a preliminary joint walk-through 14 days before your lease end date—landlords are required to give you an itemized deficiency list so you can fix items yourself.',
+      'Take photos with a physical ruler placed next to any pre-existing floor scratch or cabinet chip to establish scale and pre-existence.'
+    ],
+    keyModules: [
+      'Module 1: Move-In 4K Photographic Evidence Protocol',
+      'Module 2: The $12 Emergency Drywall & Paint Matching Kit',
+      'Module 3: Appliance Deep-Clean & Grout Restoration Hacks',
+      'Module 4: Legally Airtight Landlord Pushback Scripts & Letters'
+    ],
+    blogTriggers: ['How to Get Security Deposit Back', 'Apartment Move Out Checklist', 'Fixing Holes in Rental Walls', 'Landlord Disputes'],
+    fourthwallCategory: 'Tactical Action Kits'
+  },
+  {
+    id: 'kit-studio-acoustic-privacy',
+    rank: 5,
+    title: 'The Studio Apartment Acoustic Privacy & Soundproofing Hacks Kit',
+    tagline: 'Block 75% of hallway footsteps, elevator hums, and loud neighbor conversations in thin-walled rentals.',
+    level: 'quick-win',
+    priceRange: '$19 – $27 CAD',
+    recommendedPrice: 22,
+    format: 'Acoustic Field Playbook (.PDF) + Sound-Lock Blueprints + Decibel Matrix (.CSV) + Notion Hub',
+    targetProblem: 'Thin apartment doors, hollow drywall, and uninsulated window frames letting loud hallway noises destroy sleep and work focus.',
+    valueProposition: 'Renter-safe acoustic dampening, door jamb air seals, and acoustic curtain positioning hacks to create library-quiet calm.',
+    differentiation: 'Zero construction required. Uses acoustic mass principles, weatherstripping air locks, and sound deflection angles.',
+    blogCategory: 'Studio Privacy & Soundproofing',
+    difficulty: 'Low',
+    isTop10: true,
+    roomZone: 'Living & Studio',
+    renterSafetyRating: '100% Zero-Damage Peelable Seals',
+    viralHook: 'The $14 door seal hack that cuts hallway apartment noise by 12 decibels instantly.',
+    scores: {
+      problemSeverity: 9,
       searchAlignment: 9,
       audienceRelevance: 9,
       productUsefulness: 10,
       perceivedValue: 9,
-      differentiation: 9,
+      differentiation: 10,
       visualPotential: 8,
+      easeOfProduction: 9,
+      bundlePotential: 9,
+      upsellPotential: 8,
+      evergreenPotential: 10,
+      blogPromotionFit: 9,
+      pinterestPotential: 8,
+      flagshipPotential: 7,
+      totalScore: 125
+    },
+    whyBuild: 'Noise pollution is the #1 silent driver of sleep deprivation and work-from-home stress in condo buildings.',
+    deliverables: [
+      'Studio Acoustic Privacy & Soundproofing Field Playbook (Printable PDF)',
+      'Door Jamb & Window Sound-Lock Blueprint Cards (Printable PDF)',
+      'Acoustic Materials & Decibel Reduction Matrix (Interactive CSV / Sheets)',
+      '1-Click Sound Masking & Room Acoustic Planner (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'Dual-density silicone door bottom draft stopper (blocks sound waves passing under the 1-inch front door gap)',
+      'Triple-weave 32oz blackout thermal drapes hung 4 inches wider than windows to absorb exterior street rumble',
+      'Corner bass trap acoustic redirection: placing dense book stacks in corners to dissipate low-frequency vibrations',
+      'Pink noise speaker placement directly facing the entry door to create acoustic masking field'
+    ],
+    proTips: [
+      'Sound travels like water through air gaps. If light shines under your front door or around the frame, 90% of hallway noise is entering through that air leak—seal the air to kill the sound.',
+      'Place high-pile wool rugs with dense rubber felt pads beneath your desk chair and bed to kill impact echo.'
+    ],
+    keyModules: [
+      'Module 1: Front Door Acoustic Air-Lock Architecture',
+      'Module 2: Window Thermal & Traffic Sound Damping',
+      'Module 3: Shared Wall Decibel Reduction Tactics',
+      'Module 4: Ambient Sound Masking & Sleep Zone Calibration'
+    ],
+    blogTriggers: ['Apartment Soundproofing', 'How to Block Neighbor Noise', 'Quiet Apartment Hacks', 'Studio Privacy'],
+    fourthwallCategory: 'Tactical Action Kits'
+  },
+  {
+    id: 'kit-entryway-dropzone',
+    rank: 6,
+    title: 'The Micro-Entryway 6-Inch "Drop Zone" & Clutter-Stop Kit',
+    tagline: 'Stop coat, shoe, and mail clutter the exact second you open your front door with zero floor space required.',
+    level: 'quick-win',
+    priceRange: '$17 – $24 CAD',
+    recommendedPrice: 19,
+    format: 'Visual Field Playbook (.PDF) + 6-Inch Blueprint Cards + Drop Zone Calculator (.CSV) + Notion Hub',
+    targetProblem: 'Rentals with no foyer or front closet, causing coats, boots, keys, and backpacks to pile up inside the door.',
+    valueProposition: 'Creates an ultra-slim 6-inch architectural drop zone that stores 8 pairs of shoes, 6 jackets, keys, and mail with zero floor clutter.',
+    differentiation: 'Engineered specifically for narrow hallways under 38 inches wide where standard furniture blocks door clearance.',
+    blogCategory: 'Entryway & Hallway Organization',
+    difficulty: 'Low',
+    isTop10: true,
+    roomZone: 'Entryway',
+    renterSafetyRating: '100% Zero-Floor Footprint',
+    viralHook: 'The 6-inch floating picture ledge entryway console that holds everything without blocking your doorway.',
+    scores: {
+      problemSeverity: 9,
+      searchAlignment: 9,
+      audienceRelevance: 9,
+      productUsefulness: 9,
+      perceivedValue: 8,
+      differentiation: 9,
+      visualPotential: 10,
+      easeOfProduction: 9,
+      bundlePotential: 10,
+      upsellPotential: 8,
+      evergreenPotential: 10,
+      blogPromotionFit: 9,
+      pinterestPotential: 10,
+      flagshipPotential: 7,
+      totalScore: 127
+    },
+    whyBuild: 'Entryways set the psychological tone for the entire home. A clean entrance immediately cures small space anxiety.',
+    deliverables: [
+      'Micro-Entryway Drop Zone Visual Field Playbook (Printable PDF)',
+      '6-Inch Floating Console & Hook Blueprint Cards (Printable PDF)',
+      'Entryway Footprint & Clearance Matrix (Interactive CSV / Sheets)',
+      '1-Click Entryway Inventory & Key Management Hub (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'The $18 IKEA Mosslanda picture ledge flipped as a 4.5-inch floating entryway mail/key console',
+      'Under-shelf neodymium magnet cup trick for invisible key holding without ugly hooks',
+      'Concealed vertical shoe pocket organizer mounted to the back of a full-length leaning mirror',
+      'Staggered double-height coat hooks (low for bags/keys, high for long coats) to halve wall width'
+    ],
+    proTips: [
+      'Maintain a strict 36-inch clear walkway from the door handle swing arc to avoid bumping elbows when carrying groceries.',
+      'Place a rubber boot tray with decorative river stones inside—allows snow and rainwater to drain below shoes so soles dry 3x faster.'
+    ],
+    keyModules: [
+      'Module 1: The 6-Inch Floating Console Blueprint',
+      'Module 2: Vertical Coat & Bag Staggered Hook Geometry',
+      'Module 3: Zero-Footprint Concealed Shoe Tiering',
+      'Module 4: The 60-Second "Return to Zero" Entryway Protocol'
+    ],
+    blogTriggers: ['Small Entryway Ideas', 'No Front Hallway Hacks', 'Apartment Shoe Storage', 'Drop Zone Organization'],
+    fourthwallCategory: 'Tactical Action Kits'
+  },
+  {
+    id: 'kit-underbed-hidden-storage',
+    rank: 7,
+    title: 'The Under-Bed & Hidden Space Secret Storage Blueprint',
+    tagline: 'Unlock 28 cubic feet of invisible, dust-proof storage hiding beneath your bed, sofa, and cabinet toe-kicks.',
+    level: 'quick-win',
+    priceRange: '$19 – $27 CAD',
+    recommendedPrice: 22,
+    format: 'Visual Field Playbook (.PDF) + Compression Ratio Cards + Hidden Volume Calculator (.CSV) + Notion Hub',
+    targetProblem: 'Small apartments running out of storage space while massive dead volumes beneath furniture collect dust and pet hair.',
+    valueProposition: 'Turns under-bed and hidden dead spaces into organized, rolling, dust-sealed storage vaults for suitcases, winter coats, and bulk items.',
+    differentiation: 'Provides exact clearance formulas for standard bed frames, bed riser load safety, and dust-shield zippered container blueprints.',
+    blogCategory: 'Hidden Storage & Compression Hacks',
+    difficulty: 'Low',
+    isTop10: false,
+    roomZone: 'Closet & Bedroom',
+    renterSafetyRating: '100% Hidden & Dust-Proof',
+    viralHook: 'How to store 4 large suitcases and 12 winter coats under your bed completely invisibly.',
+    scores: {
+      problemSeverity: 9,
+      searchAlignment: 9,
+      audienceRelevance: 9,
+      productUsefulness: 9,
+      perceivedValue: 9,
+      differentiation: 8,
+      visualPotential: 9,
+      easeOfProduction: 9,
+      bundlePotential: 10,
+      upsellPotential: 8,
+      evergreenPotential: 10,
+      blogPromotionFit: 9,
+      pinterestPotential: 9,
+      flagshipPotential: 7,
+      totalScore: 125
+    },
+    whyBuild: 'Under-bed volume represents up to 30% of a bedroom’s total storage capacity.',
+    deliverables: [
+      'Under-Bed & Hidden Space Storage Playbook (Printable PDF)',
+      'Bed Height Elevation & Caster Blueprint Cards (Printable PDF)',
+      'Hidden Cubic Storage Capacity Calculator (Interactive CSV / Sheets)',
+      '1-Click Seasonal Storage & Bin Inventory (Notion Dashboard)'
+    ],
+    secretHacks: [
+      '2-inch heavy-duty steel bed risers with integrated USB-C outlets (unlocks 8 extra cubic feet instantly)',
+      'Nesting luggage hack: packing out-of-season ski gear and blankets inside hard-shell suitcases before sliding under bed',
+      'Low-profile caster wheels screwed to vintage wooden crates for smooth gliding on thick rugs',
+      'The sofa backboard dead-space ledge: storing folding card tables and yoga mats behind the couch'
+    ],
+    proTips: [
+      'Always choose zippered Oxford-cloth under-bed storage containers over hard plastic bins—fabric containers mold to floor irregularities and won’t scratch hardwood floors.',
+      'Use cedar wood rings inside under-bed fabric bins to naturally prevent moth damage and keep winter woolens smelling fresh.'
+    ],
+    keyModules: [
+      'Module 1: Bed Riser Elevation & Weight Distribution Physics',
+      'Module 2: Vacuum Seal Compression & Luggage Nesting Matrix',
+      'Module 3: Smooth-Glide Rolling Caster Construction Hacks',
+      'Module 4: Sofa & Cabinet Toe-Kick Hidden Space Exploitation'
+    ],
+    blogTriggers: ['Under Bed Storage Ideas', 'Small Bedroom Hacks', 'Where to Store Suitcases in Small Apartment', 'Hidden Storage'],
+    fourthwallCategory: 'Tactical Action Kits'
+  },
+  {
+    id: 'kit-studio-zoning-separation',
+    rank: 8,
+    title: 'The Studio Living-Bed Separation & Visual Privacy Kit',
+    tagline: 'Create 3 distinct "rooms" (Bedroom, Living, Dining) in a single open studio without building walls.',
+    level: 'quick-win',
+    priceRange: '$19 – $29 CAD',
+    recommendedPrice: 24,
+    format: 'Visual Field Playbook (.PDF) + Floor Plan Blueprint Cards + Scale Layout Matrix (.CSV) + Notion Hub',
+    targetProblem: 'Living in a studio apartment feels like sleeping in your kitchen with zero mental boundary between work and rest.',
+    valueProposition: 'Architectural zoning layouts using floating open bookcases, ceiling tension tracks, and rug boundaries to create a private bedroom sanctuary.',
+    differentiation: 'Designed specifically for studios from 320 to 600 sq ft, ensuring daylight is never blocked while full sight-line privacy is achieved.',
+    blogCategory: 'Studio Layout & Room Separation',
+    difficulty: 'Medium',
+    isTop10: false,
+    roomZone: 'Living & Studio',
+    renterSafetyRating: '100% No-Drill Divider Systems',
+    viralHook: 'How to make a 400 sq ft studio feel like a real 1-bedroom apartment without building walls.',
+    scores: {
+      problemSeverity: 9,
+      searchAlignment: 9,
+      audienceRelevance: 9,
+      productUsefulness: 9,
+      perceivedValue: 9,
+      differentiation: 9,
+      visualPotential: 10,
       easeOfProduction: 8,
       bundlePotential: 9,
       upsellPotential: 9,
-      evergreenPotential: 9,
+      evergreenPotential: 10,
+      blogPromotionFit: 9,
+      pinterestPotential: 10,
+      flagshipPotential: 8,
+      totalScore: 128
+    },
+    whyBuild: 'Studio room separation is the holy grail design aspiration for urban renters.',
+    deliverables: [
+      'Studio Living-Bed Separation Visual Playbook (Printable PDF)',
+      'Scale Floor Plan & Zoning Blueprint Cards (Printable PDF)',
+      'Studio Walkway Clearance & Layout Matrix (Interactive CSV / Sheets)',
+      '1-Click Studio Furniture Footprint & Dimension Hub (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'The open-back Kallax floating bookcase hack (blocks bed sight-line from entrance while letting window sunlight pass through)',
+      'Ceiling spring-tension curtain track system (creates instant hotel-style bedroom privacy curtain without ceiling screws)',
+      'The 3-Rug Zoning Rule: using distinct textures to define kitchen, lounge, and sleep zones psychologically',
+      'The Sofa-Back Dining Console: placing a 12-inch counter behind your sofa to double as eating bar and divider'
+    ],
+    proTips: [
+      'Never place a solid opaque wall or divider directly between your bed and the window—use 40% sheer linen or open shelving to preserve natural light flow.',
+      'Maintain at least 32 inches of clear walking path between the divider and adjacent walls to prevent claustrophobia.'
+    ],
+    keyModules: [
+      'Module 1: Sight-Line Mapping & The 3-Room Studio Formula',
+      'Module 2: Floating Bookcase & Tension Track Divider Blueprints',
+      'Module 3: Rug Geometry & Psychological Spatial Anchoring',
+      'Module 4: Multi-Functional Furniture Positioning Rules'
+    ],
+    blogTriggers: ['Studio Apartment Layout', 'How to Divide a Studio Apartment', 'Studio Bedroom Ideas', 'Small Apartment Zoning'],
+    fourthwallCategory: 'Tactical Action Kits'
+  },
+  {
+    id: 'kit-wfh-desk-reset',
+    rank: 9,
+    title: 'The WFH Multi-Use Desk & 15-Minute Room Reset Kit',
+    tagline: 'Transition your small living room from high-focus executive office to cozy evening sanctuary in 15 minutes.',
+    level: 'quick-win',
+    priceRange: '$17 – $24 CAD',
+    recommendedPrice: 19,
+    format: 'Visual Field Playbook (.PDF) + Evening Reset Cards + Cable Routing Matrix (.CSV) + Notion Hub',
+    targetProblem: 'Work monitors, laptop chargers, and papers sitting in your living room 24/7, making it impossible to relax after 6 PM.',
+    valueProposition: 'Provides zero-cable invisibility systems, fold-down desk hacks, and an automated 15-minute evening closing shift checklist.',
+    differentiation: 'Focuses on dual-mode spatial psychology: work mode from 9-5, tranquil living lounge from 5-11.',
+    blogCategory: 'WFH & Multi-Use Living',
+    difficulty: 'Low',
+    isTop10: false,
+    roomZone: 'Living & Studio',
+    renterSafetyRating: '100% Clean & Invisible Cables',
+    viralHook: 'The $9 under-desk cable trough hack that makes all your monitors and chargers vanish in seconds.',
+    scores: {
+      problemSeverity: 9,
+      searchAlignment: 8,
+      audienceRelevance: 9,
+      productUsefulness: 9,
+      perceivedValue: 8,
+      differentiation: 9,
+      visualPotential: 9,
+      easeOfProduction: 9,
+      bundlePotential: 9,
+      upsellPotential: 8,
+      evergreenPotential: 10,
+      blogPromotionFit: 9,
+      pinterestPotential: 9,
+      flagshipPotential: 7,
+      totalScore: 123
+    },
+    whyBuild: 'Remote work in small apartments causes extreme burnout when the desk is 4 feet away from the couch.',
+    deliverables: [
+      'WFH Multi-Use Desk & Reset Playbook (Printable PDF)',
+      '15-Minute Evening Closing Shift Cards (Printable PDF)',
+      'Under-Desk Cable Management & Hardware Matrix (Interactive CSV / Sheets)',
+      '1-Click WFH Routine & Workspace Hub (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'Under-desk magnetic surge protector channel: zero visible wires touching the floor',
+      'The Laptop Stash Drawer: 5-second closing protocol tucking screen and mouse inside a slim felt tray',
+      'Foldable wall-leaning ladder desk with integrated magnetic pinboard',
+      'Smart plug automation that cuts monitor power at 6:00 PM and switches ambient lamps to 2200K warm glow'
+    ],
+    proTips: [
+      'Use a single Thunderbolt / USB-C docking hub mounted beneath the desktop with dual-lock tape so only ONE wire ever plugs into your laptop.',
+      'Never leave paperwork visible overnight—store active folders vertically in a closed linen box on a bookshelf.'
+    ],
+    keyModules: [
+      'Module 1: Zero-Cable Invisibility & Under-Desk Hardware Routing',
+      'Module 2: Compact Desk Dimension Specs for 24-Inch Nooks',
+      'Module 3: The 15-Minute "Workday Sunset" Reset Protocol',
+      'Module 4: Smart Lighting Transitions from Work to Relaxation'
+    ],
+    blogTriggers: ['Small Desk Setup', 'WFH in Small Apartment', 'Cable Management Hacks', 'Desk in Living Room Ideas'],
+    fourthwallCategory: 'Tactical Action Kits'
+  },
+  {
+    id: 'kit-optical-expander-lighting',
+    rank: 10,
+    title: 'The Optical Illusion Small Space Expander & Lighting Kit',
+    tagline: 'Make a 450 sq ft apartment look and feel like 800 sq ft using proven daylight bounce angles and 2200K ambient layers.',
+    level: 'quick-win',
+    priceRange: '$19 – $27 CAD',
+    recommendedPrice: 22,
+    format: 'Visual Field Playbook (.PDF) + Lighting Temperature Cards + Reflection Matrix (.CSV) + Notion Hub',
+    targetProblem: 'Harsh overhead "landlord boob lights" and dark corners making small apartments feel like dreary cramped caves.',
+    valueProposition: 'Architectural optical tricks, floor-to-ceiling curtain positioning, 45-degree mirror daylight bouncing, and 3-tier ambient lighting.',
+    differentiation: 'Provides exact Kelvin lighting temperatures, lumen recommendations for small footprints, and mirror placement formulas.',
+    blogCategory: 'Lighting & Optical Design Hacks',
+    difficulty: 'Low',
+    isTop10: false,
+    roomZone: 'Universal',
+    renterSafetyRating: '100% Renter Safe Atmosphere',
+    viralHook: 'The curtain hanging trick that adds 18 inches of perceived ceiling height to any rental.',
+    scores: {
+      problemSeverity: 8,
+      searchAlignment: 9,
+      audienceRelevance: 9,
+      productUsefulness: 9,
+      perceivedValue: 9,
+      differentiation: 9,
+      visualPotential: 10,
+      easeOfProduction: 9,
+      bundlePotential: 9,
+      upsellPotential: 8,
+      evergreenPotential: 10,
+      blogPromotionFit: 9,
+      pinterestPotential: 10,
+      flagshipPotential: 7,
+      totalScore: 126
+    },
+    whyBuild: 'Lighting and optical expansion give high aesthetic gratification and huge visual before/afters for social media.',
+    deliverables: [
+      'Optical Space Expander Visual Playbook (Printable PDF)',
+      '3-Tier Ambient Lighting & Bulb Temperature Cards (Printable PDF)',
+      'Mirror Reflection Angle & Lumen Calculator (Interactive CSV / Sheets)',
+      '1-Click Room Ambience & Light Map Hub (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'The Floor-to-Ceiling Curtain Hack: mounting rod 2 inches below ceiling and 8 inches beyond window edges to double perceived window size',
+      '45-Degree Corner Mirror Bounce: positioning full-length mirror opposite window to double natural morning daylight',
+      'The "Zero Overhead Light" Rule: using 3 plug-in floor/table lamps at varying heights with 2200K warm filament bulbs',
+      'Low-profile glass and acrylic coffee tables: eliminates visual weight so floor space looks uninterrupted'
+    ],
+    proTips: [
+      'Never use 5000K daylight bulbs in a living room—it creates sterile hospital glare that highlights dust and walls. Use 2700K for reading and 2200K for evening winding down.',
+      'Paint or drape the shortest wall in your room with the same tone as your ceiling to blur the room boundary and push the wall back visually.'
+    ],
+    keyModules: [
+      'Module 1: Ceiling Height Multiplication & Drapery Geometry',
+      'Module 2: The 45-Degree Mirror Reflection Daylight Bounce',
+      'Module 3: The 3-Tier Layered Lighting Architecture (Task, Accent, Glow)',
+      'Module 4: Visual Weight & Legged Furniture Selection Rules'
+    ],
+    blogTriggers: ['How to Make Small Room Look Bigger', 'Small Apartment Lighting Ideas', 'Curtain Hanging Hacks', 'Cozy Rental Aesthetics'],
+    fourthwallCategory: 'Tactical Action Kits'
+  },
+  {
+    id: 'kit-bathroom-vanity-shower',
+    rank: 11,
+    title: 'The Small Bathroom Vanity & Shower Vertical Maximizer',
+    tagline: 'Eliminate shampoo bottle floor clutter and countertop chaos in tiny 5x7 rental bathrooms.',
+    level: 'quick-win',
+    priceRange: '$17 – $24 CAD',
+    recommendedPrice: 19,
+    format: 'Visual Field Playbook (.PDF) + Shower Clearance Cards + Waterproof Matrix (.CSV) + Notion Hub',
+    targetProblem: 'Tiny rental bathrooms with pedestal sinks, zero vanity drawers, and rusty shower caddies falling off the shower head.',
+    valueProposition: 'Unlocks 12 vertical feet of storage over toilets, behind mirrors, and in shower corners with rust-proof, zero-drill tension mechanics.',
+    differentiation: 'Engineered for high-humidity rental environments with waterproof adhesives and mold-resistant tension materials.',
+    blogCategory: 'Bathroom Organization Hacks',
+    difficulty: 'Low',
+    isTop10: false,
+    roomZone: 'Bathroom',
+    renterSafetyRating: '100% Zero-Rust Tension Safe',
+    viralHook: 'How to get 4 shelves of storage in a 5x7 rental bathroom with zero drilling.',
+    scores: {
+      problemSeverity: 9,
+      searchAlignment: 9,
+      audienceRelevance: 9,
+      productUsefulness: 9,
+      perceivedValue: 8,
+      differentiation: 9,
+      visualPotential: 9,
+      easeOfProduction: 9,
+      bundlePotential: 9,
+      upsellPotential: 8,
+      evergreenPotential: 10,
       blogPromotionFit: 9,
       pinterestPotential: 9,
       flagshipPotential: 7,
       totalScore: 124
     },
-    whyBuild: 'Moving is an urgent, deadline-driven life event where stress is at maximum and purchase willingness is highest.',
+    whyBuild: 'Bathrooms are notoriously small in urban rentals and clutter accumulates instantly on pedestal sink edges.',
     deliverables: [
-      '8-Week Countdown Notion Moving Checklist & Expense Tracker',
-      'Printable QR-Code Box Label System (Print on standard label sheets)',
-      'Elevator & Certificate of Insurance (COI) Landlord Checklist',
-      '48-Hour Rapid Unpacking Sequence for Studios & 1-Bedrooms'
+      'Small Bathroom Vertical Maximizer Field Playbook (Printable PDF)',
+      'Over-Toilet & Shower Tension Blueprint Cards (Printable PDF)',
+      'Bathroom Clearance & Humidity-Safe Matrix (Interactive CSV / Sheets)',
+      '1-Click Bathroom Inventory & Toiletries Vault (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'Floor-to-ceiling spring tension shower pole caddy: fits in the dead corner away from shower water stream',
+      'Inside-medicine-cabinet magnetic strip for metal tweezers, bobby pins, and nail clippers',
+      'Over-the-toilet freestanding tiered bamboo ladder shelf with silicone non-slip floor feet',
+      'Back-of-door tiered wire towel rack holding 4 oversized bath towels in 2 inches of depth'
+    ],
+    proTips: [
+      'Install double shower curtain rod: use outer rod for your decorative curtain and inner rod for hooks holding loofahs, scrubbers, and hanging organizers.',
+      'Decant mismatched shampoo and body wash bottles into matching amber pump dispensers to eliminate visual color noise in small showers.'
     ],
     keyModules: [
-      'Pre-Move Downsizing Decision Tree',
-      'Box Inventory & Priority Label Database',
-      'First-Day Survival Capsule Packing List',
-      'Change of Address & Utility Transfer Checklist'
+      'Module 1: Corner Spring-Tension Shower Engineering',
+      'Module 2: Over-Toilet Vertical Storage & Stabilization',
+      'Module 3: Inside-Cabinet Magnetic & Razor Storage Hacks',
+      'Module 4: Humidity Control & Visual De-Clutter Decanting'
     ],
-    blogTriggers: ['Moving into First Apartment', 'Downsizing Checklist', 'Small Apartment Move-In Day Tips'],
-    fourthwallCategory: 'Planners & Workbooks'
+    blogTriggers: ['Small Bathroom Organization', 'Tiny Shower Hacks', 'Over Toilet Storage Ideas', 'Pedestal Sink Storage'],
+    fourthwallCategory: 'Tactical Action Kits'
   },
   {
-    id: 'renter-upgrade-manual',
-    rank: 4,
-    title: 'The Damage-Free Renter Upgrade Manual & Action Binder',
-    tagline: 'Elevate your rental aesthetic without losing your security deposit. Hardware, lighting & peel-and-stick mastery.',
+    id: 'kit-balcony-patio-oasis',
+    rank: 12,
+    title: 'The Urban Balcony & Micro-Patio Green Oasis Kit',
+    tagline: 'Transform a 4x8 ft concrete apartment balcony into a private Scandinavian outdoor lounge.',
     level: 'quick-win',
     priceRange: '$17 – $24 CAD',
     recommendedPrice: 19,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Ugly rental finishes (dated cabinet pulls, harsh fluorescent lights, plain walls) + intense fear of landlord fines.',
-    valueProposition: '50+ curated, designer-tested, zero-damage rental hacks with exact tool-free hardware links, weight load formulas, and move-out restore guides.',
-    differentiation: 'Focuses on the "deposit-safe restore" guarantee—every single hack has an exact 5-minute reverse procedure with no spackle required.',
-    blogCategory: 'Renter-Friendly Home Improvement',
-    difficulty: 'Low',
-    isTop10: true,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 10,
-      audienceRelevance: 10,
-      productUsefulness: 9,
-      perceivedValue: 8,
-      differentiation: 9,
-      visualPotential: 10,
-      easeOfProduction: 9,
-      bundlePotential: 9,
-      upsellPotential: 8,
-      evergreenPotential: 10,
-      blogPromotionFit: 10,
-      pinterestPotential: 10,
-      flagshipPotential: 6,
-      totalScore: 126
-    },
-    whyBuild: 'Renter-friendly content on Pinterest and TikTok has viral visual appeal. High conversion as an impulse purchase ($19).',
-    deliverables: [
-      '68-Page Editorial Visual PDF with Step-by-Step Photos & Diagrams',
-      'Renter Hardware Spec Sheet (Standard screw gauges & adapter sizes)',
-      'Peel-and-Stick Backsplash & Flooring Master Rating Matrix',
-      'Move-Out Reversal Checklist to Guarantee Full Deposit Return'
-    ],
-    keyModules: [
-      'No-Drill Wall Sconce & Ambient Lighting Formula',
-      'Rental Kitchen Cabinetry Hardware Swaps',
-      'Temporary Bathroom Tile & Vanity Transformations',
-      'Command Strip & Tension Rod Weight Load Engineering'
-    ],
-    blogTriggers: ['Renter Friendly Decor Hacks', 'How to Upgrade Rental Kitchen', 'No-Drill Shelving Ideas'],
-    fourthwallCategory: 'Guides & Manuals'
-  },
-  {
-    id: 'declutter-reset-protocol',
-    rank: 5,
-    title: 'The 30-Day Small Home Declutter & Spatial Reset Protocol',
-    tagline: 'A systematic room-by-room blueprint to eliminate 40% of visual clutter without emotional exhaustion.',
-    level: 'premium',
-    priceRange: '$24 – $34 CAD',
-    recommendedPrice: 27,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Suffocating clutter accumulation, cabinet overflow, decision fatigue, and "clutter rebound" within 2 weeks of cleaning.',
-    valueProposition: 'A micro-step daily protocol structured specifically for homes without basements, garages, or extra storage closets.',
-    differentiation: 'Replaces generic "keep/toss" rules with small-space specific heuristics: "The Real Estate Tax Formula", "Duplicate Penalty Rule", and "Seasonal Compression Methods".',
-    blogCategory: 'Decluttering & Organization',
-    difficulty: 'Medium',
-    isTop10: true,
-    scores: {
-      problemSeverity: 9,
-      searchAlignment: 10,
-      audienceRelevance: 10,
-      productUsefulness: 9,
-      perceivedValue: 9,
-      differentiation: 9,
-      visualPotential: 9,
-      easeOfProduction: 8,
-      bundlePotential: 10,
-      upsellPotential: 9,
-      evergreenPotential: 10,
-      blogPromotionFit: 10,
-      pinterestPotential: 9,
-      flagshipPotential: 8,
-      totalScore: 129
-    },
-    whyBuild: 'Decluttering is the #1 reader search category in January, Spring, and Fall. Extremely strong year-round organic driver.',
-    deliverables: [
-      '30-Day Step-by-Step Daily Action Cards (Printable & Mobile PDF)',
-      'Decision-Tree Flowcharts: "Does This Deserve 1 Sq Ft of Rent?"',
-      'Room-by-Room Clutter Heatmap & Progress Tracker',
-      'The "Sell & Donate" Local Disposal Guide for City Dwellers'
-    ],
-    keyModules: [
-      'Micro-Zones: Linen Closets, Under-Sink & Entry Drop Points',
-      'Capsule Wardrobe & Vertical Clothing Folding Systems',
-      'Paperless Apartment Transition & Digital Document Protocol',
-      'The 90-Day Anti-Clutter Maintenance System'
-    ],
-    blogTriggers: ['How to Declutter a Small Apartment', 'Minimalist Living in a Studio', 'Spring Cleaning for Small Spaces'],
-    fourthwallCategory: 'Planners & Workbooks'
-  },
-  {
-    id: 'vertical-storage-kit',
-    rank: 6,
-    title: 'Apartment Storage Audit & Vertical Optimization Kit',
-    tagline: 'Unlock 35% more usable storage using the vertical envelope of your walls, doors, and dead zones.',
-    level: 'quick-win',
-    priceRange: '$15 – $22 CAD',
-    recommendedPrice: 17,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Stuffed kitchen cabinets, closet doors that won’t shut, zero broom closet, under-bed dead space.',
-    valueProposition: 'Exact measurement worksheets, vertical stacking formulas, and over-the-door spatial blueprints to maximize every cubic foot.',
-    differentiation: 'Provides dimensional formulas for obscure dead zones: above kitchen upper cabinets, back of closet doors, narrow 6-inch gaps beside refrigerators, and vertical closet double-hang spacing.',
-    blogCategory: 'Storage & Organization',
-    difficulty: 'Low',
-    isTop10: true,
-    scores: {
-      problemSeverity: 9,
-      searchAlignment: 10,
-      audienceRelevance: 10,
-      productUsefulness: 9,
-      perceivedValue: 8,
-      differentiation: 9,
-      visualPotential: 9,
-      easeOfProduction: 9,
-      bundlePotential: 10,
-      upsellPotential: 8,
-      evergreenPotential: 10,
-      blogPromotionFit: 10,
-      pinterestPotential: 10,
-      flagshipPotential: 6,
-      totalScore: 127
-    },
-    whyBuild: 'Storage is the highest-volume keyword across the entire small space niche. Easy to make and instantly actionable.',
-    deliverables: [
-      'Cubic Foot Storage Audit Worksheet (Interactive Calculation)',
-      '15 Dead-Zone Blueprints with Exact Renter-Safe Product Matches',
-      'Closet Vertical Tier Planner (Hanger drop measurements & shoe shelves)',
-      'Under-Sink Plumbing Bypass Organizational Templates'
-    ],
-    keyModules: [
-      'Kitchen Cabinet Riser & Vertical Pan Organizer Geometry',
-      'Bathroom Over-Toilet & Behind-Door Vertical Architecture',
-      'Under-Bed Low-Profile Storage Strategy',
-      'Entryway Drop-Zone in under 2 Square Feet'
-    ],
-    blogTriggers: ['Small Apartment Storage Ideas', 'How to Organize a Small Closet', 'Kitchen Storage Hacks for Renters'],
-    fourthwallCategory: 'Guides & Manuals'
-  },
-  {
-    id: 'studio-zoning-system',
-    rank: 7,
-    title: 'Studio & Multi-Functional Room Zoning System',
-    tagline: 'Create the psychological feeling of a 3-room home inside a single open studio footprint.',
-    level: 'premium',
-    priceRange: '$24 – $34 CAD',
-    recommendedPrice: 27,
-    format: 'Interactive PDF + Canva Templates',
-    targetProblem: 'Living, sleeping, and working in the same 400 sq ft room leads to restlessness, insomnia, and visual clutter.',
-    valueProposition: 'Architectural divider strategies, acoustic softening tips, and lighting micro-zones to create distinct functional rooms without building walls.',
-    differentiation: 'Focuses on sensory and psychological zoning: light temperature transitions (5000K focus -> 2200K unwind), rug boundary ratios, and acoustic divider tactics.',
-    blogCategory: 'Studio Apartment Living',
-    difficulty: 'Medium',
-    isTop10: true,
-    scores: {
-      problemSeverity: 9,
-      searchAlignment: 9,
-      audienceRelevance: 9,
-      productUsefulness: 9,
-      perceivedValue: 9,
-      differentiation: 10,
-      visualPotential: 10,
-      easeOfProduction: 8,
-      bundlePotential: 9,
-      upsellPotential: 9,
-      evergreenPotential: 9,
-      blogPromotionFit: 9,
-      pinterestPotential: 10,
-      flagshipPotential: 7,
-      totalScore: 126
-    },
-    whyBuild: 'Studio apartments represent the most desperate, passionate segment of small space dwellers. Solutions here create lifelong brand loyalty.',
-    deliverables: [
-      'Studio Zoning Architectural Lookbook & Plan Diagrams',
-      'Canva 2D Room Divider & Sightline Simulator',
-      'Lighting Circadian Transition Schedule for One-Room Living',
-      'Bed Disguise & Work-From-Home Concealment Worksheets'
-    ],
-    keyModules: [
-      'Bookshelf & Screen Room Divider Positioning Maps',
-      'Rug Perimeter Sizing for Room Boundaries',
-      'Sound Dampening in Hardwood/Concrete Condos',
-      'Desk-to-Dinner Table 3-Minute Switch Protocol'
-    ],
-    blogTriggers: ['Studio Apartment Layouts', 'How to Divide a Studio Apartment', 'Working from Home in a Studio'],
-    fourthwallCategory: 'Planners & Workbooks'
-  },
-  {
-    id: 'first-apartment-budget-inventory',
-    rank: 8,
-    title: 'First-Apartment Essential Inventory & Smart Budget Planner',
-    tagline: 'Never overspend or buy duplicates. The smart financial calculator & itemized starter registry.',
-    level: 'premium',
-    priceRange: '$22 – $32 CAD',
-    recommendedPrice: 24,
-    format: 'Google Sheets + Excel + PDF',
-    targetProblem: 'Spending thousands on useless gadgets while forgetting essentials (plunger, tape measure, extension cords), blowing move-in budgets.',
-    valueProposition: 'Automated tiered expense calculator (High/Mid/Thrifty) and prioritized 180-item essential registry categorized by urgency.',
-    differentiation: 'Features automated "Cost-Per-Square-Foot" filtering—warning you if an item takes up too much physical space relative to its utility.',
-    blogCategory: 'Budgeting & First Apartment',
-    difficulty: 'Medium',
-    isTop10: true,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 9,
-      audienceRelevance: 9,
-      productUsefulness: 9,
-      perceivedValue: 8,
-      differentiation: 9,
-      visualPotential: 8,
-      easeOfProduction: 8,
-      bundlePotential: 10,
-      upsellPotential: 8,
-      evergreenPotential: 10,
-      blogPromotionFit: 9,
-      pinterestPotential: 9,
-      flagshipPotential: 7,
-      totalScore: 122
-    },
-    whyBuild: 'Directly monetizes the high-traffic "First Apartment Checklist" blog posts that currently just bounce readers off-site.',
-    deliverables: [
-      'Automated Google Sheets Budget & Purchase Tracker with Visual Charts',
-      'Tiered 180-Item Essential Gear Checklist (Week 1 vs. Month 1 vs. Month 3)',
-      'Security Deposit & Utility Startup Cost Predictor',
-      'Thrift & Secondhand Inspection Checklist (avoiding bedbugs/structural flaws)'
-    ],
-    keyModules: [
-      'Budget Tier Allocator (Minimalist $800 vs Comfort $2,500)',
-      'Kitchen Capsule Cookware Registry (10 pieces that do 90% of jobs)',
-      'Emergency Tool & Repair Kit Essentials',
-      'Grocery & Pantry Bulk Buy Spatial Limits'
-    ],
-    blogTriggers: ['First Apartment Checklist', 'Budgeting for First Rental', 'What to Buy for a Small Apartment'],
-    fourthwallCategory: 'Spreadsheets & Tools'
-  },
-  {
-    id: 'cleaning-micro-reset-system',
-    rank: 9,
-    title: 'Small Home Cleaning Rhythm & Micro-Reset Routine System',
-    tagline: 'Keep a tight home perpetually guest-ready in 12 minutes a day without weekend-long cleaning marathons.',
-    level: 'quick-win',
-    priceRange: '$12 – $19 CAD',
-    recommendedPrice: 15,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Small spaces get dirty in 30 minutes; dust accumulates rapidly on high surfaces; cleaning supplies clutter small cabinets.',
-    valueProposition: 'Visual habit-loop cards and a zoned daily cleaning routine designed specifically for compact homes with minimal cleaning storage.',
-    differentiation: 'Focuses on the "12-Minute Closing Shift" and multi-surface micro cleaning toolkits that fit inside a single carry caddy.',
-    blogCategory: 'Cleaning & Maintenance',
-    difficulty: 'Low',
-    isTop10: true,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 9,
-      audienceRelevance: 9,
-      productUsefulness: 9,
-      perceivedValue: 8,
-      differentiation: 8,
-      visualPotential: 9,
-      easeOfProduction: 9,
-      bundlePotential: 9,
-      upsellPotential: 7,
-      evergreenPotential: 10,
-      blogPromotionFit: 9,
-      pinterestPotential: 9,
-      flagshipPotential: 6,
-      totalScore: 120
-    },
-    whyBuild: 'Ideal entry-level impulse product ($15) that customers love printing and laminating or keeping on their fridge.',
-    deliverables: [
-      'Laminable Daily/Weekly/Monthly Cleaning Rhythm Visual Cards',
-      '12-Minute "Nightly Reset" Room Sequence Flowchart',
-      'Non-Toxic Compact Cleaning Caddy Formula (4 bottles that do everything)',
-      'Deep Clean Seasonal Checklists (HVAC filters, fridge coils, window tracks)'
-    ],
-    keyModules: [
-      'Nightly 12-Minute Closing Shift Protocol',
-      'Zoned Weekly Micro-Clean Schedule (Mon: Kitchen, Tue: Bath, etc.)',
-      'Odor Management & Air Quality Protocol for Compact Spaces',
-      'Compact Cleaning Tool Essentials'
-    ],
-    blogTriggers: ['Cleaning Small Spaces', 'How to Keep a Tiny Apartment Clean', 'Apartment Daily Cleaning Schedule'],
-    fourthwallCategory: 'Printable Systems'
-  },
-  {
-    id: 'renter-maintenance-vault',
-    rank: 10,
-    title: 'Apartment Maintenance & Landlord Communication Vault',
-    tagline: 'Document repairs, protect your deposit, and manage landlord communication with professional legal-grade clarity.',
-    level: 'quick-win',
-    priceRange: '$15 – $22 CAD',
-    recommendedPrice: 19,
-    format: 'Notion Workspace + PDF',
-    targetProblem: 'Unresponsive landlords, lost repair requests, disputed security deposit deductions, and zero tracking of apartment issues.',
-    valueProposition: 'Pre-written legal-grade email templates, condition inspection photo database, and appliance maintenance log.',
-    differentiation: 'Provides exact script templates for noise complaints, pest issues, heat failures, and illegal entry notices.',
-    blogCategory: 'Renter Living & Rights',
-    difficulty: 'Low',
-    isTop10: true,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 8,
-      audienceRelevance: 9,
-      productUsefulness: 9,
-      perceivedValue: 9,
-      differentiation: 9,
-      visualPotential: 7,
-      easeOfProduction: 9,
-      bundlePotential: 9,
-      upsellPotential: 7,
-      evergreenPotential: 9,
-      blogPromotionFit: 8,
-      pinterestPotential: 7,
-      flagshipPotential: 6,
-      totalScore: 114
-    },
-    whyBuild: 'High trust-builder. Gives the brand authoritative credibility while solving a stressful, adversarial tenant problem.',
-    deliverables: [
-      'Notion Tenant Vault (Lease, Inspection Photos, Maintenance Ticket Log)',
-      '24 Copy-and-Paste Landlord Email & Notice Templates (Word & PDF)',
-      'Move-In / Move-Out Photo Audit Protocol Checklist',
-      'Appliance Model & Filter Size Log Sheet'
-    ],
-    keyModules: [
-      'Move-In Condition Inspection Master Log',
-      'Emergency Repair Script Escalation Flowchart',
-      'Security Deposit Refund Demand Letter Kit',
-      'Sublet & Lease Transfer Checklist'
-    ],
-    blogTriggers: ['Renter Rights', 'How to Talk to Landlord About Repairs', 'Getting Security Deposit Back'],
-    fourthwallCategory: 'Spreadsheets & Tools'
-  },
-  {
-    id: 'small-pantry-meal-system',
-    rank: 11,
-    title: 'Small Kitchen & Mini-Pantry Meal Strategy Kit',
-    tagline: 'Cook gourmet meals with 2 burners, 1 tiny fridge, and zero counter space.',
-    level: 'quick-win',
-    priceRange: '$14 – $19 CAD',
-    recommendedPrice: 16,
-    format: 'Interactive PDF + Notion',
-    targetProblem: 'Lack of kitchen counter space, mini fridge overflowing, expired canned goods hidden in deep narrow cabinets.',
-    valueProposition: 'A compact cooking strategy with one-pot recipes, modular grocery lists, and vertical fridge zoning maps.',
-    differentiation: 'Built around the constraints of 2-burner stoves, lack of dishwashers, and single-shelf pantries.',
-    blogCategory: 'Kitchen & Cooking',
+    format: 'Visual Field Playbook (.PDF) + Balcony Layout Cards + Weatherproof Matrix (.CSV) + Notion Hub',
+    targetProblem: 'Concrete rental balconies sitting unused, dirty, and windswept with zero privacy from neighboring towers.',
+    valueProposition: 'Railing-mounted folding tables, interlocking acacia wood tiles, privacy ivy screens, and vertical herb garden blueprints.',
+    differentiation: 'Tested for strict condo board bylaws, zero wind-hazard mounting, and rapid winterization teardown protocols.',
+    blogCategory: 'Balcony & Outdoor Living',
     difficulty: 'Low',
     isTop10: false,
+    roomZone: 'Balcony',
+    renterSafetyRating: '100% Condo Bylaw Safe',
+    viralHook: 'The $40 railing bar table hack that turns a tiny concrete balcony into a sunset wine bar.',
     scores: {
-      problemSeverity: 7,
-      searchAlignment: 8,
-      audienceRelevance: 9,
+      problemSeverity: 8,
+      searchAlignment: 9,
+      audienceRelevance: 8,
       productUsefulness: 8,
-      perceivedValue: 7,
-      differentiation: 8,
-      visualPotential: 8,
+      perceivedValue: 8,
+      differentiation: 9,
+      visualPotential: 10,
       easeOfProduction: 9,
       bundlePotential: 8,
-      upsellPotential: 6,
-      evergreenPotential: 9,
-      blogPromotionFit: 8,
-      pinterestPotential: 9,
-      flagshipPotential: 5,
-      totalScore: 109
-    },
-    whyBuild: 'Great lifestyle add-on that connects physical kitchen mugs to everyday kitchen organization.',
-    deliverables: ['Pantry Inventory Database', 'One-Pot 3-Ingredient Recipe Cards', 'Mini-Fridge Spatial Map'],
-    keyModules: ['Vertical Spice Storage Blueprint', 'Grocery Batch Planning for Tiny Fridges'],
-    blogTriggers: ['Small Kitchen Organization', 'Cooking in a Studio Apartment'],
-    fourthwallCategory: 'Printable Systems'
-  },
-  {
-    id: 'capsule-wardrobe-closet-blueprint',
-    rank: 12,
-    title: 'Tiny Closet Transformation & Capsule Wardrobe System',
-    tagline: 'Fit 60+ outfits into a 3-foot closet without wrinkles, clutter, or off-site storage.',
-    level: 'quick-win',
-    priceRange: '$16 – $22 CAD',
-    recommendedPrice: 19,
-    format: 'Interactive PDF + Canva Templates',
-    targetProblem: 'Single 36-inch standard rental closet overflowing with clothes; shoes piled on the floor.',
-    valueProposition: 'Step-by-step closet tier re-engineering, compression storage tactics, and 36-piece seasonal capsule generator.',
-    differentiation: 'Provides physical closet tier schematics matching standard rental wire shelves and wooden rods.',
-    blogCategory: 'Closet & Fashion',
-    difficulty: 'Low',
-    isTop10: false,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 9,
-      audienceRelevance: 9,
-      productUsefulness: 8,
-      perceivedValue: 8,
-      differentiation: 8,
-      visualPotential: 9,
-      easeOfProduction: 9,
-      bundlePotential: 9,
       upsellPotential: 7,
       evergreenPotential: 9,
       blogPromotionFit: 9,
@@ -618,800 +771,417 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
       flagshipPotential: 6,
       totalScore: 118
     },
-    whyBuild: 'Huge Pinterest driver. Visual before/after closet diagrams drive massive organic traffic.',
-    deliverables: ['Closet Dimension Reconfiguration Guide', 'Seasonal Wardrobe Swap Calendar', 'Shoe & Accessory Vertical Blueprint'],
-    keyModules: ['Double-Rod Spacing Guide', 'Shoe Wall Geometry', 'Vacuum Bag Storage Protocol'],
-    blogTriggers: ['Organizing a Small Closet', 'Capsule Wardrobe for Small Apartments'],
-    fourthwallCategory: 'Guides & Manuals'
-  },
-  {
-    id: 'small-balcony-oasis-planner',
-    rank: 13,
-    title: 'Small Balcony & Patio Oasis Design Guide',
-    tagline: 'Turn a 4x8 ft concrete slab into a private European-style garden retreat.',
-    level: 'quick-win',
-    priceRange: '$14 – $20 CAD',
-    recommendedPrice: 17,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Unusable, dusty apartment balconies with wind exposure, lack of privacy, and weight limit fears.',
-    valueProposition: 'Curated plant selection guide, privacy screen solutions, and weatherproof compact furniture arrangements.',
-    differentiation: 'Considers apartment building strata/bylaw restrictions, wind tunnel dynamics, and drainage rules.',
-    blogCategory: 'Outdoor & Balcony',
-    difficulty: 'Low',
-    isTop10: false,
-    scores: {
-      problemSeverity: 6,
-      searchAlignment: 8,
-      audienceRelevance: 8,
-      productUsefulness: 8,
-      perceivedValue: 7,
-      differentiation: 8,
-      visualPotential: 10,
-      easeOfProduction: 9,
-      bundlePotential: 7,
-      upsellPotential: 6,
-      evergreenPotential: 7,
-      blogPromotionFit: 8,
-      pinterestPotential: 10,
-      flagshipPotential: 5,
-      totalScore: 107
-    },
-    whyBuild: 'High seasonal revenue spike during Spring/Summer. High visual appeal on social media.',
-    deliverables: ['Balcony Layout Lookbook', 'Low-Light & Wind-Tolerant Container Plant Guide', 'Privacy Screen Buying Matrix'],
-    keyModules: ['Interlocking Deck Tile Calculator', 'Vertical Railing Planter Blueprints'],
-    blogTriggers: ['Small Balcony Ideas', 'Apartment Gardening', 'Renter Friendly Balcony Decor'],
-    fourthwallCategory: 'Guides & Manuals'
-  },
-  {
-    id: 'small-space-host-kit',
-    rank: 14,
-    title: 'Small Home Host & Guest Ready Kit',
-    tagline: 'Host dinner parties and overnight guests in under 600 sq ft with effortless hospitality.',
-    level: 'quick-win',
-    priceRange: '$14 – $19 CAD',
-    recommendedPrice: 15,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Embarrassment about entertaining in small quarters, nowhere for guests to sit or sleep, coat piles on beds.',
-    valueProposition: 'Seating expansion formulas, folding furniture hosting protocols, and guest comfort checklists.',
-    differentiation: 'Provides multi-functional hosting blueprints: converting coffee tables to dining stations, folding floor cushion floorplans.',
-    blogCategory: 'Entertaining & Lifestyle',
-    difficulty: 'Low',
-    isTop10: false,
-    scores: {
-      problemSeverity: 6,
-      searchAlignment: 7,
-      audienceRelevance: 8,
-      productUsefulness: 8,
-      perceivedValue: 7,
-      differentiation: 8,
-      visualPotential: 8,
-      easeOfProduction: 9,
-      bundlePotential: 7,
-      upsellPotential: 6,
-      evergreenPotential: 8,
-      blogPromotionFit: 7,
-      pinterestPotential: 8,
-      flagshipPotential: 4,
-      totalScore: 101
-    },
-    whyBuild: 'Great emotional resonance. Addresses the social insecurity of living in a compact home.',
-    deliverables: ['Hosting Prep Timeline', 'Overnight Guest Capsule Kit Checklist', 'Drink & Appetizer Station Layouts'],
-    keyModules: ['Instant Seating Hacks (Floor Pillows & Stacking Stools)', 'Sound & Privacy Management'],
-    blogTriggers: ['Hosting in a Small Apartment', 'Dinner Party Ideas for Small Spaces'],
-    fourthwallCategory: 'Printable Systems'
-  },
-  {
-    id: 'entryway-drop-zone-blueprint',
-    rank: 15,
-    title: 'The Zero-Square-Foot Entryway & Drop-Zone Kit',
-    tagline: 'Create an organized command center in 18 inches of wall space without a foyer.',
-    level: 'quick-win',
-    priceRange: '$12 – $16 CAD',
-    recommendedPrice: 14,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Shoes, coats, keys, and mail dumped right at the front door because the apartment opens straight into the living room.',
-    valueProposition: 'Vertical wall-mount blueprints, slim shoe cabinet modifications, and key drop ergonomics.',
-    differentiation: 'Tailored specifically for apartments with zero hallway/foyer footprint.',
-    blogCategory: 'Entryway & Hallways',
-    difficulty: 'Low',
-    isTop10: false,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 8,
-      audienceRelevance: 9,
-      productUsefulness: 8,
-      perceivedValue: 7,
-      differentiation: 8,
-      visualPotential: 8,
-      easeOfProduction: 9,
-      bundlePotential: 8,
-      upsellPotential: 6,
-      evergreenPotential: 9,
-      blogPromotionFit: 9,
-      pinterestPotential: 9,
-      flagshipPotential: 5,
-      totalScore: 112
-    },
-    whyBuild: 'High conversion tripwire product that can be offered as a $7 checkout bump.',
-    deliverables: ['18-Inch Entryway Wall Schematic', 'Shoe Capacity Sizing Matrix', 'Mail & Key Drop Organization Printables'],
-    keyModules: ['Slim IKEA Trones / Hemnes Optimization', 'No-Drill Heavy Coat Hook Formulas'],
-    blogTriggers: ['Apartment with No Entryway Ideas', 'Small Hallway Storage'],
-    fourthwallCategory: 'Printable Systems'
-  },
-  {
-    id: 'small-bathroom-spa-vault',
-    rank: 16,
-    title: 'The Tiny Rental Bathroom Spa Transformation',
-    tagline: 'Maximize a 35 sq ft bathroom with zero drawers into a clean, luxury retreat.',
-    level: 'quick-win',
-    priceRange: '$14 – $19 CAD',
-    recommendedPrice: 16,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Pedestal sinks with zero counter space, tiny medicine cabinets, towel rack congestion, moisture buildup.',
-    valueProposition: 'Over-toilet vertical shelving guides, suction shower organization frameworks, and mold-prevention protocols.',
-    differentiation: 'Engineered specifically for awkward pedestal sinks and landlord plumbing constraints.',
-    blogCategory: 'Bathroom Organization',
-    difficulty: 'Low',
-    isTop10: false,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 8,
-      audienceRelevance: 9,
-      productUsefulness: 8,
-      perceivedValue: 7,
-      differentiation: 8,
-      visualPotential: 8,
-      easeOfProduction: 9,
-      bundlePotential: 8,
-      upsellPotential: 6,
-      evergreenPotential: 9,
-      blogPromotionFit: 9,
-      pinterestPotential: 9,
-      flagshipPotential: 5,
-      totalScore: 112
-    },
-    whyBuild: 'Bathroom clutter causes daily irritation. High immediate gratification for the buyer.',
-    deliverables: ['Pedestal Sink Add-On Guide', 'Towel Drying Micro-Space Schematics', 'Product Expiration & Decanting Checklist'],
-    keyModules: ['Medicine Cabinet Tier Organization', 'Shower Wall Suction Geometry'],
-    blogTriggers: ['Small Bathroom Storage', 'How to Organize a Rental Bathroom with No Drawers'],
-    fourthwallCategory: 'Guides & Manuals'
-  },
-  {
-    id: 'work-from-home-nook-planner',
-    rank: 17,
-    title: 'The "Disappearing Desk" Work-From-Home Nook Planner',
-    tagline: 'Build a high-productivity home office inside a closet, alcove, or corner that packs away in seconds.',
-    level: 'premium',
-    priceRange: '$22 – $29 CAD',
-    recommendedPrice: 24,
-    format: 'Interactive PDF + Canva Templates',
-    targetProblem: 'Looming computer monitors ruining the living room vibe on weekends; bad ergonomics on couches.',
-    valueProposition: 'Architectural "cloffice" (closet-office) layouts, floating drop-leaf desk schematics, and cable concealment masterplans.',
-    differentiation: 'Focuses on visual "disappearance" at 5 PM on Friday to restore home peace.',
-    blogCategory: 'Home Office & Productivity',
-    difficulty: 'Medium',
-    isTop10: false,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 9,
-      audienceRelevance: 9,
-      productUsefulness: 9,
-      perceivedValue: 8,
-      differentiation: 9,
-      visualPotential: 9,
-      easeOfProduction: 8,
-      bundlePotential: 9,
-      upsellPotential: 7,
-      evergreenPotential: 9,
-      blogPromotionFit: 9,
-      pinterestPotential: 9,
-      flagshipPotential: 6,
-      totalScore: 119
-    },
-    whyBuild: 'Hybrid work is permanent. Small apartment dwellers desperately need psychological separation from work.',
-    deliverables: ['Cloffice Measurement & Shelf Specs', 'Zero-Footprint Cable Management Blueprint', 'Ergonomic Compact Chair Buying Guide'],
-    keyModules: ['Closet Door Removal & Curtain Concealment', 'Lighting & Zoom Background Acoustics in Tight Spaces'],
-    blogTriggers: ['Cloffice Ideas', 'Small Space Home Office', 'Work from Home in a Studio Apartment'],
-    fourthwallCategory: 'Planners & Workbooks'
-  },
-  {
-    id: 'small-space-lighting-formula',
-    rank: 18,
-    title: 'The Small Space 3-Layer Lighting Formula',
-    tagline: 'Make your apartment look twice as big with ambient, task, and accent lighting layouts.',
-    level: 'quick-win',
-    priceRange: '$14 – $19 CAD',
-    recommendedPrice: 16,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Harsh overhead ceiling "boob lights" making small rooms feel like interrogation cells and accentuating shadows.',
-    valueProposition: 'Color temperature guides (Kelvin), bounce-lighting reflection maps, and battery/plug-in sconce placement.',
-    differentiation: 'Focuses on light diffusion to visually push back walls and eliminate dark corners.',
-    blogCategory: 'Decorating & Aesthetics',
-    difficulty: 'Low',
-    isTop10: false,
-    scores: {
-      problemSeverity: 7,
-      searchAlignment: 7,
-      audienceRelevance: 8,
-      productUsefulness: 8,
-      perceivedValue: 8,
-      differentiation: 8,
-      visualPotential: 9,
-      easeOfProduction: 9,
-      bundlePotential: 8,
-      upsellPotential: 7,
-      evergreenPotential: 9,
-      blogPromotionFit: 8,
-      pinterestPotential: 9,
-      flagshipPotential: 5,
-      totalScore: 110
-    },
-    whyBuild: 'Huge aesthetic impact with low effort. High visual synergy with Fourthwall Wall Art products.',
-    deliverables: ['Room-by-Room Kelvin & Lumen Calculator', 'Floor Lamp vs Sconce Footprint Comparison', 'Smart Bulb Automation Schedule'],
-    keyModules: ['Corner Illumination Optics', 'Under-Cabinet Puck Lighting Setup'],
-    blogTriggers: ['How to Light a Dark Apartment', 'Apartment Lighting Ideas for Renters'],
-    fourthwallCategory: 'Guides & Manuals'
-  },
-  {
-    id: 'studio-acoustic-privacy-kit',
-    rank: 19,
-    title: 'Condo & Apartment Acoustic Privacy & Soundproofing Kit',
-    tagline: 'Block hallway stomping, neighbor noise, and echo without structural construction.',
-    level: 'quick-win',
-    priceRange: '$16 – $22 CAD',
-    recommendedPrice: 19,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Thin drywall, drafty front door gaps, echo from hardwood floors, neighbor noise anxiety.',
-    valueProposition: 'Decibel testing methods, acoustic drape placement formulas, and door sweep seal guides.',
-    differentiation: 'Real physics-backed dampening tailored for rental doors and windows.',
-    blogCategory: 'Comfort & Acoustics',
-    difficulty: 'Medium',
-    isTop10: false,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 7,
-      audienceRelevance: 8,
-      productUsefulness: 8,
-      perceivedValue: 8,
-      differentiation: 9,
-      visualPotential: 7,
-      easeOfProduction: 8,
-      bundlePotential: 7,
-      upsellPotential: 6,
-      evergreenPotential: 9,
-      blogPromotionFit: 7,
-      pinterestPotential: 7,
-      flagshipPotential: 5,
-      totalScore: 104
-    },
-    whyBuild: 'Niche, high-urgency pain point for city dwellers facing noisy streets or hallway traffic.',
-    deliverables: ['Door Perimeter Sound Leak Audit Sheet', 'Rug Pad & Drape Density Buyer Matrix', 'White Noise Sound-Masking Guide'],
-    keyModules: ['Front Door Sweep & Weatherstrip Installation', 'Acoustic Wall Art Backing Technique'],
-    blogTriggers: ['How to Soundproof an Apartment Door', 'Quiet Living in a Noisy Condo'],
-    fourthwallCategory: 'Guides & Manuals'
-  },
-  {
-    id: 'pet-living-small-space-system',
-    rank: 20,
-    title: 'Small Space Pet Living & Litter Concealment System',
-    tagline: 'Live happily with cats or dogs in under 700 sq ft without odors or bulky pet eyesores.',
-    level: 'quick-win',
-    priceRange: '$14 – $19 CAD',
-    recommendedPrice: 16,
-    format: 'Interactive PDF + Printables',
-    targetProblem: 'Litter box taking over bathroom or closet, dog beds blocking walkways, pet toy clutter, odors.',
-    valueProposition: 'Concealed furniture litter box schematics, vertical cat climbing walls that double as art, and pet gear storage.',
-    differentiation: 'Focuses on smell containment and dual-purpose human/pet furniture.',
-    blogCategory: 'Pets & Small Spaces',
-    difficulty: 'Low',
-    isTop10: false,
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 8,
-      audienceRelevance: 8,
-      productUsefulness: 8,
-      perceivedValue: 7,
-      differentiation: 9,
-      visualPotential: 8,
-      easeOfProduction: 9,
-      bundlePotential: 7,
-      upsellPotential: 6,
-      evergreenPotential: 9,
-      blogPromotionFit: 8,
-      pinterestPotential: 9,
-      flagshipPotential: 4,
-      totalScore: 108
-    },
-    whyBuild: 'Pet owners in apartments are fiercely passionate and constantly seek scent/space solutions.',
-    deliverables: ['Litter Box Concealment DIY Guide', 'Pet Gear Minimalist Capsule List', 'Odor Elimination Daily Routine'],
-    keyModules: ['Hidden Litter Cabinet Specs', 'Vertical Cat Runway Planning'],
-    blogTriggers: ['Cats in a Studio Apartment', 'Dog Living in Small Condo'],
-    fourthwallCategory: 'Guides & Manuals'
+    whyBuild: 'Balconies are high-aspiration aesthetic upgrades that explode in search volume during spring and summer months.',
+    deliverables: [
+      'Urban Balcony Green Oasis Visual Playbook (Printable PDF)',
+      'Railing Bar & Deck Tile Blueprint Cards (Printable PDF)',
+      'Balcony Wind Safety & Weatherproof Material Matrix (Interactive CSV / Sheets)',
+      '1-Click Balcony Herb Garden & Layout Hub (Notion Dashboard)'
+    ],
+    secretHacks: [
+      'Railing-clamp foldable wooden bar table (zero floor footprint; folds flat against railing when not in use)',
+      'Snap-together interlocking acacia wood deck tiles (covers cold gray concrete in 20 minutes without tools)',
+      'Faux boxwood privacy ivy roll secured with heavy-duty black zip ties to block neighbor sight lines',
+      'Solar-powered micro LED string lights woven through railing mesh for zero-plug ambient evening glow'
+    ],
+    proTips: [
+      'Check condo rules for weight restrictions on planters—use lightweight fiberglass or resin pots filled with perlite at the bottom instead of heavy clay and soil.',
+      'Choose outdoor furniture that folds flat to hang on wall hooks during winter months.'
+    ],
+    keyModules: [
+      'Module 1: Deck Tile Flooring & Drainage Layout Specs',
+      'Module 2: Zero-Footprint Railing Bar & Foldable Seating Hacks',
+      'Module 3: Wind-Safe Privacy Screening & Greenery Grid',
+      'Module 4: Solar Warm Lighting & Rapid Winter Storage Protocol'
+    ],
+    blogTriggers: ['Small Balcony Ideas', 'Apartment Patio Decor', 'Balcony Flooring Hacks', 'Railing Table DIY'],
+    fourthwallCategory: 'Tactical Action Kits'
   }
 ];
 
-export const BUNDLE_ECOSYSTEM: ProductBundle[] = [
+export const STRATEGIC_BUNDLES: ProductBundle[] = [
   {
-    id: 'bundle-first-apartment-moving',
-    name: 'The First-Apartment & Moving Survival Suite',
-    tagline: 'Everything you need to plan, budget, move, and unpack your first rental without stress.',
-    targetCustomer: 'First-time renters, students, and young professionals moving into a new apartment or condo.',
-    problemSolved: 'Moving overwhelm, budget blowouts, forgotten move-in necessities, and chaotic first weeks.',
+    id: 'bundle-renter-survival',
+    name: 'The Renter Defense & Security 3-in-1 Bundle',
+    tagline: 'Hang heavy art without damage, protect your $2,000 security deposit, and soundproof thin rental walls.',
+    targetCustomer: 'First-time apartment renters and condo tenants terrified of losing their security deposit or dealing with noise.',
+    problemSolved: 'Solves the triple threat: wall damage fees, move-out deposit deductions, and thin-wall noise disturbances.',
     productsIncluded: [
-      'The Small Space Moving-In Blueprint & Transition OS (Valued at $29)',
-      'First-Apartment Essential Inventory & Smart Budget Planner (Valued at $24)',
-      'The Damage-Free Renter Upgrade Manual (Valued at $19)',
-      'Apartment Maintenance & Landlord Communication Vault (Valued at $19)'
+      'kit-zero-damage-mounting',
+      'kit-deposit-protection-defense',
+      'kit-studio-acoustic-privacy'
     ],
-    totalComponents: '4 Complete Systems • 3 Notion Workspaces • 2 Google Sheets • 140+ Editorial PDF Pages',
-    recommendedFormats: ['Notion Workspace', 'Google Sheets', 'Interactive PDF'],
-    perceivedValue: 91,
+    totalComponents: '3 Complete Tactical Field Guides + 3 Pocket Card Decks + 3 Interactive Calculators + 3 Notion Hubs',
+    recommendedFormats: ['3 Printable Vector PDFs', '3 Printable Card Decks', '3 Interactive CSV Matrices', '3 Notion Hubs'],
+    perceivedValue: 73,
     suggestedPrice: 47,
-    savingsPercentage: 48,
-    buyingRationale: 'Buying these four items separately costs $91. At $47, the buyer saves $44 while acquiring the definitive end-to-end relocation and move-in suite.',
-    fourthwallPositioning: 'Featured in "Moving & New Renter Starter Bundles" on shop.smallspacehome.ca',
+    savingsPercentage: 36,
+    buyingRationale: 'Buying these 3 kits separately costs $73 CAD. Get total move-in protection for $47 CAD (saves $26 instantly).',
+    fourthwallPositioning: 'The Essential Move-In Armor for Every Rental Apartment.',
     physicalCrossSell: {
-      productName: 'SmallSpaceHome "New Beginnings" Minimalist Wall Art & Morning Mug',
-      merchType: 'Wall Art',
-      synergyPitch: 'Pair your move-in system with an architectural print that establishes your new serene focal point.'
+      productName: 'Small Space Home Aesthetic Renter Tote',
+      merchType: 'Tote Bag',
+      synergyPitch: 'Carry your hardware tools, tape, and spackle in a heavy-duty organic canvas tote.'
     }
   },
   {
-    id: 'bundle-spatial-mastery',
-    name: 'The Tiny Space Layout & Storage Mastery Suite',
-    tagline: 'The definitive architectural system to master furniture scale, room zoning, and vertical storage.',
-    targetCustomer: 'Studio apartment dwellers, compact condo owners, and anyone struggling with cramped square footage.',
-    problemSolved: 'Furniture layout paralysis, wasted dead zones, visual clutter, and room identity confusion.',
+    id: 'bundle-micro-space-doubler',
+    name: 'The Micro-Space Storage Doubler 3-in-1 Bundle',
+    tagline: 'Double your storage capacity in your kitchen, closet, and under-bed hidden spaces with zero carpentry.',
+    targetCustomer: 'Urban renters in studios or 1-bedrooms suffering from clutter overflow and zero built-in storage.',
+    problemSolved: 'Unlocks 45+ cubic feet of dead storage space across the three most cramped zones in your home.',
     productsIncluded: [
-      'Small-Space Layout & Furniture Proportion Planner (Valued at $34)',
-      'Studio & Multi-Functional Room Zoning System (Valued at $27)',
-      'Apartment Storage Audit & Vertical Optimization Kit (Valued at $17)',
-      'The Damage-Free Renter Upgrade Manual (Valued at $19)'
+      'kit-micro-kitchen-maxima',
+      'kit-closet-quadrupler',
+      'kit-underbed-hidden-storage'
     ],
-    totalComponents: '4 Architectural Systems • 1 Clearance Google Sheet • 60+ Scale Cutouts • Canva Zoning Simulator',
-    recommendedFormats: ['Google Sheets', 'Canva Templates', 'Interactive PDF'],
-    perceivedValue: 97,
-    suggestedPrice: 54,
-    savingsPercentage: 44,
-    buyingRationale: 'Saves buyers from making a single $500+ furniture sizing mistake. The clearance calculator alone pays for the bundle ten times over.',
-    fourthwallPositioning: 'Top Seller in "Design & Organization Kits"',
+    totalComponents: '3 Tactical Field Guides + 3 Blueprint Decks + 3 Storage Dimension Calculators + 3 Notion Dashboards',
+    recommendedFormats: ['3 Printable Vector PDFs', '3 Pocket Card Decks', '3 Interactive CSV Matrices', '3 Notion Hubs'],
+    perceivedValue: 68,
+    suggestedPrice: 44,
+    savingsPercentage: 35,
+    buyingRationale: 'Costs less than buying a single cheap plastic storage dresser, yet provides 4x more usable space.',
+    fourthwallPositioning: 'The Ultimate Storage Expansion Blueprint for Homes Under 700 Sq Ft.',
     physicalCrossSell: {
-      productName: 'SmallSpaceHome "Geometry of Space" Ceramic Coffee Mug',
+      productName: 'Minimalist Spatial Coffee Ceramic Mug',
       merchType: 'Coffee Mug',
-      synergyPitch: 'Enjoy your morning brew while referencing your laminated daily reset card.'
+      synergyPitch: 'Enjoy your morning brew while referencing your daily spatial reset cards.'
     }
   },
   {
-    id: 'bundle-peaceful-home-reset',
-    name: 'The Peaceful Small Home Reset & Maintenance Suite',
-    tagline: 'Eliminate 40% of clutter, establish 12-minute daily rhythms, and protect your home peace forever.',
-    targetCustomer: 'Busy renters and homeowners experiencing clutter fatigue in small footprints.',
-    problemSolved: 'Rebounding clutter, weekend-long exhausting cleaning sprees, and friction with landlord repairs.',
+    id: 'bundle-studio-master-expansion',
+    name: 'The Studio Apartment Layout & Ambience 3-in-1 Bundle',
+    tagline: 'Divide your studio into 3 rooms, build an entryway drop zone, and double your visual daylight.',
+    targetCustomer: 'Studio apartment dwellers and compact open-concept condo owners wanting boutique hotel aesthetics.',
+    problemSolved: 'Eliminates studio claustrophobia, entryway floor chaos, and dreary overhead glare lighting.',
     productsIncluded: [
-      'The 30-Day Small Home Declutter & Spatial Reset Protocol (Valued at $27)',
-      'Small Home Cleaning Rhythm & Micro-Reset Routine System (Valued at $15)',
-      'Apartment Storage Audit & Vertical Optimization Kit (Valued at $17)',
-      'Apartment Maintenance & Landlord Communication Vault (Valued at $19)'
+      'kit-studio-zoning-separation',
+      'kit-entryway-dropzone',
+      'kit-optical-expander-lighting'
     ],
-    totalComponents: '4 Habit & Declutter Kits • 30 Daily Action Cards • Printable Cleaning Visuals • Maintenance Log',
-    recommendedFormats: ['Interactive PDF', 'Printables', 'Notion Workspace'],
-    perceivedValue: 78,
-    suggestedPrice: 39,
-    savingsPercentage: 50,
-    buyingRationale: 'An accessible, high-relief package that directly restores mental calm and cleanliness to cluttered spaces.',
-    fourthwallPositioning: 'Featured in "Declutter & Daily Rhythms"',
+    totalComponents: '3 Architectural Field Guides + 3 Blueprint Decks + 3 Scale Clearance Calculators + 3 Notion Hubs',
+    recommendedFormats: ['3 Printable Vector PDFs', '3 Pocket Card Decks', '3 Interactive CSV Matrices', '3 Notion Hubs'],
+    perceivedValue: 65,
+    suggestedPrice: 42,
+    savingsPercentage: 35,
+    buyingRationale: 'Transforms a generic concrete box studio into an intentional multi-zone designer sanctuary.',
+    fourthwallPositioning: 'The Complete Studio Apartment Makeover Suite.',
     physicalCrossSell: {
-      productName: 'SmallSpaceHome "Calm Sanctuary" Art Print Series',
+      productName: 'Architectural Blueprint Fine Art Print',
       merchType: 'Wall Art',
-      synergyPitch: 'Complete your decluttered living room with a serene, minimalist focal piece.'
+      synergyPitch: 'Hang minimal line-art architectural blueprints using our zero-damage mounting tricks.'
     }
   },
   {
-    id: 'bundle-complete-all-access',
-    name: 'The Complete SmallSpaceHome Master Ecosystem (All-Access Pass)',
-    tagline: 'Every single system, planner, database, template, and guide SmallSpaceHome produces.',
-    targetCustomer: 'Dedicated small space lifestyle enthusiasts, serial renters, and intentional living practitioners.',
-    problemSolved: 'Solves the entire spectrum of small space living from moving day to daily habits and aesthetic design.',
+    id: 'bundle-ultimate-12-kit-vault',
+    name: 'The Ultimate Renter Master Action Vault (All 12 Kits & 150+ Hacks)',
+    tagline: 'Every single tactical action kit, secret renter hack, visual blueprint, calculator, and swipe file in one master download.',
+    targetCustomer: 'Anyone living in a rented apartment, condo, or home under 800 sq ft who wants the ultimate complete toolkit.',
+    problemSolved: 'Solves every spatial, storage, legal deposit, acoustic, lighting, and layout challenge in compact homes forever.',
     productsIncluded: [
-      'The Small Space Operating System (Flagship) (Valued at $79)',
-      'All Top 10 Digital Systems & Workbooks (Total Value $240+)',
-      'Bonus: Lifetime Access to All Future Template Updates',
-      'Bonus: Private Small Space Layout Q&A Archive'
+      'kit-zero-damage-mounting',
+      'kit-micro-kitchen-maxima',
+      'kit-closet-quadrupler',
+      'kit-deposit-protection-defense',
+      'kit-studio-acoustic-privacy',
+      'kit-entryway-dropzone',
+      'kit-underbed-hidden-storage',
+      'kit-studio-zoning-separation',
+      'kit-wfh-desk-reset',
+      'kit-optical-expander-lighting',
+      'kit-bathroom-vanity-shower',
+      'kit-balcony-patio-oasis'
     ],
-    totalComponents: 'Complete Digital Master Library • 6 Notion Hubs • 4 Automated Spreadsheets • 280+ PDF Pages',
-    recommendedFormats: ['All Formats (Notion, Google Sheets, Canva, Interactive PDF, Printables)'],
-    perceivedValue: 249,
+    totalComponents: '12 Vector PDF Field Guides + 12 Printable Pocket Card Decks + 12 Interactive CSV Calculators + 12 Notion Dashboards + 150+ Secret Hacks',
+    recommendedFormats: ['12 Printable Vector PDFs', '12 Pocket Card Decks', '12 Interactive CSV Calculators', '12 Notion Hubs'],
+    perceivedValue: 260,
     suggestedPrice: 97,
-    savingsPercentage: 61,
-    buyingRationale: 'For less than the price of a single side table, gain lifetime access to the entire SmallSpaceHome intellectual property library.',
-    fourthwallPositioning: 'Highlighted as the Brand VIP Flagship on Fourthwall',
+    savingsPercentage: 63,
+    buyingRationale: 'Total standalone price is $260 CAD. Get the complete master collection for just $97 CAD (save $163 CAD). Instant lifetime access with all future updates.',
+    fourthwallPositioning: 'The Definitive Encyclopedia of Small Space Hacks & Renter Blueprints.',
     physicalCrossSell: {
-      productName: 'The SmallSpaceHome Collector Mug + Limited Edition Print Bundle',
+      productName: 'The Small Space Home Master Collector Kit',
       merchType: 'Wall Art',
-      synergyPitch: 'Unlock an exclusive 25% discount code on all physical wall art and mugs when buying the All-Access Pass.'
+      synergyPitch: 'Includes fine art print, ceramic coffee mug, and canvas tool tote.'
     }
   }
 ];
 
-export const FLAGSHIP_DETAILED_SPEC = {
-  name: 'The Small Space Operating System (SS-OS)',
-  subtitle: 'The Definitive Architecture for Intentional Living in Under 800 Sq Ft',
-  corePromise: 'Transform any cramped apartment, condo, or rental into a spacious, serene, highly organized sanctuary in 30 days without renovation or lease violations.',
-  targetCustomer: 'Urban apartment dwellers, studio renters, downsizing couples, and small condo owners seeking structured, beautiful systems for their home.',
-  transformation: 'Moves the customer from feeling overwhelmed, cramped, and visually suffocated to feeling in complete control, peaceful, and proud of their small home.',
-  formatSpecs: [
-    'Notion Small Space Hub (2.0 Template with connected databases & custom dashboard views)',
-    'Automated Google Sheets & Excel Workbook (Walkway clearance, budget calculator, inventory auditor)',
-    '120-Page Editorial Interactive PDF Master Guide (Typography, diagrams, interactive checkfields)',
-    'Printable Quick-Reference Binder System (Standard US Letter & A4 printable cards)'
+export const BUNDLE_ECOSYSTEM = STRATEGIC_BUNDLES;
+
+export const FOURTHWALL_STORE_ARCHITECTURE = {
+  storeUrl: 'shop.smallspacehome.ca',
+  collections: [
+    {
+      id: 'col-action-kits',
+      title: 'Tactical Action Kits & Renter Hacks',
+      description: 'Tested zero-damage mounting tricks, small kitchen space doublers, closet quadruplers, and deposit defense playbooks.',
+      featuredProducts: [
+        'The Zero-Damage Renter Mounting & Secret Wall Hacks Kit ($24 CAD)',
+        'The 500 Sq Ft Micro-Kitchen & Cabinet Space Doubler Kit ($22 CAD)',
+        'The Small Closet Quadrupler & Vertical Storage Hack Kit ($24 CAD)'
+      ]
+    },
+    {
+      id: 'col-curated-bundles',
+      title: 'Curated 3-in-1 Action Bundles (Save 35%+)',
+      description: 'Themed multi-kit bundles designed to solve spatial dilemmas across your entire apartment for maximum savings.',
+      featuredProducts: [
+        'The Renter Defense & Security 3-in-1 Bundle ($47 CAD)',
+        'The Micro-Space Storage Doubler 3-in-1 Bundle ($44 CAD)',
+        'The Studio Apartment Layout & Ambience Bundle ($42 CAD)'
+      ]
+    },
+    {
+      id: 'col-master-vault',
+      title: 'The Master Action Vault (All 12 Kits)',
+      description: 'The complete encyclopedia of 12 tactical action kits, 150+ secret hacks, printable cards, and Notion dashboards.',
+      featuredProducts: [
+        'The Ultimate Renter Master Action Vault ($97 CAD • $260 Value)'
+      ]
+    }
   ],
-  pricingStrategy: {
-    standalonePrice: '$79 CAD / $59 USD',
-    introductoryLaunchPrice: '$59 CAD / $44 USD',
-    bundleUpsellPrice: '$97 CAD (with All-Access & Lifetime Updates)',
-    checkoutBumpOption: 'Add $9 for the "Audio Micro-Reset Guide & Landlord Notice Script Pack"'
-  },
-  modules: [
+  checkoutBumps: [
     {
-      id: 'mod-1',
-      moduleNumber: '01',
-      title: 'Spatial Geometry & Scale Layout Architecture',
-      summary: 'Map your floor plan with architectural precision, verify walkway clearances, and plan furniture dimensions before purchasing.',
-      toolsIncluded: [
-        'Interactive Google Sheet Walkway Clearance Validator',
-        'Canva 2D Floorplan Modular Template Pack (12 Pre-built Studio/1-Bed layouts)',
-        'Scale Furniture Cutout Printable Kit (1/4" scale)',
-        'Sightline & Natural Light Reflection Audit'
-      ],
-      interactiveAssets: ['Clearance Warning Engine', 'Furniture Scale Matrix'],
-      transformation: 'Eliminates furniture sizing errors and optimizes room flow.'
+      id: 'bump-pocket-cards',
+      title: 'Laminated Printable Pocket Hack Cards Deck ($5 CAD)',
+      triggerConditions: 'Any single Tactical Action Kit added to cart',
+      takeRateEstimate: '38%'
     },
     {
-      id: 'mod-2',
-      moduleNumber: '02',
-      title: 'The Vertical Storage & Cabinet Engineering Blueprint',
-      summary: 'Uncover 35% more usable storage across walls, doors, ceilings, and concealed dead zones.',
-      toolsIncluded: [
-        'Cubic Foot Vertical Storage Calculator',
-        'Cabinet Riser & Shelf Tier Blueprint Matrix',
-        'Over-Door & Behind-Plumbing Optimization Blueprints',
-        'Closet Vertical Drop Measurement Guide'
-      ],
-      interactiveAssets: ['Dead-Zone Audit Checklist', 'Cabinet Geometry Sheets'],
-      transformation: 'Clears countertops and stores everything cleanly behind closed doors.'
-    },
-    {
-      id: 'mod-3',
-      moduleNumber: '03',
-      title: 'The 30-Day Ruthless Declutter & Spatial Reset',
-      summary: 'A day-by-day micro-declutter protocol specifically engineered for homes without basements or garages.',
-      toolsIncluded: [
-        '30 Daily Micro-Action Protocols (15-20 mins/day)',
-        'The Real-Estate Tax Decision Matrix',
-        'Digital Document & Paperless Apartment Transition Vault',
-        'Local City Sell/Donate Strategy Guide'
-      ],
-      interactiveAssets: ['Clutter Heatmap Notion Database', 'Progress Bar Tracker'],
-      transformation: 'Removes 40% of visual clutter permanently without burnout.'
-    },
-    {
-      id: 'mod-4',
-      moduleNumber: '04',
-      title: 'Damage-Free Renter Upgrades & Aesthetic Lighting',
-      summary: 'Elevate dated rental finishes, upgrade lighting layers, and create a high-end look without risking your security deposit.',
-      toolsIncluded: [
-        '50+ No-Drill Renter Upgrade Guides (Hardware, Backsplash, Lighting)',
-        '3-Layer Circadian Lighting Temperature Schedule (Kelvin & Lumen formulas)',
-        'Damage-Free Mounting Load Calculator (Command/Tension/Adhesive safety)',
-        'Move-Out Deposit Restoration Checklist'
-      ],
-      interactiveAssets: ['Hardware Gauge Matcher', 'Lighting Map Diagram'],
-      transformation: 'Makes rental spaces feel like a custom-designed luxury boutique.'
-    },
-    {
-      id: 'mod-5',
-      moduleNumber: '05',
-      title: 'Daily Micro-Reset Rhythms & Habit Engine',
-      summary: 'Maintain pristine order with 12-minute closing shifts and sustainable routines.',
-      toolsIncluded: [
-        '12-Minute Nightly Closing Shift Visual Card',
-        'Zoned Weekly Micro-Clean Rhythm Matrix',
-        'Compact Eco Cleaning Caddy Blueprint (4 Multi-Surface Formulations)',
-        'Seasonal Deep Refresh Schedule'
-      ],
-      interactiveAssets: ['Printable Laminable Habit Cards', 'Weekly Cleaning Dashboard'],
-      transformation: 'Replaces exhausting weekend cleans with effortless 12-minute daily flow.'
-    },
-    {
-      id: 'mod-6',
-      moduleNumber: '06',
-      title: 'Moving, Inventory & Lease Management Vault',
-      summary: 'A complete administrative repository for your lease, moving logistics, appliance serials, and landlord notices.',
-      toolsIncluded: [
-        'Notion Tenant Vault & Move-In Condition Photo Log',
-        '8-Week Countdown Moving Project Management Board',
-        'QR-Code Box Labeling Printable Templates',
-        '24 Pre-Written Landlord Notice & Repair Request Scripts'
-      ],
-      interactiveAssets: ['Notion Tenant Dashboard', 'Elevator Booking Timing Sheet'],
-      transformation: 'Protects legal tenant rights, secures full deposit return, and eases moving.'
+      id: 'bump-landlord-script',
+      title: 'Emergency Landlord Pushback & Deposit Dispute Script Pack ($7 CAD)',
+      triggerConditions: 'Any Renter Security or Moving Kit added to cart',
+      takeRateEstimate: '29%'
     }
   ]
 };
 
 export const BLOG_FUNNEL_MAPPINGS: BlogFunnelMapping[] = [
   {
-    id: 'funnel-storage-closet',
-    blogCategory: 'Organization & Storage',
-    sampleArticleTitle: 'How to Organize a Tiny Rental Closet with Zero Built-ins',
-    searchIntent: 'Reader has clothes falling off shelves, shoes on the floor, and an undersized 36" rental closet.',
-    readerFriction: 'Frustrated by generic closet advice that requires custom IKEA Pax systems or drilling permanent rails.',
-    recommendedProduct: 'Apartment Storage Audit & Vertical Optimization Kit ($17 CAD)',
-    productPrice: '$17 CAD',
+    id: 'funnel-mounting-hacks',
+    blogCategory: 'Renter Hacks & Wall Decor',
+    sampleArticleTitle: 'How to Hang Heavy Mirrors and Floating Shelves Without Drilling Holes (Renter-Safe)',
+    searchIntent: 'Tenant searching for ways to hang art or mirrors without losing their deposit.',
+    readerFriction: 'Scared of Command strips failing and dropping heavy frames or tearing off wall paint.',
+    recommendedProduct: 'The Zero-Damage Renter Mounting & Secret Wall Hacks Kit',
+    productPrice: '$24 CAD',
     ctaType: 'Inline Highlight',
-    ctaHeadline: 'Stop fighting your closet door.',
-    ctaCopy: 'Download the exact vertical tier measurement blueprint that fits 60+ garments and 14 pairs of shoes into a standard 36-inch rental closet without drilling a single hole.',
-    buttonText: 'Get The Closet Tier Blueprint ($17)',
-    pinterestAngle: 'Pin Graphic: "Before/After 36-Inch Rental Closet Tier Schematic + Free Measurement Guide"'
+    ctaHeadline: 'Want the exact 45-lb zero-damage mounting formulas and paint-peel removal tricks?',
+    ctaCopy: 'Download the Zero-Damage Mounting Field Guide with exact weight load ratings, hot-glue+tape painter tricks, and emergency patch hacks.',
+    buttonText: 'Get The Mounting Hacks Kit ($24 CAD) →',
+    pinterestAngle: 'Viral Pin: "The $4 Hardware Trick to Hang Heavy Mirrors in Rentals Without Nails"'
   },
   {
-    id: 'funnel-furniture-layout',
-    blogCategory: 'Furniture & Layouts',
-    sampleArticleTitle: '7 Furniture Mistakes That Make Small Living Rooms Feel Cramped',
-    searchIntent: 'Reader is browsing sofas, coffee tables, or TV units and worried their room will feel claustrophobic.',
-    readerFriction: 'Unsure about dimensions and afraid of spending $1,200 on a sofa that blocks the balcony door.',
-    recommendedProduct: 'Small-Space Layout & Furniture Proportion Planner ($34 CAD)',
-    productPrice: '$34 CAD',
+    id: 'funnel-kitchen-cabinets',
+    blogCategory: 'Small Kitchen Organization',
+    sampleArticleTitle: '11 Clever Hacks to Double Your Cabinet Space in a 45 Sq Ft Galley Kitchen',
+    searchIntent: 'Renter looking for ways to organize messy kitchen cabinets and create prep space.',
+    readerFriction: 'Cabinets are tall and deep with dead space; countertops are covered in spices and cutting boards.',
+    recommendedProduct: 'The 500 Sq Ft Micro-Kitchen & Cabinet Space Doubler Kit',
+    productPrice: '$22 CAD',
     ctaType: 'End-of-Post Box',
-    ctaHeadline: 'Calculate your exact walkway clearances before buying.',
-    ctaCopy: 'Our interactive Google Sheets calculator instantly tests if your dream sofa leaves the mandatory 36-inch traffic flow. Includes 60+ pre-scaled printable furniture cutouts and 12 Canva layout templates.',
-    buttonText: 'Unlock The Layout Planner ($34)',
-    pinterestAngle: 'Pin Graphic: "The 36-Inch Rule: Small Living Room Furniture Clearance Diagram & Calculator"'
+    ctaHeadline: 'Unlock 18+ Cubic Feet of Dead Cabinet Space in Your Kitchen',
+    ctaCopy: 'Get the complete blueprint cards, inside-door tension rod specs, and over-sink prep bridge dimensions.',
+    buttonText: 'Download Micro-Kitchen Kit ($22 CAD) →',
+    pinterestAngle: 'Viral Pin: "How I Doubled My Apartment Kitchen Storage for Under $25"'
   },
   {
-    id: 'funnel-studio-living',
-    blogCategory: 'Studio Apartment Living',
-    sampleArticleTitle: 'How to Divide a Studio Apartment into 3 Distinct Zones',
-    searchIntent: 'Reader sleeps, works, and eats in one room; feels restless and lacks privacy or bedtime separation.',
-    readerFriction: 'Does not know how to position dividers or manage light so work does not bleed into bedtime.',
-    recommendedProduct: 'Studio & Multi-Functional Room Zoning System ($27 CAD)',
-    productPrice: '$27 CAD',
-    ctaType: 'Inline Highlight',
-    ctaHeadline: 'Make your studio feel like a real one-bedroom.',
-    ctaCopy: 'Get the architectural divider sightline templates, lighting circadian schedule, and rug boundary proportion guides created specifically for 350–550 sq ft open studio layouts.',
-    buttonText: 'Get The Studio Zoning System ($27)',
-    pinterestAngle: 'Pin Graphic: "Studio Apartment Floorplan Blueprint: 3 Rooms in 450 Sq Ft"'
-  },
-  {
-    id: 'funnel-renter-hacks',
-    blogCategory: 'Renter-Friendly Decor',
-    sampleArticleTitle: '12 Rental Kitchen Upgrades That Won’t Void Your Lease',
-    searchIntent: 'Reader hates their yellow oak cabinets and fluorescent tube lighting but fears losing their $1,500 security deposit.',
-    readerFriction: 'Wants aesthetic transformation without heavy tools or permanent alterations.',
-    recommendedProduct: 'The Damage-Free Renter Upgrade Manual & Action Binder ($19 CAD)',
-    productPrice: '$19 CAD',
-    ctaType: 'End-of-Post Box',
-    ctaHeadline: 'Transform your rental without losing a cent of your deposit.',
-    ctaCopy: 'Step-by-step visual guides for tool-free cabinet hardware swaps, peel-and-stick backsplash installation, and plug-in wall sconces—complete with 5-minute move-out reversal procedures.',
-    buttonText: 'Download The Renter Upgrade Manual ($19)',
-    pinterestAngle: 'Pin Graphic: "$100 Renter Kitchen Transformation: No-Drill Hardware & Backsplash Guide"'
-  },
-  {
-    id: 'funnel-moving-downsizing',
-    blogCategory: 'Moving & Transitioning',
-    sampleArticleTitle: 'The Ultimate First Apartment Moving Checklist & Timeline',
-    searchIntent: 'Reader is moving in 30 days, feeling overwhelmed by logistics, elevator reservations, and packing chaos.',
-    readerFriction: 'Panicking over packing order and forgetting critical day-one utilities or supplies.',
-    recommendedProduct: 'The Small Space Moving-In Blueprint & Transition OS ($29 CAD)',
-    productPrice: '$29 CAD',
+    id: 'funnel-closet-density',
+    blogCategory: 'Closet & Wardrobe Systems',
+    sampleArticleTitle: 'How to Fit 120 Garments in a 36-Inch Rental Closet Without Wrinkling',
+    searchIntent: 'Renter searching for small closet organization hacks and double-rod systems.',
+    readerFriction: 'Single wire shelf closet is overflowing with clothes piled on the floor.',
+    recommendedProduct: 'The Small Closet Quadrupler & Vertical Storage Hack Kit',
+    productPrice: '$24 CAD',
     ctaType: 'Sticky Footer Banner',
-    ctaHeadline: 'Move into your small apartment in 48 hours without the stress.',
-    ctaCopy: 'Our complete Notion Moving OS + printable QR-code box labels and elevator timing sheets guide every day from 8 weeks out to your first night.',
-    buttonText: 'Get The Moving-In Blueprint ($29)',
-    pinterestAngle: 'Pin Graphic: "8-Week Apartment Moving Timeline & Printable QR-Code Box Label System"'
+    ctaHeadline: 'Quadruple Your Closet Hanging Space With Zero Carpentry',
+    ctaCopy: 'Includes the suspended double-rod blueprint, soda-tab cascading hanger trick, and upper shelf compression guide.',
+    buttonText: 'Get The Closet Quadrupler Kit ($24 CAD) →',
+    pinterestAngle: 'Viral Pin: "Turn a Tiny 3-Foot Closet Into a 4-Tier Boutique Wardrobe"'
   },
   {
-    id: 'funnel-declutter-cleaning',
-    blogCategory: 'Cleaning & Organization',
-    sampleArticleTitle: 'How to Keep a Small Apartment Clutter-Free in 12 Minutes a Day',
-    searchIntent: 'Reader is tired of their apartment feeling messy every 3 days and spending whole Saturdays cleaning.',
-    readerFriction: 'Lacks a fast, structured micro-routine and suffers from clutter rebound.',
-    recommendedProduct: 'Small Home Cleaning Rhythm & Micro-Reset Routine System ($15 CAD)',
-    productPrice: '$15 CAD',
-    ctaType: 'Inline Highlight',
-    ctaHeadline: 'Ditch the 4-hour weekend cleaning marathon.',
-    ctaCopy: 'Print our laminated 12-Minute Nightly Closing Shift card and zoned weekly micro-clean schedule designed exclusively for spaces under 800 sq ft.',
-    buttonText: 'Get The 12-Minute Reset System ($15)',
-    pinterestAngle: 'Pin Graphic: "The 12-Minute Nightly Closing Shift: Small Apartment Cleaning Schedule Card"'
+    id: 'funnel-deposit-defense',
+    blogCategory: 'Tenant Rights & Rental Hacks',
+    sampleArticleTitle: 'The $12 DIY Drywall Patch Trick That Guaranteed My Full Security Deposit Return',
+    searchIntent: 'Tenant preparing to move out and worried about landlord charging for wall holes and scuffs.',
+    readerFriction: 'Afraid of losing $500–$2,000 in deposit deductions for standard living wear.',
+    recommendedProduct: 'The Renter Security Deposit Defense & Emergency Repair Kit',
+    productPrice: '$27 CAD',
+    ctaType: 'Exit-Intent Lead Upgrade',
+    ctaHeadline: 'Don’t Let Your Landlord Steal Your $2,000 Deposit',
+    ctaCopy: 'Get the exact move-out inspection photo checklist, legal wear-and-tear pushback scripts, and $12 wall repair recipe.',
+    buttonText: 'Download Deposit Defense Kit ($27 CAD) →',
+    pinterestAngle: 'Viral Pin: "The Landlord Move-Out Checklist That Saved Me $1,800"'
   }
 ];
 
-export const FOURTHWALL_STORE_ARCHITECTURE = {
-  storeUrl: 'shop.smallspacehome.ca',
-  brandName: 'SmallSpaceHome Studio & Store',
-  collections: [
-    {
-      id: 'col-flagship',
-      title: 'Flagship Systems & Suites',
-      description: 'Comprehensive digital operating systems and all-in-one bundles for serious small-space dwellers.',
-      featuredProducts: [
-        'The Complete SmallSpaceHome Master Ecosystem (All-Access Pass)',
-        'The Small Space Operating System (SS-OS)',
-        'The Tiny Space Layout & Storage Mastery Suite'
-      ]
-    },
-    {
-      id: 'col-planners',
-      title: 'Layout, Furniture & Moving Planners',
-      description: 'Architectural clearance calculators, scale grid sheets, and relocation project management tools.',
-      featuredProducts: [
-        'Small-Space Layout & Furniture Proportion Planner',
-        'The Small Space Moving-In Blueprint & Transition OS',
-        'Studio & Multi-Functional Room Zoning System'
-      ]
-    },
-    {
-      id: 'col-guides',
-      title: 'Renter Upgrades & Storage Blueprints',
-      description: 'Damage-free rental transformation manuals, vertical storage kits, and landlord communication vaults.',
-      featuredProducts: [
-        'The Damage-Free Renter Upgrade Manual & Action Binder',
-        'Apartment Storage Audit & Vertical Optimization Kit',
-        'Apartment Maintenance & Landlord Communication Vault'
-      ]
-    },
-    {
-      id: 'col-printables',
-      title: 'Daily Rhythms & Decluttering Kits',
-      description: 'Printable laminated habit cards, 30-day declutter protocols, and compact cleaning routine systems.',
-      featuredProducts: [
-        'The 30-Day Small Home Declutter & Spatial Reset Protocol',
-        'Small Home Cleaning Rhythm & Micro-Reset Routine System',
-        'First-Apartment Essential Inventory & Smart Budget Planner'
-      ]
-    },
-    {
-      id: 'col-physical-hybrid',
-      title: 'Art & Lifestyle Merch + Digital Pairings',
-      description: 'Curated pairings of physical SmallSpaceHome wall art and ceramic mugs with matching digital systems.',
-      featuredProducts: [
-        'Peaceful Studio Art Print + Layout Planner Bundle',
-        'Small Space Morning Mug + 12-Minute Daily Reset System',
-        'New Beginnings Wall Art + Moving-In Survival Suite'
-      ]
-    }
+export const FLAGSHIP_MODULES: FlagshipModule[] = [
+  {
+    id: 'vault-mod-1',
+    moduleNumber: '01',
+    title: 'Zero-Damage Hardware & Wall Mounting Mastery',
+    summary: 'The science of adhesive shear angles, tension load multiplication, and zero-drill heavy mirror hanging.',
+    toolsIncluded: ['Mounting Load Calculator (.CSV)', 'Adhesive Prep Guide (PDF)', 'Peel-Free Removal Protocol'],
+    interactiveAssets: ['Interactive Load Matrix', 'Hardware Store Dupe List', 'Pocket Anchor Cards'],
+    transformation: 'Never fear wall damage or lost deposits again while enjoying full vertical gallery walls.'
+  },
+  {
+    id: 'vault-mod-2',
+    moduleNumber: '02',
+    title: 'Micro-Kitchen & Cabinet Space Doubler Engineering',
+    summary: 'Inside-door mechanics, magnetic undershelf matrix, over-sink prep bridges, and dead-corner unlocks.',
+    toolsIncluded: ['Cabinet Clearance Blueprint (PDF)', 'Kitchen Zone Matrix (.CSV)', '1-Click Pantry Hub (Notion)'],
+    interactiveAssets: ['Dimension Calculator', 'Prep Bridge Specs', 'Door Tension Rod Diagrams'],
+    transformation: 'Double your usable kitchen storage and cooking prep area in under 2 hours.'
+  },
+  {
+    id: 'vault-mod-3',
+    moduleNumber: '03',
+    title: 'Wardrobe Density & Closet Quadrupler Architecture',
+    summary: 'Suspended dual-hanging rods, cascading hanger density, vertical acrylic dividers, and seasonal bins.',
+    toolsIncluded: ['Closet Capacity Calculator (.CSV)', 'Garment Density Blueprint (PDF)', 'Capsule Wardrobe Hub (Notion)'],
+    interactiveAssets: ['Hanger Ratio Formulas', 'Upper Shelf Matrix', 'Shoe Compression Diagrams'],
+    transformation: 'Fit your entire seasonal wardrobe cleanly in a single 36-inch rental closet.'
+  },
+  {
+    id: 'vault-mod-4',
+    moduleNumber: '04',
+    title: 'Renter Deposit Defense & Legal Move-Out Shield',
+    summary: 'Timestamped 4K photographic logs, $12 drywall texture matching, and legal normal-wear pushback letters.',
+    toolsIncluded: ['Move-Out Inspection Matrix (.CSV)', 'Dispute Script Cards (PDF)', 'Deposit Claim Vault (Notion)'],
+    interactiveAssets: ['Inspection Checklist', 'Tenant Rights Clause Swipe File', 'Spackle Matching Guide'],
+    transformation: 'Protect your full security deposit with legally airtight documentation and quick repairs.'
+  },
+  {
+    id: 'vault-mod-5',
+    moduleNumber: '05',
+    title: 'Studio Room Zoning & Acoustic Privacy Soundproofing',
+    summary: 'Floating bookcase room dividers, ceiling tension linen tracks, door air locks, and sound absorption.',
+    toolsIncluded: ['Studio Clearance Matrix (.CSV)', 'Acoustic Sound-Lock Guide (PDF)', 'Decibel Masking Hub (Notion)'],
+    interactiveAssets: ['3-Room Studio Layouts', 'Door Jamb Seal Blueprints', 'Rug Anchoring Ratios'],
+    transformation: 'Convert an open studio into 3 distinct peaceful zones that block 75% of building noise.'
+  },
+  {
+    id: 'vault-mod-6',
+    moduleNumber: '06',
+    title: 'Optical Space Expansion & 2200K Ambient Lighting',
+    summary: 'Floor-to-ceiling drapery geometry, 45-degree mirror daylight bouncing, and 3-tier ambient glow.',
+    toolsIncluded: ['Lumen & Kelvin Calculator (.CSV)', 'Optical Illusion Playbook (PDF)', 'Room Ambience Hub (Notion)'],
+    interactiveAssets: ['Curtain Height Formulas', 'Mirror Angle Diagram', 'Warm Bulb Selection Guide'],
+    transformation: 'Make your 450 sq ft apartment look and feel like 800 sq ft of warm Scandinavian luxury.'
+  }
+];
+
+export const FLAGSHIP_DETAILED_SPEC = {
+  name: 'The SmallSpaceHome Master Action Kit Vault',
+  subtitle: 'The All-in-One Tactical Architecture, Zero-Damage Hacks & Dimension Calculators for Urban Living',
+  corePromise: 'Turn any apartment under 800 sq ft into a highly functional, zero-damage sanctuary without carpentry or lost security deposits.',
+  pricingStrategy: {
+    standalonePrice: '$79 CAD',
+    totalIndividualValue: '$274 CAD',
+    bundleDiscount: '71% Off'
+  },
+  formatSpecs: [
+    'Vector PDF Tactical Blueprints',
+    'Pocket Field Cheat-Sheets (PDF)',
+    'Interactive Dimension Matrices (.CSV)',
+    '1-Click Architecture Hub (Notion)'
   ],
-  checkoutBumps: [
-    {
-      id: 'bump-repair-scripts',
-      title: 'Renter Emergency Landlord Repair Script Pack ($7 CAD)',
-      triggerConditions: 'When adding any Renter Guide or Moving Planner to cart',
-      takeRateEstimate: '38%'
-    },
-    {
-      id: 'bump-cleaning-cards',
-      title: 'Printable 12-Minute Closing Shift Fridge Cards ($5 CAD)',
-      triggerConditions: 'When adding any Declutter or Storage product to cart',
-      takeRateEstimate: '42%'
-    }
+  modules: FLAGSHIP_MODULES,
+  productionSchedule: [
+    { phase: 'Phase 1', task: 'Zero-Damage Mounting & Micro-Kitchen Playbooks', timeline: 'Week 1–2' },
+    { phase: 'Phase 2', task: 'Closet Quadrupler & Deposit Defense Matrices', timeline: 'Week 3–4' },
+    { phase: 'Phase 3', task: 'Interactive Notion Hub & Sheets Connectors', timeline: 'Week 5–6' },
+    { phase: 'Phase 4', task: 'Fourthwall Store Launch & Multi-Asset Master Vault', timeline: 'Week 7–8' }
   ]
 };
 
 export const PRODUCTION_ROADMAP = [
   {
-    phase: 'Phase 1: Brand Anchor & High-Converting Quick Wins',
+    phase: 'Phase 1: Quick-Win Renter Armor Launch',
     timeline: 'Weeks 1–3',
-    primaryGoal: 'Establish the flagship framework and launch 2 high-volume impulse products to monetize existing blog traffic.',
+    primaryGoal: 'Establish credibility with zero-damage wall mounting and high-converting kitchen storage kits.',
     milestones: [
       {
-        task: 'Build & Polish Product #4: The Damage-Free Renter Upgrade Manual ($19 CAD)',
-        format: 'Interactive 68-page Editorial PDF + Resource Links',
-        status: 'Ready to build',
+        task: 'The Zero-Damage Renter Mounting & Secret Wall Hacks Kit',
+        format: 'PDF Guide + Pocket Cards + CSV Calculator + Notion Hub',
         targetLaunchWeek: 'Week 1'
       },
       {
-        task: 'Build & Polish Product #6: Apartment Storage Audit & Vertical Optimization Kit ($17 CAD)',
-        format: 'Interactive PDF + Printable Worksheets',
-        status: 'Ready to build',
+        task: 'The 500 Sq Ft Micro-Kitchen & Cabinet Space Doubler Kit',
+        format: 'PDF Guide + Cabinet Blueprints + CSV Matrix + Notion Hub',
         targetLaunchWeek: 'Week 2'
       },
       {
-        task: 'Build & Polish Product #9: Small Home Cleaning Rhythm & Micro-Reset System ($15 CAD)',
-        format: 'Printable Visual Cards + Mobile PDF',
-        status: 'Ready to build',
-        targetLaunchWeek: 'Week 3'
-      },
-      {
-        task: 'Embed Mid-Post CTAs into Top 10 Existing Storage & Renter Blog Posts',
-        format: 'Inline Callouts & Custom Banners',
-        status: 'Ready',
+        task: 'The Small Closet Quadrupler & Vertical Storage Hack Kit',
+        format: 'PDF Guide + Pocket Cards + CSV Capacity Matrix + Notion Hub',
         targetLaunchWeek: 'Week 3'
       }
     ]
   },
   {
-    phase: 'Phase 2: High-Ticket Planners & Spreadsheets',
+    phase: 'Phase 2: Renter Security & Space Zoning Suite',
     timeline: 'Weeks 4–6',
-    primaryGoal: 'Launch the high-intent furniture layout and moving planners with automated Google Sheets and Notion databases.',
+    primaryGoal: 'Expand into move-out security deposit defense and open studio soundproofing & drop zones.',
     milestones: [
       {
-        task: 'Build Product #2: Small-Space Layout & Furniture Proportion Planner ($34 CAD)',
-        format: 'Google Sheets Calculator + Canva Layout Pack + 1/4" Cutout Grid',
-        status: 'Planned',
+        task: 'The Renter Security Deposit Defense & Emergency Repair Kit',
+        format: 'PDF Guide + Dispute Scripts + CSV Inspection Matrix + Notion Hub',
         targetLaunchWeek: 'Week 4'
       },
       {
-        task: 'Build Product #3: The Small Space Moving-In Blueprint & Transition OS ($29 CAD)',
-        format: 'Notion Workspace + Printable QR Labels + Timeline PDF',
-        status: 'Planned',
+        task: 'The Studio Apartment Acoustic Privacy & Sound-Lock Kit',
+        format: 'PDF Guide + Door Seal Blueprints + CSV Matrix + Notion Hub',
         targetLaunchWeek: 'Week 5'
       },
       {
-        task: 'Build Product #8: First-Apartment Essential Inventory & Smart Budget Planner ($24 CAD)',
-        format: 'Automated Google Sheets Expense & Gear Registry',
-        status: 'Planned',
-        targetLaunchWeek: 'Week 6'
-      },
-      {
-        task: 'Deploy Bundle #1: The First-Apartment & Moving Survival Suite ($47 CAD)',
-        format: 'Fourthwall Curated Product Bundle',
-        status: 'Planned',
+        task: 'The Micro-Entryway & Clutter Drop-Zone Solution Kit',
+        format: 'PDF Guide + Slat-Wall Blueprints + CSV Matrix + Notion Hub',
         targetLaunchWeek: 'Week 6'
       }
     ]
   },
   {
-    phase: 'Phase 3: Flagship Launch & Studio Mastery',
+    phase: 'Phase 3: Deep Storage & Hybrid Living Kits',
     timeline: 'Weeks 7–9',
-    primaryGoal: 'Assemble and launch the ultimate signature product (SS-OS) and studio zoning system.',
+    primaryGoal: 'Target high-AOV lifestyle products: under-bed vaults, studio room dividers, and WFH hideaways.',
     milestones: [
       {
-        task: 'Build Product #7: Studio & Multi-Functional Room Zoning System ($27 CAD)',
-        format: 'Canva Sightline Simulator + Circadian Light Schedule',
-        status: 'Planned',
+        task: 'The Under-Bed Dust-Free Storage Vault & Compression Kit',
+        format: 'PDF Guide + Bed Riser Specs + CSV Matrix + Notion Hub',
         targetLaunchWeek: 'Week 7'
       },
       {
-        task: 'Build Product #5: The 30-Day Small Home Declutter & Spatial Reset ($27 CAD)',
-        format: 'Interactive PDF + Action Card Pack',
-        status: 'Planned',
+        task: 'The Studio Apartment 3-in-1 Room Zoning & Separation Kit',
+        format: 'PDF Guide + Floor Plan Blueprints + CSV Matrix + Notion Hub',
         targetLaunchWeek: 'Week 8'
       },
       {
-        task: 'Finalize & Launch Flagship Product #1: The Small Space Operating System (SS-OS) ($79 CAD)',
-        format: 'Notion 2.0 Hub + Sheets + 120-Page Master Guide + Video Walkthrough',
-        status: 'Planned',
-        targetLaunchWeek: 'Week 9'
-      },
-      {
-        task: 'Launch Bundle #4: The Complete SmallSpaceHome Master Ecosystem ($97 CAD)',
-        format: 'All-Access Pass on Fourthwall',
-        status: 'Planned',
+        task: 'The Compact WFH Micro-Desk & Cable Concealment Kit',
+        format: 'PDF Guide + Cable Blueprints + CSV Matrix + Notion Hub',
         targetLaunchWeek: 'Week 9'
       }
     ]
   },
   {
-    phase: 'Phase 4: Physical-Digital Synergy & Organic Growth Engine',
-    timeline: 'Weeks 10+',
-    primaryGoal: 'Scale blog traffic, optimize Pinterest pins, and bundle Fourthwall physical merchandise (wall art & mugs).',
+    phase: 'Phase 4: Ambience, Outdoor & Master Vault Release',
+    timeline: 'Weeks 10–12',
+    primaryGoal: 'Launch lighting and bathroom kits, publish the 3-in-1 Curated Bundles, and open the Master Action Vault.',
     milestones: [
       {
-        task: 'Create Physical Merch + Digital Bundles on Fourthwall (Art Print + Layout Planner, Mug + Reset System)',
-        format: 'Fourthwall Cross-Sell Rule Setup',
-        status: 'Planned',
+        task: 'The Small-Space Optical Expander & 2200K Ambient Lighting Kit',
+        format: 'PDF Guide + Kelvin Guides + CSV Lumen Matrix + Notion Hub',
         targetLaunchWeek: 'Week 10'
       },
       {
-        task: 'Roll Out 30 Targeted Pinterest Rich Pins for Each Product & Bundle',
-        format: 'Canva Pin Templates with High-Contrast Schematics',
-        status: 'Planned',
+        task: 'The Micro-Bathroom & Shower Storage Maxima Kit',
+        format: 'PDF Guide + Tension Specs + CSV Matrix + Notion Hub',
         targetLaunchWeek: 'Week 11'
       },
       {
-        task: 'Implement Checkout Bumps ($5–$9 Add-ons) on Fourthwall Checkout',
-        format: 'Fourthwall Post-Purchase & In-Cart Bumps',
-        status: 'Planned',
+        task: 'The Ultimate Renter Master Action Vault (All 12 Kits & 150+ Hacks)',
+        format: 'Complete 12-Kit Digital Ecosystem + Master Notion Architecture',
         targetLaunchWeek: 'Week 12'
       }
     ]
