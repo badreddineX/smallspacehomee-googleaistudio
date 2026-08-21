@@ -1,44 +1,214 @@
 @import "tailwindcss";
 
+@theme {
+  --font-serif: 'Newsreader', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+  /* SmallSpaceHome Brand Color Palette */
+  --color-brand-olive: #4A533E;
+  --color-brand-olive-dark: #38402F;
+  --color-brand-olive-deep: #2D3326;
+  --color-brand-olive-light: #5F6B4F;
+  --color-brand-olive-muted: #707C5F;
+
+  --color-canvas-bg: #FAF9F6;
+  --color-canvas-warm: #FAF8F5;
+  --color-canvas-card: #FFFFFF;
+  --color-canvas-muted: #F5F2EB;
+  --color-canvas-border: #E5DFD5;
+  --color-canvas-subtle: #EFECE6;
+
+  --color-ink-primary: #1C1917;
+  --color-ink-secondary: #44403C;
+  --color-ink-muted: #78716C;
+  --color-ink-light: #A8A29E;
+
+  --color-accent-terracotta: #A85A3C;
+  --color-accent-terracotta-light: #C06C4C;
+  --color-accent-ochre: #C28B38;
+}
+
 @layer base {
+  :root {
+    --brand-olive: #4A533E;
+    --brand-olive-dark: #38402F;
+    --brand-sand: #FAF8F5;
+    --brand-linen: #FAF9F6;
+    --brand-border: #E5DFD5;
+    --brand-charcoal: #1C1917;
+    --brand-terracotta: #A85A3C;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     background-color: #FAF9F6;
-    color: #1A1A1A;
+    color: #1C1917;
+    line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6, .font-serif {
     font-family: 'Newsreader', 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.015em;
+    font-feature-settings: "liga", "kern";
+  }
+
+  ::selection {
+    background-color: #4A533E;
+    color: #FAF9F6;
   }
 }
 
-/* Custom scrollbars */
+/* Custom & Invisible Scrollbars */
 .no-scrollbar::-webkit-scrollbar,
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar,
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* Editorial line rules */
-.editorial-rule {
-  height: 1px;
-  background-color: #1A1A1A;
-  opacity: 0.2;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #F5F2EB;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #D6CEBE;
+  border-radius: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4A533E;
 }
 
-/* Editorial Badge */
+/* Editorial line rules & dividers */
+.editorial-rule {
+  height: 1px;
+  background-color: #1C1917;
+  opacity: 0.15;
+}
+
+.editorial-rule-dashed {
+  border-bottom: 1px dashed #E5DFD5;
+}
+
+/* Editorial Brand Badges & Tags */
 .editorial-badge {
-  display: inline-block;
-  background-color: #5A5A40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background-color: #4A533E;
   color: #FFFFFF;
   padding: 0.25rem 0.75rem;
-  font-size: 9px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   font-weight: 700;
+  border-radius: 2px;
+}
+
+.editorial-badge-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background-color: transparent;
+  color: #4A533E;
+  border: 1px solid #4A533E;
+  padding: 0.2rem 0.65rem;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  border-radius: 2px;
+}
+
+/* Renter-Friendly Safety Status Indicators */
+.safety-pill-safe {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+  border-radius: 2px;
+}
+
+.safety-pill-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: #FFFBEB;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+  border-radius: 2px;
+}
+
+.safety-pill-danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: #FFF1F2;
+  color: #9F1239;
+  border: 1px solid #FECDD3;
+  border-radius: 2px;
+}
+
+/* Warm Paper Card Container */
+.paper-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E5DFD5;
+  box-shadow: 0 1px 3px rgba(28, 25, 23, 0.04), 0 1px 2px rgba(28, 25, 23, 0.02);
+}
+
+.paper-card-subtle {
+  background-color: #FAF8F5;
+  border: 1px solid #EFECE6;
+}
+
+/* Print Optimization Styles */
+@media print {
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .paper-card {
+    border: 1px solid #CCCCCC !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
 }
 
