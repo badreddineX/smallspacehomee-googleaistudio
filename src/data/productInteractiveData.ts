@@ -1,3 +1,5 @@
+import { INTERACTIVE_PRODUCTS_5_TO_11 } from './products/interactiveProducts5to11';
+
 export interface StoreDeliverableFile {
   name: string;
   format: string;
@@ -46,7 +48,7 @@ export interface InteractiveProductData {
   customerWelcomeEmail: string;
 }
 
-export const INTERACTIVE_PRODUCTS_MAP: Record<string, InteractiveProductData> = {
+export const BASE_INTERACTIVE_PRODUCTS_MAP: Record<string, InteractiveProductData> = {
   'kit-zero-damage-mounting': {
     id: 'kit-zero-damage-mounting',
     rank: 1,
@@ -405,4 +407,19 @@ Your complete kit is ready:
 To stress-free renting and deposit protection,
 The SmallSpaceHome Team`
   }
+};
+
+export const INTERACTIVE_PRODUCTS_MAP: Record<string, InteractiveProductData> = {
+  ...BASE_INTERACTIVE_PRODUCTS_MAP,
+  ...INTERACTIVE_PRODUCTS_5_TO_11,
+  
+  // Product Aliases
+  'kit-kitchen-space-doubler': BASE_INTERACTIVE_PRODUCTS_MAP['kit-micro-kitchen-maxima'],
+  'kit-closet-vertical-storage': BASE_INTERACTIVE_PRODUCTS_MAP['kit-closet-quadrupler'],
+  'kit-deposit-defense': BASE_INTERACTIVE_PRODUCTS_MAP['kit-deposit-protection-defense'],
+  'kit-acoustic-privacy': INTERACTIVE_PRODUCTS_5_TO_11['kit-studio-acoustic-privacy'],
+  'kit-micro-entryway': INTERACTIVE_PRODUCTS_5_TO_11['kit-entryway-dropzone'],
+  'kit-studio-bed-separation': INTERACTIVE_PRODUCTS_5_TO_11['kit-studio-zoning-separation'],
+  'kit-optical-space-expander': INTERACTIVE_PRODUCTS_5_TO_11['kit-optical-expander-lighting'],
+  'kit-bathroom-vanity-shower': INTERACTIVE_PRODUCTS_5_TO_11['kit-small-bathroom-maximizer']
 };
