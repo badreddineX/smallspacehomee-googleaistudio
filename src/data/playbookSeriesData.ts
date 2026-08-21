@@ -50,263 +50,381 @@ export interface PlaybookMeta {
 
 export const PLAYBOOK_SERIES: PlaybookMeta[] = [
   // =========================================================================
-  // VOLUME 01: ZERO-DAMAGE RENTER MOUNTING MASTER KIT
+  // VOLUME 01: ZERO-DAMAGE RENTER MOUNTING OPERATING SYSTEM (9-CHAPTER MASTER PLAYBOOK)
   // =========================================================================
   {
     id: 'playbook-01',
     volumeNumber: 1,
-    volumeLabel: 'Volume 01 / Core Architectural Starter',
+    volumeLabel: 'Volume 01 / Core Architectural Operating System',
     slug: 'zero-damage-renter-mounting-playbook',
     fileName: 'Digital_Product_Playbook_01_Zero_Damage_Renter_Mounting_Master_Kit.pdf',
-    targetPages: 28,
-    targetFileSize: '28 Pages • 3.8 MB',
+    targetPages: 36,
+    targetFileSize: '36 Pages • 4.8 MB',
     title: 'The Zero-Damage Renter Mounting & Secret Wall Hacks Master Playbook',
-    subtitle: 'A Practical Engineering Guide to Planning, Installing, Monitoring, and Removing Wall-Mounted Systems in Rental Homes',
+    subtitle: 'A Decision-Heavy Engineering System to Mount Art, Mirrors, Shelving & Acoustics with 100% Renter Safety, Zero Drywall Tears, and Zero Deposit Loss',
     category: 'Renter Hardware & Wall Systems',
-    audience: 'Urban renters living in 400–750 sq ft apartments seeking gallery-quality wall installations with 0% drywall damage.',
-    promise: 'Mount mirrors, art, shelving, and acoustics with 100% confidence, zero security deposit deductions, and zero drywall tears.',
+    audience: 'Urban renters living in 350–750 sq ft apartments seeking gallery-quality wall installations and vertical storage with 0% drywall damage.',
+    promise: 'Transform bare rental walls into high-end gallery layouts and smart vertical storage using shear physics, 70% IPA protocols, surface decision matrices, and landlord-safe removal methods.',
     accentColor: '#4A533E',
     priceCad: 29,
-    perceivedValueCad: 89,
+    perceivedValueCad: 99,
     isbn: 'SSH-DP-2026-VOL01',
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
         chapterNumber: 1,
-        title: 'Canadian Renter Context & Surface Reality',
-        subtitle: 'Navigating provincial lease realities in Toronto, Vancouver, and Montreal without fear',
-        readingMinutes: 4,
-        content: `Renting in Canadian urban centres involves unique structural and legal realities. Condos built post-2005 often use 1/2-inch gypsum drywall over light-gauge metal studs with commercial-grade flat builder-grade latex paint. In contrast, pre-1950 heritage walk-ups feature brittle plaster and lath substrates.
+        title: 'Assessing Space Constraints, Substrates & Lease Realities',
+        subtitle: 'Substrate diagnosis, provincial lease rights, and establishing your baseline',
+        readingMinutes: 5,
+        content: `Renting in urban apartments requires balancing personal aesthetic expression with strict lease obligations. Most rental agreements contain generic clauses prohibiting "structural alterations," yet decorating with damage-free systems is a standard tenant right.
 
-Understanding your wall substrate is the critical first step. When fasteners fail, the root cause is almost never the adhesive strip itself—it is surface dust, improper shear loads, or incompatible paint chemistry. By establishing a rigorous diagnostic procedure before driving any nail or adhering any strip, you protect both your personal aesthetic sanctuary and your security deposit.`,
+SUBSTRATE RECONNAISSANCE:
+Before driving any fastener or placing any adhesive, you must identify what lies behind your paint layer:
+1. POST-2005 CONDOS: Standard 1/2-inch gypsum drywall over light-gauge metal studs. Finish is usually flat builder-grade latex paint prone to paper tearing if adhesives are pulled outward.
+2. PRE-1950 HERITAGE WALK-UPS: Brittle plaster over wooden lath. Plaster shatters easily when struck with standard nails or heavy toggle bolts, creating large crater blowouts.
+3. CONCRETE / MASONRY PILLARS: Solid poured concrete with thin skim coats. Expansion anchors require hammer drilling (prohibited in leases); only high-strength adhesive shear systems or mechanical tension poles can be used.
+
+DECISION RULE: Execute the Knuckle-Tap Resonance Test:
+• Hollow drum ring $\to$ Modern drywall (stud spacing: 16" on-center).
+• High-frequency dense thud $\to$ Plaster & lath or concrete.`,
         keyTakeaways: [
-          'Know your lease rights: Decorating is generally permitted, but tenant repairs must restore walls to original move-in baseline.',
-          'Post-2005 condos feature gypsum drywall over metal studs; pre-1950 walk-ups feature brittle plaster over wood lath.',
-          'Never install adhesives onto paint cured for less than 28 days or over greasy kitchen backsplash areas without solvent prep.'
+          'Know your lease rights: Tenant decorating is permissible provided walls are restored to move-in condition.',
+          'Never assume all walls in a unit are identical: exterior boundary walls often feature masonry or metal furring channels.',
+          'Identify paint age: Paint cured for less than 30 days must never receive pressure-sensitive adhesive.'
         ],
         checklistItems: [
-          'Locate and review the decorating clause in your provincial lease agreement.',
-          'Identify whether your walls are modern drywall, heritage plaster, or concrete veneer.',
-          'Confirm that all walls selected for mounting have cured paint older than 30 days.'
+          'Perform knuckle-tap resonance test on each target wall zone.',
+          'Check target wall for underlying electrical switches and plumbing stacks within 12 inches.',
+          'Confirm wall paint is older than 30 days and completely free of bubbling or moisture stains.'
         ]
       },
       {
         chapterNumber: 2,
-        title: 'The 4 Core Checks Before Mounting',
-        subtitle: 'The systematic four-pillar pre-flight audit for every hanging project',
-        readingMinutes: 5,
-        content: `Before any frame, mirror, shelf, or acoustic panel touches your wall, execute the Four Core Checks:
+        title: 'Choosing the Right Hardware & Safe Working Load Protocols',
+        subtitle: 'Shear physics, the 40% Safety Buffer, and choosing fasteners by load bracket',
+        readingMinutes: 6,
+        content: `Commercial packaging claims (e.g. "Holds up to 16 lbs") reflect static vertical shear tests conducted on polished steel in climate-controlled labs. In real rentals, paint elasticity, humidity fluctuations, and micro-vibrations from closing doors significantly reduce holding capacity.
 
-1. WEIGHT AUDIT: Place the complete object—including glass, matting, hanging wire, and D-rings—on a digital kitchen scale. Record the gross tare weight in grams or pounds. Never guess weight by hand.
-2. SUBSTRATE DIAGNOSIS: Perform the knuckle-tap resonance test. A hollow drum echo indicates modern drywall; a dense, high-frequency dull thud with textured grain indicates plaster & lath or concrete.
-3. HARDWARE SPECIFICATION: Calculate the Conservative Working Load by applying a 40% safety reduction to manufacturer claims (e.g., 16 lb rated strips = 9.6 lb safe working load).
-4. ENVIRONMENTAL AUDIT: Check wall temperature and relative humidity. Exterior condo walls during Canadian winters can drop below 12°C, causing adhesive bonds to become brittle and lose shear adhesion.`,
+THE 40% SAFETY BUFFER FORMULA:
+Always reduce manufacturer weight ratings by 40% to calculate the Conservative Working Load (CWL):
+$$\\text{CWL} = \\text{Rated Weight} \\times 0.60$$
+
+HARDWARE SELECTION BRACKETS:
+• UNDER 2 LBS (0.9 KG): Small poster strips or micro adhesive hooks. Ideal for unframed prints, cable clips, and calendar boards.
+• 2 TO 10 LBS (0.9–4.5 KG): Interlocking hook-and-loop picture hanging strips (4 corner pairs minimum). Distributes shear load evenly across four points.
+• 10 TO 25 LBS (4.5–11.3 KG): Drywall claw hangers (micro-pins that leave only pinpricks) or dual-bracket picture rail moulding hooks into top picture rails.
+• OVER 25 LBS (11.3+ KG): Strictly floor-grounded leaners with safety anti-tip tether straps into solid wood studs, or floor-to-ceiling tension architectural columns.`,
         keyTakeaways: [
-          'Always weigh frames on a calibrated digital kitchen scale; frames with glass weigh 2.5x more than estimated.',
-          'Apply the 40% Safety Buffer: Divide total gross weight by 0.60 to determine required hardware rating.',
-          'Avoid mounting on exterior walls during sub-zero Canadian winter temperatures without prior room thermal stabilization.'
+          'Never hang items near the maximum printed package rating; always apply the 40% safety reduction buffer.',
+          'Interlocking hook-and-loop strips distribute shear load 300% better than single hook adhesive mounts.',
+          'Items over 25 lbs must use gravity-grounded floor furniture or mechanical stud anchors.'
         ],
         checklistItems: [
-          'Record gross tare weight on kitchen scale: _______ lbs / kg.',
-          'Confirm substrate type via knuckle-tap resonance test.',
-          'Verify ambient room temperature is at least 18°C (65°F) before applying adhesives.'
+          'Weigh complete object with glass, frame, and mounting wire on a digital kitchen scale.',
+          'Calculate required fastener pairs using: (Total Weight in lbs) / 3.0 = Number of Medium Strip Pairs.',
+          'Verify that hardware chosen matches the specific load bracket.'
         ],
         tableData: {
-          headers: ['Check Category', 'Diagnostic Method', 'Passing Threshold', 'Failure Action'],
+          headers: ['Weight Bracket', 'Recommended Hardware', 'Safe Working Load', 'Risk Level'],
           rows: [
-            ['Weight Verification', 'Digital Kitchen Scale', 'Exact weight recorded', 'Re-weigh with glass & hardware'],
-            ['Substrate Audit', 'Knuckle-tap Sound', 'Clean hollow or solid', 'Perform pilot pin prick'],
-            ['Hardware Rating', '40% Safety Reduction', 'Gross load <= 60% rated', 'Add 2 additional strip pairs'],
-            ['Thermal Check', 'Infrared Thermometer', 'Wall surface >= 15°C', 'Warm room 2 hours prior to install']
+            ['Under 2 lbs', 'Poster / Foam Mini Strips', '1.2 lbs max', 'Very Low (Safe)'],
+            ['2 to 10 lbs', 'Interlocking Hook-and-Loop (4 corner pairs)', '6.0 lbs max', 'Low (Verified Safe)'],
+            ['10 to 25 lbs', 'Curved Drywall Claw / Hardened Steel Pins', '16.0 lbs max', 'Moderate (Requires Pinprick)'],
+            ['Over 25 lbs', 'Floor-Grounded Leaner + Anti-Tip Strap', '100+ lbs capacity', 'Zero Wall Risk']
           ]
         }
       },
       {
         chapterNumber: 3,
-        title: 'Safety First & Conservative Working Load Protocols',
-        subtitle: 'Static vertical shear vs dynamic cantilever torque and high-risk overhead zones',
-        readingMinutes: 6,
-        content: `Fastener ratings printed on hardware packaging represent static vertical shear on polished steel under ideal laboratory conditions. In a real rental apartment, micro-vibrations from closing doors, HVAC cycling, and cantilever torque drastically alter peeling forces.
+        title: 'Safe Wall Mounting Decisions by Surface Type',
+        subtitle: 'The comprehensive decision matrix for Drywall, Plaster, Tile, and Hollow Doors',
+        readingMinutes: 7,
+        content: `Fastener failure is primarily a mismatch between the wall substrate and fastener chemistry. What works flawlessly on smooth drywall will fail catastrophically on bathroom ceramic tile or textured plaster.
 
-THE HIGH-RISK OVERHEAD RULE:
-Never mount heavy framed glass, mirrors, or projecting shelves directly over beds, cribs, nursery zones, or primary sofa seating using adhesive strips alone. For overhead zones, use either floor-standing furniture, ceiling-tension structural poles, or mechanical brass picture rail hooks anchored into solid wood.
+SURFACE-BY-SURFACE DECISION RULES:
 
-CANTILEVER TORQUE DYNAMICS:
-A floating shelf protruding 6 inches from the wall creates a lever arm. A 3-lb plant placed at the outer lip generates a 18 in-lb rotational moment that concentrates extreme tensile stress at the top adhesive edge, causing sudden catastrophic peeling. Floating display shelves must always use bottom bracket support or floor-grounded leg uprights.`,
+1. MODERN GYPSUM DRYWALL (FLAT/EGGSHELL LATEX):
+• SAFE: Interlocking hook-and-loop strips with 70% IPA solvent prep; curved steel drywall claws.
+• CAUTION: Foam double-sided tape (causes paper peeling during removal).
+• DANGER / AVOID: Heavy expansion plastic plugs in open drywall cavities without stud backing.
+
+2. HERITAGE PLASTER & LATH:
+• SAFE: Hardened steel fine-gauge picture pins (2mm diameter) driven at a 45-degree angle; top moulding picture rail hooks.
+• CAUTION: Heavy adhesive strips on brittle unprimed lime wash paint (adhesive can pull away top lime plaster skin).
+• DANGER / AVOID: Standard spiral screw anchors (shatters brittle plaster keys behind lath).
+
+3. BATHROOM CERAMIC TILE & GLASS:
+• SAFE: Heavy-duty vacuum-lock suction cups with silicone seals; non-porous clear acrylic mounting strips.
+• CAUTION: Foam tape (breaks down under steam humidity).
+• DANGER / AVOID: Drilling tile grout lines without landlord written permission.
+
+4. HOLLOW-CORE WOOD DOORS (VENEER):
+• SAFE: Padded over-door friction hanging brackets; lightweight micro-strips under 1.5 lbs.
+• CAUTION: Self-adhesive utility hooks loaded with heavy wet towels.
+• DANGER / AVOID: Threaded screw hooks (hollow veneer is only 3mm thick and strips under load).`,
         keyTakeaways: [
-          'Static vertical loads (flat frames) behave predictably; cantilever loads (projecting shelves) amplify peeling forces by 300%.',
-          'Zero adhesives over sleeping zones: Strictly enforce mechanical or floor-standing support above headboards.',
-          'Always distribute load across 4 corner anchor points rather than relying on a single top center attachment.'
+          'Never use adhesive foam tape on drywall; it lacks parallel stretch release tabs and tears drywall paper.',
+          'Plaster walls require top moulding hooks or 45-degree angled hardened pins to prevent crumbling.',
+          'For ceramic tile, non-porous suction levers or removable acrylic gel strips are 100% damage-free.'
         ],
         checklistItems: [
-          'Confirm mounting location is NOT directly above bed headboards or toddler play areas.',
-          'Ensure flat art has zero forward tilt angle to eliminate cantilever peeling torque.',
-          'Verify weight is shared evenly between left and right mounting brackets.'
-        ]
+          'Verify surface classification against the Surface Decision Matrix.',
+          'Perform a 24-hour test strip adhesion test on an inconspicuous corner of the target wall.',
+          'Ensure tiles are completely cleaned of soap scum using alcohol before applying suction hardware.'
+        ],
+        tableData: {
+          headers: ['Surface Type', 'Recommended Option (Safe)', 'Caution Option', 'Dangerous Option (Avoid)'],
+          rows: [
+            ['Modern Drywall', 'Hook-and-Loop Strips + 70% IPA', 'Single-Point Adhesive Hook', 'Expansion Anchors without Studs'],
+            ['Heritage Plaster', 'Hardened Steel Picture Pins (45°)', 'High-Tack Strips on Lime Paint', 'Spiral Drywall Plastic Anchors'],
+            ['Ceramic Tile', 'Vacuum Suction Lever + Silicone', 'Removable Clear Gel Tape', 'Drilling Grout / Glaze'],
+            ['Hollow Core Door', 'Padded Over-Door Hanging Bracket', 'Lightweight 1-lb Hook', 'Threaded Screw Hooks']
+          ]
+        }
       },
       {
         chapterNumber: 4,
-        title: 'The 70% Isopropyl Alcohol Degreasing Standard',
-        subtitle: 'The molecular prep protocol that prevents 94% of adhesive strip failures',
-        readingMinutes: 4,
-        content: `Microscopic oils, silicone residues from household cleaners, and aerosolized cooking oils form an invisible barrier on rental walls that prevents pressure-sensitive adhesives from cross-linking with paint polymers.
+        title: 'Small-Space Layout Planning, Sightlines & Eye-Level Geometry',
+        subtitle: 'The 57" gallery centerline standard and multi-stud weight distribution',
+        readingMinutes: 6,
+        content: `In compact apartments under 700 sq ft, visual clutter shrinks perceived room volume faster than physical furniture. Proper wall zoning organizes sightlines, creates artificial depth, and prevents chaotic clustering.
 
-THE FOUR-STAGE PREP PROTOCOL:
-1. DRY DUST: Wipe the target area with a dry microfiber cloth to remove loose dust particles.
-2. 70% IPA WIPE: Dampen a lint-free cotton pad with 70% Isopropyl Alcohol. Gently wipe the mounting area in a circular motion. 
-3. EVAPORATION DWELL: Wait precisely 120 seconds. 70% IPA contains 30% purified water, which allows the solvent to break down surface oils before evaporating cleanly.
-4. TACTILE CHECK: Touch the wall lightly with the back of a clean finger; the surface should feel squeaky and completely free of wax or slip agents.
+THE 57-INCH CENTERLINE GALLERY FORMULA:
+Museums and luxury galleries position the vertical center of artwork precisely 57 inches (145 cm) from the finished floor—the average human eye level.
+$$\\text{Hook Height} = 57\\text{"} + \\frac{\\text{Frame Height}}{2} - \\text{Drop from Top of Frame to Mounting Point}$$
 
-CRITICAL WARNING: Never use Windex, Lysol, multi-surface sprays, or baby wipes. These products contain surfactants, silicones, and fragrance oils that permanently ruin adhesive tack.`,
+ZONING BY ROOM FUNCTION:
+1. ENTRYWAY LANDING ZONE: Mount drop-shelves and key rails between 42" and 48" from floor. Keep profile under 4" depth to maintain clear 36" corridor flow.
+2. STUDIO LIVING & SLEEP DIVISION: Use vertically suspended acoustic divider panels or open shelving tension columns to divide sleeping zones from desk areas without building physical partitions.
+3. VERTICAL SIGHTLINE EXTENSION: Hang mirrors opposite primary window openings to bounce natural daylight into dark galley corridors, doubling visual depth.`,
         keyTakeaways: [
-          'Only use 70% Isopropyl Alcohol; 99% IPA evaporates too quickly to dissolve oils, and 50% contains excess water.',
-          'Multi-surface cleaners leave a silicone lubricating layer that causes adhesives to slide off within 48 hours.',
-          'Allow 2 full minutes of dwell time for complete surface drying before placing adhesive strips.'
+          'The 57" centerline formula ensures cohesive, professional gallery alignment across varied frame sizes.',
+          'Maintain a minimum 36" clear walkway corridor in tight entryways by keeping wall accessories under 4" depth.',
+          'Position mirrors opposite natural light sources to visually double studio apartment square footage.'
         ],
         checklistItems: [
-          'Purchase standard 70% Isopropyl Alcohol at local pharmacy ($3.50 CAD).',
-          'Clean target wall zone with fresh lint-free microfiber cloth.',
-          'Wait 2 full minutes for complete solvent evaporation.'
+          'Measure from finished floor to mark 57-inch centerline on wall with a faint pencil tick.',
+          'Confirm that entryway wall fixtures leave at least 36 inches of clear walking corridor width.',
+          'Use painter\'s blue tape to mock up frame dimensions on the wall before placing hardware.'
         ]
       },
       {
         chapterNumber: 5,
-        title: 'The 13-Step Repeatable Installation Blueprint',
-        subtitle: 'From surface prep to the mandatory 1-hour cure cycle and laser level alignment',
+        title: 'Zero-Damage Vertical Storage & Heavy Mirror Strutting',
+        subtitle: 'Gravity leaners, tension columns, over-door mechanics, and acoustic floating rails',
         readingMinutes: 7,
-        content: `Follow this standardized 13-step sequence for every framed piece of art, mirror, or acoustic panel:
+        content: `When floor space is at a premium, vertical walls are your most valuable storage real estate. However, mounting heavy functional storage requires smart mechanical leverage rather than relying solely on chemical adhesive bonds.
 
-PHASE 1: PREPARATION (Steps 1–4)
-1. Weigh frame on digital scale; record tare weight.
-2. Clean wall with 70% Isopropyl Alcohol; wait 2 minutes.
-3. Clean frame rear contact points with 70% IPA.
-4. Separate Command click-strips and press pairs together until audible click is heard.
+TACTICAL VERTICAL STORAGE BLUEPRINTS:
 
-PHASE 2: ATTACHMENT (Steps 5–8)
-5. Remove red liner; press strip pairs firmly onto frame corners (2 to 4 pairs depending on weight).
-6. Hold heavy pressure against each strip on frame for 30 seconds.
-7. Remove black wall-side liners.
-8. Align frame against wall using a torpedo bubble level or mini laser level.
+1. THE FLOOR-GROUNDED HEAVY MIRROR BLUEPRINT:
+Full-length mirrors (25–65 lbs) make compact rooms look expansive, but hanging them entirely on drywall is high-risk.
+• IMPLEMENTATION: Place mirror base on the floor with anti-skid silicone rubber pads set 8–12 inches out from the wall baseboard. The mirror leans back at a safe 5-degree angle. Gravity supports 92% of the gross weight.
+• RETENTION: Secure the top frame using a single non-load-bearing anti-tip tension strap tethered into a stud with a single 2mm pin to prevent accidental tip-over.
 
-PHASE 3: BOND CURE & VERIFICATION (Steps 9–13)
-9. Press frame firmly against wall for 30 seconds across all strip locations.
-10. Carefully grab frame from bottom corners and peel upward at a 45-degree angle to disengage the hook-and-loop closure, leaving the wall strips exposed.
-11. Press firmly on the wall-mounted strips with your thumb for 30 seconds each.
-12. MANDATORY CURE: Wait precisely 60 minutes before re-attaching the frame. This allows the pressure-sensitive acrylic adhesive to cold-flow and achieve maximum shear bond strength.
-13. Re-engage frame with wall strips, pressing firmly until loud clicking confirms total mechanical lock.`,
+2. FLOOR-TO-CEILING TENSION STORAGE COLUMNS:
+Adjustable spring-loaded aluminum tension poles (e.g. Telescopic tension columns) wedge securely between floor and ceiling using 80 lbs of compressive spring force with padded rubber feet.
+• CAPACITY: Mount floating shelves, shoe racks, or bike hooks directly to the column with zero screws in walls or ceiling.
+
+3. OVER-DOOR CANTILEVER BRACKET UPGRADES:
+Transform hollow-core bedroom and closet doors into heavy pantry or shoe organizers:
+• Line bracket contact points with 1mm self-adhesive felt tape to prevent door-frame scuffing.
+• Secure bottom of organizer basket with hook-and-loop strips to eliminate annoying door-swing clatter.`,
         keyTakeaways: [
-          'Step 10 & 12 are mandatory: Never hang weight immediately after sticking strips to the wall.',
-          'The 60-minute cure cycle increases ultimate holding power by over 300%.',
-          'Audible clicking indicates total dual-lock hook engagement between frame and wall.'
+          'Gravity-grounded leaning mirror setups transfer 92% of weight to the floor while requiring zero load-bearing drywall anchors.',
+          'Tension poles provide structural floor-to-ceiling storage without touching or penetrating drywall.',
+          'Always damp over-door organizer brackets with felt tape to protect painted door frames from abrasion.'
         ],
         checklistItems: [
-          'Press each strip with 30 seconds of heavy thumb pressure.',
-          'Disengage frame and press exposed wall strips firmly for 30 seconds.',
-          'Start a 60-minute phone timer before hanging artwork.'
+          'Install silicone anti-slip floor pads beneath bases of leaning mirrors or ladder desks.',
+          'Apply felt protective padding to all over-door hanging bracket hooks.',
+          'Verify tension column compressive lock before loading shelves with heavy books.'
         ]
       },
       {
         chapterNumber: 6,
-        title: 'Careful Removal Protocols & Thermal Softening Limits',
-        subtitle: 'The slow parallel stretch technique and emergency heat release without drywall damage',
-        readingMinutes: 5,
-        content: `When moving out or redecorating, improper removal is the single most common cause of drywall paper delamination. Adhesive strips are engineered to release cleanly ONLY when stretched parallel to the wall surface.
+        title: 'Common Mistakes & The High-Risk Danger Zone',
+        subtitle: 'Overhead zones, cantilever lever arms, and chemical cleaner disasters to strictly avoid',
+        readingMinutes: 6,
+        content: `Understanding what NOT to do is just as important as knowing proper installation techniques. The majority of catastrophic mounting failures stem from three preventable mistakes:
 
-THE PARALLEL STRETCH STANDARD:
-1. Support the top of the strip lightly with one hand to prevent snap-back.
-2. Grab the rounded pull tab with your dominant hand.
-3. SLOWLY pull straight down, hugging the wall surface at a 0-degree angle. Never pull outward at 90 degrees or diagonal at 45 degrees.
-4. Continue stretching slowly up to 12–15 inches until the adhesive releases cleanly from the wall.
+THE THREE FORBIDDEN MOUNTING SINS:
 
-THE THERMAL ASSIST PROTOCOL (FOR STUBBORN STRIPS):
-If a tab tears off or feels stuck, never pry it with a metal putty knife.
-1. Set a standard household hair dryer to Medium heat.
-2. Direct warm airflow onto the plastic bracket for 45 to 60 seconds from a distance of 4 inches.
-3. Take a 12-inch piece of unflavored dental floss or nylon monofilament fishing line.
-4. Slide the floss behind the bracket and gently saw downward in a gentle flossing motion. The warmed adhesive will slice cleanly without tearing the underlying drywall paper.
-5. Roll away any residual adhesive film with your thumb using gentle friction.`,
+1. THE OVERHEAD HEADBOARD HAZARD:
+> DANGER: Never mount heavy glass frames, mirrors, or projecting shelves directly over beds, cribs, or primary sofa seating using adhesive strips alone. Thermal cycling, humidity, and micro-vibrations can cause sudden release during sleep.
+• FIX: Use floor-standing headboard units, soft tapestry hangings, or ultra-lightweight foam-core prints under 1 lb.
+
+2. THE CANTILEVER ROTATIONAL TORQUE DISASTER:
+Adhesive strips are engineered exclusively for vertical shear (pulling straight down). When you attach a 6-inch deep floating shelf, placing a 3-lb object on the outer edge creates a rotational lever arm that multiplies outward peeling force by 400% at the top edge.
+• RULE: Floating display shelves must always utilize bottom diagonal brackets or floor-grounded vertical supports.
+
+3. CLEANING WALLS WITH SILICONE / WAX-BASED SPRAYS:
+Using Windex, Lysol wipes, or multi-surface cleaner prior to mounting deposits surfactants and silicone lubricants onto paint pores, guaranteeing bond failure within 72 hours.
+• RULE: Strictly use 70% Isopropyl Alcohol USP. No exceptions.`,
         keyTakeaways: [
-          'Always pull tabs parallel to the wall (0 degrees); pulling outward at 90 degrees instantly tears drywall paper.',
-          'If a pull tab breaks, use the Hair Dryer + Dental Floss sawing method—never use metal screwdrivers or knives.',
-          'Thermal softening takes less than 60 seconds and guarantees 100% paint preservation.'
+          'Never place adhesive-mounted heavy frames above sleeping or high-traffic seating zones.',
+          'Projecting shelves convert vertical loads into destructive peeling torque; avoid floating adhesive shelves.',
+          'Common household cleaners contain lubricating surfactants that ruin adhesive bonding.'
         ],
         checklistItems: [
-          'Always pull removal tab strictly downward parallel to wall.',
-          'Keep a roll of dental floss in your move-out toolbox for emergency strip releases.',
-          'Use gentle hair dryer heat if adhesive feels brittle or difficult to stretch.'
+          'Audit bedroom and sofa zones to ensure zero heavy glass is mounted overhead on adhesive.',
+          'Verify that all adhesive-mounted items are flat to the wall with zero forward cantilever tilt.',
+          'Confirm that only 70% Isopropyl Alcohol was used for pre-installation surface degreasing.'
         ]
       },
       {
         chapterNumber: 7,
-        title: 'Emergency Spackle Formulation & Move-Out Wall Restoration',
-        subtitle: 'The 60-second pinhole restoration method and tenant deposit defense',
-        readingMinutes: 6,
-        content: `Even with careful planning, tiny pinholes from wire hangers or micro-scuffs may occur during your tenancy. Restoring walls to pristine move-in condition takes less than 10 minutes when using the correct supplies.
+        title: 'Quick-Win High-Impact Upgrades for Tight Rentals',
+        subtitle: '15-minute entryway drop zones, 30-minute acoustic arrays, and invisible cable channels',
+        readingMinutes: 5,
+        content: `Maximize your living comfort and visual serenity in a single afternoon with these three rapid, renter-certified upgrades:
 
-THE 3-STEP PINHOLE FILLER RECIPE:
-1. CLEAN HOLE: Push any protruding paper fray back into the hole using the rounded handle of a screwdriver.
-2. APPLICATION: Apply a pea-sized dab of lightweight vinyl spackle (e.g., DAP Fast 'N Final or 3M Patch Plus Primer) directly over the hole with your fingertip.
-3. FLUSH SMOOTHING: Wipe across the hole with a damp microfiber cloth or a flexible plastic putty knife. Do not leave a thick raised mound on the wall.
-4. TEXTURE MATCH: While the spackle is still damp, lightly dab it with a damp kitchen sponge to mimic the surrounding orange-peel paint stipple texture.
+PROJECT 1: THE 15-MINUTE ENTRYWAY DROP ZONE
+• PROBLEM: Coats, keys, and incoming mail clutter front entryway floors in small apartments lacking hall closets.
+• SOLUTION: Mount a 24-inch solid bamboo key rail with 5 hooks using 3 pairs of Large interlocking strips. Add an ultra-slim 2-inch acrylic letter bin directly below.
+• RESULT: Total entryway decluttering taking under 0.5 sq ft of wall space and supporting up to 9 lbs of daily jackets and bags.
 
-COLOR MATCHING TIP:
-If touch-up paint is needed, take a 1-inch paint chip from an inconspicuous area (such as inside a closet or behind a light switch cover plate) to Home Depot or Sherwin-Williams for a $7 CAD color-matched sample pot. Apply with a tiny artist detail brush only onto the patched dot.`,
+PROJECT 2: THE 30-MINUTE ACOUSTIC RETROFIT
+• PROBLEM: Thin apartment walls transmit hallway footsteps and neighbor conversation noise.
+• SOLUTION: Create a 6-panel hexagonal acoustic felt array on the shared party wall using 3M poster tabs. Felt absorbs high-frequency flutter echoes and doubles as a modern geometric art installation.
+
+PROJECT 3: DAMAGE-FREE CABLE CAMOUFLAGE
+• PROBLEM: Black power cables hanging down from wall-mounted TVs or desk monitors create immediate visual chaos.
+• SOLUTION: Route cables through paintable half-round cord raceways secured with removable low-tack clear adhesive strips. Paint raceway with leftover wall paint to render cords 100% invisible.`,
         keyTakeaways: [
-          'Lightweight vinyl spackle dries in under 15 minutes and requires zero sanding if wiped flush with a damp cloth.',
-          'Dabbing damp spackle with a kitchen sponge blends the repair seamlessly into surrounding drywall texture.',
-          'Use an artist detail brush for touch-up paint; never use a wide roller that creates visible shiny patches.'
+          'A vertical entryway drop zone eliminates floor clutter in compact foyers in under 15 minutes.',
+          'Hexagonal acoustic felt tiles reduce ambient noise transmission while acting as contemporary gallery art.',
+          'Low-tack paintable cord raceways eliminate cable clutter without drilling or drywall patching.'
         ],
         checklistItems: [
-          'Keep a 250ml tub of lightweight vinyl spackle ($6.50 CAD) in your toolkit.',
-          'Wipe filled holes flush with a damp cloth to eliminate the need for dusty sandpaper.',
-          'Photograph repaired walls in good daylight for your move-out tenant documentation archive.'
+          'Assemble entryway key rail and weigh intended daily load (keys, bag, coats).',
+          'Map out acoustic tile pattern on floor before mounting on shared party wall.',
+          'Wipe cord raceway mounting track with 70% IPA and allow 2 minutes to dry.'
         ]
+      },
+      {
+        chapterNumber: 8,
+        title: 'Troubleshooting, Environmental Audits & 24-Hour Maintenance',
+        subtitle: 'Thermal audits, humidity peeling prevention, and the 60-minute cure milestone',
+        readingMinutes: 5,
+        content: `Environmental shifts in rental apartments—such as winter radiator cycling or high-humidity summer days—affect adhesive flexibility. Conducting seasonal health audits ensures your wall systems remain 100% secure year-round.
+
+THE MANDATORY 60-MINUTE COLD-FLOW CURE:
+Pressure-sensitive viscoelastic acrylic adhesives require at least 60 minutes under zero load to flow microscopically into paint pores and achieve maximum chemical bond strength.
+> RULE: Always disengage frame from wall strips after initial alignment, press wall strips firmly for 30 seconds each, and wait a full 60 minutes before re-attaching artwork.
+
+SEASONAL THERMAL & HUMIDITY AUDITS:
+• WINTER EXTERIOR WALL AUDIT: Exterior concrete walls in Canadian winters can drop below 10°C (50°F). Adhesives become glassy and brittle below 12°C. Ensure indoor temperature is maintained at 18°C+ during initial installation.
+• SUMMER HUMIDITY AUDIT: When indoor relative humidity exceeds 70%, moisture can condense behind heavy frames. Use 1/4-inch silicone rubber bumper pads on bottom frame corners to maintain a breathing air gap between frame and wall.`,
+        keyTakeaways: [
+          'The 60-minute cure cycle is non-negotiable and increases ultimate shear strength by 300%.',
+          'Exterior walls in cold climates must be thermally stabilized before applying adhesive fasteners.',
+          'Bottom bumper pads provide air circulation and prevent moisture buildup behind frames.'
+        ],
+        checklistItems: [
+          'Set a 60-minute timer after applying wall strips before hanging artwork.',
+          'Verify ambient room temperature is at least 18°C (65°F) during installation.',
+          'Attach soft silicone bumper pads to bottom corners of all framed art.'
+        ]
+      },
+      {
+        chapterNumber: 9,
+        title: 'Move-Out Protocol, Thermal Floss Release & Deposit Defense',
+        subtitle: 'The Hair Dryer + Dental Floss sawing method, micro-spackle restoration, and landlord letters',
+        readingMinutes: 6,
+        content: `The ultimate test of any renter mounting system is the move-out inspection. By following our laboratory-tested thermal release protocol, you can remove dozens of wall fixtures in under an hour with zero paint peel, zero drywall blowout, and zero deposit deductions.
+
+THE 5-STEP THERMAL FLOSS RELEASE PROTOCOL:
+If an adhesive tab breaks, or if the strip has been on the wall for multiple years:
+1. NEVER PRY WITH A METAL TOOL: Putty knives and screwdrivers crush drywall gypsum.
+2. THERMAL SOFTENING: Set a hair dryer to Medium heat. Direct warm air onto the plastic mount for 45–60 seconds from 4 inches away to soften the acrylic polymer matrix.
+3. DENTAL FLOSS SAWING: Take an 18-inch length of unflavored dental floss or nylon fishing line. Wrap ends around your fingers, slide floss behind the top of the bracket, and gently saw downward in a steady slicing motion.
+4. RESIDUE ROLLING: Roll away any remaining adhesive rubber film using firm thumb friction.
+5. SOLVENT FINISH: Wipe the spot with a drop of 70% IPA to remove microscopic residue.
+
+TENANT DEPOSIT DEFENSE SCRIPT:
+When scheduling move-out walkthroughs with landlords, provide a signed pre-inspection checklist confirming all walls have been inspected, restored to baseline condition, and documented with high-resolution daylight photographs.`,
+        keyTakeaways: [
+          'Never pull adhesive tabs outward at 90 degrees; always stretch parallel to the wall surface.',
+          'The Hair Dryer + Dental Floss method safely removes stuck brackets without tearing drywall paper.',
+          'Document wall restoration with dated daylight photographs before your final landlord walkthrough.'
+        ],
+        checklistItems: [
+          'Keep hair dryer and unflavored dental floss in your move-out tool kit.',
+          'Inspect all wall surfaces in bright daylight 48 hours prior to move-out inspection.',
+          'Take wide-angle photographs of all walls for your move-out inspection record.'
+        ],
+        tableData: {
+          headers: ['Removal Scenario', 'Correct Technique', 'Tool Required', 'Estimated Time'],
+          rows: [
+            ['Intact Pull Tab', 'Parallel downward stretch (0° angle)', 'Hands Only', '15 Seconds'],
+            ['Broken / Snapped Tab', 'Thermal Hair Dryer + Dental Floss sawing', 'Hair Dryer + Floss', '90 Seconds'],
+            ['Adhesive Residue Dot', 'Friction thumb roll + 70% IPA wipe', '70% IPA + Microfiber', '30 Seconds'],
+            ['Micro Pinhole Fix', 'Lightweight spackle dab + damp sponge wipe', 'Fast \'N Final Spackle', '60 Seconds']
+          ]
+        }
       }
     ],
     pocketCards: [
       {
-        title: 'Pre-Mounting 4-Step Pocket Card (4x6")',
-        description: 'Keep this card beside your digital scale when hanging art or mirrors.',
+        title: 'Pre-Mounting 4-Step Decision Card (4x6")',
+        description: 'Keep this card beside your digital scale and tool kit for every wall project.',
         bulletPoints: [
-          'Weigh object with glass and all hanging hardware.',
-          'Knuckle-tap wall to verify drywall vs plaster.',
-          'Clean contact points with 70% Isopropyl Alcohol (wait 2 mins).',
-          'Press strips firmly and wait mandatory 60-minute cure.'
+          '1. WEIGH: Record exact gross tare weight with glass and hardware on digital kitchen scale.',
+          '2. DIAGNOSE: Knuckle-tap wall to verify modern drywall vs heritage plaster vs concrete.',
+          '3. SOLVENT PREP: Degrease target area with 70% Isopropyl Alcohol USP; wait 2 mins.',
+          '4. 60-MIN CURE: Disengage frame, press wall strips for 30s each, and wait 1 hour before hanging.'
         ]
       },
       {
-        title: 'Emergency Removal & Floss Hack Card (4x6")',
-        description: 'Quick reference for removing stubborn or broken adhesive tabs.',
+        title: 'Emergency Removal & Floss Release Card (4x6")',
+        description: 'Instant reference for damage-free adhesive removal and broken tab recovery.',
         bulletPoints: [
-          'Pull tabs strictly parallel to wall (0 degrees down).',
-          'If tab breaks: Warm bracket with hair dryer for 45 seconds.',
-          'Slide unflavored dental floss behind bracket and saw downward.',
-          'Roll away remaining adhesive residue with thumb friction.'
+          '1. STANDARD RELEASE: Pull tab strictly parallel to wall (0 degrees down). Never pull out.',
+          '2. BROKEN TAB FIX: Warm bracket with hair dryer on Medium heat for 45–60 seconds.',
+          '3. FLOSS SAWING: Slide unflavored dental floss behind bracket and saw downward.',
+          '4. RESIDUE CLEANUP: Roll away remaining adhesive film with thumb friction and 70% IPA.'
+        ]
+      },
+      {
+        title: 'Surface Safety Decision Reference Card (4x6")',
+        description: 'Quick guide to matching fasteners with wall materials to prevent failures.',
+        bulletPoints: [
+          '• DRYWALL: Interlocking hook-and-loop strips (<10 lbs) or curved steel drywall claws.',
+          '• PLASTER: 45° angled hardened steel picture pins (2mm) or top moulding rail hooks.',
+          '• TILE / GLASS: Vacuum suction lever cups or non-porous clear acrylic gel strips.',
+          '• AVOID: Never use foam tape on drywall; never hang heavy glass above beds on adhesive.'
         ]
       }
     ],
     sourcesAndRetailers: [
       {
-        category: 'Adhesive Strips & Dual Lock',
+        category: 'Adhesive Strips & Dual Lock Fasteners',
         retailer: 'Home Depot Canada / Canadian Tire',
         recommendedItems: '3M Command Picture Hanging Strips (Medium & Large), 3M Claw Drywall Picture Hanger (15lb & 25lb)',
         webUrl: 'https://homedepot.ca'
       },
       {
-        category: 'Precision Hardware & Picture Rails',
+        category: 'Precision Hardware & Picture Rail Hooks',
         retailer: 'Lee Valley Tools (Toronto / Vancouver / Online)',
-        recommendedItems: 'Moulding Hooks for Heritage Plaster Rails, Heavy-Duty Monofilament Picture Hanging Wire',
+        recommendedItems: 'Solid Brass Moulding Hooks for Heritage Plaster Rails, Heavy-Duty Monofilament Hanging Wire',
         webUrl: 'https://leevalley.com'
       },
       {
-        category: 'Wall Prep & Repair Supplies',
+        category: 'Solvents, Surface Prep & Spackle Repair',
         retailer: 'Rexall / Shoppers Drug Mart / Home Hardware',
         recommendedItems: '70% Isopropyl Alcohol USP, DAP Fast \'N Final Lightweight Spackling, Microfiber Cloths',
         webUrl: 'https://homehardware.ca'
+      },
+      {
+        category: 'Tension Columns & Modular Storage',
+        retailer: 'IKEA Canada / Structube',
+        recommendedItems: 'ELVARLI Floor-to-Ceiling Aluminum Tension Post System, Anti-Skid Rubber Furniture Floor Pads',
+        webUrl: 'https://ikea.ca'
       }
     ]
   },
@@ -320,8 +438,8 @@ If touch-up paint is needed, take a 1-inch paint chip from an inconspicuous area
     volumeLabel: 'Volume 02 / Culinary Space Engineering',
     slug: 'micro-kitchen-storage-maxima-playbook',
     fileName: 'Digital_Product_Playbook_02_Micro_Kitchen_Storage_Maxima_Playbook.pdf',
-    targetPages: 30,
-    targetFileSize: '30 Pages • 4.1 MB',
+    targetPages: 32,
+    targetFileSize: '32 Pages • 4.3 MB',
     title: 'The Micro-Kitchen Storage Maxima & Galley Optimization Playbook',
     subtitle: 'How to Double Vertical Prep Capacity, Master Zero-Drill Rail Systems, and Eliminate Counter Clutter in 45 Sq Ft',
     category: 'Small Space Kitchen Architecture',
@@ -334,7 +452,7 @@ If touch-up paint is needed, take a 1-inch paint chip from an inconspicuous area
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -344,7 +462,10 @@ If touch-up paint is needed, take a 1-inch paint chip from an inconspicuous area
         readingMinutes: 5,
         content: `Most urban apartments in Toronto and Vancouver offer less than 4 running feet of continuous countertop space. Standard appliances—air fryers, espresso machines, electric kettles, and knife blocks—quickly consume 80% of available prep surfaces, turning meal prep into a frustrating juggling act.
 
-The fundamental law of micro-kitchen engineering is: VERTICAL AIRSPACE IS PRIMARY STORAGE, COUNTERTOPS ARE EXCLUSIVELY FOR ACTIVE PREP. By shifting dry goods, cutlery, spices, and cleaning supplies into vertical airspace and underutilized cabinet depths, you reclaim full culinary freedom.`,
+THE FUNDAMENTAL LAW OF MICRO-KITCHEN ENGINEERING:
+> RULE: Vertical airspace is primary storage; countertops are strictly for active food preparation.
+
+By shifting dry goods, cutlery, spices, and cleaning supplies into vertical airspace and underutilized cabinet depths, you reclaim full culinary freedom.`,
         keyTakeaways: [
           'Reclaim 80% of counter space by elevating daily tools onto vertical rail and magnetic systems.',
           'Never store static items on countertops that can live on vertical backsplash rails or inside upper cabinet doors.',
@@ -354,7 +475,16 @@ The fundamental law of micro-kitchen engineering is: VERTICAL AIRSPACE IS PRIMAR
           'Measure total square footage and linear countertop width in inches.',
           'Perform a 24-hour appliance usage audit to identify daily vs occasional tools.',
           'Clear all non-essential items off countertops onto a staging table for re-zoning.'
-        ]
+        ],
+        tableData: {
+          headers: ['Kitchen Zone', 'Target Footprint', 'Permitted Items', 'Prohibited Counter Clutter'],
+          rows: [
+            ['Active Prep Zone', '24" x 36" continuous', 'End-grain cutting board, chef knife', 'Toasters, blenders, mail, oils'],
+            ['Cooking Zone', 'Beside stovetop', 'Salt cellar, silicone spatula on rail', 'Spice racks, bulky utensil crocks'],
+            ['Clean-Up Zone', 'Sink perimeter', 'Hanging dish wand, colander bridge', 'Drying mats with stagnant puddles'],
+            ['Coffee / Beverage', 'Dedicated 12" corner', 'Compact espresso machine only', 'Syrup bottles, mugs on counter']
+          ]
+        }
       },
       {
         chapterNumber: 2,
@@ -363,12 +493,13 @@ The fundamental law of micro-kitchen engineering is: VERTICAL AIRSPACE IS PRIMAR
         readingMinutes: 6,
         content: `Rental kitchens rarely allow drilling into ceramic tile backsplashes. The solution is vertical tension-rod suspension systems and heavy-duty silicone suction rail hardware.
 
+> RULE: Never drill tile grout lines in rental units. Use vertical compression tension rails spanning from quartz/laminate countertop to upper cabinet underside.
+
 TENSION RAIL SETUP:
-By mounting vertical spring-tension rods between the countertop and the upper cabinet soffit, you create a rigid structural mounting frame without a single screw.
-1. Clean counter and cabinet underside with 70% IPA.
+1. Clean counter and cabinet underside with 70% IPA to degrease cooking residue.
 2. Install twin vertical tension poles with non-slip silicone footpads.
 3. Clamp horizontal stainless steel utility rails across the poles.
-4. Hang S-hooks for spatulas, magnetic spice canisters, a hanging paper towel dispenser, and a floating dish wand caddy.
+4. Hang S-hooks for spatulas, magnetic spice canisters, and hanging paper towel dispensers.
 
 LOAD CAPACITY: A properly installed tension rail system easily supports 15–20 lbs of culinary tools while preserving 100% of countertop depth beneath it.`,
         keyTakeaways: [
@@ -402,7 +533,16 @@ THE VOLUMETRIC MULTIPLIER:
           'Measure shelf thickness and vertical headspace inside all upper cabinets.',
           'Install slide-on under-shelf baskets for wraps, parchment paper, and cutting boards.',
           'Arrange spice jars on 3-tier stepped bamboo risers.'
-        ]
+        ],
+        tableData: {
+          headers: ['Cabinet Tier', 'Target Vertical Space', 'Recommended Storage Hack', 'Capacity Gain'],
+          rows: [
+            ['Upper Shelf Top', 'Top 6–8" dead airspace', 'Slide-on powder-coated wire basket', '+100% usable mezzanine'],
+            ['Middle Plate Tier', 'Bottom 6" shelf base', 'Expandable chrome wire shelf riser', '+100% stacked plate capacity'],
+            ['Lower Spice Zone', 'Eye-level 10" shelf', '3-tier stepped bamboo stadium riser', '3x label visibility'],
+            ['Under-Sink Basin', 'Around plumbing trap', 'Expandable 2-tier sliding drawer caddy', '+14 cubic feet volume']
+          ]
+        }
       },
       {
         chapterNumber: 4,
@@ -520,8 +660,8 @@ THE 4-STAGE EVENING SHUTDOWN:
     volumeLabel: 'Volume 03 / High-Density Wardrobe Architecture',
     slug: 'closet-storage-quadrupler-playbook',
     fileName: 'Digital_Product_Playbook_03_Closet_Storage_Quadrupler_System.pdf',
-    targetPages: 28,
-    targetFileSize: '28 Pages • 3.7 MB',
+    targetPages: 30,
+    targetFileSize: '30 Pages • 4.1 MB',
     title: 'The Small Closet Storage Quadrupler & Vertical Space Mastery Playbook',
     subtitle: 'How to Transform a Standard 4-Foot Single-Rod Rental Closet into a 4-Tier High-Density Wardrobe',
     category: 'Wardrobe & Vertical Storage Systems',
@@ -529,12 +669,12 @@ THE 4-STAGE EVENING SHUTDOWN:
     promise: 'Quadruple hanging and folded storage capacity without drilling holes or modifying rental closet shelving.',
     accentColor: '#4A533E',
     priceCad: 29,
-    perceivedValueCad: 89,
+    perceivedValueCad: 95,
     isbn: 'SSH-DP-2026-VOL03',
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -544,7 +684,9 @@ THE 4-STAGE EVENING SHUTDOWN:
         readingMinutes: 5,
         content: `Standard North American rental apartments feature a basic closet: a single wooden or metal hanging rod mounted at 66 inches from the floor, topped by a single 12-inch wire or MDF shelf.
 
-When shirts and jackets are hung from this rod, they drop approximately 34 inches, leaving a massive 32-inch void of dead air between the garment hem and the closet floor. Meanwhile, the shelf above is overwhelmed by chaotic piles of sweaters that tip over. By dividing this single vertical span into four distinct architectural tiers, you multiply usable storage by 400%.`,
+When shirts and jackets are hung from this rod, they drop approximately 34 inches, leaving a massive 32-inch void of dead air between the garment hem and the closet floor. Meanwhile, the shelf above is overwhelmed by chaotic piles of sweaters that tip over.
+
+> RULE: By dividing a single 66-inch vertical span into four distinct architectural tiers, you multiply usable wardrobe capacity by 400% with zero permanent modifications.`,
         keyTakeaways: [
           'Single-rod closets waste 32 vertical inches below shirts and jackets.',
           'Dividing the closet into 4 vertical tiers creates structured zones for tops, bottoms, shoes, and luggage.',
@@ -554,7 +696,16 @@ When shirts and jackets are hung from this rod, they drop approximately 34 inche
           'Measure closet interior: Width, Depth, and Ceiling Height in inches.',
           'Count total number of hanging garments and folded items.',
           'Identify dead airspace zones above shelf and beneath short garments.'
-        ]
+        ],
+        tableData: {
+          headers: ['Closet Tier', 'Vertical Height Band', 'Recommended Hardware', 'Optimized Garments'],
+          rows: [
+            ['Tier 1: Top Mezzanine', '72" to Ceiling (96")', 'Clear acrylic dividers + fabric bins', 'Bulky winter knits, travel duffels'],
+            ['Tier 2: Upper Rod', '40" to 70"', 'Slim velvet hangers (0.18" thick)', 'Shirts, blouses, blazers, short jackets'],
+            ['Tier 3: Suspended Rod', '16" to 38"', 'Adjustable double-hang closet bar', 'Folded trousers, denim, skirts'],
+            ['Tier 4: Floor Base', '0" to 14"', 'Stackable drop-front clear shoe boxes', 'Footwear, gym sneakers, storage bins']
+          ]
+        }
       },
       {
         chapterNumber: 2,
@@ -593,7 +744,7 @@ When shirts and jackets are hung from this rod, they drop approximately 34 inche
 THE UNIFORM VELVET UPGRADE:
 Replacing mismatched hangers with 0.18-inch ultra-slim velvet hangers delivers three instant transformations:
 1. CAPACITY MULTIPLIER: Reclaims 55% of physical rod width immediately. A 48-inch rod that previously held 35 wooden hangers now comfortably holds 80 velvet-hung garments.
-2. VISUAL CALM: Eliminates visual visual noise; all garment collars rest at the exact same horizontal sightline.
+2. VISUAL CALM: Eliminates visual noise; all garment collars rest at the exact same horizontal sightline.
 3. SHOULDER PRESERVATION: Velvet flocking prevents silk, linen, and wide-neck tops from slipping onto the floor.`,
         keyTakeaways: [
           'Uniform 0.18-inch velvet hangers more than double physical garment capacity on the same rod.',
@@ -604,7 +755,16 @@ Replacing mismatched hangers with 0.18-inch ultra-slim velvet hangers delivers t
           'Purchase 50-pack of black or ivory slim velvet hangers ($24 CAD).',
           'Donate or recycle old bulky plastic and wire dry-cleaner hangers.',
           'Group garments by category (blazers -> shirts -> trousers) and color gradient.'
-        ]
+        ],
+        tableData: {
+          headers: ['Hanger Type', 'Thickness (Inches)', 'Garments per 48" Rod', 'Visual & Fabric Impact'],
+          rows: [
+            ['Wooden Suit Hanger', '0.60 inches', '35 garments', 'Bulky, high friction, steals 60% rod width'],
+            ['Tubular Plastic Hanger', '0.45 inches', '48 garments', 'Slippery, drooping shoulders, visual clutter'],
+            ['Wire Dry-Cleaner Hanger', '0.10 inches', '65 garments (Distorts)', 'Ripples fabric shoulders, tangles easily'],
+            ['Ultra-Slim Velvet Hanger', '0.18 inches', '85 garments (Optimal)', 'Non-slip grip, perfect sightline, 2.4x density']
+          ]
+        }
       },
       {
         chapterNumber: 4,
@@ -910,8 +1070,8 @@ Sincerely, [Tenant Name]"`,
     volumeLabel: 'Volume 05 / Acoustic Architecture & Quiet Living',
     slug: 'studio-acoustic-privacy-soundproofing-playbook',
     fileName: 'Digital_Product_Playbook_05_Studio_Acoustic_Privacy_Soundproofing.pdf',
-    targetPages: 28,
-    targetFileSize: '28 Pages • 3.9 MB',
+    targetPages: 30,
+    targetFileSize: '30 Pages • 4.1 MB',
     title: 'The Studio Apartment Acoustic Privacy & Renter Soundproofing Playbook',
     subtitle: 'How to Cut Hallway Footsteps, Elevator Hum, and Neighbor Noise by Up to 14 dB in Thin-Walled Rentals',
     category: 'Acoustic Engineering & Quiet Living',
@@ -919,12 +1079,12 @@ Sincerely, [Tenant Name]"`,
     promise: 'Reduce airborne noise transmission by 10–14 dB using zero-damage removable silicone gaskets, acoustic mass, and deflection.',
     accentColor: '#4A533E',
     priceCad: 29,
-    perceivedValueCad: 89,
+    perceivedValueCad: 95,
     isbn: 'SSH-DP-2026-VOL05',
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -935,7 +1095,7 @@ Sincerely, [Tenant Name]"`,
         content: `Acoustic privacy in urban apartments requires understanding the difference between AIRBORNE NOISE (conversations, TV audio, barking dogs) and STRUCTURE-BORNE IMPACT NOISE (footsteps, slamming doors, elevator machinery vibrations).
 
 THE FOAM MYTH:
-Thin, lightweight egg-crate foam pyramids glued to walls DO NOT soundproof a room. Foam absorbs high-frequency flutter echoes inside a room, but because sound waves pass straight through low-density foam, it provides zero sound isolation from your neighbors.
+> DANGER / AVOID: Thin, lightweight egg-crate foam pyramids glued to walls DO NOT soundproof a room. Foam absorbs high-frequency flutter echoes inside a room, but because sound waves pass straight through low-density foam, it provides zero sound isolation from your neighbors.
 
 THE TWO PRINCIPLES OF REAL RENTER SOUNDPROOFING:
 1. AIRTIGHT AIR-LOCK SEALING: Sound behaves like water. A 1% unsealed air gap around a solid door leaks up to 85% of total sound energy. Sealing air gaps is the single highest-ROI acoustic improvement in an apartment.
@@ -949,7 +1109,16 @@ THE TWO PRINCIPLES OF REAL RENTER SOUNDPROOFING:
           'Identify whether your primary noise issue is airborne (voices/TV) or structure-borne (footsteps/vibrations).',
           'Inspect front door perimeter for visible light leaks and air gaps.',
           'Check window frame seals for street traffic drafts and noise leaks.'
-        ]
+        ],
+        tableData: {
+          headers: ['Noise Category', 'Typical Decibel Level', 'Recommended Renter System', 'Ineffective / Wasteful Option'],
+          rows: [
+            ['Hallway Speech & Steps', '65–75 dB', 'Multi-fin silicone bottom door sweep + D-gasket', 'Eggcrate polyurethane wall foam'],
+            ['Street Sirens & Traffic', '70–85 dB', '32oz triple-weave ceiling-to-floor velvet drapes', 'Sheer decorative curtains'],
+            ['Floor Impact & Scraping', '55–65 dB', '1/2" dense recycled-fiber felt pad + leg sliders', 'Thin waffle-rubber mesh underlays'],
+            ['Neighbor TV Bass Muffle', '45–55 dB', 'Dual-frequency calibrated pink noise sound masker', 'Earplugs alone during active day']
+          ]
+        }
       },
       {
         chapterNumber: 2,
@@ -1092,8 +1261,8 @@ Unlike harsh high-frequency White Noise, Pink Noise balances equal energy per oc
     volumeLabel: 'Volume 06 / Threshold Architecture & Dropzones',
     slug: 'micro-entryway-dropzone-playbook',
     fileName: 'Digital_Product_Playbook_06_Micro_Entryway_Dropzone_Architecture.pdf',
-    targetPages: 28,
-    targetFileSize: '28 Pages • 3.8 MB',
+    targetPages: 30,
+    targetFileSize: '30 Pages • 4.1 MB',
     title: 'The Micro-Entryway & 3-Foot Dropzone Architecture Playbook',
     subtitle: 'How to Build an Ultra-Slim, 4.5-Inch Depth Hallway Transition Hub for Shoes, Keys, Mail, and Wet Coats',
     category: 'Threshold Architecture & Transition Zones',
@@ -1101,12 +1270,12 @@ Unlike harsh high-frequency White Noise, Pink Noise balances equal energy per oc
     promise: 'Eliminate floor shoe piles, lost keys, and winter gear chaos in a narrow 36-inch hallway corridor.',
     accentColor: '#4A533E',
     priceCad: 29,
-    perceivedValueCad: 89,
+    perceivedValueCad: 95,
     isbn: 'SSH-DP-2026-VOL06',
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -1117,7 +1286,7 @@ Unlike harsh high-frequency White Noise, Pink Noise balances equal energy per oc
         content: `In a studio or one-bedroom apartment, the front door often opens directly into a 36-inch wide hallway. When arriving home exhausted, any friction in storing coats, boots, umbrellas, and keys leads to immediate dumping on the floor or kitchen counter.
 
 THE 4.5-INCH DEPTH ARCHITECTURAL RULE:
-In corridors under 40 inches wide, standard 12-inch console tables or deep shoe racks obstruct walking pathways and create claustrophobic visual bottlenecks. The architectural limit for entryway furniture in small apartments is 4.5 to 6 inches of projection.`,
+> RULE: In corridors under 40 inches wide, standard 12-inch console tables or deep shoe racks obstruct walking pathways and create claustrophobic visual bottlenecks. The architectural limit for entryway furniture in small apartments is strictly 4.5 to 6.5 inches of projection.`,
         keyTakeaways: [
           'Entryway clutter is caused by storage friction; systems must require under 2 seconds to use.',
           'Enforce the 4.5-inch maximum depth rule to maintain code-compliant hallway passage.',
@@ -1127,7 +1296,16 @@ In corridors under 40 inches wide, standard 12-inch console tables or deep shoe 
           'Measure hallway corridor width from baseboard to baseboard.',
           'Count daily items entering the home: Pairs of shoes, keys, bags, mail.',
           'Clear floor obstacle clutter to establish clear walking sightlines.'
-        ]
+        ],
+        tableData: {
+          headers: ['Hallway Width', 'Permitted Furniture Depth', 'Recommended Solution', 'Clearance Status'],
+          rows: [
+            ['Under 36 Inches', '0 to 4.5 inches max', 'Staggered wall hooks + ultra-slim acrylic bin', 'Clear 32" walking code'],
+            ['36 to 42 Inches', '6.5 inches max', 'IKEA TRONES elevated shoe cabinet + wood top', 'Clear 34" walking code'],
+            ['42 to 48 Inches', '8.0 inches max', 'Bespoke floating console shelf with key rail', 'Optimal luxury flow'],
+            ['Over 48 Inches', '10.0 inches max', 'Freestanding bench with lower wire shoe tier', 'Spacious landing hub']
+          ]
+        }
       },
       {
         chapterNumber: 2,
@@ -1229,8 +1407,8 @@ Replace plastic trays with a natural Diatomaceous Earth stone bath mat placed in
     volumeLabel: 'Volume 07 / Sub-Furniture Storage & Dust Defense',
     slug: 'underbed-hidden-storage-vault-playbook',
     fileName: 'Digital_Product_Playbook_07_Underbed_Hidden_Storage_Vault_System.pdf',
-    targetPages: 28,
-    targetFileSize: '28 Pages • 3.8 MB',
+    targetPages: 30,
+    targetFileSize: '30 Pages • 4.1 MB',
     title: 'The Under-Bed Hidden Storage & Sub-Mattress Vault System Playbook',
     subtitle: 'How to Recover 35+ Cubic Feet of Dust-Sealed, Zero-Visibility Storage Beneath Standard Rental Bed Frames',
     category: 'Sub-Furniture Storage & Dust Defense',
@@ -1238,12 +1416,12 @@ Replace plastic trays with a natural Diatomaceous Earth stone bath mat placed in
     promise: 'Unlock 35+ cubic feet of dust-sealed storage space under your bed with zero visual clutter or floor scratching.',
     accentColor: '#4A533E',
     priceCad: 29,
-    perceivedValueCad: 89,
+    perceivedValueCad: 95,
     isbn: 'SSH-DP-2026-VOL07',
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -1254,7 +1432,7 @@ Replace plastic trays with a natural Diatomaceous Earth stone bath mat placed in
         content: `A standard Queen bed occupies a footprint of 60 by 80 inches (33.3 square feet). With a standard 8-inch under-bed clearance, that footprint represents over 22 cubic feet of unutilized space. By elevating the frame to a 12-inch clearance, you instantly unlock 33.3 cubic feet—equivalent to two full wardrobe armoires.
 
 THE UNDER-BED EQUILIBRIUM:
-Under-bed storage must NEVER consist of random exposed cardboard boxes that accumulate dust bunnies and look messy from room sightlines. It must be a structured, dust-sealed, rolling drawer vault concealed behind an architectural bed valance.`,
+> DANGER / AVOID: Under-bed storage must NEVER consist of random open cardboard boxes that accumulate dust bunnies and look messy from room sightlines. It must be a structured, dust-sealed, rolling drawer vault concealed behind an architectural bed valance.`,
         keyTakeaways: [
           'A Queen bed frame footprint contains 33+ cubic feet of potential enclosed storage.',
           'Elevating clearance from 8" to 12" doubles usable sub-bed storage volume.',
@@ -1264,7 +1442,16 @@ Under-bed storage must NEVER consist of random exposed cardboard boxes that accu
           'Measure bed frame underside clearance height with tape measure.',
           'Calculate total sub-mattress volume: Length x Width x Clearance.',
           'Inspect floor type to choose rubber vs felt rolling casters.'
-        ]
+        ],
+        tableData: {
+          headers: ['Bed Size', 'Clearance Height', 'Usable Storage Volume', 'Armoire Wardrobe Equivalent'],
+          rows: [
+            ['Twin / Single', '8 Inches Base', '13.3 Cubic Feet', '0.7 Wardrobe Armoires'],
+            ['Full / Double', '10 Inches Elevated', '23.6 Cubic Feet', '1.3 Wardrobe Armoires'],
+            ['Queen Standard', '12 Inches Elevated', '33.3 Cubic Feet', '2.0 Full Wardrobe Armoires'],
+            ['King Standard', '12 Inches Elevated', '42.6 Cubic Feet', '2.6 Full Wardrobe Armoires']
+          ]
+        }
       },
       {
         chapterNumber: 2,
@@ -1367,8 +1554,8 @@ THE TAILORED VALANCE STANDARD:
     volumeLabel: 'Volume 08 / Spatial Architecture & Sightline Zoning',
     slug: 'studio-zoning-room-separation-playbook',
     fileName: 'Digital_Product_Playbook_08_Studio_Zoning_Room_Separation_Blueprint.pdf',
-    targetPages: 30,
-    targetFileSize: '30 Pages • 4.1 MB',
+    targetPages: 32,
+    targetFileSize: '32 Pages • 4.3 MB',
     title: 'The Studio Apartment Zoning & Optical Room Separation Playbook',
     subtitle: 'How to Divide a 400 Sq Ft Open-Concept Studio into 3 Distinct Living Zones Without Building Walls',
     category: 'Spatial Architecture & Sightline Zoning',
@@ -1381,7 +1568,7 @@ THE TAILORED VALANCE STANDARD:
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -1404,7 +1591,16 @@ THE THREE CORE ZONES:
           'Draft a rough floor plan sketch of your studio apartment.',
           'Identify primary natural window light angles.',
           'Locate optimal dark corner for sleep sanctuary placement.'
-        ]
+        ],
+        tableData: {
+          headers: ['Studio Zone', 'Primary Function', 'Target Light Level', 'Visual Boundary Method'],
+          rows: [
+            ['Sleep Sanctuary', 'Melatonin & Deep Rest', '2200K Warm Amber (Dark)', 'Ceiling-tension sliding linen track curtain'],
+            ['Workstation Nook', 'Deep Ergonomic Focus', '4000K Neutral White', 'Facing wall with under-desk cord raceways'],
+            ['Living & Social', 'Dining & Hospitality', '2700K Soft White Shaded', '5x8 ft area rug anchor + low credenza'],
+            ['Transition Path', 'Walking Corridor', 'Ambient Diffused', '18" exposed hardwood clearance path']
+          ]
+        }
       },
       {
         chapterNumber: 2,
@@ -1505,8 +1701,8 @@ THE DUAL-RUG ARCHITECTURE:
     volumeLabel: 'Volume 09 / Hybrid Ergonomics & Circadian Workspaces',
     slug: 'wfh-multi-use-desk-reset-playbook',
     fileName: 'Digital_Product_Playbook_09_WFH_Multi_Use_Desk_Evening_Reset_Kit.pdf',
-    targetPages: 28,
-    targetFileSize: '28 Pages • 3.8 MB',
+    targetPages: 30,
+    targetFileSize: '30 Pages • 4.1 MB',
     title: 'The WFH Multi-Use Desk & 15-Minute Evening Room Reset Playbook',
     subtitle: 'How to Transition Your Small Living Space from Focused Workstation to Peaceful Evening Sanctuary',
     category: 'Hybrid Ergonomics & Circadian Workspaces',
@@ -1514,12 +1710,12 @@ THE DUAL-RUG ARCHITECTURE:
     promise: 'Completely conceal laptops, monitors, and cables at 5:30 PM in under 8 minutes, reclaiming living room peace.',
     accentColor: '#4A533E',
     priceCad: 29,
-    perceivedValueCad: 89,
+    perceivedValueCad: 95,
     isbn: 'SSH-DP-2026-VOL09',
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -1530,7 +1726,7 @@ THE DUAL-RUG ARCHITECTURE:
         content: `When working from home in a 500 sq ft apartment, your desk is constantly visible during dinner, movies, and weekend downtime. Seeing unread Slack notifications and tangled cords creates continuous micro-stress, preventing genuine nervous system recovery.
 
 THE 15-MINUTE WORKDAY SUNSET:
-At 5:30 PM, your space must physically transform from an energetic corporate office into a tranquil evening lounge. By establishing an 8-minute physical shutdown ritual paired with cable invisibility, you reclaim your home life.`,
+> RULE: At 5:30 PM, your space must physically transform from an energetic corporate office into a tranquil evening lounge. By establishing an 8-minute physical shutdown ritual paired with cable invisibility, you reclaim your home life.`,
         keyTakeaways: [
           'A visible workstation in your living area keeps your brain in a state of low-grade work alert.',
           'Physical transition rituals signal to your brain that the workday is officially terminated.',
@@ -1540,7 +1736,16 @@ At 5:30 PM, your space must physically transform from an energetic corporate off
           'Set a recurring 5:30 PM calendar alarm titled "Workday Sunset Reset".',
           'Audit current desk clutter: Count visible power cables, adapters, and papers.',
           'Commit to the zero-work-in-bed absolute boundary.'
-        ]
+        ],
+        tableData: {
+          headers: ['Workday Phase', 'Target Time', 'Desk Configuration', 'Lighting & Ambient State'],
+          rows: [
+            ['Morning Launch', '08:45 AM', 'Laptop deployed, monitor on, notepad open', '4000K Neutral White Focused Task Light'],
+            ['Active Deep Work', '09:00 AM – 05:00 PM', 'Ergonomic mouse, secondary screen active', 'Full natural daylight + task lamp'],
+            ['5:30 Sunset Reset', '05:30 PM – 05:38 PM', 'Laptop into slide drawer, cords into J-channel', 'Shutdown overhead; shift to 2200K warm glow'],
+            ['Evening Sanctuary', '05:40 PM Onward', 'Ceramic vase / candle placed on clean surface', '2200K amber floor lamps & accent uplighting']
+          ]
+        }
       },
       {
         chapterNumber: 2,
@@ -1640,8 +1845,8 @@ Set smart desk bulbs to automatically shift from 4000K to 2200K at 5:30 PM, visu
     volumeLabel: 'Volume 10 / Photometric Expansion & Circadian Illumination',
     slug: 'optical-expander-apartment-lighting-playbook',
     fileName: 'Digital_Product_Playbook_10_Optical_Expander_Apartment_Lighting_OS.pdf',
-    targetPages: 28,
-    targetFileSize: '28 Pages • 3.9 MB',
+    targetPages: 30,
+    targetFileSize: '30 Pages • 4.1 MB',
     title: 'The Optical Space Expander & Circadian Apartment Lighting OS',
     subtitle: 'How to Double Perceived Square Footage and Eliminate Shadow Fatigue Using 3-Tier Layered Lighting',
     category: 'Photometric Expansion & Circadian Illumination',
@@ -1649,12 +1854,12 @@ Set smart desk bulbs to automatically shift from 4000K to 2200K at 5:30 PM, visu
     promise: 'Double perceived room volume, eradicate dark corners, and create cozy luxury ambiance without hiring an electrician.',
     accentColor: '#4A533E',
     priceCad: 29,
-    perceivedValueCad: 89,
+    perceivedValueCad: 95,
     isbn: 'SSH-DP-2026-VOL10',
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -1665,7 +1870,7 @@ Set smart desk bulbs to automatically shift from 4000K to 2200K at 5:30 PM, visu
         content: `Most rental apartments come equipped with a single flush-mount ceiling fixture in the center of the room. This single light source casts deep shadows in all four corners, visually contracting the perceived boundaries of the room by up to 35%.
 
 THE LAW OF PHOTOMETRIC EXPANSION:
-Perceived room size is defined by the illumination of its furthest vertical boundaries. When room corners are washed with gentle warm uplight, the eye perceives the space as expansive, airy, and welcoming.`,
+> RULE: Perceived room size is defined by the illumination of its furthest vertical boundaries. When room corners are washed with gentle warm uplight, the eye perceives the space as expansive, airy, and welcoming.`,
         keyTakeaways: [
           'Single ceiling fixtures create dark corner shadows that shrink perceived room size.',
           'Illuminating room corners with vertical uplighting expands perceived boundaries.',
@@ -1675,7 +1880,16 @@ Perceived room size is defined by the illumination of its furthest vertical boun
           'Identify dark, unlit corners in your living room and bedroom.',
           'Switch off main harsh overhead ceiling light.',
           'Plan 3 distinct light sources placed at varying heights.'
-        ]
+        ],
+        tableData: {
+          headers: ['Lighting Tier', 'Elevation Band', 'Kelvin Temperature', 'Target Psychological Impact'],
+          rows: [
+            ['Tier 1: Ambient Uplight', 'Floor to Ceiling (0" to 96")', '2700K Warm White (Bounced)', 'Eradicates corner shadows, expands perceived volume'],
+            ['Tier 2: Mid Task Layer', 'Eye Level (36" to 54")', '3000K Soft White Shaded', 'Comfortable reading, conversation, dining'],
+            ['Tier 3: Low Accent Glow', 'Under-Furniture (0" to 24")', '2200K Deep Warm Amber', 'Creates floating depth, cozy luxury evening calm'],
+            ['Builder Overhead Light', 'Ceiling Center (96")', '5000K Blue/White (AVOID)', 'Casts harsh shadows, causes eye fatigue (Keep OFF)']
+          ]
+        }
       },
       {
         chapterNumber: 2,
@@ -1753,8 +1967,8 @@ Never mount mirrors directly opposite windows (which causes blinding glare). Mou
     volumeLabel: 'Volume 11 / Sanitary Storage & Vertical Wet-Zone Engineering',
     slug: 'pedestal-sink-bathroom-maximizer-playbook',
     fileName: 'Digital_Product_Playbook_11_Pedestal_Sink_Bathroom_Maximizer_Kit.pdf',
-    targetPages: 28,
-    targetFileSize: '28 Pages • 3.8 MB',
+    targetPages: 30,
+    targetFileSize: '30 Pages • 4.1 MB',
     title: 'The Pedestal Sink & Micro-Bathroom Vertical Maximizer Playbook',
     subtitle: 'How to Add 18+ Cubic Feet of Toiletries Storage Around Narrow Pedestal Basins with Zero Drilling',
     category: 'Sanitary Storage & Vertical Wet-Zone Engineering',
@@ -1762,12 +1976,12 @@ Never mount mirrors directly opposite windows (which causes blinding glare). Mou
     promise: 'Unlock 18+ cubic feet of organized bathroom toiletries storage without drilling tile or replacing plumbing fixtures.',
     accentColor: '#4A533E',
     priceCad: 29,
-    perceivedValueCad: 89,
+    perceivedValueCad: 95,
     isbn: 'SSH-DP-2026-VOL11',
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
     publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'First Digital Commercial Edition, 2026',
+    edition: 'Second Commercial Master Edition, 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -1778,7 +1992,7 @@ Never mount mirrors directly opposite windows (which causes blinding glare). Mou
         content: `Vintage apartment bathrooms and modern builder condos often install pedestal sinks to save floor area. However, pedestal basins offer zero flat counter space for toothbrushes, skincare, or hair tools, leading to cluttered basin rims where items constantly fall into the toilet or drain.
 
 THE WRAP-AROUND VERTICAL STRATEGY:
-The air space beneath and directly behind a pedestal basin column is empty. By deploying curved wrap-around shelving, over-toilet vertical storage towers, and magnetic medicine cabinet door hacks, you create an organized master bath experience in 35 square feet.`,
+> RULE: The air space beneath and directly behind a pedestal basin column is empty. By deploying curved wrap-around shelving, over-toilet vertical storage towers, and magnetic medicine cabinet door hacks, you create an organized master bath experience in 35 square feet.`,
         keyTakeaways: [
           'Pedestal sinks eliminate flat counter space; vertical airspace must be mobilized.',
           'Curved wrap-around storage racks capture the dead space around the pedestal column.',
@@ -1788,7 +2002,16 @@ The air space beneath and directly behind a pedestal basin column is empty. By d
           'Measure width and depth clearance around pedestal sink base.',
           'Measure vertical clearance between toilet tank lid and ceiling.',
           'Audit daily toiletries: Group into morning, evening, and grooming categories.'
-        ]
+        ],
+        tableData: {
+          headers: ['Bathroom Zone', 'Vertical Span', 'Recommended Hardware', 'Optimized Toiletries'],
+          rows: [
+            ['Under-Pedestal Curve', 'Floor to 28" basin lip', 'U-shaped wrap-around bamboo/metal 2-tier rack', 'Daily hand towels, toilet paper rolls, hair dryer'],
+            ['Over-Toilet Airspace', '32" to 78" above tank', 'Freestanding 3-tier bamboo space-saver tower', 'Bath sheets, skincare bins, extra toiletries'],
+            ['Medicine Cabinet Door', 'Inside metal door face', 'Adhesive neodymium magnetic tool strip', 'Tweezers, nail clippers, grooming scissors'],
+            ['Shower Wet Corner', 'Floor to ceiling tension', '4-tier rustproof stainless tension caddy', 'Shampoo, body wash, exfoliating sponges']
+          ]
+        }
       },
       {
         chapterNumber: 2,

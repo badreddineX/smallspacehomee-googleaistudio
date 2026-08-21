@@ -249,23 +249,58 @@ export function generateProfessionalPDF({
       continue;
     }
 
-    // Callout box (> Callout or NOTE:)
-    if (trimmed.startsWith('> ') || trimmed.startsWith('NOTE:') || trimmed.startsWith('IMPORTANT:')) {
-      checkPageBreak(16);
-      const text = trimmed.replace(/^>\s*/, '');
-      doc.setFillColor(softStone[0], softStone[1], softStone[2]);
-      doc.setDrawColor(olive[0], olive[1], olive[2]);
-      doc.setLineWidth(0.4);
-      
-      const wrapped = doc.splitTextToSize(text, contentWidth - 8);
-      const boxHeight = wrapped.length * 5 + 6;
-      doc.roundedRect(margin, cursorY - 1, contentWidth, boxHeight, 1, 1, 'FD');
-      doc.rect(margin, cursorY - 1, 2.5, boxHeight, 'F'); // Olive left accent bar
+    // Callout boxes (> Callout, RULE:, DANGER:, AVOID:, PRO TIP:, NOTE:)
+    if (trimmed.startsWith('> ') || trimmed.startsWith('NOTE:') || trimmed.startsWith('IMPORTANT:') || trimmed.startsWith('RULE:') || trimmed.startsWith('DANGER:') || trimmed.startsWith('AVOID:') || trimmed.startsWith('PRO TIP:')) {
+      checkPageBreak(18);
+      const cleanText = trimmed.replace(/^>\s*/, '');
+      const isDanger = cleanText.toLowerCase().includes('[danger') || cleanText.toLowerCase().includes('[avoid') || cleanText.startsWith('DANGER:') || cleanText.startsWith('AVOID:');
+      const isRule = cleanText.toLowerCase().includes('[rule') || cleanText.startsWith('RULE:');
+      const isTip = cleanText.toLowerCase().includes('[pro tip') || cleanText.toLowerCase().includes('[tip') || cleanText.startsWith('PRO TIP:');
 
-      doc.setFont('helvetica', 'italic');
-      doc.setFontSize(8.5);
+      // Box styling colors
+      let boxBg = softStone;
+      let barColor = olive;
+      let titleColor = olive;
+      let badgeLabel = 'IMPORTANT NOTICE';
+
+      if (isDanger) {
+        boxBg = [253, 242, 242]; // Light red/terracotta
+        barColor = [185, 28, 28]; // Dark crimson
+        titleColor = [185, 28, 28];
+        badgeLabel = 'DANGER ZONE • HIGH DAMAGE RISK (AVOID)';
+      } else if (isRule) {
+        boxBg = [240, 244, 238]; // Soft sage
+        barColor = [74, 83, 62]; // Olive
+        titleColor = [74, 83, 62];
+        badgeLabel = 'ZERO-DAMAGE MANDATORY LAW';
+      } else if (isTip) {
+        boxBg = [254, 249, 235]; // Warm cream
+        barColor = [180, 120, 30]; // Amber
+        titleColor = [180, 120, 30];
+        badgeLabel = 'LAB TESTED PRO TIP';
+      }
+
+      doc.setFillColor(boxBg[0], boxBg[1], boxBg[2]);
+      doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+      doc.setLineWidth(0.3);
+
+      const wrapped = doc.splitTextToSize(cleanText, contentWidth - 10);
+      const boxHeight = wrapped.length * 4.6 + 10;
+      doc.roundedRect(margin, cursorY - 1, contentWidth, boxHeight, 1, 1, 'FD');
+      doc.setFillColor(barColor[0], barColor[1], barColor[2]);
+      doc.rect(margin, cursorY - 1, 2.8, boxHeight, 'F'); // Left accent bar
+
+      // Badge label
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7.5);
+      doc.setTextColor(titleColor[0], titleColor[1], titleColor[2]);
+      doc.text(badgeLabel, margin + 6, cursorY + 4);
+
+      // Body text
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
       doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
-      doc.text(wrapped, margin + 5, cursorY + 3.5);
+      doc.text(wrapped, margin + 6, cursorY + 9);
       cursorY += boxHeight + 4;
       continue;
     }
