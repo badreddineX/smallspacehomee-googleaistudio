@@ -4,6 +4,7 @@ import { getProductAssetBundle, DetailedDeliverableFile } from '../data/productA
 import { downloadValidPDF } from '../utils/pdfGenerator';
 import { CsvTableViewer } from './CsvTableViewer';
 import { NotionWorkspaceViewer } from './NotionWorkspaceViewer';
+import { EditorialPdfViewer } from './EditorialPdfViewer';
 import { 
   Download, 
   Copy, 
@@ -615,153 +616,14 @@ ${file.downloadableContent}
                   productTitle={activeProduct.title}
                 />
               ) : isActiveFilePdf ? (
-                <div className="bg-white border border-[#E5DFD5] shadow-xs rounded-xs overflow-hidden">
-                  
-                  {/* PDF Viewer Header */}
-                  <div className="bg-[#FAF8F5] p-3.5 sm:p-4 border-b border-[#E5DFD5] flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <div className="p-1 bg-rose-700 text-white rounded-xs">
-                          <FileCheck2 className="w-3.5 h-3.5" />
-                        </div>
-                        <span className="font-mono font-bold text-xs text-[#1C1917]">
-                          {activeFile.fileName}
-                        </span>
-                        <span className="text-[9px] font-bold uppercase px-2 py-0.5 bg-rose-700 text-white rounded-xs">
-                          {activeFile.badge}
-                        </span>
-                        <span className="text-[10px] font-semibold text-[#1C1917]/70 bg-white px-2 py-0.5 border border-[#E5DFD5]">
-                          Vector PDF Engine • Printable A4 & US Letter
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-[#1C1917]/70">
-                        {activeFile.description}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-2 shrink-0">
-                      <div className="flex items-center bg-white border border-[#E5DFD5] p-0.5 rounded-xs">
-                        <button
-                          onClick={() => setPdfViewTab('formatted')}
-                          className={`px-2 py-1 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors cursor-pointer ${
-                            pdfViewTab === 'formatted' ? 'bg-[#1C1917] text-white' : 'text-[#1C1917]/70 hover:text-[#1C1917]'
-                          }`}
-                        >
-                          <Eye className="w-3 h-3" />
-                          <span>Publication Layout</span>
-                        </button>
-                        <button
-                          onClick={() => setPdfViewTab('raw')}
-                          className={`px-2 py-1 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors cursor-pointer ${
-                            pdfViewTab === 'raw' ? 'bg-[#1C1917] text-white' : 'text-[#1C1917]/70 hover:text-[#1C1917]'
-                          }`}
-                        >
-                          <FileText className="w-3 h-3" />
-                          <span>Source Content</span>
-                        </button>
-                      </div>
-
-                      <button
-                        onClick={() => handleCopy(activeFile.downloadableContent, 'pdf-copy')}
-                        className="px-2.5 py-1 bg-white hover:bg-[#FAF8F5] text-[#1C1917] text-[10px] font-bold uppercase tracking-wider border border-[#E5DFD5] transition-colors cursor-pointer flex items-center gap-1"
-                      >
-                        {copiedKey === 'pdf-copy' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
-                        <span>Copy Text</span>
-                      </button>
-
-                      <button
-                        onClick={() => handleDownloadSingleFile(activeFile)}
-                        className="px-3.5 py-1.5 bg-rose-700 hover:bg-[#1C1917] text-white text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5 border border-rose-700 shadow-xs"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        <span>Download Valid .PDF</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  {pdfViewTab === 'formatted' ? (
-                    <div className="p-4 sm:p-6 bg-[#FAF8F5] space-y-4">
-                      {/* Formatted Paper Page Simulation */}
-                      <div className="bg-white border border-[#E5DFD5] shadow-xs p-5 sm:p-8 max-w-3xl mx-auto space-y-5">
-                        
-                        <div className="border-b-2 border-[#1C1917] pb-4 flex justify-between items-start">
-                          <div>
-                            <span className="text-[10px] font-bold tracking-[0.2em] text-[#4A533E] uppercase block">
-                              SmallSpaceHome.ca • Master Publication
-                            </span>
-                            <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#1C1917] mt-1">
-                              {activeProduct.title}
-                            </h2>
-                            <p className="text-xs text-[#1C1917]/70 font-medium">
-                              Document: {activeFile.fileName.replace(/_/g, ' ').replace(/\.[a-z0-9]+$/i, '')}
-                            </p>
-                          </div>
-                          <span className="text-[9px] font-mono font-bold bg-[#FAF8F5] px-2 py-1 border border-[#E5DFD5] text-[#4A533E] shrink-0">
-                            STANDARD A4
-                          </span>
-                        </div>
-
-                        {/* Rendered content */}
-                        <div className="text-xs text-[#1C1917] space-y-3 leading-relaxed">
-                          {activeFile.downloadableContent.split('\n\n').map((block, bIdx) => {
-                            if (block.startsWith('# ')) {
-                              return (
-                                <h1 key={bIdx} className="text-lg font-serif font-bold text-[#1C1917] pt-2 border-b border-[#E5DFD5] pb-1">
-                                  {block.replace(/^#\s*/, '')}
-                                </h1>
-                              );
-                            }
-                            if (block.startsWith('## ') || block.startsWith('=== ')) {
-                              return (
-                                <h2 key={bIdx} className="text-sm font-bold uppercase tracking-wider text-[#4A533E] pt-2 border-b border-[#E5DFD5]/70 pb-1">
-                                  {block.replace(/^##\s*|^===\s*|\s*===$/g, '')}
-                                </h2>
-                              );
-                            }
-                            if (block.includes('[ ]') || block.includes('• ') || block.startsWith('- ')) {
-                              const lines = block.split('\n');
-                              return (
-                                <ul key={bIdx} className="space-y-1.5 pl-1">
-                                  {lines.map((line, lIdx) => {
-                                    const isCheck = line.includes('[ ]');
-                                    return (
-                                      <li key={lIdx} className="flex items-start gap-2 text-xs">
-                                        {isCheck ? (
-                                          <input type="checkbox" readOnly className="mt-0.5 w-3.5 h-3.5 accent-[#4A533E]" />
-                                        ) : (
-                                          <span className="text-[#4A533E] font-bold shrink-0">•</span>
-                                        )}
-                                        <span className="text-[#1C1917]">{line.replace(/^\[\s*\]\s*|^[-•]\s*/, '')}</span>
-                                      </li>
-                                    );
-                                  })}
-                                </ul>
-                              );
-                            }
-                            return (
-                              <p key={bIdx} className="text-xs text-[#1C1917]/85 whitespace-pre-line leading-relaxed">
-                                {block}
-                              </p>
-                            );
-                          })}
-                        </div>
-
-                        <div className="border-t border-[#E5DFD5] pt-4 flex justify-between items-center text-[10px] text-[#1C1917]/50 font-mono">
-                          <span>© 2026 SmallSpaceHome.ca • All Rights Reserved</span>
-                          <span>PDF Page 1 of 1</span>
-                        </div>
-
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="p-4">
-                      <pre className="bg-[#1C1917] text-[#FAF8F5] p-3.5 sm:p-4 text-xs font-mono leading-relaxed overflow-x-auto max-h-[380px] border border-[#1C1917] whitespace-pre-wrap select-all">
-                        {activeFile.downloadableContent}
-                      </pre>
-                    </div>
-                  )}
-
-                </div>
+                <EditorialPdfViewer
+                  fileName={activeFile.fileName}
+                  fileSize={activeFile.fileSize}
+                  badge={activeFile.badge}
+                  description={activeFile.description}
+                  productTitle={activeProduct.title}
+                  rawContent={activeFile.downloadableContent}
+                />
               ) : (
                 /* Standard Markdown / Text Viewer */
                 <div className="bg-white border border-[#E5DFD5] shadow-xs rounded-xs overflow-hidden">

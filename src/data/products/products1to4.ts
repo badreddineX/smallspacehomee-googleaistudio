@@ -29,7 +29,7 @@ export const PRODUCTS_1_TO_4: Record<string, ProductAssetBundle> = {
         description: 'Comprehensive 16-section editorial field playbook covering surface diagnostics, conservative working loads, 13-step installation checklist, removal procedures, and move-out repairs.',
         previewSnippet: 'SECTION 1: Canadian Renter Context & Safety Ground Rules\nSECTION 4: Wall & Surface Identification Decision Table\nSECTION 8: 13-Step Repeatable Installation Checklist\nSECTION 10: Manufacturer-Compliant Removal & Heat Protocols',
         downloadableContent: `# The Zero-Damage Renter Mounting Field Playbook
-## A Practical Renter's Guide to Planning, Installing, Monitoring, and Removing Wall-Mounted Items
+## A Practical Editorial Guide to Planning, Installing, Monitoring, and Removing Wall-Mounted Items in Rental Homes
 *Publication by SmallSpaceHome.ca Editorial Lab • Canadian Renter Edition (Toronto • Vancouver • Montreal)*
 
 > **IMPORTANT SAFETY & LIABILITY NOTICE**:
@@ -38,22 +38,22 @@ export const PRODUCTS_1_TO_4: Record<string, ProductAssetBundle> = {
 ---
 
 ### TABLE OF CONTENTS
-1. Cover & Canadian Renter Context
-2. How to Use This Guide with the Spreadsheet & Notion Hub
-3. Safety First: Working Loads & Hazard Prevention
-4. Identify the Wall or Surface (Drywall, Plaster, Tile, Wood, Glass, Wallpaper)
-5. Measuring & Weighing Items (Gross Tare Weighing & Dynamic Leverage)
-6. Choose the Mounting Category (Adhesives, Push-Pins, Tension, Over-Door, Floor Supports)
-7. Surface Preparation & The 70% Isopropyl Alcohol Protocol
-8. The 13-Step Repeatable Installation Procedure
-9. Routine Monitoring & Seasonal Inspection Checklist
-10. Careful Removal Protocols & Thermal Softening Limits
-11. Lightweight Mounting Methods & Experimental Boundaries (<2 lbs)
-12. Heavier Items, High-Risk Objects & Floor Support Alternatives
-13. Move-Out Inspection & Minor Surface Repair Protocol
-14. Visual Decision Trees (Weight, Surface, Adhesive Suitability)
-15. Printable Pocket Cheat Cards (Before, During, Removal, Move-Out)
-16. Verified Sources, Canadian Retailers & Complete Disclaimer
+- **Section 01: Cover & Canadian Renter Context** (Toronto, Vancouver, Montreal rental realities)
+- **Section 02: Opening & Promise** (What this is, who it is for, what you will accomplish)
+- **Section 03: Quick Start — Before You Mount** (The 4 Core Checks: Weight → Surface → Hardware → Location)
+- **Section 04: Safety First & Conservative Working Loads** (The 30–50% buffer rule, Do/Don't matrix, high-risk zones)
+- **Section 05: Wall & Surface Identification Decision Table** (Drywall, Plaster & Lath, Tile, Millwork, Doors)
+- **Section 06: Weight, Leverage & Dynamic Load Planning** (Gross tare weighing, cantilever torque, static vs dynamic)
+- **Section 07: Mounting Method Decision Guide** (Adhesives, push-pins, tension rods, over-door, floor support)
+- **Section 08: Surface Preparation: The 70% Isopropyl Alcohol Standard** (Prep → Clean → Dry → Check)
+- **Section 09: The 13-Step Repeatable Installation Playbook** (Prep 01–04, Install 05–08, Set 09–11, Verify 12–13)
+- **Section 10: Tactical Hack Pages: Standardized Execution Blueprints** (Picture ledges, mirror tethers, tension bars)
+- **Section 11: Field Notes Vault** (Cold exterior walls, dental floss separation, picture rails)
+- **Section 12: Careful Removal Protocols & Thermal Softening Limits** (Downward parallel pull, low-heat hair dryer)
+- **Section 13: Routine Monitoring & Seasonal Inspection Checklist** (Adhesive creep, door slam vibration, heating shifts)
+- **Section 14: Move-Out & Deposit Defense: The 5-Step Protocol** ($12 emergency spackle recipe, photo baseline)
+- **Section 15: Printable Pocket Cheat Cards** (4x6" before mounting, removal, and move-out pocket cards)
+- **Section 16: Verified Sources, Canadian Retailers & Complete Disclaimer** (3M, OOK, Home Depot, Lee Valley, RTA)
 
 ---
 
@@ -65,58 +65,159 @@ Renting in Canadian urban centres like Toronto, Vancouver, and Montreal presents
 
 ---
 
-### SECTION 02: HOW TO USE THIS GUIDE
-Follow the 4-step workflow:
-1. **Measure & Weigh**: Use a digital scale to find the actual gross weight (including frame, glass, and hanging brackets).
-2. **Identify Surface**: Distinguish between modern drywall, brittle heritage plaster, hollow-core doors, and glazed tile.
-3. **Select & Verify Hardware**: Match hardware to the surface and apply a 30% to 50% safety margin below manufacturer rated maximums.
-4. **Log & Monitor**: Record installation dates, photo evidence, and follow-up checks in your Notion Hub.
+### SECTION 02: OPENING & PROMISE
+- **What is this?** A tactical, step-by-step operating system for hanging artwork, full-length mirrors, entryway hooks, curtains, and lightweight shelves without tearing drywall paper, cracking brittle heritage plaster, or losing your rental deposit.
+- **Who is it for?** Urban renters living in spaces under 800 sq ft who want their apartments to look thoughtfully styled, personalized, and functional without risking disputes with strict property managers.
+- **What can I accomplish?** Mount gallery walls in under 30 minutes, eliminate clutter from your floor, secure heavy full-length floor mirrors with hidden gravity tethers, and remove all hardware with zero residue when moving out.
+- **What will I learn?** How to diagnose wall substrates by sound, calculate conservative working loads, perform proper 70% isopropyl degreasing, execute thermal stretch releases, and patch pinholes in 60 seconds.
 
 ---
 
-### SECTION 03: SAFETY FIRST — CONSERVATIVE WORKING LOADS
-- **Static vs. Dynamic Loads**: Manufacturer ratings represent static downward shear on pristine lab surfaces. In real apartments, humidity, door slams, and cantilever torque reduce effective capacity.
-- **The 30–50% Safety Rule**: If an adhesive strip is rated for 16 lbs, treat its Conservative Working Load as 8 to 10 lbs maximum.
+### SECTION 03: QUICK START — BEFORE YOU MOUNT (THE 4 CORE CHECKS)
+Execute these four checks before any mounting project:
+1. **WEIGHT**: Weigh gross tare weight on a digital kitchen scale (include frame, glass, and hardware).
+2. **SURFACE**: Knuckle-tap wall to distinguish modern drywall, plaster & lath, tile, or millwork.
+3. **HARDWARE**: Verify manufacturer capacity and select 4 corner strips or mechanical push pins.
+4. **LOCATION**: Audit ambient humidity, exterior wall temperatures (&gt;15°C), and avoid overhead bed zones.
+
+---
+
+### SECTION 04: SAFETY FIRST & CONSERVATIVE WORKING LOADS
+- **The 30–50% Safety Rule**: If an adhesive strip packaging claims 16 lbs rated capacity, treat its conservative working load as 8 to 10 lbs maximum in real apartment conditions.
 - **High-Risk Overhead Zones**: NEVER mount heavy framed glass, mirrors, or shelving directly over beds, cribs, or desk seating using adhesive strips alone.
+- **DO's**: Clean contact patches with 70% Isopropyl Alcohol; wait mandatory 1-hour cure time; pull removal tabs parallel to wall.
+- **DON'Ts**: Never use all-purpose cleaners (leave oily films); never apply strips to fresh paint under 28 days old; never pull tabs outward at 90 degrees.
 
 ---
 
-### SECTION 04: WALL & SURFACE IDENTIFICATION DECISION TABLE
+### SECTION 05: WALL & SURFACE IDENTIFICATION DECISION TABLE
 - **Modern Drywall (Gypsum Board)**:
-  - Sound: Hollow thud when tapped with knuckles.
-  - Fasteners: Adhesive strips (rated load), mechanical wire push-hooks (Gorilla/OOK), or 3M Claw push anchors.
-- **Plaster & Lath (Pre-1950 Walk-Ups)**:
-  - Sound: Dense, solid thud with slight surface grit.
-  - Fasteners: Brittle plaster cracks easily. Use picture rail hooks, angled thin steel picture pins into lath, or floor-leaning furniture. Avoid wire push-hooks.
-- **Glazed Ceramic Tile (Bathrooms / Kitchens)**:
-  - Fasteners: Water-resistant adhesive strips or heavy-duty suction caddies. Clean with rubbing alcohol.
+  - Knuckle Sound: Hollow, resonant thud.
+  - Recommended Hardware: 3M Command Click-Strips, OOK Push-Wire Hooks, 3M Claw Anchors.
+  - Avoid: Heavy toggle bolts or plastic screw anchors without landlord approval.
+  - Risk Level: Low (&lt;1mm pinholes easily patched).
+- **Plaster & Lath (Pre-1950 Heritage Buildings)**:
+  - Knuckle Sound: Solid, dense thud with sand grit texture.
+  - Recommended Hardware: Moulding picture rail hooks, thin angled brass pins into lath, floor tethers.
+  - Avoid: Curved wire push-hooks (shatters brittle plaster keys).
+  - Risk Level: Medium (Plaster fractures easily).
+- **Glazed Ceramic Tile (Bathrooms & Kitchens)**:
+  - Knuckle Sound: High-pitched glassy click; zero give.
+  - Recommended Hardware: Water-Resistant Silicone Adhesive Strips or heavy suction caddies.
+  - Avoid: Masonry drilling or mounting over porous grout lines.
+  - Risk Level: 100% Zero Damage.
 - **Finished Millwork & Hollow-Core Doors**:
-  - Fasteners: Over-door gravity brackets or lightweight adhesive hooks (<3 lbs).
+  - Knuckle Sound: Muffled hollow wood drum echo.
+  - Recommended Hardware: Over-door gravity brackets with felt bumper pads, lightweight hooks (&lt;2 lbs).
+  - Avoid: Heavy mounting tape on thin wood veneer.
+  - Risk Level: Zero when using padded over-door rails.
 
 ---
 
-### SECTION 08: 13-STEP REPEATABLE INSTALLATION PROCEDURE
-1. Weigh item gross weight on digital scale (tare-verified).
-2. Inspect wall surface for dust, peeling paint, or cold drafts.
-3. Clean target wall area with 70% Isopropyl Alcohol on a lint-free cloth.
-4. Allow wall to dry fully for 15 minutes.
-5. Separate adhesive strips and press together until they click.
-6. Remove one liner and apply to back of frame; press firmly for 30 seconds.
-7. Remove wall liners and position frame on wall with a mini bubble level.
-8. Press frame firmly against wall for 30 continuous seconds.
-9. Gently peel bottom of frame away from wall to expose wall strips.
-10. Press wall strips directly with firm thumb pressure for 30 seconds.
-11. MANDATORY CURE: Wait 1 full hour before re-mounting frame to allow adhesive polymer bonding.
-12. Re-align frame and click strips firmly into place.
-13. Capture reference photo and log in Notion Hub.
+### SECTION 06: WEIGHT, LEVERAGE & DYNAMIC LOAD PLANNING
+1. **Know Gross Tare Load**: Always weigh frames with glass, mats, hanging wires, and mounted items included.
+2. **Rated vs Working Load**: Manufacturers test static vertical loads on polished steel. In rental apartments, reduce rated limits by 30% to 50%.
+3. **Cantilever Torque**: A shelf protruding 6 inches exerts 3x greater peeling force on top wall fasteners than flat art.
+4. **The Renter Buffer**: Size hardware so your object represents no more than 60% of the hardware's total package rating.
 
 ---
 
-### SECTION 10: CAREFUL REMOVAL & HEAT PROTOCOLS
-- Never pull adhesive strips toward you or at a 90-degree angle.
-- Always hold the base gently with one hand and pull the tab STRAIGHT DOWN along the wall surface.
-- Stretch the strip slowly at least 15 inches until the release occurs smoothly.
-- If the tab snaps or feels rigid, warm gently with a hair dryer on low heat for 30–45 seconds to soften adhesive polymers before gently sliding dental floss behind the bracket.`
+### SECTION 07: MOUNTING METHOD DECISION GUIDE
+- **Under 2 lbs (Art prints, light decor)**: Small 3M Command Strips (2 pairs) or push-in brass pins.
+- **2 to 10 lbs (Medium frames, clocks)**: Large 3M Command Strips (4 pairs on 4 corners) with 1-hour cure.
+- **10 to 25 lbs (Heavy prints, small mirrors)**: OOK / Gorilla Push-Wire Drywall Hooks or 3M Claw 25lb push anchors.
+- **Over 25 lbs (Oversized mirrors, floor units)**: Floor-leaning base with rubber pads + top safety anti-tip tether (Zero wall shear load).
+- **Bath & High Humidity**: 3M Command Bath Water-Resistant Strips (frosted tab).
+
+---
+
+### SECTION 08: SURFACE PREPARATION: THE 70% ISOPROPYL ALCOHOL STANDARD
+1. **PREP**: Dust wall area with a dry microfiber cloth. Inspect paint for bubbling or cold drafts.
+2. **CLEAN**: Wipe contact patch firmly with 70% Isopropyl Alcohol. Dissolves oils with zero soapy film.
+3. **DRY**: Wait exactly 15 minutes for alcohol vapors to flash off completely.
+4. **CHECK**: Touch wall lightly—must feel bone dry and room temperature (&gt;15°C / 60°F).
+
+---
+
+### SECTION 09: THE 13-STEP REPEATABLE INSTALLATION PLAYBOOK
+- **STAGE 1: PREPARATION (STEPS 01–04)**
+  - 01. Weigh item gross tare on digital scale.
+  - 02. Inspect wall surface for flaking paint or cold drafts.
+  - 03. Wipe wall contact points with 70% Isopropyl Alcohol.
+  - 04. Wait 15 minutes for complete solvent evaporation.
+- **STAGE 2: INSTALLATION (STEPS 05–08)**
+  - 05. Click adhesive strip pairs together until they click loudly.
+  - 06. Remove green liners; press onto frame back firmly for 30 seconds.
+  - 07. Remove wall liners; position frame against wall using a bubble level.
+  - 08. Press frame firmly against wall for 30 continuous seconds.
+- **STAGE 3: SET & CURE (STEPS 09–11)**
+  - 09. Grab bottom corners of frame; peel upward off wall to expose wall strips.
+  - 10. Press thumb directly onto each exposed wall strip for 30 full seconds.
+  - 11. MANDATORY CURE: Wait 1 full hour before re-mounting frame to allow polymer cross-linking.
+- **STAGE 4: VERIFY & LOG (STEPS 12–13)**
+  - 12. Re-align frame and press firmly until interlocking teeth click into place.
+  - 13. Capture timestamped reference photo; log date and strip type in Notion Hub.
+
+---
+
+### SECTION 10: TACTICAL HACK PAGES: STANDARDIZED BLUEPRINTS
+- **HACK #01: Zero-Damage Acrylic Picture Ledge**
+  - Problem: Renters want rotating book/art display without heavy anchor holes.
+  - Solution: 24" ultra-light 3mm acrylic U-ledge (0.8 lbs) mounted with 4 Large Command Click-Strips along back flange.
+  - Specs: Diff Low • Time 20m • Cost $18 CAD • Max Load 5 lbs • Reversible 100%.
+- **HACK #02: Floor-Leaning Oversized Mirror Anti-Tip Tether**
+  - Problem: Full-length arched mirrors weigh 30+ lbs and tear drywall if mounted directly.
+  - Solution: Floor base carries 95% of vertical load on rubber wedges; top paracord tether to 3M Claw anchor prevents forward tipping.
+  - Specs: Diff Med • Time 25m • Cost $12 CAD • Max Load 75 lbs • Zero Wall Shear.
+- **HACK #03: Tension Window Plant Bar System**
+  - Problem: No window sill space for houseplants in small apartments.
+  - Solution: Heavy-duty spring tension shower rod fitted with silicone grip pads inside window frame jambs.
+  - Specs: Diff Low • Time 15m • Cost $22 CAD • Max Load 15 lbs • Zero Fasteners.
+
+---
+
+### SECTION 11: FIELD NOTES VAULT
+- **Field Note #14 (Winter Exterior Wall Chill)**: Exterior condo concrete walls drop below 8°C in winter. Warm wall for 20s with hair dryer before mounting.
+- **Field Note #22 (The Dental Floss Slide)**: If an adhesive pull tab snaps, slide unflavored waxed dental floss behind the bracket with a gentle sawing motion.
+- **Field Note #31 (Pre-1950 Heritage Picture Rails)**: Toronto/Montreal walk-ups often feature ceiling moulding. Use picture rail hooks for zero wall contact.
+
+---
+
+### SECTION 12: CAREFUL REMOVAL & THERMAL SOFTENING
+1. Peel frame upward off wall to separate interlocking strip faces.
+2. Hold plastic base flat with one hand to support drywall paper.
+3. Pull removal tab STRAIGHT DOWN along the wall surface. Stretch slowly at least 15 inches.
+4. If tab resists or feels brittle, warm 30s with hair dryer on LOW heat to soften adhesive polymers.
+
+---
+
+### SECTION 13: ROUTINE MONITORING & SEASONAL AUDITS
+- **Adhesive Edge Peeling Check**: Inspect top corners for foam separation quarterly.
+- **Vibration Audit near Entry Doors**: Check items within 4 feet of hallway door for fastener drift from door slams.
+- **Seasonal Heating Shift Inspection**: Check for localized drying/expansion when radiator heating turns on in autumn.
+
+---
+
+### SECTION 14: MOVE-OUT & DEPOSIT DEFENSE PROTOCOL
+- **The $12 Emergency Drywall Repair Recipe**:
+  1. Dab pea-sized dot of lightweight vinyl spackle into pinhole with fingertip.
+  2. Wipe flush immediately with damp paper towel (no sanding required).
+  3. Rub lightly with white school chalk to match paint sheen.
+- **Photographic Move-Out Baseline**: Take daylight wide-angle timestamped photos of all walls to prove pristine condition against move-in report.
+
+---
+
+### SECTION 15: PRINTABLE POCKET CHEAT CARDS (4x6")
+- **Card 1: Before You Mount**: [ ] Tare weigh item, [ ] Knuckle-tap wall, [ ] 70% alcohol clean, [ ] 15-min dry time.
+- **Card 2: Removal & Move-Out**: [ ] Pull straight down, [ ] Never pull outward 90°, [ ] Warm with hair dryer if stuck, [ ] Dab pinholes with spackle.
+
+---
+
+### SECTION 16: VERIFIED SOURCES & CANADIAN RETAILERS
+- **Manufacturer Data**: 3M Command™ Technical Data, OOK Picture Hardware, 3M Claw Anchors.
+- **Tenancy Law**: Ontario RTA Guidelines, BC RTB Wear & Tear Standards, Quebec Régie du logement.
+- **Canadian Sourcing**: Home Depot Canada, Lee Valley Tools, Canadian Tire, Amazon Canada.
+- **Disclaimer**: Educational guide only. Always verify load limits and test a small hidden area first.`
       },
       {
         id: 'zdm-2',
