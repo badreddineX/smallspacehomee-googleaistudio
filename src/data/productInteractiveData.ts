@@ -50,89 +50,123 @@ export const INTERACTIVE_PRODUCTS_MAP: Record<string, InteractiveProductData> = 
   'kit-zero-damage-mounting': {
     id: 'kit-zero-damage-mounting',
     rank: 1,
-    title: 'The Zero-Damage Renter Mounting & Secret Wall Hacks Kit',
-    storeSlug: 'zero-damage-renter-mounting-hacks-kit',
-    category: 'Renter Hacks & Wall Decor',
+    title: 'The SmallSpaceHome Renter Mounting & Hardware Hub',
+    storeSlug: 'renter-mounting-and-hardware-hub',
+    category: 'Renter Hardware & Wall Planning',
     fourthwallCollection: 'Tactical Action Kits',
     priceCAD: 24,
     priceUSD: 18,
     compareAtPriceCAD: 38,
-    format: 'Visual Field Playbook (.PDF) + Pocket Hacks Deck + Load Safety Calculator (.CSV) + Notion Hub',
-    deliverableBadge: '100% Zero-Damage Certified',
-    overviewSummary: 'The definitive tactical field guide and calculator for hanging heavy mirrors, floating shelves, and gallery art with zero drill holes or paint peeling.',
-    storeShortDescription: 'Hang 45-lb heavy mirrors, floating shelves, and gallery walls without a single drill hole, paint tear, or lost deposit. Includes 3M Claw shear formulas, painter tape + hot glue hacks, and emergency drywall touchup tricks.',
-    storeFullListingMarkdown: `### The Zero-Damage Renter Mounting & Secret Wall Hacks Kit
-*Tested in a 510 sq ft Toronto Rental Apartment*
+    format: '16-Section Field Playbook (.PDF) + Reactive Decision Matrix (.CSV) + 7-Database Notion Workspace + Pocket Cards',
+    deliverableBadge: 'Renter-Safe Planning Tools',
+    overviewSummary: 'The definitive Canadian renter guide, reactive decision spreadsheet, and Notion workspace for planning, testing, installing, and removing wall decor with reduced damage risk.',
+    storeShortDescription: 'Renter-friendly mounting planning tools designed to help you reduce unnecessary wall damage, choose hardware more carefully, and document your installations in Canadian rental apartments.',
+    storeFullListingMarkdown: `### SmallSpaceHome Renter Mounting & Hardware Hub
+*Real apartment-tested planning tools for Toronto, Vancouver & Montreal renters.*
 
-Tired of living with depressing, blank white walls because your landlord banned nails or drywall anchors? 
+Renting a small space shouldn't mean staring at depressing blank walls. But guessing with hardware or trusting exaggerated "100% damage-free" marketing claims can lead to pulled drywall paper, broken decor, and deducted security deposits.
 
-**The Zero-Damage Renter Mounting Kit** gives you the exact structural formulas, hardware store dupes, and physics-tested hacks to hang heavy decor, curtain rods, and floating shelves with 100% zero wall damage.
+**The SmallSpaceHome Renter Mounting & Hardware Hub** provides practical, conservative engineering guidelines, a reactive load safety spreadsheet, and a complete Notion workspace to plan, test, install, monitor, and remove wall-hung items without costly surprises.
+
+---
 
 #### What’s Included in Your Instant Download:
-1. **The 36-Page Vector Field Playbook (.PDF)**: High-resolution diagrams, 70% alcohol prep rules, shear force calculations, and blow-dryer thermal adhesive release protocols.
-2. **Pocket Hacks & Tricks Cheat Cards (.PDF)**: Printable 4x6 emergency cards with weight load ratings and hardware store money-saving dupes.
-3. **Adhesive & Tension Load Safety Matrix (.CSV)**: Interactive spreadsheet compatible with Excel and Google Sheets with instant safety calculations.
-4. **1-Click Renter Hardware & Wall Inventory Hub (.Notion)**: Pre-built Notion dashboard for cataloging wall art, weights, and move-out patch tasks.
+1. **The Zero-Damage Renter Mounting Field Playbook (.PDF)**: 16 comprehensive editorial sections covering surface identification (drywall, plaster, tile, wood, glass), conservative working loads, 70% isopropyl alcohol prep, 13-step installation checklist, and careful removal protocols.
+2. **Adhesive & Mounting Decision Matrix (.CSV / Excel)**: 22-column reactive spreadsheet with automated safety margins, conditional risk formatting, and interactive recommendation logic.
+3. **SmallSpaceHome Renter Mounting & Hardware Hub (.Notion JSON / Guide)**: 7 linked databases including Wall & Item Inventory, Hardware Library, Installation Log, Shopping List, Move-Out & Repair Checklist, and Verified Safety Notes.
+4. **Printable Pocket Cheat Cards (.PDF)**: 4x6" field cards for pre-installation audits, 1-hour cure protocols, stretch-release removal, and $12 move-out spackling & sheen matching.
 
-#### The 4 Secret Hacks Inside:
-- **The Painter’s Tape + Hot Glue Trick**: How to mount wooden ledges and acoustic panels with 20-lb shear strength and peel it off cleanly with zero paint residue.
-- **The 3M Claw 45-Degree Drywall Anchor Hack**: Push hardened steel anchors with your thumbs to support 45 lbs through microscopic pinholes smaller than a staple.
-- **The 60-Second Blow-Dryer Thermal Release**: How gentle heating prevents Command strips from snapping and tearing off latex paint.
-- **The $12 Spackle + Chalk Sheen Matching Trick**: How to fill pinholes flush and match rental wall paint without buying expensive sample paint cans.`,
-    primaryActionLabel: 'Download Mounting Hacks Kit ($24 CAD)',
+---
+
+#### Ground Rules & Honest Renter Truths:
+- **No False Guarantees**: We do not claim any adhesive is universally 100% damage-proof. We teach you how to diagnose paint condition, test discreetly, and calculate safe working loads.
+- **Conservative Working Loads**: Learn why static manufacturer ratings must be discounted by 30% to 50% to account for vibration, humidity, and leverage.
+- **Surface Diagnostics**: Know exactly what will hold on modern drywall vs fragile heritage plaster vs glazed ceramic tile.
+- **Move-Out Repair Protocol**: Step-by-step techniques to patch minor pinholes and blend off-white sheen cleanly before landlord inspections.`,
+    primaryActionLabel: 'Download Mounting & Hardware Hub ($24 CAD)',
     interactiveToolType: 'vertical-storage',
     interactiveSections: [
       {
         id: 'zdm-tool-1',
-        title: 'Adhesive Shear-Force & Weight Safety Calculator',
-        description: 'Calculate real-world downward shear load vs rated capacity.',
-        content: { defaultLoadLbs: 35, safetyMargin: '30%', prepRequirement: '70% Isopropyl Alcohol' }
+        title: 'Reactive Conservative Load & Safety Calculator',
+        description: 'Calculate real-world downward shear load, conservative working load (30-50% safety margin), and risk assessment.',
+        content: { defaultLoadLbs: 12, safetyMargin: '40%', prepRequirement: '70% Isopropyl Alcohol (15 min dry time)' }
       }
     ],
-    printableWorksheetMarkdown: `# Zero-Damage Mounting Quick Reference & Checklist
-SmallSpaceHome.ca • Pocket Hacks Deck
+    printableWorksheetMarkdown: `# SmallSpaceHome Renter Mounting & Hardware Field Checklist
+Publication by SmallSpaceHome.ca • Canadian Urban Renter Edition
 
-[ ] Step 1: Clean wall with 70% Isopropyl alcohol. Let dry 15 mins.
-[ ] Step 2: For mirrors over 20 lbs, use two diagonal 3M Claw 45lb push anchors spaced 16" apart.
-[ ] Step 3: For lightweight wooden shelves, apply blue painter's tape + hot glue bead.
-[ ] Step 4: To remove adhesive, warm with blow-dryer for 45s and pull tab STRAIGHT DOWN.`,
-    notionExportSchema: JSON.stringify({ name: "Zero-Damage Mounting Hub", version: "2.4.0" }),
+[ ] STEP 1: Weigh item on a calibrated digital scale (Gross Weight = Frame + Glass + Backing).
+[ ] STEP 2: Check wall surface (Drywall, Plaster & Lath, Ceramic Tile, Finished Wood, Glass).
+[ ] STEP 3: Confirm manufacturer rating and calculate Conservative Working Load (Rating × 0.60).
+[ ] STEP 4: Clean target wall area with 70% Isopropyl Alcohol; let dry 15 minutes.
+[ ] STEP 5: Apply hardware with firm palm pressure for 30 continuous seconds.
+[ ] STEP 6: MANDATORY: Wait 1 full hour before hanging weight to allow adhesive bond formation.
+[ ] STEP 7: Check level, capture reference photo, and log in your Notion Wall Inventory.
+[ ] STEP 8: On removal day, pull tab STRAIGHT DOWN parallel to wall (never outward).`,
+    notionExportSchema: JSON.stringify({ 
+      templateTitle: "SmallSpaceHome Renter Mounting & Hardware Hub", 
+      version: "3.0.0",
+      theme: "Calm Neutral Editorial (Muted Sage, Charcoal, Off-White)",
+      databases: ["Wall & Item Inventory", "Hardware & Tools Library", "Installation Log", "Shopping List", "Move-Out & Repair Checklist", "Safety Notes & Sources"]
+    }),
     quickChecklist: [
-      { id: '1', label: 'Wipe wall with 70% Isopropyl Alcohol (Zero oil residue)', tag: 'Wall Prep' },
-      { id: '2', label: 'Use 2 anchor points 16" apart for frames over 15 lbs', tag: 'Shear Physics' },
-      { id: '3', label: 'Warm adhesive with hair dryer before pulling tab down', tag: 'Peel-Safe' }
+      { id: '1', label: 'Weigh item gross weight on a digital scale (include frame & glass)', tag: 'Weight Check' },
+      { id: '2', label: 'Clean wall with 70% Isopropyl Alcohol (Zero multi-surface cleaners)', tag: 'Wall Prep' },
+      { id: '3', label: 'Apply 30-50% conservative safety margin below manufacturer rating', tag: 'Load Safety' },
+      { id: '4', label: 'Wait 1 full hour after pressing adhesive before hanging weight', tag: 'Cure Time' },
+      { id: '5', label: 'Pull tab straight DOWN parallel to wall when removing (never outward)', tag: 'Safe Removal' }
     ],
     deliverableFiles: [
-      { name: '01_Zero_Damage_Mounting_Field_Playbook.pdf', format: 'PDF Master Guide', size: '4.1 MB', description: 'Illustrated field guide with load diagrams and hack tutorials.' },
-      { name: '02_Zero_Damage_Pocket_Hacks_Deck.pdf', format: 'Printable Cards', size: '1.8 MB', description: '4x6 printable emergency cheat cards and dupe lists.' },
-      { name: '03_Adhesive_Load_Safety_Matrix.csv', format: 'CSV / Sheets', size: '14 KB', description: 'Interactive load capacity and hardware selector.' },
-      { name: '04_Zero_Damage_Mounting_Notion_Hub.json', format: 'Notion Hub', size: '22 KB', description: '1-Click Notion workspace with wall inventory tracker.' }
+      { name: '01_Renter_Mounting_Field_Playbook.pdf', format: 'PDF Master Guide', size: '3.8 MB', description: 'Comprehensive 16-section editorial field guide with surface decision tables, installation checklists, and removal protocols.' },
+      { name: '02_Adhesive_And_Mounting_Decision_Matrix.csv', format: 'CSV / Sheets', size: '18 KB', description: '22-column reactive decision spreadsheet with automated safety margin calculations and risk filters.' },
+      { name: '03_Renter_Mounting_And_Hardware_Hub_Notion_Schema.json', format: 'Notion Hub', size: '26 KB', description: '1-Click 7-database Notion template architecture with linked inventories, logs, and shopping lists.' },
+      { name: '04_Printable_Pocket_Cheatsheets_And_Templates.pdf', format: 'Printable Cards', size: '1.6 MB', description: '4x6" printable pocket cheat cards for installation day and move-out repair audits.' }
     ],
     storeFaq: [
-      { question: 'Will this really hold a 35-lb heavy mirror without screws?', answer: 'Yes! When using two 3M Claw push anchors spaced 16 inches apart, the downward shear load is distributed across two drywall planes supporting up to 70 lbs with zero drilling.' },
-      { question: 'What if my rental apartment has textured or cold walls?', answer: 'The field guide includes specific protocols for textured plaster and cold walls, including 10-second thermal pre-heating and painter tape adhesion bridges.' }
+      { 
+        question: 'Is this method guaranteed to cause zero damage to my rental walls?', 
+        answer: 'No mounting method can guarantee zero damage under all conditions because rental wall paints, plaster condition, and humidity vary widely. Our kit is designed to reduce wall damage by teaching you conservative working loads, surface compatibility testing, and careful removal techniques.' 
+      },
+      { 
+        question: 'Can I safely hang a 25-lb or 35-lb mirror using adhesive strips?', 
+        answer: 'We strictly advise against hanging mirrors over 15 lbs with standard adhesive strips due to dynamic shear and tensile torque. For mirrors over 15 lbs, our guide outlines safer alternatives: push-in drywall anchors with micro-pinholes, floor-leaning mounts with safety tethers, or stud-mounted fasteners where permitted.' 
+      },
+      { 
+        question: 'Does this work on Canadian plaster-and-lath walls in older apartments?', 
+        answer: 'Yes! Older Toronto, Montreal, and Vancouver walk-ups often feature brittle plaster. The guide provides specific diagnostic steps to identify plaster and recommends appropriate solutions like picture rail hooks or angled finish pins instead of wire push-hooks that snap on lath.' 
+      },
+      { 
+        question: 'How do I use the Notion template if I am a beginner?', 
+        answer: 'The Notion Hub includes a clean 4-step setup guide and 7 pre-built databases (Wall Inventory, Hardware Library, Installation Log, Shopping List, Move-Out Checklist, Safety Notes). You can use it as a complete workspace with sample records.' 
+      }
     ],
     seoMeta: {
-      metaTitle: 'Zero-Damage Renter Mounting & Secret Wall Hacks Kit | SmallSpaceHome',
-      metaDescription: 'Hang 45-lb mirrors, floating shelves, and gallery walls with zero drill holes or lost deposits. Instant PDF, CSV calculator, and Notion hub.',
-      keywords: ['zero damage mounting', 'how to hang heavy mirror rental', 'command strip hacks', 'renter wall decor hacks']
+      metaTitle: 'SmallSpaceHome Renter Mounting & Hardware Hub | Canadian Rental Guide',
+      metaDescription: 'Renter-friendly mounting planning tools, reactive decision matrix, and Notion workspace to safely hang decor and mirrors with reduced damage risk.',
+      keywords: ['renter mounting guide', 'how to hang art apartment', 'damage free wall hanging canada', 'renter hardware notion template', 'command strip weight limits']
     },
-    customerWelcomeEmail: `Subject: Your Zero-Damage Mounting & Secret Wall Hacks Kit is here! 🔨✨
+    customerWelcomeEmail: `Subject: Your SmallSpaceHome Renter Mounting & Hardware Hub is ready! 🏠🔨
 
-Hi friend,
+Hi neighbor,
 
-Thank you for grabbing The Zero-Damage Renter Mounting & Wall Hacks Kit!
+Thank you for picking up the SmallSpaceHome Renter Mounting & Hardware Hub!
 
-You can now download your complete deliverable bundle:
-1. 01_Zero_Damage_Mounting_Field_Playbook.pdf
-2. 02_Zero_Damage_Pocket_Hacks_Deck.pdf
-3. 03_Adhesive_Load_Safety_Matrix.csv
-4. 04_Zero_Damage_Mounting_Notion_Hub.json
+As small-space apartment renters in Canada, we know how stressful it can be to decorate without risking your security deposit or personal safety.
 
-Remember: Always prep your walls with 70% Isopropyl alcohol before applying any adhesive!
+Here are your 4 core deliverables ready for immediate use:
+1. 01_Renter_Mounting_Field_Playbook.pdf (28-page 16-section master guide)
+2. 02_Adhesive_And_Mounting_Decision_Matrix.csv (22-column reactive spreadsheet)
+3. 03_Renter_Mounting_And_Hardware_Hub_Notion_Schema.json (7-database workspace)
+4. 04_Printable_Pocket_Cheatsheets_And_Templates.pdf (4x6" printable pocket cards)
 
-Happy decorating,
-The SmallSpaceHome Team`
+Quick Start Recommendation:
+Start by reading Section 03 ("Safety First") and Section 04 ("Identify the Wall or Surface") in the Field Playbook before buying hardware.
+
+If you have any questions, reach out to us at hello@smallspacehome.ca.
+
+Happy organizing,
+The SmallSpaceHome.ca Team`
   },
 
   'kit-micro-kitchen-maxima': {

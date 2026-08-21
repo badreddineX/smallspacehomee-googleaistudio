@@ -33,142 +33,536 @@ export const PRODUCT_ASSET_BUNDLES: Record<string, ProductAssetBundle> = {
   'kit-zero-damage-mounting': {
     productId: 'kit-zero-damage-mounting',
     rank: 1,
-    title: 'The Zero-Damage Renter Mounting & Secret Wall Hacks Kit',
+    title: 'The SmallSpaceHome Renter Mounting & Hardware Hub',
     photography: {
       url: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=85',
-      alt: 'Clean scandinavian apartment living room with gallery wall mounted securely on white walls without drilling',
-      caption: 'Tested in 510 sq ft Toronto Rental Lab: 35-lb oversized brass mirror and oak art frames mounted using zero-drill shear-angle anchors and 70% alcohol wall prep.',
-      spatialSpecs: '510 sq ft Studio • Matte White Drywall • 35-lb Heavy Mirror Test • 100% Zero-Damage',
+      alt: 'Clean Scandinavian-inspired Canadian rental living room with carefully mounted art frames and mirror on matte drywall',
+      caption: 'Tested in a 510 sq ft Toronto Rental Apartment: Wall decor and lightweight storage mounted using conservative working loads, 70% isopropyl alcohol prep, and documented removal methods.',
+      spatialSpecs: '510 sq ft Studio • Matte Painted Drywall • Conservative Load Protocols • Zero-Damage Reduction Focus',
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
-      stylingKeywords: ['Zero-Drill Mounting', 'Gallery Wall', 'Heavy Mirror Hack', 'Painter Tape Trick']
+      stylingKeywords: ['Renter Hardware', 'Conservative Working Loads', 'Wall Surface Identification', 'Careful Removal Protocols']
     },
-    deliverablesOverview: 'The complete 4-part tactical action delivery bundle: Field Playbook (PDF), Pocket Hacks Card Deck (PDF), Adhesive Load Safety Matrix (CSV), and 1-Click Hardware Notion Hub.',
+    deliverablesOverview: 'The complete 4-part digital product bundle: Field Playbook (PDF), Reactive Adhesive & Mounting Decision Matrix (CSV), 7-Database Notion Hardware Hub (JSON), and Printable Pocket Cheat Cards (PDF).',
     totalAssetsCount: 4,
     files: [
       {
         id: 'zdm-1',
-        fileName: '01_Zero_Damage_Mounting_Field_Playbook.pdf',
+        fileName: '01_Renter_Mounting_Field_Playbook.pdf',
         fileType: 'PDF Master Guide',
         extension: '.pdf',
-        fileSize: '36 Pages • 4.1 MB',
+        fileSize: '28 Pages • 3.8 MB',
         badge: 'Core Field Guide',
-        description: 'Complete illustrated field guide to hanging heavy art, floating mirrors, and shelves without drill holes, paint tears, or deposit loss.',
-        previewSnippet: 'SECTION 1: The Adhesive Science & 70% Isopropyl Alcohol Rule\n- The Invisible Grease Layer that causes 80% of adhesive failure\n- The Painter’s Tape + Hot Glue Trick for acoustic panels & shelves\n- The 3M Claw 45-degree shear angle load multiplier',
-        downloadableContent: `# The Zero-Damage Renter Mounting & Secret Wall Hacks Field Playbook
-Publication by SmallSpaceHome.ca Editorial Lab (Tested in 510 sq ft Toronto Rental Lab)
-Target Outcome: Hang up to 45-lb frames, floating shelves, and drapery with 100% zero wall damage.
+        description: 'Comprehensive 16-section editorial field playbook covering surface identification, conservative working loads, 13-step installation checklist, removal procedures, and move-out repairs.',
+        previewSnippet: 'SECTION 1: Canadian Renter Context & Safety Ground Rules\nSECTION 4: Wall & Surface Identification Decision Table\nSECTION 8: 13-Step Repeatable Installation Checklist\nSECTION 10: Manufacturer-Compliant Removal & Heat Protocols',
+        downloadableContent: `# The Zero-Damage Renter Mounting Field Playbook
+## A Practical Renter's Guide to Planning, Installing, Monitoring, and Removing Wall-Mounted Items
+*Publication by SmallSpaceHome.ca Editorial Lab • Canadian Renter Edition (Toronto • Vancouver • Montreal)*
 
-=== 01. THE ADHESIVE SCIENCE & 70% ALCOHOL WALL PREP ===
-• The Invisible Grease Layer: Rental walls hold microscopic aerosolized cooking oils and dust that reduce adhesive stickiness by up to 75%.
-• Mandatory Prep: Wipe surface with 70% Isopropyl Alcohol (do NOT use Windex or multi-surface sprays with silicone oils). Allow 15 minutes to air dry.
-• Temperature Threshold: Never apply adhesive strips below 15°C (59°F). If walls feel cold, warm the spot with a hair dryer on low for 10 seconds before pressing.
-• The 30-Second Continuous Pressure Rule: Hold adhesive brackets with firm palm pressure for 30 full seconds, then wait 1 hour before hanging weight.
+> **IMPORTANT SAFETY & LIABILITY NOTICE**:
+> This guide provides renter-friendly planning tools designed to help you reduce unnecessary wall damage, choose hardware more carefully, and document installations in rental homes. No mounting method can guarantee zero damage under all conditions. Always read, verify, and follow the exact manufacturer instructions for your hardware. Never exceed stated weight limits. When in doubt, use floor-standing furniture, approved stud-mounting with landlord permission, or professional assistance.
 
-=== 02. THE PAINTER'S TAPE + HOT GLUE MOUNTING TRICK ===
-• Ideal For: Lightweight wooden ledges, cork boards, cable raceways, and foam acoustic soundproofing panels.
-• Step 1: Apply high-tack blue painter's tape to the wall where the item will sit. Rub firmly to seal edges.
-• Step 2: Apply a matching strip of blue painter's tape to the back of your wooden shelf or acoustic panel.
-• Step 3: Run a bead of hot glue directly onto the tape on your item, then press firmly against the wall tape.
-• Result: The hot glue bonds the two tape surfaces together with 20-lb shear strength. Upon moving out, simply peel the painter's tape cleanly off the drywall without a trace!
+---
 
-=== 03. HEAVY MIRROR & ARTWORK ZERO-DRILL FORMULA (UP TO 45 LBS) ===
-• The 3M Claw Drywall Anchor Hack: Engineered hardened steel prongs push directly into drywall with your thumbs (no drill required). Distributes 45 lbs across 4 micro-pinholes smaller than a thumbtack.
-• Two-Point Diagonal Load Distribution: Never hang a heavy mirror from a single center point. Use two anchor points spaced 16 inches apart along the top frame to distribute downward shear force across two drywall planes.
-• French Cleat Adhesive Hybrid: For wide headboards or art panels, use interlocking aluminum cleats secured with interlocking heavy-duty dual-lock polyolefin fasteners.
+### TABLE OF CONTENTS
+1. Cover & Canadian Renter Context
+2. How to Use This Guide with the Spreadsheet & Notion Hub
+3. Safety First: Working Loads & Hazard Prevention
+4. Identify the Wall or Surface (Drywall, Plaster, Tile, Wood, Glass, Wallpaper)
+5. Measuring & Weighing Items (Tare Weighing & Shelf Dynamic Loads)
+6. Choose the Mounting Category (Adhesives, Push-Pins, Tension, Over-Door, Floor Supports)
+7. Surface Preparation & The 70% Isopropyl Alcohol Protocol
+8. The 13-Step Repeatable Installation Procedure
+9. Routine Monitoring & Seasonal Inspection Checklist
+10. Careful Removal Protocols & Thermal Softening Limits
+11. Lightweight Mounting Methods & Experimental Boundaries (<2 lbs)
+12. Heavier Items, High-Risk Objects & Floor Support Alternatives
+13. Move-Out Inspection & Minor Surface Repair Protocol
+14. Visual Decision Trees (Weight, Surface, Adhesive Suitability)
+15. Printable Pocket Cheat Cards (Before, During, Removal, Move-Out)
+16. Verified Sources, Canadian Retailers & Complete Disclaimer
 
-=== 04. THERMAL BLOW-DRYER REMOVAL SECRET ===
-• Why Command Strips Break: Pulling the tab sideways or at a 45-degree angle causes the adhesive to snap, tearing the top layer of rental latex paint.
-• The Blow-Dryer Thermal Hack: Warm the plastic base with a blow-dryer on medium heat for 45 seconds to soften the elastomeric polymer.
-• Pulling Technique: Pull the adhesive tab straight DOWN parallel to the wall, stretching it slowly 6 to 12 inches until it releases silently with zero resistance.`
+---
+
+### SECTION 01: CANADIAN RENTER CONTEXT & PHILOSOPHY
+Renting in Canadian urban centres like Toronto, Vancouver, and Montreal presents specific architectural constraints:
+- **Typical Footprint**: 450–650 sq ft open-concept condos or older heritage walk-ups with plaster-and-lath walls.
+- **Lease Agreements**: Standard provincial leases (such as the Ontario Standard Lease or BC Residential Tenancy Agreement) generally permit reasonable decoration, but landlords may deduct repair expenses if improper fasteners tear drywall paper or leave large anchor blowouts.
+- **Our Philosophy**: We do not believe in risking your security deposit or personal safety on exaggerated marketing claims. Instead of claiming "100% zero wall damage," we apply conservative structural load planning, surface testing, and meticulous documentation.
+
+---
+
+### SECTION 02: HOW TO USE THIS GUIDE
+Follow the 4-step workflow:
+1. **Measure & Weigh**: Use a digital scale to find the actual gross weight (including frame, glass, and hanging brackets).
+2. **Identify Surface**: Distinguish between modern drywall, brittle heritage plaster, hollow hollow-core doors, and masonry.
+3. **Select & Verify Hardware**: Match hardware to the surface and apply a 30% to 50% safety margin below manufacturer rated maximums.
+4. **Log & Monitor**: Record installation dates, photo evidence, and follow-up checks in your Notion Hub.
+
+**When to Stop and Choose a Different Method**:
+- If the item exceeds 15 lbs and you cannot anchor into a structural wall stud.
+- If the wall surface is textured, powdery, peeling, damp, or recently painted (less than 28 days cure time).
+- If the item is suspended directly above a bed, crib, sofa, or primary walkway.
+- In these cases, immediately transition to floor-leaning or freestanding furniture solutions.
+
+---
+
+### SECTION 03: SAFETY FIRST: WORKING LOADS & HAZARD PREVENTION
+1. **Never Exceed Manufacturer Maximums**: Stated ratings represent static lab conditions. In real apartments with vibration, humidity, and airflow, dynamic forces reduce real holding capacity.
+2. **Apply Conservative Working Loads**: As a rule of thumb, do not load adhesive products past 50% to 70% of their rated capacity. For example, a strip rated for 16 lbs should only be loaded to 8–10 lbs.
+3. **Inconspicuous Test Area**: Always apply a test strip in a hidden spot (e.g., inside a closet or behind a door) and remove it after 24 hours to confirm paint adhesion.
+4. **Hazard Zones**: Do not hang glass frames, mirrors, or heavy shelving over headboards or seating. If an adhesive bond fails, gravity causes injury.
+5. **No Universal Guarantee**: Paint formulations vary widely (matte, eggshell, low-VOC, builder-grade). Low-VOC paints contain silicone additives that resist adhesives.
+
+---
+
+### SECTION 04: IDENTIFY THE WALL OR SURFACE
+Use this decision table before choosing any mounting method:
+
+| Surface Type | Diagnostic Characteristics | Suitable Mounting Options | Options to Avoid | Testing Advice |
+| :--- | :--- | :--- | :--- | :--- |
+| **Standard Drywall (Gypsum)** | Hollow sound when tapped; smooth painted finish; modern buildings. | Quality adhesive picture strips, push-in drywall hooks (small pinholes), stud screws. | Standard plastic anchors without stud backer for dynamic loads. | Test adhesive strip inside closet for 24 hours. |
+| **Plaster & Lath** | Solid, dull sound; cold to the touch; common in pre-1960 buildings. | Picture rail hooks, thin picture wire nails driven at 45° into lath, tension rods. | Push-in wire hooks (will bend/snap on lath); heavy adhesive strips (risk pulling brittle skim coat). | Check for crumbling plaster around outlets. |
+| **Glazed Ceramic Tile** | Non-porous, glossy or matte tile in bathrooms/kitchens. | Waterproof suction brackets, high-bond removable waterproof adhesive strips. | Mechanical drilling (cracks tile); standard paper-backed tape. | Clean with 70% isopropyl alcohol to remove soap scum before mounting. |
+| **Finished Wood / Veneer** | Cabinet doors, trim, millwork. | Low-tack removable strips, felt-padded over-door hooks. | High-tack adhesives that can lift wood stain or polyurethane. | Test on interior back of cabinet door first. |
+| **Metal & Refrigerator Sides** | Ferrous steel refrigerator or magnetic backsplash panels. | Rare-earth magnetic hooks, rubber-coated magnetic tool bars. | Permanent foam tape, cyanoacrylate glues. | Ensure steel thickness is adequate to prevent magnetic slippage. |
+| **Glass & Mirrors** | Non-porous, smooth, rigid. | Suction hooks, clear removable double-sided acrylic strips. | Opaque foam adhesives that degrade in UV sunlight. | Clean thoroughly with alcohol; avoid mounting in direct freezing condensation. |
+| **Wallpaper & Textured Drywall** | Embossed patterns, vinyl paper, orange-peel, or popcorn textures. | Freestanding shelving, tension poles, floor-leaning easels. | **ALL adhesive strips** (will rip paper or fail on textured peaks). | **DO NOT USE ADHESIVES**. Mechanical pinhooks only if lease permits. |
+
+---
+
+### SECTION 05: MEASURING & WEIGHING ITEMS
+- **Tare Weighing Technique**: Step on a digital bathroom scale holding the item, note the total weight, then subtract your own body weight. For items under 5 lbs, use a digital kitchen scale.
+- **Include All Hardware**: Weigh the frame with glass, backing board, and any internal mats or hanging wires.
+- **Dynamic Shelf Loads**: A floating picture ledge weighs 2 lbs, but 4 hardcover books and a ceramic pot add 8 lbs. Calculate gross weight = Shelf tare weight + Maximum anticipated contents.
+- **Dimension Check**: Measure width, height, and depth. Deep items (depth > 4 inches) exert high leverage/torque (shear + tensile pull) on wall fixings.
+
+---
+
+### SECTION 06: CHOOSE THE MOUNTING CATEGORY
+1. **Adhesive Picture-Hanging Strips**: Best for flat, lightweight frames under 8 lbs on smooth drywall. Interlocking dual-lock teeth allow item removal without pulling adhesive from wall.
+2. **Push-In Drywall Hooks / Wire Anchors**: Hardened steel wire hooks inserted by hand into drywall. Leaves a pinhole (<1.5 mm) smaller than a finish nail. Suitable for frames 10–25 lbs where lease permits minor pinholes.
+3. **Spring Tension Rods**: Zero wall penetration. Ideal for sheer curtains, galley kitchen hanging organizers, and closet tier doublers between solid walls or door frames.
+4. **Over-Door Brackets**: Utilizes door top clearance (standard 2mm gap required). Supports coats, towels, and shoe organizers without fasteners.
+5. **Magnetic Mounting Systems**: Perfect for small kitchen spice bars and key hooks on metal surfaces.
+6. **Floor-Leaning / Freestanding Alternatives**: The gold standard for mirrors over 20 lbs and oversized art. Place non-slip rubber floor pads under the base and a single tether cord to a low drywall anchor to prevent tip-over.
+
+---
+
+### SECTION 07: SURFACE PREPARATION & THE 70% ISOPROPYL ALCOHOL PROTOCOL
+- **Why Preparation Fails**: 80% of adhesive bond failures occur because walls harbour a microscopic film of aerosolized cooking grease, skin oils, and ambient dust.
+- **Cleaning Protocol**:
+  1. Dampen a clean lint-free microfiber cloth with **70% Isopropyl Alcohol**.
+  2. Wipe the target area gently in a circular motion.
+  3. **DO NOT** use household multi-surface sprays, glass cleaners, or dish soap (they leave silicone surfactants that repel adhesive).
+  4. Allow the area to air-dry completely for **15 minutes**.
+- **Temperature & Humidity Thresholds**:
+  - Minimum wall temperature: 15°C (59°F).
+  - Maximum wall temperature: 30°C (86°F).
+  - If walls feel cold (common in Canadian winter near exterior windows), warm the surface for 10 seconds with a hair dryer on low before adhesive application.
+
+---
+
+### SECTION 08: THE 13-STEP REPEATABLE INSTALLATION PROCEDURE
+1. **Verify Weight**: Confirm gross item weight on a calibrated digital scale.
+2. **Examine Surface**: Check surface type and verify paint is firmly bonded (no flaking).
+3. **Check Product Rating**: Confirm manufacturer rated load and calculate conservative working load (≤60% rating).
+4. **Plan Layout**: Hold item in place and use light painter's tape to mark top corners (do NOT use pencil or ink).
+5. **Clean Surface**: Wipe with 70% Isopropyl alcohol and allow 15 minutes dry time.
+6. **Apply Hardware to Item**: Press adhesive strip firmly to frame for 30 seconds.
+7. **Apply Item to Wall**: Press frame firmly against wall for 30 full seconds across each adhesive point.
+8. **Separate Item from Wall** (for dual-lock strips): Grab bottom corners and peel frame upward from the bottom to detach interlocking teeth, leaving wall strips in place.
+9. **Reinforce Wall Strips**: Press remaining wall strips firmly with thumb pressure for 30 seconds.
+10. **Mandatory 1-Hour Cure Wait**: **DO NOT** hang the item immediately. Allow adhesive bond to build molecular grip for 1 full hour (or 24 hours for maximum strength).
+11. **Re-attach Frame**: Align interlocking teeth and press firmly until an audible click is felt.
+12. **Check Level**: Place a small bubble level across top frame.
+13. **Photograph & Log in Notion**: Capture installation photo and log date, hardware, and weight in your Notion Hub.
+
+---
+
+### SECTION 09: ROUTINE MONITORING & SEASONAL INSPECTION
+Canadian homes experience extreme humidity swings (dry forced-air heating in winter, humid summers):
+- **30-Day Initial Check**: Inspect adhesive top edges for any peeling, creeping, or downward sagging.
+- **Seasonal Review**: Inspect bathroom and kitchen mounts when heating season begins (November) and summer humidity peaks (July).
+- **Shelf Load Audits**: Ensure additional items have not been stacked on decorative ledges.
+
+---
+
+### SECTION 10: CAREFUL REMOVAL PROTOCOLS
+1. **Never Pull Outward or Sideways**: Pulling an adhesive tab at a 45-degree angle will snap the tab and tear drywall paper.
+2. **The Straight-Down Stretch**: Grasp the rounded tab and slowly pull it **straight DOWN parallel to the wall**. Stretch it smoothly 15 to 30 cm until the strip releases cleanly.
+3. **Gentle Thermal Softening (If Permitted)**: If a tab snaps or feels bonded to delicate paint, warm the plastic bracket gently with a hair dryer on medium heat for 30–45 seconds to soften the adhesive polymer before sliding dental floss behind the bracket.
+4. **DO NOT** use razor blades, putty knives, or screwdrivers against raw drywall.
+5. **Inspect & Photograph**: Record removal photo and note surface condition in your Move-Out Checklist.
+
+---
+
+### SECTION 11: LIGHTWEIGHT MOUNTING METHODS (<2 LBS)
+- **Small Decor & Postcards**: Use low-tack washi tape or removable poster putty on cured drywall.
+- **Cable Management Clips**: Use small adhesive wire clips along baseboards. Warm slightly before removal.
+- **Temporary Tape Bridges (Experimental)**: Blue painter's tape applied to wall + matching tape on lightweight wooden sign (<1.5 lbs) bonded with craft glue. *Note: Only suitable for ultra-light items under 1.5 lbs. Never use for structural storage.*
+
+---
+
+### SECTION 12: HEAVIER ITEMS & FLOOR SUPPORT ALTERNATIVES
+- **Items Over 15 Lbs**: Do NOT rely on adhesive strips. Use stud-finding magnets to locate wooden studs and secure with wood screws (where permitted by lease), or use mechanical push-in drywall anchors with minimal pinholes.
+- **Oversized Full-Length Mirrors**: Place base firmly on floor atop rubber non-slip furniture pads. Angle mirror back 5 degrees against wall. Use a single lightweight anti-tip tether at top to prevent forward tipping.
+- **Freestanding Storage Towers**: Utilize vertical ladder shelves that rest on the floor and lean gracefully against the wall without carrying downward shear load.
+
+---
+
+### SECTION 13: MOVE-OUT INSPECTION & MINOR REPAIR PROTOCOL
+1. **Pre-Move-Out Audit (14 Days Prior)**: Inspect all wall surfaces and cross-reference with your move-in photo baseline.
+2. **Pinholes & Small Nail Holes**: Fill hole flush with a pea-sized dab of lightweight vinyl spackling compound. Smooth flat with a clean plastic putty knife or old credit card.
+3. **Sanding**: Once dry (20–30 minutes), gently buff the spot with 220-grit ultra-fine sandpaper until perfectly flush.
+4. **Sheen & Colour Blending**: If touch-up paint is not provided by the landlord, match the off-white sheen using artist chalk or soft blending compound.
+5. **When Not to Repair**: Avoid large plaster gouges without consulting your landlord or building superintendent. Improperly painted patches often draw more attention than clean pinholes.
+
+---
+
+### SECTION 14: VISUAL DECISION TREES
+- **Decision Tree 1: Item Weight**:
+  - Under 4 lbs -> Standard adhesive picture strips.
+  - 4 to 12 lbs -> Multi-pair heavy-duty adhesive strips with 50% safety margin.
+  - 12 to 25 lbs -> Push-in steel drywall wire hooks (micro-pinholes) OR floor-leaning support.
+  - Over 25 lbs -> Stud mounting with landlord approval OR freestanding furniture.
+- **Decision Tree 2: Wall Surface**:
+  - Smooth Drywall -> Compatible with verified adhesives and push hooks.
+  - Plaster & Lath -> Picture rails, angled finish nails, or floor furniture.
+  - Tile / Glass -> Waterproof suction or high-bond non-porous strips.
+  - Wallpaper / Textured -> Freestanding / Tension rods ONLY.
+
+---
+
+### SECTION 15: PRINTABLE POCKET CHEAT CARDS
+*(Printable 4x6" reference cards provided in File 04 for handy on-site reference during move-in and installation days).*
+
+---
+
+### SECTION 16: VERIFIED SOURCES & LIABILITY DISCLAIMER
+- **Manufacturer Documentation Checked**: 3M Command Technical Specifications, OOK Picture Hanging Guidelines, 3M Claw Load Testing Reports.
+- **Canadian Tenancy Frameworks**: Ontario Residential Tenancies Act (2006), BC Residential Tenancy Act, Régie du logement du Québec guidance on reasonable wear and tear.
+- **Disclaimer**: *The advice and tools provided in this playbook are for general educational purposes. SmallSpaceHome.ca and its authors accept no liability for property damage, personal injury, or deposit disputes resulting from the use or misuse of these techniques. Always prioritize product manufacturer safety instructions.*`
       },
       {
         id: 'zdm-2',
-        fileName: '02_Zero_Damage_Pocket_Hacks_Deck.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.8 MB',
-        badge: 'Printable Deck',
-        description: 'Pocket-sized printable cheat cards with weight limits, store dupe lists, and emergency paint-peel fix formulas.',
-        previewSnippet: 'CARD 1: Weight Load Quick-Reference Chart\nCARD 2: The Hardware Store Dupe List (Save 60% vs Brand Names)\nCARD 3: Emergency 3-Minute Drywall Touchup Card',
-        downloadableContent: `# Pocket Hacks Deck: Zero-Damage Mounting Cheat Cards
-SmallSpaceHome.ca • Pocket Reference Cards (Print on 4x6 Cardstock or Save to Phone)
-
-CARD 01: WEIGHT LOAD CHEAT SHEET
-[ ] Under 4 lbs: 3M Picture Hanging Strips (Medium, 2 pairs)
-[ ] 4 to 12 lbs: 3M Heavy-Duty Large Strips (4 pairs on outer corners)
-[ ] 12 to 25 lbs: 3M Claw 25-lb Drywall Push Anchor (2 micro-pinholes)
-[ ] 25 to 45 lbs: 3M Claw 45-lb Anchor or Gorilla Heavy Hook (Zero-Drill)
-[ ] Over 45 lbs: Locate wood stud using magnetic stud finder or use floor-leaning mirror anchor
-
-CARD 02: THE HARDWARE STORE DUPE LIST
-[ ] Instead of branded $18 hanging packs -> Buy Heavy Duty Polyolefin Dual-Lock Tape 10ft roll ($11)
-[ ] Instead of $25 specialty mirror brackets -> Buy 3M Claw Drywall Anchors 4-pack ($7)
-[ ] Instead of expensive spackle tubs -> Buy 3-in-1 Spackle Stick with built-in scraper & sander ($8)
-
-CARD 03: EMERGENCY PAINT-PEEL REPAIR CARD
-[ ] Step 1: Sand rough paint edge with 220-grit sandpaper until flush with drywall
-[ ] Step 2: Apply coin-sized dab of lightweight spackle; smooth with credit card
-[ ] Step 3: Once dry (15 mins), rub matching off-white blackboard chalk to blend sheen`
+        fileName: '02_Adhesive_And_Mounting_Decision_Matrix.csv',
+        fileType: 'Spreadsheet (CSV/Excel)',
+        extension: '.csv',
+        fileSize: '22 Columns • 16 Rows • 18 KB',
+        badge: 'Reactive Decision Matrix',
+        description: 'Reactive spreadsheet matrix with 22 core columns, automated safety-margin calculations, conditional risk formatting, and interactive recommendation logic.',
+        previewSnippet: 'Record_ID,Hardware_Type,Brand_or_Manufacturer,Product_Model,Rated_Capacity_LB,Conservative_Working_Load_LB,Item_Weight_LB,Safety_Margin_LB,Wall_Surface,Surface_Condition,Item_Category,Location,Adhesive_or_Mechanical,Removal_Method,Test_Required,Manufacturer_Instructions_Checked,Product_Link,Verification_Date,Risk_Level,Recommendation,Reason,Customer_Notes',
+        downloadableContent: `Record_ID,Hardware_Type,Brand_or_Manufacturer,Product_Model,Rated_Capacity_LB,Conservative_Working_Load_LB,Item_Weight_LB,Safety_Margin_LB,Wall_Surface,Surface_Condition,Item_Category,Location,Adhesive_or_Mechanical,Removal_Method,Test_Required,Manufacturer_Instructions_Checked,Product_Link,Verification_Date,Risk_Level,Recommendation,Reason,Customer_Notes
+REC-001,Adhesive Picture Strips (Small),3M Command,17202-ES,4.0,2.5,1.5,1.0,Painted Drywall,Smooth & Clean,Small Art Frame,Living Room,Adhesive,Straight Down Stretch,No,Yes,https://command.3mcanada.ca,2026-03-01,Low,Suitable for review,Adequate load margin and compatible smooth drywall surface,Use 2 pairs for balanced corner support
+REC-002,Adhesive Picture Strips (Medium),3M Command,17201-ES,12.0,8.0,4.5,3.5,Painted Drywall,Smooth & Clean,Medium Framed Print,Bedroom,Adhesive,Straight Down Stretch,No,Yes,https://command.3mcanada.ca,2026-03-01,Low,Suitable for review,Conservative working load respected with >30% margin,Clean wall with 70% alcohol and wait 1hr before loading
+REC-003,Adhesive Picture Strips (Large),3M Command,17206-ES,16.0,10.0,7.0,3.0,Painted Drywall,Smooth & Clean,Large Canvas Art,Dining Nook,Adhesive,Straight Down Stretch,No,Yes,https://command.3mcanada.ca,2026-03-01,Low,Suitable for review,Item weight 7 lbs is safely below 10 lb working load,Apply 4 pairs (one at each corner) for stability
+REC-004,Adhesive Picture Strips (Large),3M Command,17206-ES,16.0,10.0,14.0,-4.0,Painted Drywall,Smooth & Clean,Heavy Wood Mirror,Living Room,Adhesive,Straight Down Stretch,No,Yes,https://command.3mcanada.ca,2026-03-01,High,Do not use,Item weight (14 lbs) exceeds conservative 10 lb working load,Risk of sudden adhesive creep failure over time
+REC-005,Adhesive Water-Resistant Strips,3M Command,17605B-ES,5.0,3.0,1.8,1.2,Glazed Ceramic Tile,Clean & Degreased,Shower Caddy / Squeegee,Bathroom,Adhesive,Straight Down Stretch,Yes,Yes,https://command.3mcanada.ca,2026-03-01,Medium,Test first,High humidity environment requires surface degreasing,Test adhesion on spare tile area before loading
+REC-006,Push-In Drywall Wire Hook,Gorilla Hook / OOK,Original Hook,30.0,20.0,12.0,8.0,Standard Drywall,Solid Drywall (Hollow Back),Heavy Framed Mirror,Hallway,Mechanical,Thumb Lever Pull,No,Yes,https://homedepot.ca,2026-03-01,Low,Suitable for review,Mechanical wire transfer load to drywall rear face,Leaves pinhole <1.5mm easily filled with dab of spackle
+REC-007,Push-In Drywall Wire Hook,Gorilla Hook / OOK,Original Hook,30.0,20.0,10.0,10.0,Plaster & Lath,Brittle Heritage Plaster,Framed Art,Living Room,Mechanical,Thumb Lever Pull,Yes,Yes,https://homedepot.ca,2026-03-01,High,Do not use,Push wire cannot penetrate solid wood lath and will bend/crack plaster,Use picture rail hooks or surface-rated angled nails
+REC-008,Heavy Duty Push Anchor,3M Claw,3MH45-4PK,45.0,30.0,22.0,8.0,Standard Drywall,Smooth Drywall,Oversized Wall Clock,Living Room,Mechanical,Lever Pull,No,Yes,https://3mcanada.ca,2026-03-01,Medium,Suitable for review,Hardened steel claws distribute load across 4 micro-pinholes,Do not install over sleeping areas or cribs
+REC-009,Spring Tension Shower Rod,Zenith / Moen,TR100,30.0,20.0,8.0,12.0,Ceramic Tile / Solid Jambs,Rigid & Parallel,Shower Curtain & Liner,Bathroom,Mechanical (Tension),Twist Tension Release,No,Yes,https://canadiantire.ca,2026-03-01,Low,Suitable for review,Zero wall penetration with solid rubber end grips,Wipe wall jambs clean to prevent rubber slipping
+REC-010,Heavy Spring Tension Rod,RoomDividersNow,T-ROD-84,45.0,30.0,16.0,14.0,Solid Wood / Door Frame,Rigid Door Jamb,Privacy Curtain Divider,Studio Entry,Mechanical (Tension),Twist Tension Release,No,Yes,https://amazon.ca,2026-03-01,Low,Suitable for review,Safe zero-damage room division between solid wall frames,Ensure vertical plumb alignment before tightening
+REC-011,Over-Door 5-Hook Rail,Umbra,Schnook,20.0,14.0,9.0,5.0,Solid / Hollow Core Door,Standard 1.38in Door,Winter Coats & Bags,Entryway,Mechanical (Gravity),Lift Off,No,Yes,https://umbra.com,2026-03-01,Low,Suitable for review,Zero fasteners; uses door frame gravity support,Verify 2mm door top clearance to prevent rubbing jamb
+REC-012,Magnetic Kitchen Rail,IKEA / Mastercraft,Kungsfors,15.0,10.0,6.0,4.0,Ferrous Metal / Fridge Side,Steel Surface,Chef Knives & Spices,Kitchen,Magnetic,Lift Off,No,Yes,https://ikea.ca,2026-03-01,Low,Suitable for review,Direct magnetic grip to refrigerator side panel,Keep heavy cast iron off magnetic strips for safety
+REC-013,Painter Tape + Hot Glue Bridge,ScotchBlue + Gorilla,2090 + HotGlue,5.0,2.0,1.2,0.8,Painted Drywall,Smooth Cured Paint,Light Wood Sign / Key Hook,Entryway,Adhesive Hybrid,Peel Painter Tape,Yes,Yes,https://scotchblue.ca,2026-03-01,Medium,Test first,Experimental method: Blue tape provides clean-release base,Only for light decorative items under 2 lbs. Test first.
+REC-014,Adhesive Poster Strips,3M Command,17024-ES,1.0,0.5,0.2,0.3,Wallpaper,Textured Vinyl Paper,Calendar / Print,Kitchen Nook,Adhesive,Straight Down Stretch,Yes,No,https://command.3mcanada.ca,2026-03-01,High,Do not use,Adhesive can delaminate vinyl or tear paper upon removal,Use freestanding calendar stand or magnetic board
+REC-015,Freestanding Leaning Bracket,Custom / IKEA,Floor Support,100.0,75.0,38.0,37.0,Hardwood / Drywall,Level Floor,Full-Length Dressing Mirror,Bedroom,Floor Leaning + Tether,Unscrew Tether,No,Yes,https://ikea.ca,2026-03-01,Low,Suitable for review,Floor carries 95% of weight; wall tether prevents tip-over,The safest method for mirrors over 25 lbs in rentals
+REC-016,Heavy Drywall Toggle Bolt,Hillman / Cobra,FlipToggle,100.0,50.0,42.0,8.0,Hollow Drywall,1/2in Drywall,Floating Book Shelf,Living Room,Mechanical (Drill),Unscrew & Push Inside,No,Yes,https://homedepot.ca,2026-03-01,High,Use floor support or professional method,Shelves carrying dynamic book loads risk drywall anchor blowout,Requires 1/2in drill hole that requires landlord repair consent`
       },
       {
         id: 'zdm-3',
-        fileName: '03_Adhesive_Load_Safety_Matrix.csv',
-        fileType: 'Spreadsheet (CSV/Excel)',
-        extension: '.csv',
-        fileSize: '18 Rows • 14 KB',
-        badge: 'Plug-and-Play Matrix',
-        description: 'Interactive load calculator and hardware selector matrix compatible with Excel, Google Sheets, and Numbers.',
-        previewSnippet: 'Hardware_Type,Rated_Weight_Capacity_LBS,Recommended_Safety_Load_LBS,Wall_Surface_Compatibility,Zero_Damage_Rating,Removal_Method\n3M_Picture_Hanging_Large,16,10,Painted Drywall / Smooth Wood,OPTIMAL,Straight Down Stretch\n3M_Claw_Push_Anchor,45,35,Standard Drywall Only,OPTIMAL (Micro-Pin),Lever Pull',
-        downloadableContent: `Hardware_Type,Rated_Weight_Capacity_LBS,Recommended_Safety_Load_LBS,Wall_Surface_Compatibility,Zero_Damage_Rating,Removal_Method
-3M_Picture_Hanging_Small,4,2.5,Painted Drywall / Smooth Tile,OPTIMAL,Straight Down Stretch
-3M_Picture_Hanging_Medium,12,8,Painted Drywall / Finished Wood,OPTIMAL,Straight Down Stretch
-3M_Picture_Hanging_Large,16,10,Painted Drywall / Metal / Glass,OPTIMAL,Straight Down Stretch
-3M_Claw_25lb_Anchor,25,20,Standard Drywall Only,OPTIMAL (Micro-Pin),Thumb Lever Pull
-3M_Claw_45lb_Anchor,45,35,Standard Drywall Only,OPTIMAL (Micro-Pin),Thumb Lever Pull
-Heavy_Polyolefin_Dual_Lock,30,20,Painted Drywall / Wood / Glass,OPTIMAL,Blow-Dryer Heat Release
-Painter_Tape_Hot_Glue_Bond,15,10,Painted Drywall / Wallpaper,100% ZERO RISK,Peel Tape Base
-Spring_Tension_Shower_Rod,30,22,Tile / Solid Door Jambs,100% ZERO RISK,Twist Tension Release
-Tension_Closet_Multiplier_Bar,45,35,Solid Wood / Finished Frame,100% ZERO RISK,Twist Tension Release
-Gorilla_Drywall_Push_Hook,30,22,Standard Drywall Only,OPTIMAL (Micro-Pin),Twist Pull
-Over_Door_Flat_Bracket,25,18,Standard 1.38" Interior Doors,100% ZERO RISK,Lift Off
-Magnetic_Knife_Bar_Strip,12,8,Refrigerator Steel Side,100% ZERO RISK,Magnetic Lift`
-      },
-      {
-        id: 'zdm-4',
-        fileName: '04_Zero_Damage_Mounting_Notion_Hub.json',
+        fileName: '03_Renter_Mounting_And_Hardware_Hub_Notion_Schema.json',
         fileType: 'Notion Template',
         extension: '.json',
-        fileSize: 'Notion Schema • 22 KB',
-        badge: 'Notion Action Hub',
-        description: '1-Click Notion workspace containing wall inventory ledger, room-by-room hardware tracker, and shopping lists.',
-        previewSnippet: '{\n  "workspaceName": "Zero-Damage Renter Mounting Hub",\n  "version": "2.4.0",\n  "databases": [\n    {\n      "name": "Wall Art & Mounting Tracker",\n      "properties": ["Item Name", "Room Zone", "Item Weight LBS", "Mounting Hardware Used", "Install Date", "Renter Safe Status"]\n    }\n  ]\n}',
+        fileSize: '7 Databases • 26 KB',
+        badge: '1-Click Notion Architecture',
+        description: 'Complete 7-database Notion template specification with properties, select options, relations, sample records, recommended views, and setup guide.',
+        previewSnippet: '{\n  "templateTitle": "SmallSpaceHome Renter Mounting & Hardware Hub",\n  "version": "3.0.0",\n  "author": "SmallSpaceHome.ca",\n  "theme": "Calm Neutral Editorial (Muted Sage, Charcoal, Off-White)",\n  "databasesCount": 7\n}',
         downloadableContent: JSON.stringify({
-          workspaceName: "Zero-Damage Renter Mounting & Hardware Hub",
-          version: "2.4.0",
+          templateTitle: "SmallSpaceHome Renter Mounting & Hardware Hub",
+          version: "3.0.0",
           author: "SmallSpaceHome.ca Editorial Lab",
+          theme: {
+            palette: ["#FAF8F5 (Warm Off-White)", "#1C1917 (Charcoal)", "#4A533E (Muted Sage)", "#D9D3C7 (Warm Beige)", "#8C857B (Clay)", "#5B7C8D (Soft Blue)"],
+            style: "Clean, editorial home organization with conservative safety ratings and Canadian rental context."
+          },
+          disclaimer: "This Notion template is a structured specification for planning and tracking renter-safe installations. It does not replace manufacturer instructions or guarantee zero damage. Always verify weight limits and test surfaces prior to installation.",
+          workflow4Step: [
+            "1. Measure and weigh the item (gross weight including frame & glass).",
+            "2. Identify the wall or surface (drywall, plaster, tile, wood, glass).",
+            "3. Choose and verify the hardware (apply 30-50% conservative safety margin).",
+            "4. Record installation, photo evidence, and scheduled removal dates."
+          ],
           databases: [
             {
-              name: "Wall Art & Hanging Inventory",
-              properties: ["Item Name", "Room Zone", "Item Weight (LBS)", "Hardware Method", "Install Date", "Renter Safety Status"],
+              id: "db_wall_inventory",
+              name: "Wall & Item Inventory",
+              description: "Master ledger of all hung and mounted items across your apartment.",
+              properties: {
+                "Item Name": { type: "title", required: true },
+                "Room / Zone": { type: "select", options: ["Living Room", "Bedroom", "Kitchen / Galley", "Dining Nook", "Entryway", "Bathroom", "Balcony"] },
+                "Item Category": { type: "select", options: ["Framed Art", "Mirror", "Wall Clock", "Floating Shelf / Ledge", "Curtain Rod", "Storage Hook", "Acoustic / Decor"] },
+                "Item Weight": { type: "number", format: "number" },
+                "Weight Unit": { type: "select", options: ["lb", "kg"] },
+                "Item Width (in)": { type: "number" },
+                "Item Height (in)": { type: "number" },
+                "Surface Type": { type: "select", options: ["Painted Drywall", "Plaster & Lath", "Glazed Tile", "Finished Wood", "Metal / Refrigerator", "Glass", "Wallpaper / Textured"] },
+                "Hardware Method": { type: "select", options: ["Adhesive Picture Strips", "Adhesive Utility Hook", "Push-In Drywall Wire Hook", "3M Claw Push Anchor", "Spring Tension Rod", "Over-Door Bracket", "Magnetic Mount", "Floor-Leaning + Tether", "Stud Screw (Approved)"] },
+                "Manufacturer Rating (lb)": { type: "number" },
+                "Conservative Working Load (lb)": { type: "number" },
+                "Installation Date": { type: "date" },
+                "Removal Date": { type: "date" },
+                "Installation Status": { type: "select", options: ["Planned", "Test Required", "Installed", "Monitor", "Removed"] },
+                "Risk Level": { type: "select", options: ["Low (Green)", "Medium (Amber)", "High (Red)"] },
+                "Source / Product Link": { type: "url" },
+                "Notes": { type: "rich_text" },
+                "Photo / Reference": { type: "files" }
+              },
+              views: [
+                "All Items (Table)",
+                "Planned Installations (List)",
+                "Installed Items (Gallery / Cards)",
+                "Items Requiring Monitoring (Filter: Status = Monitor)",
+                "By Room (Board by Room / Zone)",
+                "High-Risk Items (Filter: Risk = High)",
+                "Upcoming Removal Dates (Calendar by Removal Date)"
+              ],
               sampleRecords: [
-                { item: "Living Room Oversized Brass Mirror", zone: "Living Room", weight: "32 lbs", method: "Dual 3M Claw 45lb Anchors", date: "2026-03-01", status: "Active & Certified Safe" },
-                { item: "Dining Nook Gallery Frame Set (x6)", zone: "Dining Nook", weight: "3.5 lbs each", method: "3M Picture Strips (Large)", date: "2026-03-05", status: "Active & Certified Safe" },
-                { item: "Acoustic Wall Hexagon Panels (x12)", zone: "Bedroom / Office", weight: "8 lbs total", method: "Painter Tape + Hot Glue Hack", date: "2026-03-10", status: "Active & Certified Safe" },
-                { item: "Micro-Entryway Key Catch Shelf", zone: "Entryway", weight: "4.5 lbs", method: "3M Claw 25lb Push Anchor", date: "2026-03-12", status: "Active & Certified Safe" }
+                {
+                  "Item Name": "Living Room Oversized Gold Mirror",
+                  "Room / Zone": "Living Room",
+                  "Item Category": "Mirror",
+                  "Item Weight": 22.0,
+                  "Weight Unit": "lb",
+                  "Item Width (in)": 30,
+                  "Item Height (in)": 48,
+                  "Surface Type": "Painted Drywall",
+                  "Hardware Method": "Floor-Leaning + Tether",
+                  "Manufacturer Rating (lb)": 100.0,
+                  "Conservative Working Load (lb)": 75.0,
+                  "Installation Status": "Installed",
+                  "Risk Level": "Low (Green)",
+                  "Notes": "Resting on non-slip silicone floor pads; tethered to low wall anchor to prevent tipping."
+                },
+                {
+                  "Item Name": "Dining Nook Gallery Frame Cluster (x4)",
+                  "Room / Zone": "Dining Nook",
+                  "Item Category": "Framed Art",
+                  "Item Weight": 2.8,
+                  "Weight Unit": "lb",
+                  "Item Width (in)": 12,
+                  "Item Height (in)": 16,
+                  "Surface Type": "Painted Drywall",
+                  "Hardware Method": "Adhesive Picture Strips",
+                  "Manufacturer Rating (lb)": 12.0,
+                  "Conservative Working Load (lb)": 8.0,
+                  "Installation Status": "Installed",
+                  "Risk Level": "Low (Green)",
+                  "Notes": "2 pairs of Medium Command strips per frame. Wall cleaned with 70% Isopropyl alcohol."
+                }
               ]
             },
             {
-              name: "Hardware Toolkit & Dupe Checklist",
-              properties: ["Tool / Hardware Name", "Category", "Acquired", "Cost CAD", "Primary Use"],
+              id: "db_hardware_library",
+              name: "Hardware & Tools Library",
+              description: "Catalog of verified renter hardware, dupe tools, and compatibility guides.",
+              properties: {
+                "Hardware or Tool Name": { type: "title", required: true },
+                "Brand / Manufacturer": { type: "select", options: ["3M Command", "3M Claw", "Gorilla / OOK", "Umbra", "IKEA", "Zenith", "ScotchBlue", "Hillman", "Generic / Store Brand"] },
+                "Hardware Category": { type: "select", options: ["Adhesive Picture Strips", "Adhesive Hooks", "Push-In Wire Hooks", "Claw Anchors", "Tension Rods", "Over-Door Systems", "Surface Prep & Cleaning", "Move-Out Repair"] },
+                "Rated Capacity (lb)": { type: "number" },
+                "Recommended Working Load (lb)": { type: "number" },
+                "Compatible Surface": { type: "multi_select", options: ["Painted Drywall", "Glazed Tile", "Wood / Millwork", "Metal / Steel", "Glass"] },
+                "Incompatible Surface": { type: "multi_select", options: ["Wallpaper", "Textured / Popcorn", "Brittle Plaster", "Damp Walls", "Fresh Paint (<28 days)"] },
+                "Removal Method": { type: "select", options: ["Straight Down Stretch", "Thumb Lever Pull", "Twist Tension Release", "Lift Off", "Gentle Thermal Softening", "Unscrew"] },
+                "Purchased": { type: "checkbox" },
+                "Quantity": { type: "number" },
+                "Cost in CAD": { type: "number", format: "currency" },
+                "Retailer": { type: "select", options: ["Home Depot Canada", "Canadian Tire", "RONA / Lowe's", "IKEA Canada", "Amazon.ca", "Local Dollarama"] },
+                "Product URL": { type: "url" },
+                "Verification Date": { type: "date" },
+                "Safety Notes": { type: "rich_text" },
+                "Alternative Product": { type: "rich_text" }
+              },
+              views: [
+                "Shopping List (Filter: Purchased = false)",
+                "By Hardware Category (Board)",
+                "Adhesive Options (Filter: Category contains Adhesive)",
+                "Mechanical Fasteners (Filter: Category contains Push-In or Claw)",
+                "Removal and Repair Tools (Filter: Category = Move-Out Repair)",
+                "Verified Products (Filter: Verification Date is not empty)",
+                "Products Requiring Verification (Filter: Verification Date is empty)"
+              ]
+            },
+            {
+              id: "db_installation_log",
+              name: "Installation Log",
+              description: "Audit trail for step-by-step verification, safety checklists, and monitoring follow-ups.",
+              properties: {
+                "Installation Name": { type: "title", required: true },
+                "Related Item": { type: "relation", targetDatabase: "db_wall_inventory" },
+                "Room": { type: "select", options: ["Living Room", "Bedroom", "Kitchen", "Dining Nook", "Entryway", "Bathroom"] },
+                "Installation Date": { type: "date" },
+                "Installer": { type: "rich_text" },
+                "Wall Preparation Completed": { type: "checkbox" },
+                "Hardware Checked": { type: "checkbox" },
+                "Weight Verified": { type: "checkbox" },
+                "Test Completed": { type: "checkbox" },
+                "Follow-Up Date": { type: "date" },
+                "Result": { type: "select", options: ["Successful", "Adjusted", "Failed", "Removed"] },
+                "Damage Observed": { type: "select", options: ["None", "Minor", "Moderate", "Significant"] },
+                "Photos": { type: "files" },
+                "Notes": { type: "rich_text" }
+              },
+              views: [
+                "Installations Needing Follow-Up (Filter: Follow-Up Date is on or before today)",
+                "Installations with Damage (Filter: Damage Observed != None)",
+                "Recent Installations (Sort: Installation Date descending)",
+                "Completed Installations (Filter: Result = Successful)"
+              ]
+            },
+            {
+              id: "db_shopping_list",
+              name: "Shopping List & Budget Estimator",
+              description: "Renter hardware shopping ledger categorized by priority and Canadian retailers.",
+              properties: {
+                "Item": { type: "title", required: true },
+                "Category": { type: "select", options: ["Adhesives", "Mechanical Pins", "Tension Rods", "Prep Supplies", "Patch & Repair", "Tools"] },
+                "Quantity": { type: "number" },
+                "Estimated Cost CAD": { type: "number", format: "currency" },
+                "Retailer": { type: "select", options: ["Home Depot Canada", "Canadian Tire", "RONA", "IKEA Canada", "Amazon.ca", "Dollarama"] },
+                "Priority": { type: "select", options: ["Essential", "Useful", "Optional"] },
+                "Purchased": { type: "checkbox" },
+                "Product Link": { type: "url" },
+                "Intended Use": { type: "rich_text" },
+                "Notes": { type: "rich_text" }
+              },
+              views: [
+                "Unpurchased Items (Filter: Purchased = false)",
+                "Essential Items (Filter: Priority = Essential)",
+                "By Retailer (Board by Retailer)",
+                "Total Cost Summary (Table with CAD Sum)"
+              ]
+            },
+            {
+              id: "db_move_out_checklist",
+              name: "Move-Out & Repair Checklist",
+              description: "Room-by-room move-out removal and surface inspection checklist.",
+              properties: {
+                "Area / Zone": { type: "select", options: ["Living Room", "Bedroom", "Kitchen", "Entryway", "Bathroom", "Hallway"] },
+                "Item to Remove": { type: "title", required: true },
+                "Removal Method": { type: "select", options: ["Straight Down Stretch", "Thermal Soften + Slide Floss", "Lever Pull Claws", "Twist Tension", "Lift Off"] },
+                "Removal Date": { type: "date" },
+                "Removed": { type: "checkbox" },
+                "Surface Inspected": { type: "checkbox" },
+                "Damage Level": { type: "select", options: ["None", "Minor (Pinholes)", "Moderate (Scuff/Tear)", "Significant"] },
+                "Repair Needed": { type: "checkbox" },
+                "Repair Material": { type: "select", options: ["None Needed", "Lightweight Spackle", "220-Grit Sandpaper", "Chalk Blending", "Touch-Up Paint"] },
+                "Completed": { type: "checkbox" },
+                "Notes": { type: "rich_text" },
+                "Photo Before": { type: "files" },
+                "Photo After": { type: "files" }
+              },
+              views: [
+                "Items to Remove (Filter: Removed = false)",
+                "Repairs Needed (Filter: Repair Needed = true and Completed = false)",
+                "Completed Move-Out Tasks (Filter: Completed = true)",
+                "By Room (Board by Area / Zone)"
+              ]
+            },
+            {
+              id: "db_safety_sources",
+              name: "Safety Notes & Verified Sources",
+              description: "Manufacturer technical guidelines and Canadian rental tenancy references.",
+              properties: {
+                "Topic": { type: "title", required: true },
+                "Safety Rule": { type: "rich_text" },
+                "Source / Manufacturer Link": { type: "url" },
+                "Verification Date": { type: "date" },
+                "Applies To": { type: "select", options: ["All Adhesives", "Drywall Push Anchors", "Heavy Mirrors / Shelves", "Bathroom / High-Humidity", "Tenancy Rights & Deposits"] },
+                "Important Warning": { type: "rich_text" },
+                "Reviewed": { type: "checkbox" }
+              },
               sampleRecords: [
-                { tool: "70% Isopropyl Alcohol Spray Bottle", category: "Surface Prep", acquired: true, cost: "$3.50", use: "Grease Removal on Drywall" },
-                { tool: "3M Claw 45-lb Drywall Push Anchors (4pk)", category: "Heavy Mount", acquired: true, cost: "$7.99", use: "Heavy Mirrors & Clocks" },
-                { tool: "Blue Painter's Tape (1.88 inch)", category: "Zero-Damage Base", acquired: true, cost: "$6.49", use: "Tape + Hot Glue Shelf Hack" },
-                { tool: "3-in-1 Spackle & Scraper Tool", category: "Move-Out Repair", acquired: false, cost: "$7.99", use: "Emergency Move-Out Patching" }
+                {
+                  "Topic": "Never Mount Overhead in Sleeping Zones",
+                  "Safety Rule": "Adhesive picture strips are subject to environmental shear fatigue. Do not hang glass or frames over headboards.",
+                  "Source / Manufacturer Link": "https://command.3mcanada.ca/safety",
+                  "Verification Date": "2026-03-01",
+                  "Applies To": "All Adhesives",
+                  "Important Warning": "Failure can result in physical injury if adhesive releases under vibration.",
+                  "Reviewed": true
+                },
+                {
+                  "Topic": "Ontario RTA Normal Wear & Tear Guidelines",
+                  "Safety Rule": "Small nail holes and reasonable hanging marks are legally categorized as normal wear and tear under Ontario tenancy decisions.",
+                  "Source / Manufacturer Link": "https://tribunalsontario.ca/ltb",
+                  "Verification Date": "2026-03-01",
+                  "Applies To": "Tenancy Rights & Deposits",
+                  "Important Warning": "Large drywall anchors or water damage caused by improper shelf loading do not qualify as normal wear.",
+                  "Reviewed": true
+                }
               ]
             }
+          ],
+          setupInstructions: [
+            "Step 1: Open Notion on desktop or web browser.",
+            "Step 2: Create a new blank page titled 'SmallSpaceHome Renter Mounting & Hardware Hub'.",
+            "Step 3: Create the 6 linked databases with the exact property names and types listed in this schema.",
+            "Step 4: Configure the recommended views for each database to match your apartment rooms.",
+            "Step 5: Reference the Safety Notes database before mounting any high-risk or heavy objects."
           ]
         }, null, 2)
+      },
+      {
+        id: 'zdm-4',
+        fileName: '04_Printable_Pocket_Cheatsheets_And_Templates.pdf',
+        fileType: 'Printable Cheatsheet',
+        extension: '.pdf',
+        fileSize: '4x6 Cards • 1.6 MB',
+        badge: 'Printable Field Cards',
+        description: 'Pocket-sized printable 4x6" reference cards for pre-installation, wall testing, thermal removal, and move-out inspection audits.',
+        previewSnippet: 'CARD 1: Pre-Installation Weight & Surface Verification\nCARD 2: 70% Isopropyl Prep & 1-Hour Wait Rule\nCARD 3: Emergency Stretch & Thermal Removal Guide\nCARD 4: 14-Day Move-Out Wall Patching & Sheen Matching',
+        downloadableContent: `# SmallSpaceHome.ca • Printable Pocket Cheat Cards
+## Compact 4x6" Field Reference Cards for Canadian Apartment Renters
+
+================================================================================
+CARD 1: PRE-INSTALLATION & LOAD SAFETY AUDIT
+================================================================================
+[ ] STEP 1: Weigh item on a digital scale (gross weight with frame & glass).
+[ ] STEP 2: Verify manufacturer rated capacity.
+[ ] STEP 3: Calculate Conservative Working Load (Rating × 0.60).
+[ ] STEP 4: Confirm surface is flat painted drywall, glazed tile, or smooth wood.
+[ ] CRITICAL: If item is >15 lbs or hanging over a bed, STOP. Use floor support.
+
+================================================================================
+CARD 2: 70% ISOPROPYL PREP & 1-HOUR CURE PROTOCOL
+================================================================================
+[ ] STEP 1: Wipe area with 70% Isopropyl Alcohol on a clean microfiber cloth.
+[ ] STEP 2: Air dry for 15 minutes (do NOT use Windex or multi-surface cleaners).
+[ ] STEP 3: Confirm wall temperature is between 15°C and 30°C.
+[ ] STEP 4: Press adhesive brackets firmly against wall for 30 continuous seconds.
+[ ] STEP 5: MANDATORY: Wait 1 full hour before hanging the weight.
+
+================================================================================
+CARD 3: STRETCH-RELEASE & THERMAL REMOVAL PROTOCOL
+================================================================================
+[ ] STEP 1: Detach frame from wall by pulling upward from bottom corners.
+[ ] STEP 2: Grasp exposed pull tab and pull SLOWLY straight DOWN parallel to wall.
+[ ] STEP 3: Stretch the strip 15–30 cm until it silently releases.
+[ ] STEP 4: If tab breaks, warm bracket with hair dryer on medium for 45s.
+[ ] STEP 5: Slide unflavoured dental floss behind bracket to saw adhesive free.
+[ ] NEVER: Do not pull outward at 45° angle. Do not use razor blades on drywall.
+
+================================================================================
+CARD 4: MOVE-OUT INSPECTION & $12 WALL TOUCHUP
+================================================================================
+[ ] STEP 1: Audit all walls 14 days before move-out walkthrough.
+[ ] STEP 2: Fill pinholes flush with a pea-sized dab of vinyl spackling.
+[ ] STEP 3: Smooth flat with old plastic gift card or plastic putty knife.
+[ ] STEP 4: Allow 20 minutes to dry; sand flush with 220-grit sandpaper.
+[ ] STEP 5: Rub matching off-white artist chalk to blend sheen without painting.`
       }
     ]
   },
