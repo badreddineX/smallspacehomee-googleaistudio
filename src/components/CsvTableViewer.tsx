@@ -39,8 +39,16 @@ export const CsvTableViewer: React.FC<CsvTableViewerProps> = ({
 
   // Parse CSV string safely handling quoted values
   const { headers, rows } = useMemo(() => {
-    const rawLines = csvContent.trim().split('\n').filter(l => l.trim().length > 0);
-    if (rawLines.length === 0) return { headers: [], rows: [] };
+    // Strip empty lines and leading comment lines (e.g. lines starting with '#')
+    const rawLines = csvContent
+      .trim()
+      .split('\n')
+      .map(l => l.trim())
+      .filter(l => l.length > 0);
+    
+    // Find the first line that is not a comment line
+    const nonCommentLines = rawLines.filter(l => !l.startsWith('#'));
+    if (nonCommentLines.length === 0) return { headers: [], rows: [] };
 
     const parseLine = (line: string): string[] => {
       const result: string[] = [];
@@ -62,8 +70,8 @@ export const CsvTableViewer: React.FC<CsvTableViewerProps> = ({
       return result;
     };
 
-    const parsedHeaders = parseLine(rawLines[0]).map(h => h.replace(/_/g, ' '));
-    const parsedRows = rawLines.slice(1).map(line => parseLine(line));
+    const parsedHeaders = parseLine(nonCommentLines[0]).map(h => h.replace(/_/g, ' '));
+    const parsedRows = nonCommentLines.slice(1).map(line => parseLine(line));
 
     return { headers: parsedHeaders, rows: parsedRows };
   }, [csvContent]);
@@ -132,7 +140,7 @@ export const CsvTableViewer: React.FC<CsvTableViewerProps> = ({
     if (headers.length === 0) return;
     const headerRow = `| ${headers.join(' | ')} |`;
     const separatorRow = `| ${headers.map(() => '---').join(' | ')} |`;
-    const dataRows = rows.map(r => `| ${r.join(' | ')} |`).join('\n');
+    const dataRows = processedRows.map(r => `| ${r.join(' | ')} |`).join('\n');
     const md = `${headerRow}\n${separatorRow}\n${dataRows}`;
 
     navigator.clipboard.writeText(md);
@@ -144,7 +152,7 @@ export const CsvTableViewer: React.FC<CsvTableViewerProps> = ({
     if (headers.length === 0) return;
     const tsv = [
       headers.join('\t'),
-      ...rows.map(r => r.join('\t'))
+      ...processedRows.map(r => r.join('\t'))
     ].join('\n');
 
     navigator.clipboard.writeText(tsv);
@@ -152,33 +160,68 @@ export const CsvTableViewer: React.FC<CsvTableViewerProps> = ({
     setTimeout(() => setCopiedKey(null), 2000);
   };
 
-  const renderBadge = (value: string) => {
-    const upper = value.toUpperCase();
-    if (upper.includes('PASS') || upper.includes('APPROVED') || upper.includes('OPTIMAL') || upper.includes('EXCELLENT') || upper.includes('ZERO RISK')) {
-      return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xs">
-          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-          {value.replace(/_/g, ' ')}
-        </span>
-      );
-    }
-    if (upper.includes('WARN') || upper.includes('TIGHT') || upper.includes('MODERATE') || upper.includes('CAUTION')) {
-      return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase bg-amber-100 text-amber-900 border border-amber-300 rounded-xs">
-          <AlertTriangle className="w-3 h-3 text-amber-700" />
-          {value.replace(/_/g, ' ')}
-        </span>
-      );
-    }
-    if (upper.includes('FAIL') || upper.includes('CRITICAL') || upper.includes('HIGH') || upper.includes('REJECT')) {
-      return (
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase bg-rose-100 text-rose-800 border border-rose-300 rounded-xs">
-          <XCircle className="w-3 h-3 text-rose-600" />
-          {value.replace(/_/g, ' ')}
-        </span>
-      );
+  const renderBadge = (value: string, headerName?: string) => {
+    if (!headerName) {
+      return <span>{value.replace(/_/g, ' ')}</span>;
     }
 
+    const cleanHeader = headerName.toLowerCase().replace(/_/g, ' ');
+    const isRiskCol = cleanHeader.includes('risk');
+    const isStatusCol = cleanHeader.includes('status');
+    const isDepositSafeCol = cleanHeader.includes('deposit safe') || cleanHeader.includes('rental deposit safe') || cleanHeader.includes('rental safe');
+    const isReversibleCol = cleanHeader.includes('reversible') || cleanHeader.includes('zero damage');
+
+    // Handle Yes / No Safety Columns (Bug 4)
+    if (isDepositSafeCol || isReversibleCol) {
+      const trimmed = value.trim().toLowerCase();
+      if (trimmed === 'yes') {
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xs">
+            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+            Yes
+          </span>
+        );
+      }
+      if (trimmed === 'no') {
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase bg-rose-100 text-rose-800 border border-rose-300 rounded-xs">
+            <XCircle className="w-3 h-3 text-rose-600" />
+            No
+          </span>
+        );
+      }
+    }
+
+    // Handle Risk / Status badge columns (Bug 3)
+    if (isRiskCol || isStatusCol) {
+      const upper = value.toUpperCase();
+      if (upper.includes('PASS') || upper.includes('APPROVED') || upper.includes('OPTIMAL') || upper.includes('EXCELLENT') || upper.includes('ZERO RISK') || upper.includes('LOW') || upper.includes('VERY LOW') || upper.includes('VERIFIED') || upper.includes('RECOMMENDED')) {
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xs">
+            <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+            {value.replace(/_/g, ' ')}
+          </span>
+        );
+      }
+      if (upper.includes('WARN') || upper.includes('TIGHT') || upper.includes('MODERATE') || upper.includes('CAUTION') || upper.includes('MEDIUM')) {
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase bg-amber-100 text-amber-900 border border-amber-300 rounded-xs">
+            <AlertTriangle className="w-3 h-3 text-amber-700" />
+            {value.replace(/_/g, ' ')}
+          </span>
+        );
+      }
+      if (upper.includes('FAIL') || upper.includes('CRITICAL') || upper.includes('HIGH') || upper.includes('REJECT')) {
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase bg-rose-100 text-rose-800 border border-rose-300 rounded-xs">
+            <XCircle className="w-3 h-3 text-rose-600" />
+            {value.replace(/_/g, ' ')}
+          </span>
+        );
+      }
+    }
+
+    // Default for all other columns: plain text with zero keyword badge matching
     return <span>{value.replace(/_/g, ' ')}</span>;
   };
 
@@ -305,8 +348,16 @@ export const CsvTableViewer: React.FC<CsvTableViewerProps> = ({
                     return (
                       <th
                         key={idx}
+                        role="button"
+                        tabIndex={0}
                         onClick={() => handleSort(idx)}
-                        className="py-2.5 px-3 font-semibold uppercase tracking-wider text-[10px] border-b border-black/20 hover:bg-[#38402F] cursor-pointer transition-colors whitespace-nowrap select-none"
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleSort(idx);
+                          }
+                        }}
+                        className="py-2.5 px-3 font-semibold uppercase tracking-wider text-[10px] border-b border-black/20 hover:bg-[#38402F] focus:bg-[#38402F] focus:outline-hidden cursor-pointer transition-colors whitespace-nowrap select-none"
                       >
                         <div className="flex items-center gap-1.5 justify-between">
                           <span>{header}</span>
@@ -344,7 +395,7 @@ export const CsvTableViewer: React.FC<CsvTableViewerProps> = ({
                           key={cellIdx} 
                           className="py-2.5 px-3 text-[#1C1917] font-medium whitespace-nowrap text-xs"
                         >
-                          {renderBadge(cell)}
+                          {renderBadge(cell, headers[cellIdx])}
                         </td>
                       ))}
                     </tr>
