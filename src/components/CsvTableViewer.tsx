@@ -9,7 +9,6 @@ import {
   Copy, 
   Check, 
   FileSpreadsheet, 
-  Sparkles, 
   Code, 
   Eye, 
   Layers, 

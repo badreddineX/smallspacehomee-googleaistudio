@@ -1,6 +1,6 @@
 import React from 'react';
 import { FOURTHWALL_STORE_ARCHITECTURE } from '../data/strategyData';
-import { ShoppingBag, Layers, ArrowUpRight, Zap, Coffee, Image as ImageIcon, Sparkles, CheckCircle2, Shield } from 'lucide-react';
+import { ShoppingBag, Zap, Coffee, Image as ImageIcon } from 'lucide-react';
 
 export const StoreArchitecture: React.FC = () => {
   return (

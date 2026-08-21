@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, 
   AlertTriangle, 
@@ -9,27 +9,10 @@ import {
   Check, 
   FileText, 
   Compass, 
-  ArrowRight, 
-  Layers, 
-  Info, 
   Scale, 
-  Maximize2, 
-  Minimize2, 
-  Search, 
-  Clock, 
-  DollarSign, 
-  RotateCcw, 
-  CheckSquare, 
   Wrench, 
   Eye, 
   Bookmark, 
-  Flame, 
-  Zap, 
-  Thermometer, 
-  ExternalLink,
-  ChevronDown,
-  ChevronUp,
-  Sliders,
   Camera,
   Home,
   CheckCircle
@@ -56,7 +39,6 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
   const [activeSection, setActiveSection] = useState<string>('sec-01');
   const [copied, setCopied] = useState<boolean>(false);
   const [viewMode, setViewMode] = useState<'editorial' | 'raw'>('editorial');
-  const [searchFilter, setSearchFilter] = useState<string>('');
   
   // Interactive Decision Tree State
   const [dtWeightBracket, setDtWeightBracket] = useState<'under-2' | '2-to-10' | '10-to-25' | 'over-25'>('2-to-10');
@@ -65,22 +47,26 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
 
   // Interactive Checklist State
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({
-    'pre-1': true,
-    'pre-2': true,
     'mon-1': false,
     'mon-2': false,
-    'mo-1': false,
-    'mo-2': false
+    'mon-3': false,
+    'mon-4': false
   });
 
   const toggleCheck = (id: string) => {
     setCheckedItems(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(rawContent);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async () => {
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(rawContent);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    } catch (err) {
+      console.error('Failed to copy raw content to clipboard:', err);
+    }
   };
 
   const handleDownloadPDF = () => {
@@ -95,8 +81,144 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
     }
   };
 
+  const sectionsList = [
+    { id: 'sec-01', num: '01', title: 'Cover & Canadian Context' },
+    { id: 'sec-02', num: '02', title: 'Opening & Promise' },
+    { id: 'sec-03', num: '03', title: 'Quick Start (4 Core Checks)' },
+    { id: 'sec-04', num: '04', title: 'Safety & Load Limits' },
+    { id: 'sec-05', num: '05', title: 'Wall & Surface Diagnostics' },
+    { id: 'sec-06', num: '06', title: 'Weight & Leverage Planning' },
+    { id: 'sec-07', num: '07', title: 'Mounting Decision Tree' },
+    { id: 'sec-08', num: '08', title: '70% IPA Surface Prep' },
+    { id: 'sec-09', num: '09', title: '13-Step Installation Playbook' },
+    { id: 'sec-10', num: '10', title: 'Tactical Hack Pages' },
+    { id: 'sec-11', num: '11', title: 'Field Notes Vault' },
+    { id: 'sec-12', num: '12', title: 'Careful Removal & Thermal' },
+    { id: 'sec-13', num: '13', title: 'Monitoring & Seasonal Audits' },
+    { id: 'sec-14', num: '14', title: 'Move-Out & Deposit Defense' },
+    { id: 'sec-15', num: '15', title: 'Printable Pocket Cards' },
+    { id: 'sec-16', num: '16', title: 'Sources & Canadian Retailers' },
+  ];
+
+  // Keep activeSection in sync with the section actually in view
+  useEffect(() => {
+    if (viewMode !== 'editorial') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+        if (visibleEntries.length > 0) {
+          const topEntry = visibleEntries.reduce((prev, curr) =>
+            curr.intersectionRatio > prev.intersectionRatio ? curr : prev
+          );
+          if (topEntry?.target?.id) {
+            setActiveSection(topEntry.target.id);
+          }
+        }
+      },
+      {
+        rootMargin: '-60px 0px -40% 0px',
+        threshold: [0, 0.2, 0.4, 0.6, 0.8, 1.0]
+      }
+    );
+
+    sectionsList.forEach((sec) => {
+      const element = document.getElementById(sec.id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [viewMode]);
+
   // Decision Tree Recommendation Engine
   const getDecisionRecommendation = () => {
+    // 1. Cables, Cord Raceways & Power Bars
+    if (dtItemType === 'cord') {
+      if (dtSurface === 'wood-door') {
+        return {
+          method: 'Low-Profile Removable Cord Channel with Clear Adhesive',
+          hardware: 'Command Clear Cord Clips or D-Line Micro Trunking (Door/Desk Rail)',
+          capacity: 'Under 1.5 lbs static cord tension / power bar load',
+          safeRating: '100% Renter Safe (Zero millwork damage)',
+          caveat: 'Clean veneer/wood with 70% alcohol. Always warm adhesive backing for 20s with hair dryer on LOW before removal to protect wood finish.'
+        };
+      }
+      return {
+        method: 'Surface-Mounted Micro Cable Trunking or Adhesive Cord Clips',
+        hardware: 'D-Line Micro Cable Raceway + 3M Command Clear Medium Adhesive Strips',
+        capacity: 'Under 2.0 lbs static bundle load along baseboard per linear run',
+        safeRating: '100% Renter Safe (Zero residue / zero drywall tear)',
+        caveat: 'Do not pull cords with sudden tension. Use dental floss to slice foam if adhesive resists at move-out.'
+      };
+    }
+
+    // 2. Floating Ledges & Display Shelves (Cantilever peel physics)
+    if (dtItemType === 'shelf') {
+      if (dtWeightBracket === 'over-25' || dtWeightBracket === '10-to-25') {
+        return {
+          method: 'Direct Wood Stud Anchoring or Free-Standing Shelving Unit',
+          hardware: '2.5-Inch Steel Screws directly into 2x4 Wood Framing Studs',
+          capacity: 'Protruding shelves create 3x cantilever torque peeling load',
+          safeRating: 'Requires Stud Anchor or Freestanding Unit',
+          caveat: 'Adhesive strips and push-in wire hooks CANNOT support deep floating shelves with book loads. Always anchor directly into wood studs or use free-standing shelving.'
+        };
+      }
+      if (dtSurface === 'tile') {
+        return {
+          method: 'Water-Resistant Acrylic Bathroom Ledge with Bath Strips',
+          hardware: '3M Command Bath Large Water-Resistant Strips (Frosted tab)',
+          capacity: 'Max 3.0 lbs distributed load (Shampoo/soap bottles)',
+          safeRating: '100% Zero-Tile-Drilling Safe',
+          caveat: 'Degrease ceramic tile with 70% Isopropyl Alcohol. Mandatory 1-hour cure before setting items on shelf. Keep depth under 3 inches.'
+        };
+      }
+      return {
+        method: 'Ultra-Light 3mm Acrylic J-Ledge with 4 Large Command Strips',
+        hardware: '3M Command Large Picture Hanging Strips (applied continuously across rear flange)',
+        capacity: 'Max 4.0 to 5.0 lbs distributed load (Display depth < 2.5 inches)',
+        safeRating: '100% Zero-Damage Ledge Safe',
+        caveat: 'Never display heavy pottery, books, or liquid containers on adhesive shelves. Protruding depth multiplies forward peeling torque.'
+      };
+    }
+
+    // 3. Mirrors
+    if (dtItemType === 'mirror') {
+      if (dtWeightBracket === 'over-25') {
+        return {
+          method: 'Floor-Leaning Support + Top Safety Anti-Tip Paracord Tether',
+          hardware: 'Dense vulcanized rubber base pads + 3M Claw or Stud-Mounted Safety Tether',
+          capacity: 'Floor carries 95% of vertical weight; top tether only prevents forward tip',
+          safeRating: '100% Renter Safe (Zero wall shear load)',
+          caveat: 'NEVER mount full-length mirrors over 25 lbs on rental drywall using adhesive strips alone. Set mirror base 5-8 degrees from vertical.'
+        };
+      }
+      if (dtWeightBracket === '10-to-25') {
+        if (dtSurface === 'drywall') {
+          return {
+            method: 'Dual 3M Claw Drywall Push Anchors (Evenly Distributed)',
+            hardware: 'Two 3M Claw 25lb/45lb Anchors paired with heavy mirror D-rings',
+            capacity: 'Up to 25.0 lbs working load on 1/2-inch hollow drywall',
+            safeRating: 'Leaves pinhole < 1.5mm ($12 spackle repair at move-out)',
+            caveat: 'Verify no studs behind target spots with a 0.5mm push pin. Do not install heavy mirrors directly over beds or cribs.'
+          };
+        }
+        if (dtSurface === 'plaster') {
+          return {
+            method: 'Picture Rail Moulding Brass Hook with Braided Steel Cable',
+            hardware: 'Lee Valley / OOK Picture Rail Moulding Hooks + Stainless Steel Wire',
+            capacity: 'Up to 20.0 lbs supported by solid historic wood ceiling moulding',
+            safeRating: '100% Safe for Brittle Heritage Plaster',
+            caveat: 'Do not hammer nails or push wire hooks into plaster-and-lath. Use top picture rail trim.'
+          };
+        }
+      }
+    }
+
+    // 4. Over 25 lbs general catch-all
     if (dtWeightBracket === 'over-25') {
       return {
         method: 'Floor-Leaning Support + Anti-Tip Base Tether',
@@ -106,6 +228,8 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
         caveat: 'NEVER attempt to mount items over 25 lbs to rental drywall using adhesive strips alone.'
       };
     }
+
+    // 5. Surface-Specific Routing (Tile, Plaster, Wood Door)
     if (dtSurface === 'tile') {
       return {
         method: 'Water-Resistant Silicone Adhesive Strips or Vacuum Suction',
@@ -133,7 +257,8 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
         caveat: 'Verify at least 2mm clearance between top door edge and frame so door closes flush without binding.'
       };
     }
-    // Default Drywall
+
+    // 6. Standard Drywall Frames & Art
     if (dtWeightBracket === 'under-2') {
       return {
         method: 'Small Adhesive Picture Hanging Strips',
@@ -162,25 +287,6 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
   };
 
   const recommendation = getDecisionRecommendation();
-
-  const sectionsList = [
-    { id: 'sec-01', num: '01', title: 'Cover & Canadian Context' },
-    { id: 'sec-02', num: '02', title: 'Opening & Promise' },
-    { id: 'sec-03', num: '03', title: 'Quick Start (4 Core Checks)' },
-    { id: 'sec-04', num: '04', title: 'Safety & Load Limits' },
-    { id: 'sec-05', num: '05', title: 'Wall & Surface Diagnostics' },
-    { id: 'sec-06', num: '06', title: 'Weight & Leverage Planning' },
-    { id: 'sec-07', num: '07', title: 'Mounting Decision Tree' },
-    { id: 'sec-08', num: '08', title: '70% IPA Surface Prep' },
-    { id: 'sec-09', num: '09', title: '13-Step Installation Playbook' },
-    { id: 'sec-10', num: '10', title: 'Tactical Hack Pages' },
-    { id: 'sec-11', num: '11', title: 'Field Notes Vault' },
-    { id: 'sec-12', num: '12', title: 'Careful Removal & Thermal' },
-    { id: 'sec-13', num: '13', title: 'Monitoring & Seasonal Audits' },
-    { id: 'sec-14', num: '14', title: 'Move-Out & Deposit Defense' },
-    { id: 'sec-15', num: '15', title: 'Printable Pocket Cards' },
-    { id: 'sec-16', num: '16', title: 'Sources & Canadian Retailers' },
-  ];
 
   return (
     <div className="bg-white border border-[#E5DFD5] shadow-xs rounded-xs overflow-hidden">
@@ -258,7 +364,7 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
       ) : (
         <div>
           {/* Sticky Editorial Navigation Bar */}
-          <div className="sticky top-0 z-30 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E5DFD5] px-4 py-2.5 flex items-center justify-between gap-3 overflow-x-auto scrollbar-none shadow-xs">
+          <div className="sticky top-0 z-30 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E5DFD5] px-4 py-2.5 flex items-center justify-between gap-3 overflow-x-auto no-scrollbar scrollbar-none shadow-xs">
             <div className="flex items-center gap-1.5 shrink-0">
               <Compass className="w-4 h-4 text-[#4A533E]" />
               <span className="text-[10px] font-bold uppercase tracking-wider text-[#1C1917]">
@@ -266,7 +372,7 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
               </span>
             </div>
             
-            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar scrollbar-none">
               {sectionsList.map((sec) => (
                 <button
                   key={sec.id}
@@ -683,7 +789,7 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
                   <select
                     value={dtWeightBracket}
                     onChange={(e) => setDtWeightBracket(e.target.value as any)}
-                    className="w-full bg-white border border-[#E5DFD5] p-2 text-xs font-medium text-[#1C1917] focus:outline-hidden focus:border-[#4A533E]"
+                    className="w-full bg-white border border-[#E5DFD5] p-2 text-xs font-medium text-[#1C1917] focus:outline-none focus:border-[#4A533E]"
                   >
                     <option value="under-2">Under 2 lbs (Light decor, small prints)</option>
                     <option value="2-to-10">2 to 10 lbs (Medium frames, clocks)</option>
@@ -700,7 +806,7 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
                   <select
                     value={dtSurface}
                     onChange={(e) => setDtSurface(e.target.value as any)}
-                    className="w-full bg-white border border-[#E5DFD5] p-2 text-xs font-medium text-[#1C1917] focus:outline-hidden focus:border-[#4A533E]"
+                    className="w-full bg-white border border-[#E5DFD5] p-2 text-xs font-medium text-[#1C1917] focus:outline-none focus:border-[#4A533E]"
                   >
                     <option value="drywall">Smooth Drywall / Gypsum</option>
                     <option value="plaster">Plaster & Lath (Pre-1950)</option>
@@ -717,7 +823,7 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
                   <select
                     value={dtItemType}
                     onChange={(e) => setDtItemType(e.target.value as any)}
-                    className="w-full bg-white border border-[#E5DFD5] p-2 text-xs font-medium text-[#1C1917] focus:outline-hidden focus:border-[#4A533E]"
+                    className="w-full bg-white border border-[#E5DFD5] p-2 text-xs font-medium text-[#1C1917] focus:outline-none focus:border-[#4A533E]"
                   >
                     <option value="frame">Picture Frame / Wall Art</option>
                     <option value="mirror">Framed Mirror</option>
@@ -1169,22 +1275,23 @@ export const EditorialPdfViewer: React.FC<EditorialPdfViewerProps> = ({
                   { id: 'mon-3', title: 'Seasonal Heating Shift Inspection', desc: 'When baseboard heating activates in October/November, check for localized paint drying near radiators.' },
                   { id: 'mon-4', title: 'Bathroom Moisture & Steam Check', desc: 'Inspect water-resistant hooks for mildew accumulation along perimeter silicone seals.' }
                 ].map((item) => (
-                  <div 
+                  <label 
                     key={item.id}
-                    onClick={() => toggleCheck(item.id)}
+                    htmlFor={item.id}
                     className="p-3 bg-[#FAF8F5] border border-[#E5DFD5] flex items-start gap-3 cursor-pointer hover:bg-white transition-colors"
                   >
                     <input 
+                      id={item.id}
                       type="checkbox" 
                       checked={!!checkedItems[item.id]} 
-                      onChange={() => {}}
-                      className="mt-0.5 w-4 h-4 accent-[#4A533E]" 
+                      onChange={() => toggleCheck(item.id)}
+                      className="mt-0.5 w-4 h-4 accent-[#4A533E] cursor-pointer" 
                     />
                     <div>
                       <h4 className="font-bold text-xs text-[#1C1917]">{item.title}</h4>
                       <p className="text-[11px] text-[#1C1917]/70 leading-relaxed mt-0.5">{item.desc}</p>
                     </div>
-                  </div>
+                  </label>
                 ))}
               </div>
             </article>

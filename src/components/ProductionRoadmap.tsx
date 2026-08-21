@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PRODUCTION_ROADMAP, TOP_20_PRODUCTS, BUNDLE_ECOSYSTEM, FLAGSHIP_DETAILED_SPEC } from '../data/strategyData';
 import { copyToClipboard } from '../utils/helpers';
-import { Calendar, CheckCircle2, Circle, Clock, Download, Sparkles, ShieldCheck, FileText, Check } from 'lucide-react';
+import { Calendar, CheckCircle2, Circle, Download, ShieldCheck, Check } from 'lucide-react';
 
 export const ProductionRoadmap: React.FC = () => {
   const [completedTasks, setCompletedTasks] = useState<Record<string, boolean>>({

@@ -1,37 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Home, 
-  Layers, 
-  Calculator, 
   CheckCircle2, 
   Clock, 
   ShieldCheck, 
-  Sparkles, 
-  Download, 
   Copy, 
   Printer, 
   Play, 
   Pause, 
   RotateCcw, 
-  ArrowRight, 
   Sliders, 
-  Maximize2, 
-  AlertTriangle, 
   Sun, 
-  Moon, 
   Box, 
   Grid, 
-  Compass, 
   Check, 
-  ExternalLink,
   Flame,
-  Award
+  Layers
 } from 'lucide-react';
 
 export const FirstProductExperience: React.FC = () => {
   const [activeModuleTab, setActiveModuleTab] = useState<'module1' | 'module2' | 'module3' | 'module4' | 'module5' | 'module6'>('module1');
   const [copiedNotionSchema, setCopiedNotionSchema] = useState(false);
-  const [showPrintView, setShowPrintView] = useState(false);
 
   // -------------------------------------------------------------
   // MODULE 1 STATE: Spatial Assessment & Interactive Floorplan Grid

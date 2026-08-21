@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { TOP_20_PRODUCTS } from '../data/strategyData';
-import { DigitalProduct, ProductLevel } from '../types';
+import { DigitalProduct } from '../types';
 import { ProductDetailModal } from './ProductDetailModal';
-import { Search, Filter, Sparkles, CheckCircle2, ChevronRight, BarChart2, Star, Layers, AlertCircle, ShoppingBag } from 'lucide-react';
+import { Search, Sparkles, CheckCircle2, ChevronRight, BarChart2, ShoppingBag } from 'lucide-react';
 
 interface ProductCatalogProps {
   onSelectFlagship: () => void;

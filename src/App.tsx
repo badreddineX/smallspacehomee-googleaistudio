@@ -13,7 +13,7 @@ import { StoreArchitecture } from './components/StoreArchitecture';
 import { ProductionRoadmap } from './components/ProductionRoadmap';
 import { RevenueSimulator } from './components/RevenueSimulator';
 import { TabId } from './types';
-import { Sparkles, ArrowRight, ShieldCheck, ShoppingBag, BookOpen, Layers, Star, TrendingUp, Calendar, HelpCircle, Image as ImageIcon, ExternalLink } from 'lucide-react';
+import { TrendingUp, ExternalLink } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabId>('deliverables-photography');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { formatCurrency } from '../utils/helpers';
-import { DollarSign, TrendingUp, Users, ShoppingCart, Sparkles, X, Layers } from 'lucide-react';
+import { DollarSign, X } from 'lucide-react';
 
 interface RevenueSimulatorProps {
   onClose: () => void;
