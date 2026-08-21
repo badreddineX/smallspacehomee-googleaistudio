@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { TOP_20_PRODUCTS } from '../data/strategyData';
 import { getProductAssetBundle, DetailedDeliverableFile } from '../data/productAssetsData';
-import { downloadValidPDF } from '../utils/pdfGenerator';
+import { PLAYBOOK_SERIES } from '../data/playbookSeriesData';
+import { 
+  downloadValidPDF, 
+  downloadProductAllInOnePDF, 
+  downloadMasterAllInOnePDF 
+} from '../utils/pdfGenerator';
 import { CsvTableViewer } from './CsvTableViewer';
 import { NotionWorkspaceViewer } from './NotionWorkspaceViewer';
 import { EditorialPdfViewer } from './EditorialPdfViewer';
@@ -161,6 +166,15 @@ ${file.downloadableContent}
     );
   };
 
+  const handleDownloadProductAllInOne = () => {
+    const matchedPlaybook = PLAYBOOK_SERIES.find(p => p.volumeNumber === activeProduct.rank) || PLAYBOOK_SERIES[0];
+    downloadProductAllInOnePDF(matchedPlaybook);
+  };
+
+  const handleDownloadMasterAllInOne = () => {
+    downloadMasterAllInOnePDF(PLAYBOOK_SERIES);
+  };
+
   const getFileIcon = (file: DetailedDeliverableFile) => {
     const isCsv = file.fileName.toLowerCase().endsWith('.csv') || file.fileType.toLowerCase().includes('spreadsheet');
     const isJson = file.fileName.toLowerCase().endsWith('.json') || file.fileType.toLowerCase().includes('notion');
@@ -206,11 +220,18 @@ ${file.downloadableContent}
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-2.5 shrink-0">
             <button
-              onClick={handleDownloadAllFiles}
-              className="w-full sm:w-auto px-4 py-2.5 bg-[#4A533E] hover:bg-[#1C1917] text-[#FAF8F5] text-xs font-bold tracking-wider transition-all cursor-pointer border border-[#4A533E] shadow-xs flex items-center justify-center gap-2"
+              onClick={handleDownloadProductAllInOne}
+              className="w-full sm:w-auto px-4 py-2.5 bg-[#4A533E] hover:bg-[#38402F] text-[#FAF8F5] text-xs font-bold tracking-wider transition-all cursor-pointer border border-[#38402F] shadow-xs flex items-center justify-center gap-2 ring-2 ring-[#4A533E]/20"
             >
-              <FolderDown className="w-4 h-4" />
-              <span>Download Kit #{activeProduct.rank} All Files (.md)</span>
+              <Download className="w-4 h-4" />
+              <span>Download Product #{activeProduct.rank} All-In-One PDF</span>
+            </button>
+            <button
+              onClick={handleDownloadMasterAllInOne}
+              className="w-full sm:w-auto px-3.5 py-2.5 bg-[#1C1917] hover:bg-[#4A533E] text-white text-xs font-bold tracking-wider transition-all cursor-pointer border border-[#1C1917] flex items-center justify-center gap-1.5"
+            >
+              <FileCheck2 className="w-3.5 h-3.5 text-[#D9D3C7]" />
+              <span>Master 11-Product PDF</span>
             </button>
             {onOpenStoreKit && (
               <button
@@ -686,20 +707,20 @@ ${file.downloadableContent}
                   <span>Generate all files for <strong>{activeProduct.title}</strong> in one click:</span>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
+                <div className="flex flex-wrap items-center gap-2 shrink-0">
                   <button
-                    onClick={handleExportMasterPDF}
-                    className="px-3 py-1.5 bg-white hover:bg-[#FAF8F5] text-rose-800 text-[10px] font-bold uppercase tracking-wider border border-rose-300 transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
+                    onClick={handleDownloadProductAllInOne}
+                    className="px-3 py-1.5 bg-[#4A533E] hover:bg-[#38402F] text-[#FAF8F5] text-[10px] font-bold uppercase tracking-wider border border-[#38402F] transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
                   >
-                    <Download className="w-3 h-3 text-rose-700" />
-                    <span>Download Master PDF Publication</span>
+                    <Download className="w-3 h-3 text-[#FAF8F5]" />
+                    <span>Download All-In-One PDF (Playbook + Cards + License)</span>
                   </button>
 
                   <button
                     onClick={handleDownloadAllFiles}
-                    className="px-3 py-1.5 bg-[#4A533E] hover:bg-[#1C1917] text-white text-[10px] font-bold uppercase tracking-wider border border-[#4A533E] transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
+                    className="px-3 py-1.5 bg-white hover:bg-[#FAF8F5] text-[#1C1917] text-[10px] font-bold uppercase tracking-wider border border-[#E5DFD5] transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
                   >
-                    <FolderDown className="w-3 h-3" />
+                    <FolderDown className="w-3 h-3 text-[#4A533E]" />
                     <span>Download All 4 Files (.md)</span>
                   </button>
                 </div>
