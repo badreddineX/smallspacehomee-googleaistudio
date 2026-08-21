@@ -79,9 +79,9 @@ ${sourcingMarkdown}
     fileType: 'Ebook Playbook (Commercial Digital PDF)',
     extension: '.pdf',
     fileSize: playbook.targetFileSize,
-    badge: `${playbook.volumeLabel} (Commercial Ebook PDF)`,
-    description: `${playbook.title} — ${playbook.subtitle}. Digital publication format with embedded fonts, clickable Table of Contents, Personal Use License, and Verified Canadian Retailer Matrix.`,
-    previewSnippet: `VOL 0${playbook.volumeNumber}: ${playbook.title}\nISBN: ${playbook.isbn} • ${playbook.targetFileSize}\nIncludes ${playbook.chapters.length} In-Depth Chapters, Page 2 Personal Use License, ${playbook.pocketCards.length} Pocket Companion Cards, and Verified Canadian Retailer Directory.`,
+    badge: `3-in-1 Master PDF (Playbook + Pocket Cards + Matrix)`,
+    description: `Unified 3-in-1 Master Commercial Publication: Combines (1) The full ${playbook.chapters.length}-Chapter Strategy Playbook, (2) Printable 4x6" Pocket Field Cards, and (3) Verified Canadian Sourcing & Decision Matrix into one complete, print-ready digital package.`,
+    previewSnippet: `VOL 0${playbook.volumeNumber}: ${playbook.title}\nISBN: ${playbook.isbn} • ${playbook.targetFileSize}\n[3-IN-1 UNIFIED SUITE]\n• PART 1: ${playbook.chapters.length} In-Depth Strategic Chapters & Decision Tables\n• PART 2: ${playbook.pocketCards.length} Printable 4x6" Pocket Field Companion Cards\n• PART 3: Verified Canadian Sourcing Directory & Personal Use Commercial License`,
     downloadableContent: fullContent.trim()
   };
 }

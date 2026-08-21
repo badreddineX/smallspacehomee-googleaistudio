@@ -510,19 +510,33 @@ ${file.downloadableContent}
                 </p>
               </div>
 
-              <button
-                onClick={handleDownloadAllFiles}
-                className="px-3.5 py-1.5 bg-[#4A533E] hover:bg-white hover:text-[#1C1917] text-white text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border border-white/20 flex items-center justify-center gap-1.5 shrink-0"
-              >
-                <FolderDown className="w-3.5 h-3.5" />
-                <span>Export Complete Bundle</span>
-              </button>
+              <div className="flex items-center gap-2 flex-wrap">
+                <button
+                  onClick={() => handleDownloadSingleFile(assetBundle.files[0])}
+                  className="px-3.5 py-1.5 bg-[#FAF8F5] hover:bg-[#4A533E] text-[#1C1917] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border border-[#E5DFD5] flex items-center justify-center gap-1.5 shrink-0 shadow-xs"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download 3-in-1 Master PDF</span>
+                </button>
+                <button
+                  onClick={handleDownloadAllFiles}
+                  className="px-3.5 py-1.5 bg-[#4A533E] hover:bg-white hover:text-[#1C1917] text-white text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border border-white/20 flex items-center justify-center gap-1.5 shrink-0"
+                >
+                  <FolderDown className="w-3.5 h-3.5" />
+                  <span>Export Bundle (.ZIP/MD)</span>
+                </button>
+              </div>
             </div>
 
             {/* File Item List */}
             <div className="p-4 sm:p-5 space-y-3 bg-[#FAF8F5] border-b border-[#E5DFD5]">
-              <div className="text-[10px] font-bold uppercase tracking-wider text-[#4A533E]">
-                Select File to Inspect & Download:
+              <div className="flex items-center justify-between">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-[#4A533E]">
+                  Select File to Inspect & Download:
+                </div>
+                <div className="text-[9px] text-[#1C1917]/70 font-serif italic">
+                  💡 File 01 includes the Unified 3-in-1 Master PDF (Playbook + Pocket Cards + Matrix)
+                </div>
               </div>
 
               <div className="grid grid-cols-1 gap-2.5">
