@@ -1,4 +1,4 @@
-import { ProductAssetBundle } from '../productAssetsData';
+import { ProductAssetBundle, generatePlaybookDeliverableFile } from '../productAssetsData';
 
 export const PRODUCTS_9_TO_11: Record<string, ProductAssetBundle> = {
   // ==========================================
@@ -16,47 +16,10 @@ export const PRODUCTS_9_TO_11: Record<string, ProductAssetBundle> = {
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Zero-Cable Invisibility', 'Felt Laptop Hideaway', '4000K to 2200K Shift', '15-Min Reset']
     },
-    deliverablesOverview: 'The complete 4-part WFH reset system: Field Playbook (PDF), Ergonomics & Cable Routing Matrix (CSV), 6-Database Notion Workstation Hub (JSON), and Evening Transition Blueprint Cards (PDF).',
+    deliverablesOverview: 'The complete 4-part WFH reset system: Volume 09 Commercial Ebook Playbook (Digital PDF), Ergonomics & Cable Routing Matrix (CSV), 6-Database Notion Workstation Hub (JSON), and Evening Transition Blueprint Cards.',
     totalAssetsCount: 4,
     files: [
-      {
-        id: 'wfh-1',
-        fileName: '01_WFH_Multi_Use_Desk_Reset_Playbook.pdf',
-        fileType: 'PDF Master Guide',
-        extension: '.pdf',
-        fileSize: '28 Pages • 3.8 MB',
-        badge: 'Core Field Guide (Learn & Execute)',
-        description: 'Comprehensive 16-section guide on under-desk J-channel cable raceways, magnetic power brick mounts, the 5-second laptop concealment tray, and lighting automation.',
-        previewSnippet: 'MODULE 1: Zero-Cable Invisibility Architecture\nMODULE 2: The 5-Second Laptop & Peripherals Felt Hideaway Tray\nMODULE 3: Smart Lighting Automation: 4000K Focus to 2200K Evening Glow\nMODULE 4: The 15-Minute Evening "Workday Sunset" Mental Reset',
-        downloadableContent: `# The WFH Multi-Use Desk & 15-Minute Room Reset Field Playbook
-## How to Transition Your Small Living Space from Focused Workstation to Peaceful Evening Sanctuary in Under 15 Minutes
-*Publication by SmallSpaceHome.ca Editorial Lab • Tested in 510 sq ft Toronto Rental Lab*
-
-### CORE PROMISE
-End workday mental burnout in studio apartments by completely concealing laptops, power cables, and monitors at 5:30 PM with zero visual clutter remaining in your living area.
-
----
-
-### TACTICAL DASHBOARD
-- **Reset Time**: Under 8 minutes nightly
-- **Hardware Cost**: $28–$52 CAD total
-- **Cable Invisibility**: 100% hidden cords (zero cables touching floor)
-- **Renter Safety**: 100% Zero-Drill Desk & Cable Raceways (Adhesive J-Channels)
-- **Psychological Impact**: Eliminates after-hours work anxiety in single-room living
-
----
-
-### HACK MODULE 01: UNDER-DESK J-CHANNEL CABLE INVISIBILITY
-- **The Problem**: Spaghetti power cords hanging beneath desks make a small living room look cluttered and constantly remind you of unfinished work.
-- **The Hack**: Self-adhesive PVC J-channel raceways and magnetic power strip brackets mounted to the desk underside.
-- **Materials**: 24" adhesive J-channel ($8.50), heavy-duty power strip, velcro cable ties.
-- **Steps**:
-  1. Clean desk underside with 70% Isopropyl alcohol.
-  2. Adhere J-channel 2 inches inward from rear desk edge.
-  3. Bundle laptop chargers, monitor cables, and power bricks into J-channel channel.
-  4. Run a single braided power cord down the rear desk leg using a clear silicone clip.
-- **Why It Works**: Conceals 100% of charging cables and transformers from living room sightlines.`
-      },
+      generatePlaybookDeliverableFile(9),
       {
         id: 'wfh-2',
         fileName: '02_Desk_Ergonomics_And_Cable_Matrix.csv',
@@ -146,46 +109,10 @@ CARD 02: THE 5:30 PM WORKDAY SUNSET
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Optical Height', '45-Degree Mirror Bounce', 'Floor-to-Ceiling Drapes', 'Zero Overhead Glare']
     },
-    deliverablesOverview: 'The complete 4-part visual expansion system: Field Playbook (PDF), Mirror Reflection & Kelvin Spectrum Matrix (CSV), 6-Database Notion Lighting Hub (JSON), and Optical Geometry Blueprint Cards (PDF).',
+    deliverablesOverview: 'The complete 4-part visual expansion system: Volume 10 Commercial Ebook Playbook (Digital PDF), Mirror Reflection & Kelvin Spectrum Matrix (CSV), 6-Database Notion Lighting Hub (JSON), and Optical Geometry Blueprint Cards.',
     totalAssetsCount: 4,
     files: [
-      {
-        id: 'ose-1',
-        fileName: '01_Optical_Space_Expander_Playbook.pdf',
-        fileType: 'PDF Master Guide',
-        extension: '.pdf',
-        fileSize: '28 Pages • 3.9 MB',
-        badge: 'Core Field Guide (Learn & Execute)',
-        description: 'Comprehensive 16-section guide on floor-to-ceiling drapery mounting, 45-degree mirror daylight bounce formulas, zero-overhead glare rules, and legged furniture sightlines.',
-        previewSnippet: 'MODULE 1: Floor-to-Ceiling Drapery Geometry (Mounting 2" Below Ceiling)\nMODULE 2: The 45-Degree Mirror Daylight Bounce Formula\nMODULE 3: The "Zero Overhead Glare" Rule & 3-Tier Layered Lighting\nMODULE 4: Legged Furniture & Continuous Flooring Sightlines',
-        downloadableContent: `# The Optical Illusion Small Space Expander & Lighting Field Playbook
-## How to Make a 450 Sq Ft Rental Apartment Look and Feel Like 750+ Sq Ft Using Architectural Lighting & Sightline Geometry
-*Publication by SmallSpaceHome.ca Editorial Lab • Tested in 510 sq ft Toronto Rental Lab*
-
-### CORE PROMISE
-Double the perceived size and natural daylight of a dark rental apartment using optical tricks, mirror bounce angles, ceiling-height curtain hanging, and layered warm lighting.
-
----
-
-### TACTICAL DASHBOARD
-- **Setup Time**: 2 hours
-- **Materials Cost**: $36–$68 CAD
-- **Visual Impact**: Makes 8-ft ceilings feel like 9.5-ft; doubles daylight depth
-- **Renter Safety**: 100% No-Drill Spring Tension & Floor-Leaning Methods
-- **Glare Elimination**: 100% replacement of harsh single overhead ceiling fixtures
-
----
-
-### HACK MODULE 01: FLOOR-TO-CEILING DRAPERY GEOMETRY
-- **The Problem**: Mounting curtain rods directly above window frames cuts the wall in half, making ceilings look cramped and windows look tiny.
-- **The Hack**: Mount curtain rods 2 inches below the ceiling moulding and extend the rod 8–10 inches beyond each side of the window frame.
-- **Materials**: 84–120" adjustable curtain rod ($22.00), extra-long 96" sheer linen curtain panels ($32.00).
-- **Steps**:
-  1. Measure wall height from floor to within 2 inches of the ceiling.
-  2. Position curtain brackets 8 inches wider than the window frame on both sides.
-  3. Hang 96" curtains so the bottom hem lightly kisses the hardwood floor.
-- **Why It Works**: Draws the eye upward to the full ceiling height and allows full daylight penetration because open curtains rest against drywall, not glass.`
-      },
+      generatePlaybookDeliverableFile(10),
       {
         id: 'ose-2',
         fileName: '02_Mirror_Bounce_And_Kelvin_Matrix.csv',
@@ -273,46 +200,10 @@ CARD 02: 45-DEGREE MIRROR BOUNCE
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Over-Toilet Tower', 'Spring Tension Shower Caddy', 'Double Curtain Rod', 'Amber Decanting']
     },
-    deliverablesOverview: 'The complete 4-part small bathroom system: Field Playbook (PDF), Humidity & Clearance Matrix (CSV), 6-Database Notion Bath Hub (JSON), and Zero-Drill Bath Blueprint Cards (PDF).',
+    deliverablesOverview: 'The complete 4-part small bathroom system: Volume 11 Commercial Ebook Playbook (Digital PDF), Humidity & Clearance Matrix (CSV), 6-Database Notion Bath Hub (JSON), and Zero-Drill Bath Blueprint Cards.',
     totalAssetsCount: 4,
     files: [
-      {
-        id: 'sbm-1',
-        fileName: '01_Small_Bathroom_Vertical_Maximizer_Playbook.pdf',
-        fileType: 'PDF Master Guide',
-        extension: '.pdf',
-        fileSize: '28 Pages • 3.8 MB',
-        badge: 'Core Field Guide (Learn & Execute)',
-        description: 'Comprehensive 16-section guide on freestanding over-toilet storage towers, rust-proof spring tension shower corner poles, double shower curtain rods, and high-humidity waterproof adhesives.',
-        previewSnippet: 'MODULE 1: Over-the-Toilet Freestanding Tiered Storage Towers\nMODULE 2: Floor-to-Ceiling Spring Tension Shower Corner Poles\nMODULE 3: The Double Shower Curtain Rod Friction Hack\nMODULE 4: Inside-Cabinet Magnetic Grooming Tool Strips',
-        downloadableContent: `# The Small Bathroom Vanity & Shower Vertical Maximizer Field Playbook
-## How to Eliminate Pedestal Sink Clutter and Gain 14+ Cubic Feet of Rust-Proof Storage in a Cramped 5x7 Rental Bathroom
-*Publication by SmallSpaceHome.ca Editorial Lab • Tested in 510 sq ft Toronto Rental Lab*
-
-### CORE PROMISE
-Organize all grooming products, extra towels, and shower bottles in a compact rental bathroom without drilling into fragile ceramic tiles or damaging plumbing fixtures.
-
----
-
-### TACTICAL DASHBOARD
-- **Setup Time**: 1.5 hours
-- **Materials Cost**: $38–$65 CAD
-- **Recovered Volume**: +14.2 cubic feet of vertical storage
-- **Renter Safety**: 100% Zero Tile Drilling (Spring tension & freestanding systems)
-- **Rust Resistance**: Anodized aluminum & coated stainless hardware
-
----
-
-### HACK MODULE 01: FREESTANDING OVER-TOILET STORAGE TOWER
-- **The Problem**: Rental bathrooms with pedestal sinks lack drawers and countertop space, forcing toiletries onto the toilet tank or floor.
-- **The Hack**: A 3-tier freestanding bamboo or coated steel shelf tower straddling the toilet with non-slip silicone wall bumpers.
-- **Materials**: 3-tier over-toilet freestanding shelf ($38.00), adhesive silicone bumper pads ($3.00).
-- **Steps**:
-  1. Assemble over-toilet shelf framework.
-  2. Slide frame over toilet tank (ensure minimum 3" clearance above flush button).
-  3. Apply 2 thick silicone bumper pads between top frame rails and wall to prevent wobble with zero drywall screws.
-- **Why It Works**: Recovers 8 cubic feet of empty air above the toilet for folded towels and storage baskets.`
-      },
+      generatePlaybookDeliverableFile(11),
       {
         id: 'sbm-2',
         fileName: '02_Bathroom_Clearance_And_Humidity_Matrix.csv',

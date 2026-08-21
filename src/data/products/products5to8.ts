@@ -1,4 +1,4 @@
-import { ProductAssetBundle } from '../productAssetsData';
+import { ProductAssetBundle, generatePlaybookDeliverableFile } from '../productAssetsData';
 
 export const PRODUCTS_5_TO_8: Record<string, ProductAssetBundle> = {
   // ==========================================
@@ -16,48 +16,10 @@ export const PRODUCTS_5_TO_8: Record<string, ProductAssetBundle> = {
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Acoustic Air-Lock', 'Door Perimeter Gaskets', '32oz Thermal Drapes', 'Impact Decoupling']
     },
-    deliverablesOverview: 'The complete 4-part acoustic privacy system: Acoustic Playbook (PDF), Decibel Reduction & Materials Matrix (CSV), 6-Database Notion Acoustic Vault (JSON), and Door Sound-Lock Blueprint Cards (PDF).',
+    deliverablesOverview: 'The complete 4-part acoustic privacy system: Volume 05 Commercial Ebook Playbook (Digital PDF), Decibel Reduction & Materials Matrix (CSV), 6-Database Notion Acoustic Vault (JSON), and Door Sound-Lock Blueprint Cards.',
     totalAssetsCount: 4,
     files: [
-      {
-        id: 'apk-1',
-        fileName: '01_Studio_Acoustic_Privacy_Playbook.pdf',
-        fileType: 'PDF Master Guide',
-        extension: '.pdf',
-        fileSize: '28 Pages • 3.9 MB',
-        badge: 'Core Field Guide (Learn & Execute)',
-        description: 'Comprehensive 16-section guide on acoustic air-lock physics, front door perimeter seals, window sound damping, and corner bass absorption.',
-        previewSnippet: 'MODULE 1: Acoustic Air-Lock Physics & Flanking Paths\nMODULE 2: Front Door Silicone Sweep & Perimeter Gaskets\nMODULE 3: Triple-Weave Heavyweight Drapes (4" Window Overhang)\nMODULE 4: Impact Decoupling & Ambient Pink Noise Masking',
-        downloadableContent: `# The Studio Apartment Acoustic Privacy & Soundproofing Field Playbook
-## How to Cut Hallway Footsteps, Elevator Hum, and Neighbor Noise by Up to 14 dB in Thin-Walled Rentals
-*Publication by SmallSpaceHome.ca Editorial Lab • Tested in 510 sq ft Toronto Rental Lab*
-
-### CORE PROMISE
-Create a tranquil, library-quiet living sanctuary in a noisy apartment building using renter-safe acoustic mass, airtight perimeter seals, and sound deflection angles.
-
----
-
-### TACTICAL DASHBOARD
-- **Setup Time**: 1.5 hours (under 90 minutes)
-- **Materials Cost**: $38–$75 CAD total
-- **Noise Reduction**: -10 to -14 dB hallway noise reduction
-- **Renter Safety**: 100% Zero-Damage Peelable Silicone & Tension Rods
-- **Reversibility**: Leaves zero adhesive residue on door frames
-
----
-
-### HACK MODULE 01: THE FRONT DOOR DUAL-DENSITY SILICONE AIR-LOCK
-- **The Problem**: Standard apartment doors have a 3/4" to 1" open air gap at the bottom and loose perimeter jambs. Because sound behaves like water through air leaks, 85% of hallway noise passes through this single gap.
-- **The Hack**: A heavy dual-density silicone under-door draft stopper paired with self-adhesive hollow rubber D-profile weatherstripping around the door frame.
-- **Materials**: 39-inch multi-layer silicone door sweep ($14.50), silicone jamb weatherstripping ($11.00), 70% alcohol wipe.
-- **Steps**:
-  1. Clean bottom edge of door interior with 70% Isopropyl alcohol.
-  2. Cut silicone sweep to match exact door width with scissors.
-  3. Close door and press sweep so the 3 bottom silicone fins lightly touch the hardwood floor with zero drag resistance.
-  4. Adhere D-profile hollow rubber foam along the inner door jamb stop so door compresses gasket tightly when latched.
-- **Why It Works**: Eliminates the open air channel, cutting voice and footstep transmission by 8–12 dB immediately.
-- **Rental Check**: Uses low-residue peelable acrylic adhesive; removes cleanly at move-out with gentle hair dryer heat.`
-      },
+      generatePlaybookDeliverableFile(5),
       {
         id: 'apk-2',
         fileName: '02_Acoustic_Materials_And_Decibel_Matrix.csv',
@@ -146,47 +108,10 @@ CARD 02: GASKET COMPRESSION RULES
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['6-Inch Floating Ledge', 'Staggered Hooks', 'River Stone Boot Tray', 'Magnetic Key Hub']
     },
-    deliverablesOverview: 'The complete 4-part entryway system: Field Playbook (PDF), Footprint & Door Clearance Matrix (CSV), 6-Database Notion Entry Hub (JSON), and 6-Inch Floating Blueprint Cards (PDF).',
+    deliverablesOverview: 'The complete 4-part entryway system: Volume 06 Commercial Ebook Playbook (Digital PDF), Footprint & Door Clearance Matrix (CSV), 6-Database Notion Entry Hub (JSON), and 6-Inch Floating Blueprint Cards.',
     totalAssetsCount: 4,
     files: [
-      {
-        id: 'edz-1',
-        fileName: '01_Micro_Entryway_Dropzone_Playbook.pdf',
-        fileType: 'PDF Master Guide',
-        extension: '.pdf',
-        fileSize: '28 Pages • 3.8 MB',
-        badge: 'Core Field Guide (Learn & Execute)',
-        description: 'Comprehensive 16-section guide on 6-inch floating picture ledges as consoles, staggered double-height hooks, river stone boot trays, and concealed shoe tiering.',
-        previewSnippet: 'MODULE 1: The 6-Inch Floating Console Architecture\nMODULE 2: Staggered Double-Height Coat Hook Geometry\nMODULE 3: Zero-Footprint Concealed Shoe Tiering\nMODULE 4: River Stone Canadian Winter Boot Drainage',
-        downloadableContent: `# The Micro-Entryway 6-Inch "Drop Zone" & Clutter-Stop Field Playbook
-## How to Stop Coat, Shoe, Key, and Mail Clutter at Your Front Door with Zero Floor Space Required
-*Publication by SmallSpaceHome.ca Editorial Lab • Tested in 510 sq ft Toronto Rental Lab*
-
-### CORE PROMISE
-Create an ultra-slim, designer-grade entryway drop zone in a narrow apartment hallway under 38 inches wide without blocking door swings or cluttering floor walkways.
-
----
-
-### TACTICAL DASHBOARD
-- **Setup Time**: 1 hour total
-- **Materials Cost**: $32–$55 CAD
-- **Wall Projection**: 5.5 inches maximum (preserves 32"+ walkway)
-- **Renter Safety**: Zero drywall damage using OOK/3M Claw micro-pin anchors
-- **Capacity**: Holds 6 winter coats, 8 pairs of shoes, keys, mail, and umbrellas
-
----
-
-### HACK MODULE 01: THE 5.5-INCH FLOATING PICTURE LEDGE CONSOLE
-- **The Problem**: Standard hallway console tables are 12 to 16 inches deep, completely choking narrow rental corridors and bumping opening doors.
-- **The Hack**: An inverted 45" solid pine or MDF picture ledge (4.5–5.5" depth) mounted at 38" height with micro-pin drywall anchors.
-- **Materials**: 45" picture ledge ($16.00), 2 OOK push wire hooks or 3M Claw anchors ($8.00), mini bubble level.
-- **Steps**:
-  1. Measure 38 inches up from floor along entryway wall (optimal elbow height).
-  2. Verify 36-inch clearance from front door handle arc.
-  3. Mount picture ledge level using micro-pin hooks through pre-drilled bracket slots.
-  4. Place ceramic catchall dish on ledge for mail, wallet, and sunglasses.
-- **Why It Works**: Provides a solid surface for incoming mail and keys while protruding less than 6 inches into the hallway walkway.`
-      },
+      generatePlaybookDeliverableFile(6),
       {
         id: 'edz-2',
         fileName: '02_Entryway_Footprint_And_Clearance_Matrix.csv',
@@ -274,46 +199,10 @@ CARD 02: STAGGERED HOOK GEOMETRY
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Dust-Proof Storage', 'Steel Bed Risers', 'Luggage Nesting', 'Rubber Caster Crates']
     },
-    deliverablesOverview: 'The complete 4-part hidden storage blueprint: Field Playbook (PDF), Hidden Cubic Volume Calculator (CSV), 6-Database Notion Vault (JSON), and Elevation Blueprint Cards (PDF).',
+    deliverablesOverview: 'The complete 4-part hidden storage blueprint: Volume 07 Commercial Ebook Playbook (Digital PDF), Hidden Cubic Volume Calculator (CSV), 6-Database Notion Vault (JSON), and Elevation Blueprint Cards.',
     totalAssetsCount: 4,
     files: [
-      {
-        id: 'ubs-1',
-        fileName: '01_Underbed_Hidden_Storage_Playbook.pdf',
-        fileType: 'PDF Master Guide',
-        extension: '.pdf',
-        fileSize: '28 Pages • 3.8 MB',
-        badge: 'Core Field Guide (Learn & Execute)',
-        description: 'Comprehensive 16-section guide on bed riser weight distribution, zippered Oxford-cloth dust defense, nesting hard-shell luggage, and sofa backboard ledges.',
-        previewSnippet: 'MODULE 1: Bed Riser Elevation & Weight Physics (1,500 lb Safe Load)\nMODULE 2: Oxford-Cloth Dust Vaults vs Rigid Plastic Bins\nMODULE 3: Hard-Shell Suitcase Nesting & Vacuum Compression\nMODULE 4: Sofa & Credenza Toe-Kick Hidden Dead Space',
-        downloadableContent: `# The Under-Bed & Hidden Space Secret Storage Field Playbook
-## How to Unlock 28+ Cubic Feet of Invisible, Dust-Proof Storage Beneath Beds, Sofas, and Cabinet Bases
-*Publication by SmallSpaceHome.ca Editorial Lab • Tested in 510 sq ft Toronto Rental Lab*
-
-### CORE PROMISE
-Transform the massive dead space beneath your bed and furniture into a dust-sealed, rolling storage vault holding suitcases, winter coats, and bulky linens invisibly.
-
----
-
-### TACTICAL DASHBOARD
-- **Setup Time**: 1.5 hours
-- **Materials Cost**: $34–$65 CAD
-- **Recovered Volume**: +28.5 cubic feet (equivalent to a 4-drawer dresser)
-- **Renter Safety**: 100% Floor & Frame Safe (Heavy-duty steel risers with felt pads)
-- **Accessibility**: Smooth-glide rubber casters roll easily on rugs and hardwood
-
----
-
-### HACK MODULE 01: 2-INCH HEAVY STEEL BED RISERS WITH FELT BASES
-- **The Problem**: Standard bed frames offer only 6 to 8 inches of under-bed clearance, blocking suitcases and large storage totes.
-- **The Hack**: 2-inch heavy-duty steel or solid wood risers equipped with heavy felt base pads.
-- **Materials**: 4 heavy-duty steel bed risers (1,500 lb rated load), 4 adhesive felt furniture pads.
-- **Steps**:
-  1. Lift bed frame corner with assistance.
-  2. Position steel riser cup squarely beneath bed leg.
-  3. Verify center leg support also receives matching riser to prevent mattress sag.
-- **Why It Works**: Increases under-bed clearance from 7.5" to 9.5"+, instantly accommodating standard 9-inch hard-shell carry-on luggage and large Oxford storage containers.`
-      },
+      generatePlaybookDeliverableFile(7),
       {
         id: 'ubs-2',
         fileName: '02_Hidden_Cubic_Storage_Calculator.csv',
@@ -401,47 +290,10 @@ CARD 02: DUST DEFENSE PROTOCOL
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Studio Zoning', 'Open-Back Bookcase', 'Tension Curtain Track', 'Psychological Anchoring']
     },
-    deliverablesOverview: 'The complete 4-part studio separation system: Visual Field Playbook (PDF), Floor Plan Scale & Walkway Matrix (CSV), 6-Database Notion Studio Hub (JSON), and Floor Plan Blueprint Cards (PDF).',
+    deliverablesOverview: 'The complete 4-part studio separation system: Volume 08 Commercial Ebook Playbook (Digital PDF), Floor Plan Scale & Walkway Matrix (CSV), 6-Database Notion Studio Hub (JSON), and Floor Plan Blueprint Cards.',
     totalAssetsCount: 4,
     files: [
-      {
-        id: 'sbs-1',
-        fileName: '01_Studio_Living_Bed_Separation_Playbook.pdf',
-        fileType: 'PDF Master Guide',
-        extension: '.pdf',
-        fileSize: '30 Pages • 4.1 MB',
-        badge: 'Core Field Guide (Learn & Execute)',
-        description: 'Comprehensive 16-section guide on studio sightline mapping, open-back modular bookcase dividers, ceiling spring-tension track drapery, and multi-rug psychological zoning.',
-        previewSnippet: 'MODULE 1: Sightline Mapping & The 40% Natural Light Rule\nMODULE 2: Floating Open-Back Modular Bookcase Architecture\nMODULE 3: Ceiling Spring-Tension Curtain Track Systems\nMODULE 4: Multi-Rug Geometry & Spatial Psychological Anchoring',
-        downloadableContent: `# The Studio Living-Bed Separation & Visual Privacy Field Playbook
-## How to Create 3 Distinct "Rooms" in a Single Open Studio Without Building Walls or Blocking Natural Daylight
-*Publication by SmallSpaceHome.ca Editorial Lab • Tested in 510 sq ft Toronto Rental Lab*
-
-### CORE PROMISE
-Transform a single open studio into a private bedroom sanctuary, relaxing living lounge, and functional dining nook without drywall screws or losing natural window light.
-
----
-
-### TACTICAL DASHBOARD
-- **Setup Time**: 2.5 hours
-- **Materials Cost**: $45–$95 CAD
-- **Sightline Privacy**: 100% visual privacy from entryway/living area
-- **Daylight Preservation**: Preserves 90%+ natural sunlight penetration
-- **Renter Safety**: 100% No-Drill Divider Systems (Freestanding & Tension-based)
-
----
-
-### HACK MODULE 01: THE OPEN-BACK FLOATING BOOKCASE DIVIDER
-- **The Problem**: Solid walls or opaque screens completely plunge the back half of a studio into depressing darkness.
-- **The Hack**: A 4x2 or 4x4 open-back modular cube bookcase (such as IKEA Kallax) placed perpendicular to the wall.
-- **Materials**: 4x2 modular bookcase ($59.00), heavy felt base pads, decorative linen storage boxes.
-- **Steps**:
-  1. Position bookcase perpendicular to wall at the foot of the bed.
-  2. Maintain a strict 32-inch clear walkway between bookcase end and opposite wall.
-  3. Fill lower 2 cube rows with closed fabric boxes (blocks bed sightlines).
-  4. Leave upper 2 cube rows open with trailing plants and books (allows 80% natural daylight to pass freely).
-- **Why It Works**: Creates a 58-inch tall architectural room divider that provides 16 cubic feet of dual-sided storage and full bed privacy while preserving window sunlight.`
-      },
+      generatePlaybookDeliverableFile(8),
       {
         id: 'sbs-2',
         fileName: '02_Studio_Layout_And_Clearance_Matrix.csv',
