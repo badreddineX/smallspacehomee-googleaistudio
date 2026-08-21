@@ -6,8 +6,8 @@ import { PLAYBOOK_SERIES } from './playbookSeriesData';
 export interface DetailedDeliverableFile {
   id: string;
   fileName: string;
-  fileType: 'PDF Master Guide' | 'Ebook Playbook (Commercial Digital PDF)' | 'Spreadsheet (CSV/Excel)' | 'Notion Template' | 'Printable Cheatsheet' | 'Companion Tool' | 'High-Res Asset';
-  extension: '.pdf' | '.csv' | '.xlsx' | '.json' | '.png' | '.zip';
+  fileType: 'PDF Master Guide' | 'Ebook Playbook (Commercial Digital PDF)' | 'Spreadsheet (CSV/Excel)' | 'Notion Template' | 'Printable Cheatsheet' | 'Companion Tool' | 'High-Res Asset' | 'Action Checklist & Pocket Cards';
+  extension: '.pdf' | '.csv' | '.xlsx' | '.json' | '.png' | '.zip' | '.md';
   fileSize: string;
   badge: string;
   description: string;

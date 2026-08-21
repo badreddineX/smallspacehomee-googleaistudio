@@ -16,8 +16,8 @@ export const PRODUCTS_5_TO_8: Record<string, ProductAssetBundle> = {
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Acoustic Air-Lock', 'Door Perimeter Gaskets', '32oz Thermal Drapes', 'Impact Decoupling']
     },
-    deliverablesOverview: 'The complete 4-part acoustic privacy system: Volume 05 Commercial Ebook Playbook (Digital PDF), Decibel Reduction & Materials Matrix (CSV), 6-Database Notion Acoustic Vault (JSON), and Door Sound-Lock Blueprint Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Decibel Reduction & Materials Matrix (CSV), and (3) Tactical Studio Acoustic Privacy Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(5),
       {
@@ -26,7 +26,7 @@ export const PRODUCTS_5_TO_8: Record<string, ProductAssetBundle> = {
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Acoustic Decibel Matrix (Filter & Manage)',
+        badge: 'Acoustic Decibel Matrix (CSV)',
         description: 'Structured spreadsheet matrix calculating noise reduction coefficients (NRC), decibel drops, and acoustic materials costs in CAD.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -40,55 +40,59 @@ ACO-007,M06: Air Vent,Sound-Baffle Acoustic Foam Vent Insert,HVAC Acoustics,Low,
       },
       {
         id: 'apk-3',
-        fileName: '03_Studio_Acoustic_Notion_Vault.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '6 Databases • 22 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion workspace with Noise Source Tracker, Decibel Audit Log, Materials Shopping List, and Soundproofing Project Board.',
-        previewSnippet: '{\n  "workspaceName": "Studio Acoustic Privacy Operating System",\n  "version": "3.0.0",\n  "databases": ["Noise Audit & Decibel Log", "Acoustic Hardware Shopping List", "Room Sound-Lock Checklist"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "Studio Acoustic Privacy Operating System",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Acoustic calibration, door air-lock architecture, and decibel reduction tracking."
-          },
-          databases: [
-            {
-              name: "Noise Audit & Decibel Log",
-              properties: ["Noise Source", "Location", "Peak Decibels (dBA)", "Frequency Profile", "Installed Fix", "Result dB Drop"],
-              sampleRecords: [
-                { source: "Hallway Footsteps & Voices", location: "Front Door Bottom Gap", peak: "68 dBA", freq: "Mid/High Voice", fix: "Silicone Sweep + D-Profile Gasket", drop: "-12 dBA" },
-                { source: "Street Traffic Rumble", location: "Balcony Sliding Window", peak: "62 dBA", freq: "Low Frequency", fix: "32oz Triple-Weave Velvet Drapes", drop: "-7 dBA" },
-                { source: "Adjacent Unit TV Audio", location: "Shared Living Wall", peak: "54 dBA", freq: "Mid Frequency", fix: "Solid Bookshelf + High-Pile Rug Underlay", drop: "-5 dBA" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'apk-4',
-        fileName: '04_Door_Sound_Lock_Blueprint_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.5 MB',
-        badge: 'Printable Blueprint Cards',
-        description: '4x6" printable reference cards for door air-lock measurements, weatherstripping compression rules, and pink noise placement.',
-        previewSnippet: 'CARD 1: Door Air-Lock Light Test Protocol\nCARD 2: Weatherstrip Profile Sizing (D vs V)\nCARD 3: Acoustic Curtain Floor-to-Ceiling Spans\nCARD 4: Safe Sound-Masking Decibel Thresholds',
-        downloadableContent: `# Studio Soundproofing Cheat Cards
-SmallSpaceHome.ca • Canadian Urban Renter Edition
+        fileName: '03_Studio_Acoustic_Privacy_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 11 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step studio apartment soundproofing checklist and 4x6" printable reference cards for door air-lock calibration and acoustic gasketing.',
+        previewSnippet: '# STUDIO APARTMENT ACOUSTIC PRIVACY EXECUTION CHECKLIST\n## PHASE 1: FRONT DOOR ACOUSTIC AIR-LOCK & PERIMETER SEAL\n[ ] 1. Perform hallway light leak audit\n[ ] 2. Clean door base with 70% alcohol...',
+        downloadableContent: `# STUDIO APARTMENT ACOUSTIC PRIVACY & SOUNDPROOFING: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • High-Rise Rental Living Tactical Guide*
 
-CARD 01: THE DOOR AIR-LOCK LIGHT TEST
-[ ] Turn off hallway lights and turn on interior living lights
-[ ] Stand in dark hallway: If light shines under door, sound enters freely
-[ ] Clean door base with 70% alcohol; align silicone sweep to block 100% light
+## PHASE 1: FRONT DOOR ACOUSTIC AIR-LOCK & PERIMETER SEAL
+- [ ] **1. Hallway Light-Leak Test**: Turn off hallway lights and turn on living room lights. If light shines under or around the front door, sound waves pass freely.
+- [ ] **2. 70% Alcohol Prep**: Clean the door frame stop moulding and bottom door stile with 70% Isopropyl alcohol.
+- [ ] **3. Silicone Under-Door Sweep**: Cut a multi-fin silicone sweep to exact door width. Adhere firmly so the bottom silicone fins seal lightly against floor without carpet drag (-8 to -10 dB hallway reduction).
+- [ ] **4. Hollow D-Profile Jamb Gasket**: Install self-adhesive hollow rubber foam along the interior door stop moulding. Confirm deadbolt engages smoothly without forcing the lock.
 
-CARD 02: GASKET COMPRESSION RULES
-[ ] Hollow D-profile rubber foam: Compresses from 6mm to 2mm when latched
-[ ] Adhere along interior door stop moulding (not the outer frame)
-[ ] Ensure door handle latches firmly without requiring heavy shoulder push`
+---
+
+## PHASE 2: 32OZ ACOUSTIC WINDOW DRAPERY
+- [ ] **1. Heavy Tension Rod Span**: Extend a 1-inch heavy-duty spring-tension rod 4 inches above the window frame and 6 inches beyond each side.
+- [ ] **2. Floor-Touching Velvet Drapes**: Hang 32oz triple-weave blackout acoustic drapes. Ensure the hem touches the floor to prevent sound waves leaking under.
+- [ ] **3. Air Gap Elimination**: Overlap curtain center panels by at least 4 inches.
+
+---
+
+## PHASE 3: FLOOR IMPACT DECOUPLING & MASS DIFFUSION
+- [ ] **1. 1/2-Inch Dual-Felt Rug Underlay**: Lay dense felt/rubber rug pads beneath living and sleeping rugs to absorb impact footstep thuds.
+- [ ] **2. Shared-Wall Bookcase Diffuser**: Position a solid wood bookcase against the shared unit wall. Stagger book spine depths to naturally scatter incoming voice frequencies.
+- [ ] **3. HVAC Vent Foam Baffle**: Place an open-cell zig-zag acoustic foam strip behind supply air vent louvers to eliminate duct whistle while maintaining 85% airflow.
+
+---
+
+## PHASE 4: PINK NOISE ACOUSTIC MASKING
+- [ ] **1. Calibrated Speaker Placement**: Place a sound machine or smart speaker facing the entryway doorway.
+- [ ] **2. Pink Noise Calibration**: Set to continuous pink noise at 45–48 dBA (covers sudden hallway spikes without disturbing REM sleep).
+
+---
+
+## APPENDIX: PRINTABLE 4x6" BLUEPRINT CARDS
+### CARD 01: THE DOOR AIR-LOCK LIGHT TEST
+- Turn off hallway lights and turn on interior living lights
+- Stand in dark hallway: If light shines under door, sound enters freely
+- Clean door base with 70% alcohol; align silicone sweep to block 100% light
+
+### CARD 02: GASKET COMPRESSION RULES
+- Hollow D-profile rubber foam: Compresses from 6mm to 2mm when latched
+- Adhere along interior door stop moulding (not the outer frame)
+- Ensure door handle latches firmly without requiring heavy shoulder push
+
+### CARD 03: ACOUSTIC CURTAIN FLOOR-TO-CEILING SPANS
+- Extend rod 4" above frame and 6" beyond sides
+- Drapes must brush floor to trap sound waves
+- 32oz fabric achieves 0.65 NRC sound absorption`
       }
     ]
   },
@@ -108,8 +112,8 @@ CARD 02: GASKET COMPRESSION RULES
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['6-Inch Floating Ledge', 'Staggered Hooks', 'River Stone Boot Tray', 'Magnetic Key Hub']
     },
-    deliverablesOverview: 'The complete 4-part entryway system: Volume 06 Commercial Ebook Playbook (Digital PDF), Footprint & Door Clearance Matrix (CSV), 6-Database Notion Entry Hub (JSON), and 6-Inch Floating Blueprint Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Footprint & Door Clearance Matrix (CSV), and (3) Tactical Micro-Entryway Execution Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(6),
       {
@@ -118,7 +122,7 @@ CARD 02: GASKET COMPRESSION RULES
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Entryway Clearance Matrix (Filter & Manage)',
+        badge: 'Entryway Clearance Matrix (CSV)',
         description: 'Structured spreadsheet matrix calculating hallway walkway widths, hook load capacities, and Canadian boot drainage clearances.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -131,55 +135,61 @@ ENT-006,M06: Daily Rhythm,The 60-Second Return-to-Zero Entryway Rhythm,Habit Sys
       },
       {
         id: 'edz-3',
-        fileName: '03_Micro_Entryway_Notion_Hub.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '6 Databases • 22 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion workspace with Entryway Item Ledger, Daily Outflow Checklist, Shopping List, and Spatial Clearance Calculator.',
-        previewSnippet: '{\n  "workspaceName": "Micro-Entryway & Drop Zone Operating System",\n  "version": "3.0.0",\n  "databases": ["Entryway Item & Spatial Ledger", "Daily 60-Second Outflow Checklist", "Hardware Shopping List"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "Micro-Entryway & Drop Zone Operating System",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Ultra-slim entryway organization, 6-inch drop zone architecture, and daily clutter-stop habits."
-          },
-          databases: [
-            {
-              name: "Entryway Item & Spatial Ledger",
-              properties: ["Item Name", "Storage Location", "Depth Projection", "Weight Capacity", "Status"],
-              sampleRecords: [
-                { item: "Floating Picture Ledge Mail Bar", location: "North Wall at 38in", depth: "4.5 inches", capacity: "15 lbs", status: "Active" },
-                { item: "Staggered Winter Coat Hooks (x4)", location: "East Wall at 66in & 46in", depth: "3.0 inches", capacity: "40 lbs total", status: "Active" },
-                { item: "River Stone Boot Drainage Tray", location: "Floor along Baseboard", depth: "12.0 inches", capacity: "4 pairs", status: "Active" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'edz-4',
-        fileName: '04_Entryway_6_Inch_Blueprint_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.5 MB',
-        badge: 'Printable Blueprint Cards',
-        description: '4x6" printable reference cards for entryway walkway clearances, hook staggering geometry, and boot tray river stone ratios.',
-        previewSnippet: 'CARD 1: Hallway Walkway Clearance Rule (32" Minimum)\nCARD 2: Staggered Double-Height Hook Measurements\nCARD 3: Under-Ledge Neodymium Magnet Placement\nCARD 4: 60-Second Daily Return-to-Zero Protocol',
-        downloadableContent: `# Micro-Entryway Tactical Blueprint Cards
-SmallSpaceHome.ca • Canadian Urban Renter Edition
+        fileName: '03_Micro_Entryway_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 11 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step micro-entryway installation checklist and 4x6" printable reference cards for 6-inch drop zone layouts and 60-second daily reset routines.',
+        previewSnippet: '# MICRO-ENTRYWAY DROP ZONE & CLUTTER STOP EXECUTION CHECKLIST\n## PHASE 1: 5.5-INCH FLOATING PICTURE LEDGE CONSOLE\n[ ] 1. Measure hallway width (minimum 32" clear)\n[ ] 2. Mount ledge at 38" elbow height...',
+        downloadableContent: `# MICRO-ENTRYWAY 6-INCH "DROP ZONE" & CLUTTER-STOP: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Canadian Urban Renter Tactical Guide*
 
-CARD 01: HALLWAY CLEARANCE RULES
-[ ] Minimum Clear Walkway: 32 inches from ledge to opposite wall
-[ ] Door Swing Clearance: 36 inches clear radius from hinge point
-[ ] Ledge Height: 38 to 40 inches from floor (natural elbow drop)
+## PHASE 1: 5.5-INCH FLOATING PICTURE LEDGE CONSOLE
+- [ ] **1. Hallway Clearance Verification**: Measure hallway width. Confirm at least 32 inches of clear walking corridor remains with console in place.
+- [ ] **2. 36-Inch Door Arc Clearance**: Ensure the entryway door can swing open a full 90+ degrees without contacting the console ledge.
+- [ ] **3. Ledge Mounting at 38" Height**: Mount a 45-inch solid wood picture ledge at natural elbow drop height (38 to 40 inches).
+- [ ] **4. Under-Ledge Neodymium Key Magnets**: Adhere 4 neodymium disc magnets to the underside of the ledge. Keys snap effortlessly beneath the wood with zero visual hooks.
 
-CARD 02: STAGGERED HOOK GEOMETRY
-[ ] Upper Hooks (Coats & Parkas): 66 inches from floor
-[ ] Lower Hooks (Bags & Keys): 46 inches from floor (offset 8" horizontally)
-[ ] Spacing: 8 to 10 inches between adjacent vertical pairs`
+---
+
+## PHASE 2: STAGGERED DOUBLE-HEIGHT COAT HOOK GRID
+- [ ] **1. Upper Hook Row**: Mount heavy-duty push-pin hooks at 66 inches from the floor for long winter coats and parkas.
+- [ ] **2. Lower Hook Row**: Mount secondary hooks at 46 inches from the floor, offset horizontally by 8 inches between upper hooks.
+- [ ] **3. Bulk Elimination**: Staggering prevents jackets from piling into a thick, bulky mass in narrow hallways.
+
+---
+
+## PHASE 3: CANADIAN RIVER STONE BOOT DRAINAGE
+- [ ] **1. Rubber Boot Tray**: Place a heavy-duty vulcanized rubber boot tray against the entryway baseboard.
+- [ ] **2. River Stone Layer**: Pour 5 lbs of smooth 1-inch Mexican beach pebbles or river stones into tray.
+- [ ] **3. Fast Drying**: Snow and slush melt through stones to the bottom tray, keeping boot soles dry and free of salt stains.
+
+---
+
+## PHASE 4: 60-SECOND RETURN-TO-ZERO ENTRYWAY RHYTHM
+- [ ] **1. Doorway Entry Protocol**: Step onto rubber mat; hang coat on upper hook immediately.
+- [ ] **2. Shoe Placement**: Place boots directly on river stone tray.
+- [ ] **3. Key & Mail Drop**: Snap keys to underside magnet; place mail in picture ledge channel.
+- [ ] **4. Clutter Baseline**: Never leave bags, Amazon boxes, or footwear scattered on hallway floor.
+
+---
+
+## APPENDIX: PRINTABLE 4x6" BLUEPRINT CARDS
+### CARD 01: HALLWAY CLEARANCE RULES
+- Minimum Clear Walkway: 32 inches from ledge to opposite wall
+- Door Swing Clearance: 36 inches clear radius from hinge point
+- Ledge Height: 38 to 40 inches from floor (natural elbow drop)
+
+### CARD 02: STAGGERED HOOK GEOMETRY
+- Upper Hooks (Coats & Parkas): 66 inches from floor
+- Lower Hooks (Bags & Keys): 46 inches from floor (offset 8" horizontally)
+- Spacing: 8 to 10 inches between adjacent vertical pairs
+
+### CARD 03: 60-SECOND RETURN-TO-ZERO RHYTHM
+- Step inside; hang coat on staggered hook
+- Place boots on river stone drainage tray
+- Touch keys to under-shelf magnetic mount`
       }
     ]
   },
@@ -199,8 +209,8 @@ CARD 02: STAGGERED HOOK GEOMETRY
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Dust-Proof Storage', 'Steel Bed Risers', 'Luggage Nesting', 'Rubber Caster Crates']
     },
-    deliverablesOverview: 'The complete 4-part hidden storage blueprint: Volume 07 Commercial Ebook Playbook (Digital PDF), Hidden Cubic Volume Calculator (CSV), 6-Database Notion Vault (JSON), and Elevation Blueprint Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Hidden Cubic Volume Calculator (CSV), and (3) Tactical Under-Bed Secret Storage Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(7),
       {
@@ -209,7 +219,7 @@ CARD 02: STAGGERED HOOK GEOMETRY
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Hidden Volume Matrix (Filter & Manage)',
+        badge: 'Hidden Volume Matrix (CSV)',
         description: 'Structured spreadsheet matrix calculating under-bed cubic feet, bed riser loads, and seasonal luggage nesting capacity.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -222,55 +232,58 @@ UND-006,M06: Seasonal Swap,Biannual Under-Bed Rotation Checklist,Routine,Low,25,
       },
       {
         id: 'ubs-3',
-        fileName: '03_Underbed_Storage_Notion_Vault.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '6 Databases • 22 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion workspace with Hidden Storage Inventory, Bed Clearance Calculator, Luggage Contents Log, and Seasonal Rotation Schedule.',
-        previewSnippet: '{\n  "workspaceName": "Under-Bed & Hidden Storage Operating System",\n  "version": "3.0.0",\n  "databases": ["Hidden Storage Bin Inventory", "Luggage & Compression Contents", "Seasonal Rotation Schedule"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "Under-Bed & Hidden Storage Operating System",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Under-bed clearance planning, dust-proof storage inventory, and luggage compression tracking."
-          },
-          databases: [
-            {
-              name: "Hidden Storage Bin Inventory",
-              properties: ["Container Name", "Zone Location", "Stored Contents", "Volume (cu ft)", "Access Frequency"],
-              sampleRecords: [
-                { name: "Under-Bed Tote A (Left Front)", location: "Under Queen Bed (Left)", contents: "Extra Queen Duvet & Linen Sets", volume: "4.8 cu ft", frequency: "Monthly" },
-                { name: "Large Away Suitcase (Center)", location: "Under Queen Bed (Center)", contents: "Heavy Winter Ski Gear & Woolens", volume: "9.5 cu ft", frequency: "Seasonal" },
-                { name: "Rolling Pine Crate (Right Front)", location: "Under Queen Bed (Right)", contents: "Workout Equipment & Foam Roller", volume: "3.2 cu ft", frequency: "Weekly" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'ubs-4',
-        fileName: '04_Bed_Elevation_Blueprint_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.5 MB',
-        badge: 'Printable Blueprint Cards',
-        description: '4x6" printable reference cards for bed frame elevation safety, caster installation clearances, and cedar ring refreshing.',
-        previewSnippet: 'CARD 1: Bed Riser Safe Weight Distribution\nCARD 2: Zippered Oxford-Cloth vs Plastic Comparison\nCARD 3: Hard-Shell Suitcase Nesting Ratios\nCARD 4: Biannual Seasonal Swap Checklist',
-        downloadableContent: `# Under-Bed Storage Tactical Blueprint Cards
-SmallSpaceHome.ca • Canadian Urban Renter Edition
+        fileName: '03_Underbed_Hidden_Storage_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 11 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step under-bed storage optimization checklist and 4x6" printable reference cards for bed riser safety and luggage compression nesting.',
+        previewSnippet: '# UNDER-BED & HIDDEN SPACE SECRET STORAGE EXECUTION CHECKLIST\n## PHASE 1: BED FRAME ELEVATION & CLEARANCE CALCULATION\n[ ] 1. Measure bed frame legs and center support\n[ ] 2. Install heavy-duty steel risers...',
+        downloadableContent: `# UNDER-BED & HIDDEN SPACE SECRET STORAGE: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Canadian Urban Renter Tactical Guide*
 
-CARD 01: BED ELEVATION SAFETY
-[ ] Check total bed legs (4 corner legs + 1 or 2 center support legs)
-[ ] Always install matching height risers on center legs to prevent spine dip
-[ ] Ensure riser base features 100% dense wool felt to protect hardwood floors
+## PHASE 1: BED FRAME ELEVATION & CLEARANCE CALCULATION
+- [ ] **1. Bed Leg Audit**: Count all contact points on bed frame (4 corner legs + 1 or 2 center spine legs).
+- [ ] **2. Heavy-Duty Steel Risers**: Place 2-inch solid steel risers with dense wool felt bases under every leg. Never elevate only the corners without supporting center legs.
+- [ ] **3. Clearance Gain**: Confirm 11.5 inches of vertical clearance from floor to lower bed rail (recovers +28.5 cu ft of volume).
 
-CARD 02: DUST DEFENSE PROTOCOL
-[ ] Avoid open-top plastic bins that accumulate pet hair and dust bunnies
-[ ] Use fully zippered 600D Oxford-cloth storage totes with clear viewing windows
-[ ] Place 2 aromatic red cedar rings per container for natural wool moth defense`
+---
+
+## PHASE 2: DUST-PROOF ZIPPERED OXFORD TOTES
+- [ ] **1. 600D Oxford Cloth Selection**: Replace brittle plastic containers with flexible 600D breathable Oxford cloth totes.
+- [ ] **2. Aromatic Cedar Protection**: Place 2 natural red cedar rings inside each tote with wool sweaters, down duvets, and linens to repel moths and humidity.
+- [ ] **3. Clear View Windows**: Orient clear vinyl viewing windows toward outer bed edge for instant inventory identification.
+
+---
+
+## PHASE 3: HARDSHELL SUITCASE NESTING & VACUUM CUBES
+- [ ] **1. Luggage Decanting**: Empty hard-shell suitcases of travel gear.
+- [ ] **2. Winter Garment Compression**: Pack seasonal winter ski jackets and wool coats into vacuum compression cubes; place flat inside large suitcase.
+- [ ] **3. Matryoshka Nesting**: Place small carry-on suitcase inside medium suitcase, and medium inside large suitcase under center of bed.
+
+---
+
+## PHASE 4: SMOOTH-GLIDE RUBBER CASTER DRAWERS
+- [ ] **1. Pine Crate Fabrication**: Fasten 4 non-marking 1.5-inch polyurethane swivel casters to the base of wooden pine crates.
+- [ ] **2. Daily Access Zone**: Use rolling crates for daily gym gear, extra shoes, and laundry bags. Smooth rubber casters roll freely over hardwood without scratching.
+
+---
+
+## APPENDIX: PRINTABLE 4x6" BLUEPRINT CARDS
+### CARD 01: BED ELEVATION SAFETY
+- Check total bed legs (4 corner legs + 1 or 2 center support legs)
+- Always install matching height risers on center legs to prevent spine dip
+- Ensure riser base features 100% dense wool felt to protect hardwood floors
+
+### CARD 02: DUST DEFENSE PROTOCOL
+- Avoid open-top plastic bins that accumulate pet hair and dust bunnies
+- Use fully zippered 600D Oxford-cloth storage totes with clear viewing windows
+- Place 2 aromatic red cedar rings per container for natural wool moth defense
+
+### CARD 03: BIANNUAL SEASONAL ROTATION (APRIL & OCTOBER)
+- Vacuum and mop hardwood beneath bed frame
+- Sand cedar rings lightly to rejuvenate aromatic oils
+- Swap seasonal duvets and apparel between closet and under-bed totes`
       }
     ]
   },
@@ -290,8 +303,8 @@ CARD 02: DUST DEFENSE PROTOCOL
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Studio Zoning', 'Open-Back Bookcase', 'Tension Curtain Track', 'Psychological Anchoring']
     },
-    deliverablesOverview: 'The complete 4-part studio separation system: Volume 08 Commercial Ebook Playbook (Digital PDF), Floor Plan Scale & Walkway Matrix (CSV), 6-Database Notion Studio Hub (JSON), and Floor Plan Blueprint Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Floor Plan Scale & Walkway Matrix (CSV), and (3) Tactical Studio Living-Bed Separation Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(8),
       {
@@ -300,7 +313,7 @@ CARD 02: DUST DEFENSE PROTOCOL
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Studio Layout Matrix (Filter & Manage)',
+        badge: 'Studio Layout Matrix (CSV)',
         description: 'Structured spreadsheet matrix calculating walkway clearances, bookcase divider sightline angles, and rug zoning dimensions.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -313,55 +326,58 @@ STU-006,M06: Lighting Shift,Zoned Smart Ambient Lighting Rhythms,Ambience,Low,15
       },
       {
         id: 'sbs-3',
-        fileName: '03_Studio_Separation_Notion_Hub.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '6 Databases • 22 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion workspace with Studio Floor Plan Calculator, Furniture Footprint Ledger, Sightline Checklist, and Zone Lighting Planner.',
-        previewSnippet: '{\n  "workspaceName": "Studio Living-Bed Separation Operating System",\n  "version": "3.0.0",\n  "databases": ["Studio Furniture Footprint Ledger", "Sightline & Clearance Audit", "Zone Lighting & Ambience Map"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "Studio Living-Bed Separation Operating System",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Studio zoning architecture, sightline mapping, and daylight preservation tracking."
-          },
-          databases: [
-            {
-              name: "Studio Furniture Footprint Ledger",
-              properties: ["Furniture Item", "Zone Assignment", "Width (in)", "Depth (in)", "Walkway Clearance", "Status"],
-              sampleRecords: [
-                { item: "Open-Back 4x2 Bookcase", zone: "Bedroom / Lounge Boundary", width: "58 in", depth: "15 in", clearance: "34 in to wall", status: "Installed" },
-                { item: "Sofa-Back Dining Console", zone: "Lounge / Kitchen Boundary", width: "48 in", depth: "10 in", clearance: "36 in to kitchen counter", status: "Installed" },
-                { item: "Queen Bed & Side Table", zone: "Bedroom Sanctuary", width: "64 in", depth: "84 in", clearance: "32 in perimeter", status: "Installed" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'sbs-4',
-        fileName: '04_Studio_Floor_Plan_Blueprint_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.5 MB',
-        badge: 'Printable Blueprint Cards',
-        description: '4x6" printable reference cards for studio sightline calculations, 32-inch walkway rules, and sheer drapery light formulas.',
-        previewSnippet: 'CARD 1: Studio 32-Inch Walkway Rule\nCARD 2: Open-Back Bookcase Light Ratios\nCARD 3: The 3-Rug Floor Boundary Geometry\nCARD 4: Evening Bedroom Lighting Transition',
-        downloadableContent: `# Studio Living-Bed Separation Cheat Cards
-SmallSpaceHome.ca • Canadian Urban Renter Edition
+        fileName: '03_Studio_Living_Bed_Separation_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 11 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step studio zoning execution checklist and 4x6" printable reference cards for sightline blockage and 3-rug psychological boundaries.',
+        previewSnippet: '# STUDIO LIVING-BED SEPARATION EXECUTION CHECKLIST\n## PHASE 1: OPEN-BACK BOOKCASE ROOM DIVIDER PLACEMENT\n[ ] 1. Position 4x2 cube bookcase perpendicular to wall\n[ ] 2. Verify 32" perimeter walkway...',
+        downloadableContent: `# STUDIO LIVING-BED SEPARATION & VISUAL PRIVACY: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Open Studio Apartment Tactical Guide*
 
-CARD 01: SIGHTLINE & CLEARANCE FORMULAS
-[ ] Primary Walkway Clearance: Minimum 32 inches unobstructed
-[ ] Bookcase Divider Height: 55 to 60 inches (blocks eye-level bed view)
-[ ] Daylight Rule: Leave top 40% of divider open or sheer
+## PHASE 1: OPEN-BACK BOOKCASE ROOM DIVIDER PLACEMENT
+- [ ] **1. Room Orientation**: Position an open-back 4x2 cube bookcase perpendicular to main perimeter wall between bed and lounge area.
+- [ ] **2. 32-Inch Walkway Rule**: Verify at least 32 inches of clear walking corridor exists around the outer end of the bookcase.
+- [ ] **3. 40% Daylight Flow**: Place books and decorative boxes in lower cube rows for visual privacy; leave top cubes open or display green trailing plants to let natural window daylight pass through.
 
-CARD 02: PSYCHOLOGICAL ZONING RHYTHM
-[ ] Zone 1 (Sanctuary): Bed + runner rug + 2200K warm glow
-[ ] Zone 2 (Lounge): Sofa + 6x9 rug + 2700K reading lamp
-[ ] Zone 3 (Dining/Work): 10" console behind sofa with dual barstools`
+---
+
+## PHASE 2: CEILING-HEIGHT SPRING TENSION DRAPERY
+- [ ] **1. Vertical Tension Poles**: Position heavy-duty rubber-footed tension poles between floor and ceiling at studio mid-span.
+- [ ] **2. Semi-Sheer Linen Drapes**: Hang 40% opacity natural linen drapes. Drapes provide instant visual boundary when sleeping while keeping room bright and airy during daytime.
+
+---
+
+## PHASE 3: THE 3-RUG PSYCHOLOGICAL ZONING MATRIX
+- [ ] **1. Zone 1 (Sanctuary Rug)**: Place a 2x6 foot plush wool runner beside the bed.
+- [ ] **2. Zone 2 (Lounge Rug)**: Anchor sofa and coffee table on a 6x9 foot flat-weave living rug.
+- [ ] **3. Zone 3 (Dining/Work Rug)**: Place a 3x5 foot low-pile rug under dining table and chairs.
+- [ ] **4. Floor Boundary**: Maintain 8 inches of bare hardwood floor between rug edges to define distinct mental zones.
+
+---
+
+## PHASE 4: SOFA-BACK 10-INCH DINING CONSOLE
+- [ ] **1. Console Positioning**: Place a 10-inch deep slim console bar table directly against the back of sofa.
+- [ ] **2. Barstool Tucking**: Tuck 2 backless counter stools completely beneath the console when not eating or working to preserve open floor area.
+
+---
+
+## APPENDIX: PRINTABLE 4x6" BLUEPRINT CARDS
+### CARD 01: SIGHTLINE & CLEARANCE FORMULAS
+- Primary Walkway Clearance: Minimum 32 inches unobstructed
+- Bookcase Divider Height: 55 to 60 inches (blocks eye-level bed view)
+- Daylight Rule: Leave top 40% of divider open or sheer
+
+### CARD 02: PSYCHOLOGICAL ZONING RHYTHM
+- Zone 1 (Sanctuary): Bed + runner rug + 2200K warm glow
+- Zone 2 (Lounge): Sofa + 6x9 rug + 2700K reading lamp
+- Zone 3 (Dining/Work): 10" console behind sofa with dual barstools
+
+### CARD 03: NIGHTTIME TRANSITION PROTOCOL
+- 10:00 PM: Switch living room lamps OFF
+- Dim bedroom sanctuary lamp to warm 2200K amber
+- Draw sheer linen curtain closed to enter sleep state`
       }
     ]
   }

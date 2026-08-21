@@ -16,8 +16,8 @@ export const PRODUCTS_9_TO_11: Record<string, ProductAssetBundle> = {
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Zero-Cable Invisibility', 'Felt Laptop Hideaway', '4000K to 2200K Shift', '15-Min Reset']
     },
-    deliverablesOverview: 'The complete 4-part WFH reset system: Volume 09 Commercial Ebook Playbook (Digital PDF), Ergonomics & Cable Routing Matrix (CSV), 6-Database Notion Workstation Hub (JSON), and Evening Transition Blueprint Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Ergonomics & Cable Routing Matrix (CSV), and (3) Tactical WFH Multi-Use Desk Reset Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(9),
       {
@@ -26,7 +26,7 @@ export const PRODUCTS_9_TO_11: Record<string, ProductAssetBundle> = {
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Cable & Reset Matrix (Filter & Manage)',
+        badge: 'Cable & Reset Matrix (CSV)',
         description: 'Structured spreadsheet matrix calculating power draw loads, desk ergonomics, cable raceway lengths, and evening reset times.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -39,57 +39,59 @@ WFH-006,M05: Sunset Protocol,The 8-Minute Workday Sunset Habit,Habit System,Low,
       },
       {
         id: 'wfh-3',
-        fileName: '03_WFH_Desk_Reset_Notion_Hub.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '6 Databases • 22 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion workspace with Workstation Hardware Inventory, Daily Sunset Checklist, Lighting Automation Map, and Ergonomic Setup Log.',
-        previewSnippet: '{\n  "workspaceName": "WFH Multi-Use Desk & Evening Reset Hub",\n  "version": "3.0.0",\n  "databases": ["Workstation Hardware & Peripherals", "Daily Workday Sunset Checklist", "Circadian Lighting Automation Map"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "WFH Multi-Use Desk & Evening Reset Hub",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Workstation concealment, zero-cable architecture, and 15-minute evening mental transition routines."
-          },
-          databases: [
-            {
-              name: "Daily Workday Sunset Checklist",
-              properties: ["Task Step", "Estimated Minutes", "Category", "Trigger Time", "Status"],
-              sampleRecords: [
-                { task: "Close browser tabs & backup files", mins: 2, cat: "Digital Shutdown", time: "5:28 PM", status: "Active" },
-                { task: "Slide laptop & mouse into felt under-desk tray", mins: 1, cat: "Physical Concealment", time: "5:30 PM", status: "Active" },
-                { task: "Trigger 2200K warm amber desk lamp shift", mins: 1, cat: "Lighting Shift", time: "5:31 PM", status: "Active" },
-                { task: "Place ceramic flower vase in center of clean desk", mins: 2, cat: "Living Transition", time: "5:32 PM", status: "Active" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'wfh-4',
-        fileName: '04_Evening_Transition_Blueprint_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.5 MB',
-        badge: 'Printable Blueprint Cards',
-        description: '4x6" printable reference cards for under-desk cable routing, 5:30 PM lighting transitions, and evening mental reset habits.',
-        previewSnippet: 'CARD 1: Under-Desk Cable Routing Geometry\nCARD 2: The 5-Second Laptop Concealment Step\nCARD 3: Circadian Kelvin Lighting Spectrum (4000K vs 2200K)\nCARD 4: 8-Minute Workday Sunset Checklist',
-        downloadableContent: `# WFH Desk Reset Tactical Blueprint Cards
-SmallSpaceHome.ca • Canadian Urban Renter Edition
+        fileName: '03_WFH_Desk_Reset_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 11 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step WFH desk concealment checklist and 4x6" printable reference cards for under-desk cable routing and 5:30 PM workday sunset protocols.',
+        previewSnippet: '# WFH MULTI-USE DESK & 15-MINUTE ROOM RESET EXECUTION CHECKLIST\n## PHASE 1: UNDER-DESK ZERO-CABLE INVISIBILITY\n[ ] 1. Wipe desk underside with 70% alcohol\n[ ] 2. Mount J-channel raceway 2" inward...',
+        downloadableContent: `# WFH MULTI-USE DESK & 15-MINUTE ROOM RESET: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Canadian Urban Hybrid Living Tactical Guide*
 
-CARD 01: ZERO-CABLE ROUTING RULES
-[ ] Adhere J-channel 2 inches inward from rear edge (invisible from room)
-[ ] Fasten surge strip securely with interlocking mounting strips
-[ ] Use a single braided cable sleeve down the rear desk leg
+## PHASE 1: UNDER-DESK ZERO-CABLE INVISIBILITY
+- [ ] **1. 70% Alcohol Surface Prep**: Clean underside of desk thoroughly with 70% Isopropyl alcohol.
+- [ ] **2. J-Channel Adhesive Raceway**: Mount a 24-inch PVC J-channel 2 inches inward from rear desk lip (remains completely invisible from standing height).
+- [ ] **3. Interlocking Power Bar Mount**: Fasten heavy-duty interlocking adhesive strips to multi-outlet surge protector; mount to underside of desk.
+- [ ] **4. Single Braided Leg Sleeve**: Bundle main power feed into a single split braided cable sleeve routed down one rear desk leg.
 
-CARD 02: THE 5:30 PM WORKDAY SUNSET
-[ ] 5:25 PM: Complete final email and close all work tabs
-[ ] 5:30 PM: Disconnect laptop; slide into felt under-desk tray
-[ ] 5:32 PM: Wipe desk surface with microfiber cloth; place evening vase
-[ ] 5:35 PM: Shift room lighting from 4000K focus to 2200K warm amber`
+---
+
+## PHASE 2: THE 5-SECOND FELT LAPTOP HIDEAWAY
+- [ ] **1. Slide-Under Felt Tray**: Mount slide-under acoustic felt organizer under primary desk surface.
+- [ ] **2. Concealment Routine**: At workday completion, disconnect single USB-C cable and slide closed laptop and mouse into felt tray. Surface is 100% clear.
+
+---
+
+## PHASE 3: 5:30 PM LIGHTING SPECTRUM SHIFT
+- [ ] **1. Circadian Calibration**: Workday task lighting set to 4000K crisp white (promotes focus).
+- [ ] **2. Automated 5:30 PM Transition**: Lamp shifts automatically to 2200K warm candle-amber (signals nervous system that work mode is concluded).
+
+---
+
+## PHASE 4: THE 8-MINUTE WORKDAY SUNSET HABIT
+- [ ] **1. 5:25 PM**: Close active browser tabs; save documents.
+- [ ] **2. 5:28 PM**: Stow notebooks, pens, and peripherals into under-desk tray.
+- [ ] **3. 5:30 PM**: Wipe desk with microfiber cloth; place ceramic vase or books on surface. Desk is now an elegant living room console.
+
+---
+
+## APPENDIX: PRINTABLE 4x6" BLUEPRINT CARDS
+### CARD 01: ZERO-CABLE ROUTING RULES
+- Adhere J-channel 2 inches inward from rear edge (invisible from room)
+- Fasten surge strip securely with interlocking mounting strips
+- Use a single braided cable sleeve down the rear desk leg
+
+### CARD 02: THE 5:30 PM WORKDAY SUNSET
+- 5:25 PM: Complete final email and close all work tabs
+- 5:30 PM: Disconnect laptop; slide into felt under-desk tray
+- 5:32 PM: Wipe desk surface with microfiber cloth; place evening vase
+- 5:35 PM: Shift room lighting from 4000K focus to 2200K warm amber
+
+### CARD 03: HARDWOOD FLOOR PROTECTION
+- Clear polycarbonate mat preserves rental polyurethane finish
+- Smooth beveled edges allow chair casters to roll effortlessly
+- Clean beneath mat quarterly to remove grit particles`
       }
     ]
   },
@@ -109,8 +111,8 @@ CARD 02: THE 5:30 PM WORKDAY SUNSET
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Optical Height', '45-Degree Mirror Bounce', 'Floor-to-Ceiling Drapes', 'Zero Overhead Glare']
     },
-    deliverablesOverview: 'The complete 4-part visual expansion system: Volume 10 Commercial Ebook Playbook (Digital PDF), Mirror Reflection & Kelvin Spectrum Matrix (CSV), 6-Database Notion Lighting Hub (JSON), and Optical Geometry Blueprint Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Mirror Reflection & Kelvin Spectrum Matrix (CSV), and (3) Tactical Optical Space Expander Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(10),
       {
@@ -119,7 +121,7 @@ CARD 02: THE 5:30 PM WORKDAY SUNSET
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Lighting & Mirror Matrix (Filter & Manage)',
+        badge: 'Lighting & Mirror Matrix (CSV)',
         description: 'Structured spreadsheet matrix calculating window reflection angles, lumens per square foot, and color temperature mapping.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -132,55 +134,53 @@ OPT-006,M06: Perimeter Drench,Tone-on-Tone Perimeter Color Uniformity,Perimeter 
       },
       {
         id: 'ose-3',
-        fileName: '03_Optical_Space_Expander_Notion_Hub.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '6 Databases • 22 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion workspace with Lumens & Kelvin Calculator, Mirror Sightline Map, Lighting Fixture Ledger, and Curtain Sizing Guide.',
-        previewSnippet: '{\n  "workspaceName": "Optical Space Expander & Lighting Operating System",\n  "version": "3.0.0",\n  "databases": ["Lumens & Kelvin Room Calculator", "Lighting Fixture & Lamp Ledger", "Mirror Reflection Sightline Map"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "Optical Space Expander & Lighting Operating System",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Optical spatial enlargement, daylight reflection geometry, and 3-tier warm lighting architecture."
-          },
-          databases: [
-            {
-              name: "Lighting Fixture & Lamp Ledger",
-              properties: ["Fixture Name", "Room Zone", "Height from Floor", "Color Temp (Kelvin)", "Lumens", "Role"],
-              sampleRecords: [
-                { fixture: "Arched Floor Lamp (Living Corner)", zone: "Living Room Nook", height: "68 inches", kelvin: "2700K Warm White", lumens: "800 lm", role: "Primary Ambient Pool" },
-                { fixture: "Ceramic Table Lamp (Credenza)", zone: "Dining Boundary", height: "30 inches", kelvin: "2400K Soft Glow", lumens: "450 lm", role: "Accent Glow" },
-                { fixture: "Desk Task Lamp (Work Nook)", zone: "Workstation", height: "24 inches", kelvin: "4000K Focus White", lumens: "600 lm", role: "Direct Task Lighting" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'ose-4',
-        fileName: '04_Optical_Geometry_Blueprint_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.5 MB',
-        badge: 'Printable Blueprint Cards',
-        description: '4x6" printable reference cards for curtain height hanging formulas, 45-degree mirror positioning, and 2700K lighting formulas.',
-        previewSnippet: 'CARD 1: Curtain High-and-Wide Hanging Formulas\nCARD 2: 45-Degree Mirror Daylight Bounce Angle\nCARD 3: The 3-Tier Layered Lighting Formula\nCARD 4: Kelvin Color Temperature Guide',
-        downloadableContent: `# Optical Space Expander Blueprint Cards
-SmallSpaceHome.ca • Canadian Urban Renter Edition
+        fileName: '03_Optical_Space_Expander_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 11 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step optical space expansion checklist and 4x6" printable reference cards for ceiling-height drapery and 45-degree mirror reflection bounce formulas.',
+        previewSnippet: '# OPTICAL SPACE EXPANDER & LIGHTING EXECUTION CHECKLIST\n## PHASE 1: FLOOR-TO-CEILING HIGH & WIDE DRAPERY\n[ ] 1. Measure ceiling height and window header\n[ ] 2. Mount curtain rod 2" below ceiling...',
+        downloadableContent: `# OPTICAL ILLUSION SMALL SPACE EXPANDER & LIGHTING: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Canadian Urban Renter Tactical Guide*
 
-CARD 01: CURTAIN HANGING FORMULAS
-[ ] Height: Mount rod 2 to 3 inches below ceiling (never directly on window frame)
-[ ] Width: Extend rod 8 to 10 inches beyond window frame on each side
-[ ] Length: Hem must touch floor (1/2" hover or light contact)
+## PHASE 1: FLOOR-TO-CEILING HIGH & WIDE DRAPERY
+- [ ] **1. High-Mount Position**: Mount curtain rod 2 to 3 inches below ceiling moulding (never directly above the window frame). Creates illusion of 10-foot ceilings.
+- [ ] **2. Wide-Span Extension**: Extend rod 8 to 10 inches beyond window frame on left and right sides.
+- [ ] **3. Maximum Daylight**: When open, curtains stack entirely against wall, leaving 100% of window glass unobstructed for daylight flow.
+- [ ] **4. Floor Kiss Rule**: Hem drapes to lightly brush floor surface (no awkward 4-inch gaps or dusty puddle heaps).
 
-CARD 02: 45-DEGREE MIRROR BOUNCE
-[ ] Position mirror on wall adjacent to primary window (not opposite)
-[ ] Angle mirror at 45 degrees to capture direct outdoor daylight
-[ ] Reflects natural sky brightness deep into rear kitchen and hallway areas`
+---
+
+## PHASE 2: 45-DEGREE WINDOW DAYLIGHT MIRROR BOUNCE
+- [ ] **1. Adjacent Wall Placement**: Place a full-length floor mirror on wall adjacent to primary window.
+- [ ] **2. 45-Degree Angle**: Angle mirror face 45 degrees towards window glass. Reflects direct sky luminance deep into shadowy interior alcoves.
+
+---
+
+## PHASE 3: THE "ZERO OVERHEAD GLARE" 3-TIER LIGHTING RULE
+- [ ] **1. Turn Off Center Ceiling Flush-Mount**: Eliminate harsh overhead "interrogation room" ceiling fixtures.
+- [ ] **2. Tier 1 (Floor Reading Lamp)**: Place 2700K 800-lumen floor lamp in seating corner.
+- [ ] **3. Tier 2 (Eye-Level Credenza Lamp)**: Place 2400K 450-lumen table lamp on side console.
+- [ ] **4. Tier 3 (Under-Shelf Warm Accent)**: Add warm 2200K LED pucks beneath kitchen shelving or credenzas for depth.
+
+---
+
+## APPENDIX: PRINTABLE 4x6" BLUEPRINT CARDS
+### CARD 01: CURTAIN HANGING FORMULAS
+- Height: Mount rod 2 to 3 inches below ceiling (never directly on window frame)
+- Width: Extend rod 8 to 10 inches beyond window frame on each side
+- Length: Hem must touch floor (1/2" hover or light contact)
+
+### CARD 02: 45-DEGREE MIRROR BOUNCE
+- Position mirror on wall adjacent to primary window (not opposite)
+- Angle mirror at 45 degrees to capture direct outdoor daylight
+- Reflects natural sky brightness deep into rear kitchen and hallway areas
+
+### CARD 03: 3-TIER LIGHTING FORMULA
+- Tier 1: Eye-level reading lamp (2700K, 800 lm)
+- Tier 2: Low credenza accent lamp (2400K, 450 lm)
+- Tier 3: Under-shelf warm kicker glow (2200K, 200 lm)`
       }
     ]
   },
@@ -200,8 +200,8 @@ CARD 02: 45-DEGREE MIRROR BOUNCE
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Over-Toilet Tower', 'Spring Tension Shower Caddy', 'Double Curtain Rod', 'Amber Decanting']
     },
-    deliverablesOverview: 'The complete 4-part small bathroom system: Volume 11 Commercial Ebook Playbook (Digital PDF), Humidity & Clearance Matrix (CSV), 6-Database Notion Bath Hub (JSON), and Zero-Drill Bath Blueprint Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Humidity & Clearance Matrix (CSV), and (3) Tactical Small Bathroom Maximizer Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(11),
       {
@@ -210,7 +210,7 @@ CARD 02: 45-DEGREE MIRROR BOUNCE
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Bathroom Clearance Matrix (Filter & Manage)',
+        badge: 'Bathroom Clearance Matrix (CSV)',
         description: 'Structured spreadsheet matrix calculating over-toilet dimensions, shower pole tension loads, and waterproof adhesive cure times.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -223,55 +223,58 @@ BAT-006,M06: Ventilation,Post-Shower 20-Minute Exhaust Fan Humidity Reset,Mainte
       },
       {
         id: 'sbm-3',
-        fileName: '03_Small_Bathroom_Notion_Hub.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '6 Databases • 22 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion workspace with Toiletries Decanting Inventory, Bathroom Spatial Calculator, Cleaning Routine Log, and Hardware Shopping List.',
-        previewSnippet: '{\n  "workspaceName": "Small Bathroom Vertical Maximizer Hub",\n  "version": "3.0.0",\n  "databases": ["Toiletries & Restock Inventory", "Bathroom Spatial & Tension Calculator", "Weekly Moisture & Mildew Defense Log"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "Small Bathroom Vertical Maximizer Hub",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Bathroom vertical storage planning, rust-proof tension mechanics, and visual decanting workflows."
-          },
-          databases: [
-            {
-              name: "Toiletries & Restock Inventory",
-              properties: ["Product Name", "Storage Tier", "Decanted", "Bottle Type", "Restock Status"],
-              sampleRecords: [
-                { name: "Organic Lavender Shampoo", tier: "Tension Shower Pole Tier 1", decanted: "Yes", bottle: "16 oz Amber Pump", status: "In Stock" },
-                { name: "Bamboo Toothbrushes & Paste", tier: "Over-Toilet Basket 1", decanted: "N/A", bottle: "Ceramic Tumbler", status: "In Stock" },
-                { name: "Turkish Cotton Bath Sheets (x3)", tier: "Over-Toilet Top Shelf", decanted: "N/A", bottle: "Folded", status: "Clean" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'sbm-4',
-        fileName: '04_Bathroom_Zero_Drill_Blueprint_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.5 MB',
-        badge: 'Printable Blueprint Cards',
-        description: '4x6" printable reference cards for over-toilet clearance rules, tension shower pole installation, and waterproof adhesive curing.',
-        previewSnippet: 'CARD 1: Over-Toilet Storage Clearance Rules\nCARD 2: Tension Shower Pole Spring Compression\nCARD 3: Waterproof Bath Adhesive Alcohol Prep\nCARD 4: 20-Minute Post-Shower Moisture Reset',
-        downloadableContent: `# Small Bathroom Maximizer Blueprint Cards
-SmallSpaceHome.ca • Canadian Urban Renter Edition
+        fileName: '03_Small_Bathroom_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 11 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step small bathroom vertical optimization checklist and 4x6" printable reference cards for over-toilet clearance rules and rust-proof tension shower pole installation.',
+        previewSnippet: '# SMALL BATHROOM VANITY & SHOWER VERTICAL MAXIMIZER EXECUTION CHECKLIST\n## PHASE 1: FREESTANDING OVER-TOILET 3-TIER STORAGE TOWER\n[ ] 1. Measure toilet tank width & button clearance\n[ ] 2. Assemble freestanding bamboo/steel frame...',
+        downloadableContent: `# SMALL BATHROOM VANITY & SHOWER VERTICAL MAXIMIZER: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Canadian Urban Rental Bathroom Tactical Guide*
 
-CARD 01: OVER-TOILET CLEARANCES
-[ ] Height above flush button: Minimum 3 inches clearance
-[ ] Wall Bumper: Adhere 2 silicone pads to top rear frame to prevent sway
-[ ] Leg Pads: Rubber feet protect bathroom tile from moisture rust
+## PHASE 1: FREESTANDING OVER-TOILET 3-TIER STORAGE TOWER
+- [ ] **1. Tank Clearance Check**: Measure width behind toilet. Ensure at least 3 inches of clearance above top flush button or lever.
+- [ ] **2. Silicone Anti-Sway Bumpers**: Adhere 2 clear silicone bumper pads to upper rear frame where it rests near drywall to eliminate frame wobble.
+- [ ] **3. Tier Organization**: Bottom shelf holds rolled Turkish hand towels; middle shelf holds decanted toiletry baskets; top shelf holds spare paper products.
 
-CARD 02: WATERPROOF ADHESIVE IN BATHROOMS
-[ ] Clean tile thoroughly with 70% Isopropyl alcohol
-[ ] Press strip to dry tile for 30 continuous seconds
-[ ] MANDATORY: Wait 24 hours before exposing to hot shower steam`
+---
+
+## PHASE 2: ANODIZED ALUMINUM TENSION SHOWER POLE
+- [ ] **1. Corner Alignment**: Position spring-tension pole in back corner of bathtub or shower stall.
+- [ ] **2. Rust-Proof Hardware**: Use anodized aluminum or powder-coated stainless steel (prevents rust rings on white rental tile).
+- [ ] **3. Vertical Basket Stagger**: Set lowest basket 4 inches above tub ledge, spacing upper baskets by 10 inches for tall pump bottles.
+
+---
+
+## PHASE 3: DOUBLE SHOWER CURTAIN ROD & TOWEL DRYING
+- [ ] **1. Double Rod Tensioning**: Mount heavy-duty double tension rod across shower enclosure.
+- [ ] **2. Outer vs Inner Rod**: Outer rod holds decorative waffle-weave shower curtain; inner rod holds waterproof liner AND 2 towel hooks for air drying damp bath sheets with full air circulation.
+
+---
+
+## PHASE 4: MEDICINE CABINET DOOR MAGNETIC STRIP
+- [ ] **1. 70% Alcohol Cleaning**: Clean the inside face of the medicine cabinet door.
+- [ ] **2. Magnetic Strip Mount**: Adhere an 8-inch silicone-coated magnetic strip.
+- [ ] **3. Steel Grooming Tools**: Snap tweezers, nail clippers, bobby pins, and scissors to door interior for instant zero-counter access.
+
+---
+
+## APPENDIX: PRINTABLE 4x6" BLUEPRINT CARDS
+### CARD 01: OVER-TOILET CLEARANCES
+- Height above flush button: Minimum 3 inches clearance
+- Wall Bumper: Adhere 2 silicone pads to top rear frame to prevent sway
+- Leg Pads: Rubber feet protect bathroom tile from moisture rust
+
+### CARD 02: WATERPROOF ADHESIVE IN BATHROOMS
+- Clean tile thoroughly with 70% Isopropyl alcohol
+- Press strip to dry tile for 30 continuous seconds
+- MANDATORY: Wait 24 hours before exposing to hot shower steam
+
+### CARD 03: VISUAL NOISE DECANTING PROTOCOL
+- Decant shampoos into matching 16oz or 32oz amber pump bottles
+- Waterproof vinyl labels resist shower steam and water streaks
+- Uniform color palette instantly transforms cramped bathroom into luxury spa`
       }
     ]
   }

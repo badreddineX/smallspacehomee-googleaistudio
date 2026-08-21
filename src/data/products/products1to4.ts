@@ -16,8 +16,8 @@ export const PRODUCTS_1_TO_4: Record<string, ProductAssetBundle> = {
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Renter Hardware', 'Conservative Working Loads', 'Wall Surface Diagnostics', 'Careful Removal Protocols']
     },
-    deliverablesOverview: 'The complete 4-part digital product bundle: Volume 01 Commercial Ebook Playbook (Digital PDF), Reactive Adhesive & Mounting Decision Matrix (CSV), 7-Database Notion Hardware Hub (JSON), and Printable Pocket Cheat Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Reactive Adhesive & Mounting Decision Matrix (CSV), and (3) Tactical Renter Mounting Execution Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(1),
       {
@@ -26,7 +26,7 @@ export const PRODUCTS_1_TO_4: Record<string, ProductAssetBundle> = {
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '19 Columns • 35 Rows • 32 KB',
-        badge: 'Reactive Decision Matrix (Filter & Manage)',
+        badge: 'Reactive Decision Matrix (CSV)',
         description: 'Comprehensive 19-column structured spreadsheet matrix with automated safety-margin formulas, discount factors, mechanical risk ratings, and move-out safety checks for Excel and Google Sheets.',
         previewSnippet: '# FORMULA RULES: Recommended_Max_Load_lbs = Manufacturer_Rated_Load_lbs * Surface_Discount_Factor\nItem_ID,Item_Category,Hardware_Name,Target_Surface,Item_Weight_lbs,Manufacturer_Rated_Load_lbs,Surface_Discount_Factor,Formula_Recommended_Max_Load,Recommended_Max_Load_lbs,Pinhole_Diameter_mm,Damage_Risk_Level,Rental_Deposit_Safe,Reversible_Zero_Damage,Editorial_Status',
         downloadableContent: `# FORMULA RULES: Recommended_Max_Load_lbs = Manufacturer_Rated_Load_lbs * Surface_Discount_Factor (Drywall=0.60 | Plaster=0.40 | Textured Drywall=0.35 | Glazed Tile=0.80 | Solid Wood=0.90 | Glass=0.85 | Hollow Door=0.50). MECHANICAL DAMAGE RISK RULE: Low if (Ratio <= 0.50 AND Pinhole <= 1.2mm) | Medium if (Ratio 0.51-0.75 OR Pinhole 1.3-2.0mm), unless High condition met | High if (Ratio > 0.75 OR Pinhole > 2.0mm). STATUS: Verified (Lab spec sheet confirmed) | Recommended (Editorial pick: top safety margin) | Caution (Edge case: strict protocol required).
@@ -69,76 +69,73 @@ HW-35,Shower Caddy / Dispenser,Adhesive Shower Dispenser Bracket,Smooth Acrylic 
       },
       {
         id: 'zdm-3',
-        fileName: '03_Renter_Mounting_And_Hardware_Hub_Notion_Schema.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '7 Databases • 26 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete 7-database Notion template architecture with linked inventories, logs, and shopping lists.',
-        previewSnippet: '{\n  "templateTitle": "SmallSpaceHome Renter Mounting & Hardware Hub",\n  "version": "3.0.0",\n  "databasesCount": 7,\n  "databases": ["Wall & Item Inventory", "Hardware Library", "Installation Log", "Shopping List", "Move-Out Checklist"]\n}',
-        downloadableContent: JSON.stringify({
-          templateTitle: "SmallSpaceHome Renter Mounting & Hardware Hub",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#1C1917 (Charcoal)", "#4A533E (Warm Sage)", "#D9D3C7 (Muted Tan)"],
-            style: "Clean, editorial home organization with conservative safety ratings and Canadian rental context."
-          },
-          disclaimer: "Plan and track renter-safe installations. Always verify weight limits and test surfaces prior to installation.",
-          workflow4Step: [
-            "1. Measure and weigh the item (gross weight including frame & glass).",
-            "2. Identify the wall or surface (drywall, plaster, tile, wood, glass).",
-            "3. Choose and verify the hardware (apply 30-50% conservative safety margin).",
-            "4. Record installation, photo evidence, and scheduled removal dates."
-          ],
-          databases: [
-            {
-              id: "db_wall_inventory",
-              name: "Wall & Item Inventory",
-              description: "Master ledger of all hung and mounted items across your apartment.",
-              properties: {
-                "Item Name": { type: "title" },
-                "Room Zone": { type: "select", options: ["Living Room", "Bedroom", "Kitchen", "Entryway", "Bathroom"] },
-                "Weight (lb)": { type: "number" },
-                "Surface Type": { type: "select", options: ["Painted Drywall", "Plaster & Lath", "Ceramic Tile", "Wood / Door"] },
-                "Hardware Method": { type: "select", options: ["Adhesive Strips", "Wire Push-Hook", "3M Claw", "Tension Rod", "Floor Leaning"] },
-                "Conservative Working Load (lb)": { type: "number" },
-                "Status": { type: "select", options: ["Planned", "Installed", "Monitor", "Removed"] },
-                "Risk Level": { type: "select", options: ["Low", "Medium", "High"] }
-              }
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'zdm-4',
-        fileName: '04_Printable_Pocket_Cheatsheets_And_Templates.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.6 MB',
-        badge: 'Printable Pocket Deck',
-        description: '4x6" printable pocket cheat cards for installation day and move-out repair audits.',
-        previewSnippet: 'CARD 1: Pre-Installation Audit & Alcohol Prep\nCARD 2: 1-Hour Adhesive Polymer Cure Rule\nCARD 3: Straight-Down Stretch Release Protocol\nCARD 4: $12 Move-Out Spackle & Sheen Matcher',
-        downloadableContent: `# Renter Mounting & Hardware Pocket Cheat Cards
-SmallSpaceHome.ca • Canadian Urban Renter Edition
+        fileName: '03_Zero_Damage_Mounting_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 12 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step installation day execution checklist and 4x6" printable pocket cards for zero-damage mounting and move-out audits.',
+        previewSnippet: '# ZERO-DAMAGE RENTER MOUNTING EXECUTION CHECKLIST\n## PHASE 1: PRE-INSTALLATION DIAGNOSTICS & WEIGHT AUDIT\n[ ] 1. Weigh gross item on digital scale\n[ ] 2. Perform 70% Isopropyl alcohol wall flash wipe...',
+        downloadableContent: `# ZERO-DAMAGE RENTER MOUNTING & WALL HACKS: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Canadian Urban Renter Tactical Guide*
 
-CARD 01: PRE-INSTALLATION AUDIT
-[ ] Weigh gross item on digital scale (frame + glass + backing)
-[ ] Identify surface: Drywall (hollow sound) vs Plaster (dense/gritty)
-[ ] Apply 30–50% safety buffer below manufacturer rated maximum
-[ ] Clean area with 70% Isopropyl Alcohol; wait 15 min dry time
+## PHASE 1: PRE-INSTALLATION DIAGNOSTICS & WEIGHT AUDIT
+- [ ] **1. Gross Weight Verification**: Weigh item on a digital scale including frame, glass, art, and backing hardware. Never guess weight.
+- [ ] **2. Wall Substrate Diagnostics**:
+  - [ ] Tap wall firmly with knuckle. Hollow resonance = 1/2" Drywall. Dense, dull thud = Plaster over wood lath.
+  - [ ] Check for wallpaper, crumbly calcimine paint, or texture peaks.
+- [ ] **3. Safety Margin Calculation**: Apply the 40% discount rule: Max safe load = Rated load × 0.60 for drywall, × 0.40 for plaster.
+- [ ] **4. Chemical Decontamination**: Wipe the exact target area with 70% Isopropyl alcohol on a clean microfiber cloth. Never use Windex or soap.
+- [ ] **5. Flash-Dry Window**: Wait exactly 15 minutes for all solvent alcohol vapors to evaporate before applying adhesive.
 
-CARD 02: 1-HOUR CURE PROTOCOL
-[ ] Press strips together until click is heard
-[ ] Press frame to wall for 30 continuous seconds
-[ ] Gently remove frame and press wall strips directly for 30s
-[ ] MANDATORY: Wait 1 full hour before re-attaching weight
+---
 
-CARD 03: STRETCH-RELEASE REMOVAL
-[ ] Never pull strip outward at 90 degrees
-[ ] Hold frame base gently with one hand
-[ ] Pull tab STRAIGHT DOWN parallel to wall surface
-[ ] Stretch 15+ inches until bond smoothly releases`
+## PHASE 2: ADHESIVE MOUNTING & POLYMER CURE PROTOCOL
+- [ ] **1. Strip Pair Interlocking**: Press Command strip pairs together until an audible *click* is heard across the entire surface.
+- [ ] **2. Frame Bonding**: Apply strips to the back of the frame, 1/2 inch inside the outer frame edge. Press each strip firmly for 30 seconds.
+- [ ] **3. Wall Alignment & Placement**: Use a 9-inch magnetic bubble level. Press the frame against the cleaned wall for 30 continuous seconds.
+- [ ] **4. Hinge Release (Crucial Step)**: Gently hinge the bottom of the frame upward off the wall. Do NOT pull straight off.
+- [ ] **5. Direct Polymer Compression**: Use thumb to press firmly on each wall strip base for 30 seconds to lock the pressure-sensitive adhesive.
+- [ ] **6. Mandatory 1-Hour Chemical Cure**: Set a timer for 60 minutes. Leave strips unloaded. Do NOT hang the frame until the hour expires.
+- [ ] **7. Final Mounting**: Align frame strips with wall strips and click firmly into place.
+
+---
+
+## PHASE 3: MECHANICAL PUSH-HOOK & CLAW INSTALLATION
+- [ ] **1. Stud Clearance Check**: Probe target hanging point with a 0.5mm push pin. If solid resistance is felt at 1/2", move 1 inch horizontally to clear wood stud.
+- [ ] **2. OOK Monkey Hook Deployment**: Push curved steel tip into drywall with a gentle twisting motion until collar sits flush against wall paper.
+- [ ] **3. 3M Claw Deployment**: Align center alignment notch with pencil mark. Press dual prongs firmly into drywall with thumbs or heel of palm.
+- [ ] **4. Frame Drop**: Lower frame wire or D-ring bracket gently into the steel saddle.
+
+---
+
+## PHASE 4: STRETCH-RELEASE REMOVAL & MOVE-OUT AUDIT
+- [ ] **1. Frame Separation**: Grip frame bottom and hinge upward to detach from wall strips.
+- [ ] **2. Stretch-Release Angle**: Hold frame base lightly with non-dominant hand. Never pull tab at a 90-degree angle from the wall.
+- [ ] **3. Parallel Draw**: Pull tab SLOWLY and STRAIGHT DOWN, perfectly parallel to the drywall surface.
+- [ ] **4. Full Release**: Stretch the elastomeric strip 12 to 15 inches until the bond cleanly releases with zero paper tearing.
+- [ ] **5. Pinhole Repair**: For push hooks, fill 1.2mm slit with a dab of DAP DryDex spackle, wipe flush with a damp microfiber cloth, and blend with white chalk.
+
+---
+
+## APPENDIX: PRINTABLE 4x6" POCKET FIELD CARDS
+### CARD 01: PRE-INSTALLATION AUDIT
+- Weigh gross item on digital scale (frame + glass + backing)
+- Identify surface: Drywall (hollow sound) vs Plaster (dense/gritty)
+- Apply 30–50% safety buffer below manufacturer rated maximum
+- Clean area with 70% Isopropyl Alcohol; wait 15 min dry time
+
+### CARD 02: 1-HOUR CURE PROTOCOL
+- Press strips together until click is heard
+- Press frame to wall for 30 continuous seconds
+- Gently remove frame and press wall strips directly for 30s
+- MANDATORY: Wait 1 full hour before re-attaching weight
+
+### CARD 03: STRETCH-RELEASE REMOVAL
+- Never pull strip outward at 90 degrees
+- Hold frame base gently with one hand
+- Pull tab STRAIGHT DOWN parallel to wall surface
+- Stretch 15+ inches until bond smoothly releases`
       }
     ]
   },
@@ -158,8 +155,8 @@ CARD 03: STRETCH-RELEASE REMOVAL
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Galley Kitchen', 'Inside-Door Tension Mechanics', 'Over-Sink Prep Bridge', 'Magnetic Organization']
     },
-    deliverablesOverview: 'The complete 4-part micro-kitchen system: Volume 02 Commercial Ebook Playbook (Digital PDF), Cabinet Clearance & Volume Matrix (CSV), 6-Database Notion Kitchen Hub (JSON), and Printable Blueprint Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Cabinet Clearance & Volume Matrix (CSV), and (3) Tactical Micro-Kitchen Execution Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(2),
       {
@@ -168,7 +165,7 @@ CARD 03: STRETCH-RELEASE REMOVAL
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Cabinet Clearance Matrix (Filter & Manage)',
+        badge: 'Cabinet Clearance Matrix (CSV)',
         description: 'Clean 18-column structured spreadsheet matrix calculating vertical height multipliers, shelf clearances, and kitchen storage gains.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -185,60 +182,71 @@ KIT-010,M06: Daily Reset,15-Minute Daily Kitchen Closing Rhythm,Habit System,Low
       },
       {
         id: 'mkk-3',
-        fileName: '03_Micro_Kitchen_Notion_Workspace_Hub.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '6 Databases • 24 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion workspace with Kitchen Inventory, Cabinet Zone Map, Recipe Grocery Planner, and 15-Minute Daily Closing Checklist.',
-        previewSnippet: '{\n  "workspaceName": "Micro-Kitchen & Cabinet Space Operating System",\n  "version": "3.0.0",\n  "databases": ["Cabinet & Zone Inventory", "Cookware & Appliance Library", "Pantry Decanting Matrix", "15-Min Daily Kitchen Reset"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "Micro-Kitchen & Cabinet Space Operating System",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Functional galley kitchen optimization and zero-drill vertical storage tracker."
-          },
-          databases: [
-            {
-              name: "Cabinet & Zone Inventory",
-              properties: ["Cabinet Zone", "Current Usable Height", "Installed Solution", "Volume Gained (cu ft)", "Status"],
-              sampleRecords: [
-                { zone: "Upper Left Cabinet", height: "28 inches", solution: "Inside-Door Pot Lid Tension Rod + Tiered Plate Riser", volume: "+3.2 cu ft", status: "Active" },
-                { zone: "Under-Sink Void", height: "22 inches", solution: "Expandable Pipe-Bridge Tiered Caddy", volume: "+4.5 cu ft", status: "Active" },
-                { zone: "Refrigerator Side Panel", height: "64 inches", solution: "Magnetic Knife Rail + 12 Steel Spice Tins", volume: "+2.0 cu ft", status: "Active" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'mkk-4',
-        fileName: '04_Kitchen_Cabinet_Blueprint_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.5 MB',
-        badge: 'Printable Blueprint Cards',
-        description: '4x6" printable reference cards for measuring cabinet depth clearances, sink bridge spans, and spice rack layouts.',
-        previewSnippet: 'CARD 1: Cabinet Door Interior Clearance Rule (1.75")\nCARD 2: Over-Sink Cutting Board Sizing Specs\nCARD 3: Refrigerator Magnetic Grid Placement\nCARD 4: 15-Minute Kitchen Sunset Checklist',
-        downloadableContent: `# Micro-Kitchen Tactical Blueprint Cards
-SmallSpaceHome.ca • Canadian Galley Kitchen Edition
+        fileName: '03_Micro_Kitchen_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 11 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step micro-kitchen optimization checklist and 4x6" printable reference cards for cabinet clearances and daily closing rhythms.',
+        previewSnippet: '# MICRO-KITCHEN & CABINET SPACE DOUBLER EXECUTION CHECKLIST\n## PHASE 1: COUNTERTOP & OVER-SINK PREP BRIDGE\n[ ] 1. Measure sink basin opening\n[ ] 2. Affix non-slip silicone bumpers...',
+        downloadableContent: `# 500 SQ FT MICRO-KITCHEN & CABINET DOUBLER: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Canadian Galley Kitchen Tactical Guide*
 
-CARD 01: CABINET CLEARANCE FORMULAS
-[ ] Door Interior Clearance: Minimum 1.75 inches from front shelf edge
-[ ] Vertical Shelf Spacing: Stack plates <8" high; insert wire riser above
-[ ] Tension Rod Spacing for Pans: 2.5 to 3.0 inches between vertical rods
+## PHASE 1: COUNTERTOP & OVER-SINK PREP BRIDGE
+- [ ] **1. Sink Basin Measurement**: Measure sink basin width from outer rim to outer rim. Select an acacia or bamboo cutting board that spans the opening with at least 1.0 inch of solid overhang on each edge.
+- [ ] **2. Silicone Non-Slip Feet**: Affix 4 heavy-duty 3mm vulcanized silicone bumpers to the underside corners of the board to prevent slipping against wet stainless steel.
+- [ ] **3. Weight Test**: Verify board does not bow under 15 lbs of direct downward pressure.
+- [ ] **4. Clear Workspace Routine**: Establish the over-sink bridge as the primary chopping and prep zone, instantly recovering 2.8 sq ft of counter area.
 
-CARD 02: OVER-SINK BRIDGE SPECS
-[ ] Board Length: Sink basin opening + 2.0 inches minimum overlap
-[ ] Board Thickness: 0.75" to 1.25" solid hardwood (prevents flex)
-[ ] Silicone Bumpers: 4 corner pads prevent sliding on stainless steel rim
+---
 
-CARD 03: NIGHTLY 15-MIN RESET RHYTHM
-[ ] Wash and dry prep bridge; stand upright beside sink
-[ ] Return knives and spice tins to magnetic refrigerator strip
-[ ] Empty and sanitize sink basin with hot soapy water`
+## PHASE 2: INSIDE-DOOR TENSION POT LID & SPICE RACKS
+- [ ] **1. Door Interior Depth Audit**: Measure distance between the inside of the cabinet door and the front edge of interior shelves. Minimum required clearance is 1.75 inches.
+- [ ] **2. Tension Rod Selection**: Use 12–20" rubber-tipped spring-tension rods with heavy internal springs.
+- [ ] **3. Alcohol Cleaning**: Clean the inside cabinet door stiles with 70% Isopropyl alcohol to ensure rubber foot grip.
+- [ ] **4. Rod Placement**: Install tension rod 4 inches above the bottom of the door. Slide pot lids handle-up behind the rod.
+- [ ] **5. Door Closure Check**: Confirm cabinet door closes completely flush without lid handles impacting interior cookware.
+
+---
+
+## PHASE 3: VERTICAL CABINET & WIRE RISER MAXIMIZATION
+- [ ] **1. Vertical Shelf Spacing**: Measure vertical height inside upper and lower cabinets.
+- [ ] **2. 3-Tier Corner Riser**: Place coated steel corner risers in deep corner cabinets to separate dinner plates, salad plates, and bowls into 3 accessible tiers.
+- [ ] **3. Vertical Bakeware Dividers**: Install 3 spring-tension rods vertically between cabinet shelves (2.5" apart) to store sheet pans, muffin tins, and cutting boards upright like books.
+- [ ] **4. Decanting Square Bins**: Transfer pasta, grains, and flour into uniform square airtight BPA-free containers. Decanting saves 25% shelf volume compared to bulky cardboard packaging.
+
+---
+
+## PHASE 4: UNDER-SINK PIPE-BRIDGE STORAGE
+- [ ] **1. Plumbing P-Trap Clearance**: Map drainage pipe locations under sink basin.
+- [ ] **2. Expandable Pipe Caddy**: Assemble an expandable 2-tier shelving unit with removable snap-in plastic panels around the center plumbing pipes.
+- [ ] **3. Cleaning Caddy Placement**: Store dish tabs, sponges, and spray bottles in pull-out caddies on lower shelf tier.
+
+---
+
+## PHASE 5: 15-MINUTE DAILY CLOSING RHYTHM
+- [ ] **1. Sink Reset**: Wash and dry all prep tools and cutting board. Stand board upright beside sink.
+- [ ] **2. Magnetic Tool Alignment**: Return chef's knife and steel spice tins to the side-refrigerator magnetic bar.
+- [ ] **3. Hot Water Basin Sanitization**: Wipe sink basin clean with hot soapy water.
+- [ ] **4. Counter Clearance**: Leave 100% of countertop surface bare and wiped dry before bedtime.
+
+---
+
+## APPENDIX: PRINTABLE 4x6" BLUEPRINT CARDS
+### CARD 01: CABINET CLEARANCE FORMULAS
+- Door Interior Clearance: Minimum 1.75 inches from front shelf edge
+- Vertical Shelf Spacing: Stack plates <8" high; insert wire riser above
+- Tension Rod Spacing for Pans: 2.5 to 3.0 inches between vertical rods
+
+### CARD 02: OVER-SINK BRIDGE SPECS
+- Board Length: Sink basin opening + 2.0 inches minimum overlap
+- Board Thickness: 0.75" to 1.25" solid hardwood (prevents flex)
+- Silicone Bumpers: 4 corner pads prevent sliding on stainless steel rim
+
+### CARD 03: NIGHTLY 15-MIN RESET RHYTHM
+- Wash and dry prep bridge; stand upright beside sink
+- Return knives and spice tins to magnetic refrigerator strip
+- Empty and sanitize sink basin with hot soapy water`
       }
     ]
   },
@@ -258,8 +266,8 @@ CARD 03: NIGHTLY 15-MIN RESET RHYTHM
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Capsule Wardrobe', 'Suspended Dual-Rod', 'Velvet Hangers', 'Upper Shelf Bins']
     },
-    deliverablesOverview: 'The complete 4-part closet storage system: Volume 03 Commercial Ebook Playbook (Digital PDF), Garment Spacing & Compression Matrix (CSV), 6-Database Notion Wardrobe Hub (JSON), and Printable Ratio Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Garment Spacing & Compression Matrix (CSV), and (3) Tactical Small Closet Execution Checklist (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(3),
       {
@@ -268,7 +276,7 @@ CARD 03: NIGHTLY 15-MIN RESET RHYTHM
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Closet Spacing Matrix (Filter & Manage)',
+        badge: 'Closet Spacing Matrix (CSV)',
         description: 'Structured spreadsheet matrix calculating garment linear widths, hanging rod loads, and seasonal rotation schedules.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -284,60 +292,68 @@ CLO-009,M06: Weekly Habit,Sunday 10-Minute Wardrobe Alignment,Routine,Low,10,0.0
       },
       {
         id: 'cqk-3',
-        fileName: '03_Small_Closet_Quadrupler_Notion_Hub.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '6 Databases • 24 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion workspace with Capsule Wardrobe Tracker, Seasonal Rotation Schedule, Closet Linear Width Calculator, and Daily Outfit Planner.',
-        previewSnippet: '{\n  "workspaceName": "Small Closet & Capsule Wardrobe Hub",\n  "version": "3.0.0",\n  "databases": ["Capsule Wardrobe Ledger", "Seasonal Storage & Bin Tracker", "Closet Maintenance & Audit Log"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "Small Closet & Capsule Wardrobe Hub",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Minimalist wardrobe organization, suspended storage tracking, and seasonal capsule rotation."
-          },
-          databases: [
-            {
-              name: "Capsule Wardrobe Ledger",
-              properties: ["Garment Name", "Category", "Hanging Tier", "Season", "Status", "Color Family"],
-              sampleRecords: [
-                { garment: "Structured Linen Blazer", category: "Outerwear", tier: "Top Rod (Main)", season: "Spring/Summer", status: "Active", color: "Oatmeal" },
-                { garment: "Pleated Trousers (Navy)", category: "Bottoms", tier: "Lower Rod (Suspended)", season: "All-Year", status: "Active", color: "Navy" },
-                { garment: "Cashmere Turtleneck", category: "Knitwear", tier: "Upper Shelf Acrylic Stall", season: "Fall/Winter", status: "Active", color: "Camel" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'cqk-4',
-        fileName: '04_Closet_Ratio_And_Spacing_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.5 MB',
-        badge: 'Printable Ratio Cards',
-        description: '4x6" printable reference cards for suspended rod spacing, seasonal rotation dates, and acrylic divider setups.',
-        previewSnippet: 'CARD 1: Suspended Rod Height Spacing Formula\nCARD 2: Velvet Hanger Density Comparison\nCARD 3: Capsule Wardrobe 33-Piece Breakdown\nCARD 4: Seasonal Storage Vacuum Sealing Rules',
-        downloadableContent: `# Small Closet Ratio & Spacing Cheat Cards
-SmallSpaceHome.ca • Canadian Urban Renter Edition
+        fileName: '03_Small_Closet_Execution_Checklist.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 11 KB',
+        badge: 'Action Checklist & Pocket Cards',
+        description: 'Complete step-by-step closet organization checklist and 4x6" printable ratio cards for suspended rod spacing and seasonal swaps.',
+        previewSnippet: '# SMALL CLOSET QUADRUPLER EXECUTION CHECKLIST\n## PHASE 1: SUSPENDED 2ND-TIER ROD FABRICATION\n[ ] 1. Measure closet width and main rod height\n[ ] 2. Cut 1-inch hardwood dowel...',
+        downloadableContent: `# SMALL CLOSET QUADRUPLER & VERTICAL STORAGE: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Canadian Urban Renter Tactical Guide*
 
-CARD 01: SUSPENDED DUAL-ROD SPACING
-[ ] Main Top Rod Height: 68" to 72" from floor
-[ ] Suspended Lower Rod: 32" to 34" below top rod
-[ ] Clear Floor Drop: 32" to 34" below lower rod for shoes
+## PHASE 1: SUSPENDED 2ND-TIER ROD FABRICATION
+- [ ] **1. Rod Height Measurement**: Check that main closet rod is at least 68 inches above the floor.
+- [ ] **2. Hardwood Dowel Preparation**: Cut a 1-inch diameter birch or oak dowel to 32 inches length (fits inside a standard 36" closet).
+- [ ] **3. Paracord Suspension**: Loop two lengths of 550 military-grade paracord over the top main rod. Tie secure bowline or figure-8 loops to suspend the lower dowel exactly 32 inches below the main rod.
+- [ ] **4. Weight Distribution**: Ensure existing closet shelf brackets are firmly attached. The lower rod holds 40 lbs of shirts, tees, and folded trousers.
 
-CARD 02: HANGER DENSITY FORMULA
-[ ] Chunky Plastic / Wood: 20–25 garments per 36" rod
-[ ] Ultra-Thin Velvet: 60–75 garments per 36" rod (+300% density)
-[ ] Maximum Hanging Load: 45 lbs on suspended paracord bar
+---
 
-CARD 03: SEASONAL SWAP PROTOCOL (OCTOBER & MAY)
-[ ] Launder all seasonal items before vacuum packing
-[ ] Pack 2 heavy coats per vacuum cube; compress to 1/3 volume
-[ ] Transfer compressed cubes to upper shelf or under-bed storage`
+## PHASE 2: VELVET HANGER CONVERSION
+- [ ] **1. Hanger Purge**: Remove all mismatched thick wooden, wire, and plastic tubular hangers.
+- [ ] **2. Flocked Velvet Replacement**: Replace with ultra-thin (0.2" profile) non-slip velvet hangers.
+- [ ] **3. Directional Alignment**: Ensure all hanger hooks face inward toward the back of the closet.
+- [ ] **4. Density Gain**: Verify that 60–75 velvet hangers fit smoothly along the 36-inch upper rod (+300% density vs bulky wood).
+
+---
+
+## PHASE 3: UPPER SHELF SWEATER DIVISION & SEASONAL VACUUM STORAGE
+- [ ] **1. Acrylic Dividers**: Slide clear acrylic shelf dividers 10 inches apart over upper wire or wood shelving.
+- [ ] **2. Vertical File Folding**: Fold wool and cashmere sweaters into compact rectangles; stack maximum 4 per stall to prevent toppling.
+- [ ] **3. Seasonal Compression**: Place off-season winter parkas and bulky blankets into vacuum-seal storage bags. Compress flat with vacuum hose.
+- [ ] **4. Upper Bin Storage**: Store compressed bags on upper rear shelf or inside under-bed storage containers.
+
+---
+
+## PHASE 4: DOOR SHOE & ACCESSORY MATRIX
+- [ ] **1. Over-Door Hanging Organizer**: Hang a 24-pocket canvas or breathable fabric shoe organizer over the closet door.
+- [ ] **2. Door Swing Clearance**: Check that shoes do not hit internal hanging rods when door swings closed.
+- [ ] **3. Shoe Distribution**: Insert shoes heel-first, with heavy boots on bottom rows and lightweight flats/sandals at eye level.
+
+---
+
+## PHASE 5: MOTION LIGHTING & WEEKLY ALIGNMENT
+- [ ] **1. Magnetic LED Bar**: Adhere a rechargeable motion-sensor 200-lumen LED light bar to the inside door header.
+- [ ] **2. Sunday 10-Minute Reset**: Every Sunday evening, remove empty hangers to the far left, button top buttons, and group garments by color family.
+
+---
+
+## APPENDIX: PRINTABLE 4x6" BLUEPRINT CARDS
+### CARD 01: SUSPENDED DUAL-ROD SPACING
+- Main Top Rod Height: 68" to 72" from floor
+- Suspended Lower Rod: 32" to 34" below top rod
+- Clear Floor Drop: 32" to 34" below lower rod for shoes
+
+### CARD 02: HANGER DENSITY FORMULA
+- Chunky Plastic / Wood: 20–25 garments per 36" rod
+- Ultra-Thin Velvet: 60–75 garments per 36" rod (+300% density)
+- Maximum Hanging Load: 45 lbs on suspended paracord bar
+
+### CARD 03: SEASONAL SWAP PROTOCOL (OCTOBER & MAY)
+- Launder all seasonal items before vacuum packing
+- Pack 2 heavy coats per vacuum cube; compress to 1/3 volume
+- Transfer compressed cubes to upper shelf or under-bed storage`
       }
     ]
   },
@@ -357,8 +373,8 @@ CARD 03: SEASONAL SWAP PROTOCOL (OCTOBER & MAY)
       palette: ['#FAF8F5', '#4A533E', '#D9D3C7', '#8C857B', '#1C1917'],
       stylingKeywords: ['Deposit Protection', 'Normal Wear & Tear', 'Move-Out Inspection', 'Drywall Spackle Patch']
     },
-    deliverablesOverview: 'The complete 4-part tenant defense system: Volume 04 Commercial Ebook Playbook (Digital PDF), Move-In/Out 4K Photographic Checklist (CSV), 7-Database Legal Vault (JSON), and Landlord Negotiation Script Cards.',
-    totalAssetsCount: 4,
+    deliverablesOverview: 'The complete 3-part digital suite: (1) 3-in-1 Master Commercial Playbook PDF (30+ Page Guide + 4x6" Pocket Cards + License & Specs), (2) Move-In/Out 4K Inspection Matrix (CSV), and (3) Tactical Security Deposit Defense Checklist & Scripts (MD).',
+    totalAssetsCount: 3,
     files: [
       generatePlaybookDeliverableFile(4),
       {
@@ -367,7 +383,7 @@ CARD 03: SEASONAL SWAP PROTOCOL (OCTOBER & MAY)
         fileType: 'Spreadsheet (CSV/Excel)',
         extension: '.csv',
         fileSize: '18 Columns • 14 Rows • 16 KB',
-        badge: 'Move-Out Inspection Matrix (Filter & Manage)',
+        badge: 'Move-Out Inspection Matrix (CSV)',
         description: 'Structured spreadsheet matrix auditing 14 apartment inspection items, classifying normal wear vs tenant damage, and listing DIY fix costs in CAD.',
         previewSnippet: 'Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status',
         downloadableContent: `Record_ID,Module,Hack_Name,Category,Difficulty,Time_Minutes,Cost_Level_CAD,Materials,Tools_Required,Target_Surface_or_Zone,Rental_Safe,Reversible,Damage_Risk_Level,Space_Gain_or_Impact,Conservative_Capacity_or_Rating,Core_Step_Summary,Safety_or_Manufacturer_Note,Status
@@ -384,52 +400,66 @@ DEP-010,M06: Legal Baseline,4K Timestamped Walkthrough Video Audit,Documentation
       },
       {
         id: 'dpd-3',
-        fileName: '03_Deposit_Defense_Legal_Notion_Vault.json',
-        fileType: 'Notion Template',
-        extension: '.json',
-        fileSize: '7 Databases • 25 KB',
-        badge: 'Notion Workspace (Plan & Track)',
-        description: 'Complete Notion template for documenting move-in photo evidence, tracking landlord correspondence, and managing move-out repair tasks.',
-        previewSnippet: '{\n  "workspaceName": "Renter Security Deposit Defense Vault",\n  "version": "3.0.0",\n  "databases": ["Move-In Photographic Evidence Ledger", "Repair & Cleaning Master Tasklist", "Landlord Notice & Communications Log"]\n}',
-        downloadableContent: JSON.stringify({
-          workspaceName: "Renter Security Deposit Defense Vault",
-          version: "3.0.0",
-          author: "SmallSpaceHome.ca Editorial Lab",
-          theme: {
-            palette: ["#FAF8F5 (Warm Cream)", "#4A533E (Warm Sage)", "#1C1917 (Charcoal)", "#D9D3C7 (Muted Tan)"],
-            style: "Legal-grade move-in photographic audit, maintenance tracking, and move-out security deposit protection."
-          },
-          databases: [
-            {
-              name: "Move-In & Move-Out Evidence Ledger",
-              properties: ["Room / Zone", "Item Inspected", "Move-In Condition", "Move-In Photo Link", "Move-Out Condition", "Wear Status"],
-              sampleRecords: [
-                { room: "Living Room", item: "North Drywall Surface", moveIn: "3 pre-existing pinholes noted", photo: "Photo_014.jpg", moveOut: "All patched flush & chalk blended", status: "Normal Wear" },
-                { room: "Kitchen", item: "Ceramic Cooktop & Oven", moveIn: "Minor glass surface marks", photo: "Photo_022.jpg", moveOut: "Baking soda degreased & polished", status: "Tenant Pristine" },
-                { room: "Bathroom", item: "Shower Caulking Bead", moveIn: "Mild discoloration at tub base", photo: "Photo_031.jpg", moveOut: "Bleached clean & mildew-free", status: "Tenant Restored" }
-              ]
-            }
-          ]
-        }, null, 2)
-      },
-      {
-        id: 'dpd-4',
-        fileName: '04_Landlord_Negotiation_Script_Cards.pdf',
-        fileType: 'Printable Cheatsheet',
-        extension: '.pdf',
-        fileSize: '4x6 Cards • 1.6 MB',
-        badge: 'Printable Script Deck',
-        description: '4x6" printable pocket cards with legally verified Canadian tenant pushback scripts for normal wear and tear disputes.',
-        previewSnippet: 'CARD 1: Preliminary Joint Walkthrough Request Script (14 Days Prior)\nCARD 2: Normal Wear & Tear Pushback Response\nCARD 3: Illegal Painting / Cleaning Deduction Dispute\nCARD 4: Security Deposit Return Demand Letter',
-        downloadableContent: `# Landlord Negotiation & Pushback Script Cards
-SmallSpaceHome.ca • Canadian Tenant Rights Edition
+        fileName: '03_Deposit_Defense_Execution_Checklist_And_Scripts.md',
+        fileType: 'Action Checklist & Pocket Cards',
+        extension: '.md',
+        fileSize: '4x6 Cards • Step-by-Step Checklist • 12 KB',
+        badge: 'Action Checklist & Legal Scripts',
+        description: 'Complete step-by-step tenant move-out inspection checklist, $12 emergency repair protocols, and legally verified Canadian landlord negotiation pushback scripts.',
+        previewSnippet: '# RENTER SECURITY DEPOSIT DEFENSE EXECUTION CHECKLIST\n## PHASE 1: 14 DAYS PRIOR - PRELIMINARY INSPECTION AUDIT\n[ ] 1. Send written joint walkthrough request\n[ ] 2. Audit all wall surfaces for pinholes...',
+        downloadableContent: `# RENTER SECURITY DEPOSIT DEFENSE & EMERGENCY REPAIR: EXECUTION CHECKLIST
+*SmallSpaceHome.ca • Canadian Tenant Rights Tactical Guide*
 
-CARD 01: PRE-MOVE-OUT AUDIT REQUEST (14 DAYS PRIOR)
+## PHASE 1: 14 DAYS PRIOR - PRELIMINARY WALKTHROUGH AUDIT
+- [ ] **1. Written Walkthrough Request**: Email landlord or property manager to request a joint preliminary inspection 14 days prior to lease end.
+- [ ] **2. 4K Video Baseline Comparison**: Review your original move-in timestamped video/photos to identify which defects are pre-existing.
+- [ ] **3. Room-by-Room Damage Triage**: Categorize every imperfection as either *Normal Wear and Tear* (landlord responsibility) or *Tenant Actionable* (requires $12 DIY fix).
+
+---
+
+## PHASE 2: $12 EMERGENCY DRYWALL & SURFACE RESTORATION
+- [ ] **1. Drywall Pinhole Patching**:
+  - [ ] Apply a dime-sized dab of DAP DryDex vinyl spackling into push hook/nail holes with a flexible putty knife.
+  - [ ] Press flat at a 45-degree angle. Let dry for 20 minutes (turns from pink to white).
+  - [ ] Lightly rub with a damp microfiber cloth or 220-grit sanding sponge.
+  - [ ] Blend with a piece of white school chalk for matte/flat walls.
+- [ ] **2. Baseboard Scuff Eradication**:
+  - [ ] Dampen a melamine foam eraser sponge with warm water and a drop of dish soap.
+  - [ ] Gently buff black shoe and furniture scuff marks off baseboards and doors. Wipe dry.
+- [ ] **3. Hardwood Scratch Blending**:
+  - [ ] Rub a matching wax filler repair stick into floor scratches.
+  - [ ] Buff flush with a clean microfiber cloth.
+
+---
+
+## PHASE 3: DEEP KITCHEN & BATHROOM RESTORATION
+- [ ] **1. Oven Glass Degreasing**:
+  - [ ] Mix baking soda, dish soap, and a splash of vinegar into a thick paste.
+  - [ ] Coat inside oven glass door; let sit 20 minutes; scrape clean with a plastic scraper.
+- [ ] **2. Range Hood Filter Reset**:
+  - [ ] Submerge greasy aluminum mesh filters in boiling water with a dishwasher pod for 15 minutes. Rinse with hot water.
+- [ ] **3. Shower Mildew Removal**:
+  - [ ] Trace a bleach gel pen along discolored silicone caulking beads. Wait 2 hours; rinse sparkling white.
+- [ ] **4. Hard Water Descaling**:
+  - [ ] Fasten a Ziploc bag filled with white vinegar over showerhead with a rubber band. Soak 1 hour to dissolve mineral crust.
+
+---
+
+## PHASE 4: FINAL 4K DEPARTURE VIDEO & KEY HANDOVER
+- [ ] **1. Continuous 4K Walkthrough Video**: Record a continuous slow video of every wall, ceiling, floor, inside of oven, and inside fridge.
+- [ ] **2. High-Res Macro Photos**: Take close-up photos of all patched spots with a ruler placed beside them.
+- [ ] **3. Cloud Upload**: Upload files immediately to Google Drive or iCloud with timestamped metadata.
+- [ ] **4. Key Handover Receipt**: Obtain signed written receipt upon key return confirming keys received and unit vacated.
+
+---
+
+## APPENDIX: CANADIAN TENANT PUSHBACK SCRIPTS
+### SCRIPT 01: PRE-MOVE-OUT AUDIT REQUEST (14 DAYS PRIOR)
 "Dear [Landlord/Property Manager],
 As our lease conclusion approaches on [Date], I would like to schedule a joint preliminary walkthrough inspection 14 days prior to move-out. This will allow us to review the unit together, note any items requiring tenant attention, and ensure a seamless final key handover.
 Please let me know your availability between [Date 1] and [Date 2]."
 
-CARD 02: NORMAL WEAR AND TEAR PUSHBACK SCRIPT
+### SCRIPT 02: NORMAL WEAR AND TEAR PUSHBACK
 "Dear [Landlord],
 Under Section [X] of the provincial Tenancy Act, tenants are not responsible for reasonable wear and tear resulting from normal everyday occupancy, including minor picture pinholes and routine floor scuffs.
 As documented in our move-in walkthrough baseline from [Date], these items represent ordinary residential use. All tenant obligations have been completed in full."`
