@@ -17,6 +17,7 @@ export interface ProductScore {
 }
 
 export type TabId = 
+  | 'playbooks'
   | 'deliverables-photography'
   | 'all-products'
   | 'first-product'

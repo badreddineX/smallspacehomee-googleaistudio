@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
+import { PlaybookSeriesCenter } from './components/PlaybookSeriesCenter';
 import { DeliverablesAndPhotographyCenter } from './components/DeliverablesAndPhotographyCenter';
 import { AllProductsStudio } from './components/AllProductsStudio';
 import { FirstProductExperience } from './components/FirstProductExperience';
@@ -16,7 +17,7 @@ import { TabId } from './types';
 import { TrendingUp, ExternalLink } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<TabId>('deliverables-photography');
+  const [activeTab, setActiveTab] = useState<TabId>('playbooks');
   const [selectedStudioProductId, setSelectedStudioProductId] = useState<string>('flagship-ss-os');
   const [isSimulatorOpen, setIsSimulatorOpen] = useState(false);
 
@@ -32,6 +33,8 @@ export default function App() {
 
   const renderActiveSection = () => {
     switch (activeTab) {
+      case 'playbooks':
+        return <PlaybookSeriesCenter onOpenProduct={handleLaunchProductStudio} />;
       case 'deliverables-photography':
         return (
           <DeliverablesAndPhotographyCenter 

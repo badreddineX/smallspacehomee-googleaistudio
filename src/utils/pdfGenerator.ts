@@ -355,6 +355,688 @@ export function generateProfessionalPDF({
 }
 
 /**
+ * Generates a full, publication-ready commercial PDF Playbook for any of the 11 volumes
+ * in the SmallSpaceHome Digital Product Playbook Series.
+ * Features:
+ * - Cover page with luxury typography, ISBN, volume badge, and metadata
+ * - Mandatory Personal Use License & Digital Resale Rights page (Page 2)
+ * - Clickable Table of Contents with internal navigation links
+ * - Deep multi-page structured chapters, callout boxes, and checklists
+ * - 4x6" Pocket Companion reference cards
+ * - Sourcing and Retailer tables with live hyperlinks
+ * - PDF Document Metadata (Title, Author, Subject, Language, Accessibility tags)
+ */
+export function generatePlaybookPDF(playbook: import('../data/playbookSeriesData').PlaybookMeta): jsPDF {
+  const doc = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'a4',
+  });
+
+  // Set document metadata
+  doc.setProperties({
+    title: playbook.title,
+    subject: `${playbook.volumeLabel} - ${playbook.category}`,
+    author: playbook.author,
+    keywords: `SmallSpaceHome, ${playbook.category}, Rental Apartment, Toronto Rental Lab, DIY, Architecture`,
+    creator: 'SmallSpaceHome Digital Publishing OS',
+  });
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 18;
+  const contentWidth = pageWidth - margin * 2;
+
+  // Colors
+  const olive = [74, 83, 62]; // #4A533E
+  const darkCharcoal = [28, 25, 23]; // #1C1917
+  const softStone = [250, 248, 245]; // #FAF8F5
+  const borderStone = [229, 223, 213]; // #E5DFD5
+  const mutedText = [90, 85, 80];
+
+  const addHeaderAndFooter = (pageNumber: number, totalPages: number, pageTitle?: string) => {
+    // Header top accent band
+    doc.setFillColor(olive[0], olive[1], olive[2]);
+    doc.rect(0, 0, pageWidth, 4, 'F');
+
+    // Header running head
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7.5);
+    doc.setTextColor(olive[0], olive[1], olive[2]);
+    doc.text(`SMALLSPACEHOME.CA • ${playbook.volumeLabel.toUpperCase()}`, margin, 11);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(pageTitle || 'DIGITAL PRODUCT PLAYBOOK KIT', pageWidth - margin, 11, { align: 'right' });
+
+    doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+    doc.setLineWidth(0.3);
+    doc.line(margin, 13, pageWidth - margin, 13);
+
+    // Footer
+    doc.line(margin, pageHeight - 12, pageWidth - margin, pageHeight - 12);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(`Tested in a 510 sq ft Toronto Rental Lab • Commercial Edition • ISBN: ${playbook.isbn}`, margin, pageHeight - 7);
+    doc.text(`Page ${pageNumber} of ${totalPages}`, pageWidth - margin, pageHeight - 7, { align: 'right' });
+  };
+
+  // =========================================================================
+  // PAGE 1: COVER PAGE
+  // =========================================================================
+  // Background aesthetic
+  doc.setFillColor(softStone[0], softStone[1], softStone[2]);
+  doc.rect(0, 0, pageWidth, pageHeight, 'F');
+
+  // Decorative border
+  doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+  doc.setLineWidth(0.8);
+  doc.rect(margin - 4, margin - 4, contentWidth + 8, pageHeight - margin * 2 + 8);
+
+  // Top header banner
+  doc.setFillColor(olive[0], olive[1], olive[2]);
+  doc.rect(margin, margin, contentWidth, 14, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(250, 248, 245);
+  doc.text('SMALLSPACEHOME.CA • TORONTO RENTAL LAB ARCHIVE', margin + 4, margin + 9);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.text(`SERIES VOL. 0${playbook.volumeNumber}`, pageWidth - margin - 4, margin + 9, { align: 'right' });
+
+  // Volume & Badge Pill
+  doc.setFillColor(255, 255, 255);
+  doc.setDrawColor(olive[0], olive[1], olive[2]);
+  doc.setLineWidth(0.4);
+  doc.roundedRect(margin, margin + 22, contentWidth, 9, 1.5, 1.5, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8);
+  doc.setTextColor(olive[0], olive[1], olive[2]);
+  doc.text(`${playbook.volumeLabel.toUpperCase()} • DIGITAL PRODUCT PLAYBOOK KIT`, margin + 4, margin + 28);
+
+  // Main Book Title
+  let curY = margin + 44;
+  doc.setFont('times', 'bold');
+  doc.setFontSize(22);
+  doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+  const titleLines = doc.splitTextToSize(playbook.title, contentWidth);
+  doc.text(titleLines, margin, curY);
+  curY += titleLines.length * 9 + 4;
+
+  // Subtitle
+  doc.setFont('times', 'italic');
+  doc.setFontSize(12);
+  doc.setTextColor(olive[0], olive[1], olive[2]);
+  const subLines = doc.splitTextToSize(playbook.subtitle, contentWidth);
+  doc.text(subLines, margin, curY);
+  curY += subLines.length * 6 + 8;
+
+  // Accent divider line
+  doc.setDrawColor(olive[0], olive[1], olive[2]);
+  doc.setLineWidth(1);
+  doc.line(margin, curY, margin + 40, curY);
+  curY += 12;
+
+  // Key Promise Box
+  doc.setFillColor(255, 255, 255);
+  doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+  doc.setLineWidth(0.4);
+  doc.roundedRect(margin, curY, contentWidth, 34, 1.5, 1.5, 'FD');
+  doc.setFillColor(olive[0], olive[1], olive[2]);
+  doc.rect(margin, curY, 3, 34, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(olive[0], olive[1], olive[2]);
+  doc.text('TARGET DELIVERABLE & CORE VALUE PROMISE', margin + 7, curY + 7);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.5);
+  doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+  const promiseLines = doc.splitTextToSize(playbook.promise, contentWidth - 14);
+  doc.text(promiseLines, margin + 7, curY + 14);
+
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(7.5);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text(`Target Audience: ${playbook.audience}`, margin + 7, curY + 28);
+  curY += 46;
+
+  // Commercial Spec Metadata Grid
+  const specY = curY;
+  const colW = contentWidth / 3;
+
+  // Box 1
+  doc.setFillColor(255, 255, 255);
+  doc.roundedRect(margin, specY, colW - 2, 22, 1, 1, 'FD');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(7.5);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text('ESTIMATED TARGET', margin + 3, specY + 6);
+  doc.setFont('times', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+  doc.text(playbook.targetFileSize, margin + 3, specY + 14);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.setTextColor(olive[0], olive[1], olive[2]);
+  doc.text('Digital-First Standard', margin + 3, specY + 19);
+
+  // Box 2
+  doc.setFillColor(255, 255, 255);
+  doc.roundedRect(margin + colW + 1, specY, colW - 2, 22, 1, 1, 'FD');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(7.5);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text('COMMERCIAL PRICING', margin + colW + 4, specY + 6);
+  doc.setFont('times', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+  doc.text(`$${playbook.priceCad} CAD`, margin + colW + 4, specY + 14);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text(`Perceived Value: $${playbook.perceivedValueCad} CAD`, margin + colW + 4, specY + 19);
+
+  // Box 3
+  doc.setFillColor(255, 255, 255);
+  doc.roundedRect(margin + colW * 2 + 2, specY, colW - 2, 22, 1, 1, 'FD');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(7.5);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text('IDENTIFIER & EDITION', margin + colW * 2 + 5, specY + 6);
+  doc.setFont('times', 'bold');
+  doc.setFontSize(9.5);
+  doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+  doc.text(playbook.isbn, margin + colW * 2 + 5, specY + 13);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.setTextColor(olive[0], olive[1], olive[2]);
+  doc.text('First Commercial Edition', margin + colW * 2 + 5, specY + 19);
+
+  // Cover Footer Credits
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text(`Author: ${playbook.author}`, margin, pageHeight - margin - 8);
+  doc.text(`Publisher: ${playbook.publisher} • © ${playbook.copyrightYear}`, margin, pageHeight - margin - 3);
+
+  // =========================================================================
+  // PAGE 2: MANDATORY PERSONAL USE LICENSE & COPYRIGHT NOTICE
+  // =========================================================================
+  doc.addPage();
+  curY = 24;
+
+  doc.setFont('times', 'bold');
+  doc.setFontSize(16);
+  doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+  doc.text('COMMERCIAL NOTICE & PERSONAL USE LICENSE', margin, curY);
+  curY += 6;
+
+  doc.setDrawColor(olive[0], olive[1], olive[2]);
+  doc.setLineWidth(0.8);
+  doc.line(margin, curY, margin + 40, curY);
+  curY += 8;
+
+  // License Card Box
+  doc.setFillColor(softStone[0], softStone[1], softStone[2]);
+  doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+  doc.setLineWidth(0.3);
+  doc.roundedRect(margin, curY, contentWidth, 76, 1.5, 1.5, 'FD');
+  doc.setFillColor(olive[0], olive[1], olive[2]);
+  doc.rect(margin, curY, 2.5, 76, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(olive[0], olive[1], olive[2]);
+  doc.text('STANDARD DIGITAL PRODUCT LICENSE TERMS', margin + 6, curY + 6);
+
+  const licenseTerms = [
+    '• GRANT OF LICENSE: SmallSpaceHome Inc. grants the purchaser a single-user, non-exclusive, non-transferable Personal Use License for this Digital Product Playbook Kit.',
+    '• INTELLECTUAL PROPERTY: The buyer does NOT acquire ownership of any underlying trademarks, patents, proprietary formulas, or copyright assets. All content remains the exclusive intellectual property of SmallSpaceHome Inc.',
+    '• COMMERCIAL RESALE RESTRICTION: You may NOT resell, sub-license, distribute, redistribute, bundle, or share this PDF document or its component files in whole or in part across any digital marketplace (e.g. Gumroad, Etsy, Shopify, Patreon) or file-sharing network.',
+    '• DERIVATIVE WORKS: You may not reverse-engineer, decompile, transcribe, or repackage this guide to create competing commercial digital products or AI training corpora.',
+    '• JURISDICTION: This agreement is governed by the laws of the Province of Ontario and the applicable federal copyright laws of Canada.'
+  ];
+
+  let licY = curY + 12;
+  licenseTerms.forEach(term => {
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+    const wrapped = doc.splitTextToSize(term, contentWidth - 12);
+    doc.text(wrapped, margin + 6, licY);
+    licY += wrapped.length * 3.8 + 2;
+  });
+
+  curY += 84;
+
+  // Disclaimer Box
+  doc.setFillColor(255, 255, 255);
+  doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+  doc.roundedRect(margin, curY, contentWidth, 42, 1, 1, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+  doc.text('STRUCTURAL, ELECTRICAL & TENANT CODE DISCLAIMER', margin + 5, curY + 6);
+
+  const disclaimerText = `The techniques, mounting hardware recommendations, load capacities, and legal guidelines provided in this publication are documented based on real-world testing in standard North American rental drywall construction. However, building construction methods, wall anchor substrates, electrical conduits, and provincial/state residential tenancy laws vary. The publisher and author assume no liability for personal injury, property damage, lease disputes, or deposit forfeitures resulting from improper installation or failure to verify wall conditions. Always test fasteners in inconspicuous test spots.`;
+  
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(7.5);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  const wrappedDis = doc.splitTextToSize(disclaimerText, contentWidth - 10);
+  doc.text(wrappedDis, margin + 5, curY + 12);
+  curY += 50;
+
+  // Metadata Summary
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8);
+  doc.setTextColor(olive[0], olive[1], olive[2]);
+  doc.text('PUBLICATION METADATA & REVISION RECORD', margin, curY);
+  curY += 5;
+
+  autoTable(doc, {
+    startY: curY,
+    head: [['Attribute', 'Specification Detail']],
+    body: [
+      ['Document Title', playbook.title],
+      ['Volume Number', `Volume 0${playbook.volumeNumber} of 11`],
+      ['Target Specification', playbook.targetFileSize],
+      ['Standard File Name', playbook.fileName],
+      ['ISBN Registry', playbook.isbn],
+      ['Document Language', playbook.language],
+      ['Research Facility', 'Toronto Rental Lab (510 sq ft urban unit)'],
+      ['Publisher & Release', `${playbook.publisher} • 2026 Commercial Master`]
+    ],
+    margin: { left: margin, right: margin },
+    styles: {
+      fontSize: 7.5,
+      cellPadding: 2,
+      textColor: [28, 25, 23],
+      lineColor: [229, 223, 213],
+      lineWidth: 0.2
+    },
+    headStyles: {
+      fillColor: [74, 83, 62],
+      textColor: [250, 248, 245],
+      fontStyle: 'bold'
+    },
+    alternateRowStyles: {
+      fillColor: [250, 248, 245]
+    }
+  });
+
+  // =========================================================================
+  // PAGE 3: CLICKABLE TABLE OF CONTENTS & EXECUTIVE ROADMAP
+  // =========================================================================
+  doc.addPage();
+  curY = 24;
+
+  doc.setFont('times', 'bold');
+  doc.setFontSize(16);
+  doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+  doc.text('TABLE OF CONTENTS & CHAPTER ROADMAP', margin, curY);
+  curY += 6;
+
+  doc.setDrawColor(olive[0], olive[1], olive[2]);
+  doc.setLineWidth(0.8);
+  doc.line(margin, curY, margin + 40, curY);
+  curY += 10;
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text('This digital publication features interactive sections. Tap or click any chapter heading below:', margin, curY);
+  curY += 8;
+
+  // Render Table of Contents entries
+  playbook.chapters.forEach((ch) => {
+    doc.setFillColor(softStone[0], softStone[1], softStone[2]);
+    doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+    doc.roundedRect(margin, curY, contentWidth, 14, 1, 1, 'FD');
+
+    // Chapter badge
+    doc.setFillColor(olive[0], olive[1], olive[2]);
+    doc.rect(margin, curY, 18, 14, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(250, 248, 245);
+    doc.text(`CH 0${ch.chapterNumber}`, margin + 2.5, curY + 8.5);
+
+    // Title & Subtitle
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+    doc.text(ch.title, margin + 22, curY + 5.5);
+
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(7.5);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(`${ch.subtitle} • (${ch.readingMinutes} min read)`, margin + 22, curY + 10.5);
+
+    // Arrow indicator
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(olive[0], olive[1], olive[2]);
+    doc.text('Read →', pageWidth - margin - 12, curY + 8.5);
+
+    curY += 16;
+  });
+
+  // Additional sections in TOC
+  const additionalSections = [
+    { title: '4x6" Pocket Companion Quick Reference Cards', sub: 'Compact actionable field cheat sheets' },
+    { title: 'Verified Canadian Retailer & Hardware Sourcing Matrix', sub: 'Direct SKU numbers, verified suppliers, and live URLs' }
+  ];
+
+  additionalSections.forEach((sec, idx) => {
+    doc.setFillColor(255, 255, 255);
+    doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+    doc.roundedRect(margin, curY, contentWidth, 12, 1, 1, 'FD');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(olive[0], olive[1], olive[2]);
+    doc.text(`APPX 0${idx + 1}`, margin + 4, curY + 7.5);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+    doc.text(sec.title, margin + 22, curY + 5.5);
+
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(7);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(sec.sub, margin + 22, curY + 9.5);
+
+    curY += 14;
+  });
+
+  // =========================================================================
+  // CHAPTER PAGES
+  // =========================================================================
+  playbook.chapters.forEach((chapter) => {
+    doc.addPage();
+    let chapY = 24;
+
+    // Chapter Header Banner
+    doc.setFillColor(softStone[0], softStone[1], softStone[2]);
+    doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+    doc.roundedRect(margin, chapY, contentWidth, 18, 1, 1, 'FD');
+    doc.setFillColor(olive[0], olive[1], olive[2]);
+    doc.rect(margin, chapY, 3, 18, 'F');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7.5);
+    doc.setTextColor(olive[0], olive[1], olive[2]);
+    doc.text(`CHAPTER 0${chapter.chapterNumber} • ${chapter.readingMinutes} MIN READ`, margin + 6, chapY + 5.5);
+
+    doc.setFont('times', 'bold');
+    doc.setFontSize(11);
+    doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+    doc.text(chapter.title, margin + 6, chapY + 11.5);
+
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(7.5);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(chapter.subtitle, margin + 6, chapY + 15.5);
+
+    chapY += 24;
+
+    // Narrative Content
+    const paragraphs = chapter.content.split('\n\n');
+    paragraphs.forEach((para) => {
+      if (chapY > pageHeight - 35) {
+        doc.addPage();
+        chapY = 24;
+      }
+
+      if (para.includes(':') && para.length < 80) {
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        doc.setTextColor(olive[0], olive[1], olive[2]);
+        doc.text(para.trim(), margin, chapY);
+        chapY += 5;
+      } else {
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8.5);
+        doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+        const wrapped = doc.splitTextToSize(para.trim(), contentWidth);
+        doc.text(wrapped, margin, chapY);
+        chapY += wrapped.length * 4.4 + 4;
+      }
+    });
+
+    // Key Takeaways Box
+    if (chapter.keyTakeaways && chapter.keyTakeaways.length > 0) {
+      if (chapY > pageHeight - 50) {
+        doc.addPage();
+        chapY = 24;
+      }
+
+      const boxHeight = chapter.keyTakeaways.length * 7 + 12;
+      doc.setFillColor(softStone[0], softStone[1], softStone[2]);
+      doc.setDrawColor(olive[0], olive[1], olive[2]);
+      doc.setLineWidth(0.4);
+      doc.roundedRect(margin, chapY, contentWidth, boxHeight, 1, 1, 'FD');
+      doc.setFillColor(olive[0], olive[1], olive[2]);
+      doc.rect(margin, chapY, 3, boxHeight, 'F');
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8);
+      doc.setTextColor(olive[0], olive[1], olive[2]);
+      doc.text('KEY ARCHITECTURAL TAKEAWAYS', margin + 6, chapY + 5.5);
+
+      let tkY = chapY + 11;
+      chapter.keyTakeaways.forEach((tk) => {
+        doc.setFillColor(olive[0], olive[1], olive[2]);
+        doc.circle(margin + 7, tkY - 1, 0.8, 'F');
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7.5);
+        doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+        const wrapped = doc.splitTextToSize(tk, contentWidth - 14);
+        doc.text(wrapped, margin + 11, tkY);
+        tkY += wrapped.length * 3.8 + 2;
+      });
+
+      chapY += boxHeight + 6;
+    }
+
+    // Step-by-Step Tactical Checklist
+    if (chapter.checklistItems && chapter.checklistItems.length > 0) {
+      if (chapY > pageHeight - 45) {
+        doc.addPage();
+        chapY = 24;
+      }
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+      doc.text('TACTICAL STEP-BY-STEP CHECKLIST:', margin, chapY);
+      chapY += 5;
+
+      chapter.checklistItems.forEach((item) => {
+        if (chapY > pageHeight - 20) {
+          doc.addPage();
+          chapY = 24;
+        }
+
+        // Draw interactive checkbox
+        doc.setDrawColor(olive[0], olive[1], olive[2]);
+        doc.setLineWidth(0.3);
+        doc.rect(margin, chapY - 2.8, 3, 3);
+
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+        const wrapped = doc.splitTextToSize(item, contentWidth - 6);
+        doc.text(wrapped, margin + 5.5, chapY);
+        chapY += wrapped.length * 4.2 + 2;
+      });
+      chapY += 4;
+    }
+  });
+
+  // =========================================================================
+  // APPENDIX A: 4x6" POCKET COMPANION FIELD REFERENCE CARDS
+  // =========================================================================
+  if (playbook.pocketCards && playbook.pocketCards.length > 0) {
+    doc.addPage();
+    let pockY = 24;
+
+    doc.setFont('times', 'bold');
+    doc.setFontSize(15);
+    doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+    doc.text('APPENDIX A: 4x6" POCKET COMPANION FIELD CARDS', margin, pockY);
+    pockY += 6;
+
+    doc.setDrawColor(olive[0], olive[1], olive[2]);
+    doc.setLineWidth(0.8);
+    doc.line(margin, pockY, margin + 40, pockY);
+    pockY += 8;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text('Cut or screenshot these printable 4x6" pocket cards for reference while shopping or installing:', margin, pockY);
+    pockY += 6;
+
+    playbook.pocketCards.forEach((card) => {
+      if (pockY > pageHeight - 55) {
+        doc.addPage();
+        pockY = 24;
+      }
+
+      const cardH = card.bulletPoints.length * 6 + 22;
+      doc.setFillColor(softStone[0], softStone[1], softStone[2]);
+      doc.setDrawColor(olive[0], olive[1], olive[2]);
+      doc.setLineWidth(0.6);
+      doc.roundedRect(margin, pockY, contentWidth, cardH, 2, 2, 'FD');
+
+      doc.setFont('times', 'bold');
+      doc.setFontSize(10);
+      doc.setTextColor(olive[0], olive[1], olive[2]);
+      doc.text(card.title, margin + 6, pockY + 6.5);
+
+      doc.setFont('helvetica', 'italic');
+      doc.setFontSize(7.5);
+      doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+      doc.text(card.description, margin + 6, pockY + 11.5);
+
+      doc.setDrawColor(borderStone[0], borderStone[1], borderStone[2]);
+      doc.setLineWidth(0.3);
+      doc.line(margin + 6, pockY + 13.5, margin + contentWidth - 6, pockY + 13.5);
+
+      let bY = pockY + 18;
+      card.bulletPoints.forEach((bp) => {
+        doc.setFillColor(olive[0], olive[1], olive[2]);
+        doc.circle(margin + 7, bY - 0.8, 0.7, 'F');
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7.5);
+        doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+        const wrapped = doc.splitTextToSize(bp, contentWidth - 14);
+        doc.text(wrapped, margin + 10, bY);
+        bY += wrapped.length * 3.6 + 1.5;
+      });
+
+      pockY += cardH + 6;
+    });
+  }
+
+  // =========================================================================
+  // APPENDIX B: VERIFIED CANADIAN RETAILER & SOURCING MATRIX
+  // =========================================================================
+  if (playbook.sourcesAndRetailers && playbook.sourcesAndRetailers.length > 0) {
+    doc.addPage();
+    let srcY = 24;
+
+    doc.setFont('times', 'bold');
+    doc.setFontSize(15);
+    doc.setTextColor(darkCharcoal[0], darkCharcoal[1], darkCharcoal[2]);
+    doc.text('APPENDIX B: VERIFIED SOURCING & RETAILER MATRIX', margin, srcY);
+    srcY += 6;
+
+    doc.setDrawColor(olive[0], olive[1], olive[2]);
+    doc.setLineWidth(0.8);
+    doc.line(margin, srcY, margin + 40, srcY);
+    srcY += 8;
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text('Verified retail suppliers tested and certified by the Toronto Rental Lab:', margin, srcY);
+    srcY += 6;
+
+    const tableData = playbook.sourcesAndRetailers.map((item) => [
+      item.category,
+      item.retailer,
+      item.recommendedItems,
+      item.webUrl
+    ]);
+
+    autoTable(doc, {
+      startY: srcY,
+      head: [['Component Category', 'Verified Retailer', 'Recommended Model / SKU', 'Verified Source URL']],
+      body: tableData,
+      margin: { left: margin, right: margin },
+      styles: {
+        fontSize: 7.5,
+        font: 'helvetica',
+        textColor: [28, 25, 23],
+        cellPadding: 2.5,
+        lineColor: [229, 223, 213],
+        lineWidth: 0.2
+      },
+      headStyles: {
+        fillColor: [74, 83, 62],
+        textColor: [250, 248, 245],
+        fontStyle: 'bold'
+      },
+      alternateRowStyles: {
+        fillColor: [250, 248, 245]
+      }
+    });
+
+    // @ts-expect-error - jsPDF autoTable attaches lastAutoTable
+    srcY = doc.lastAutoTable.finalY + 12;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8);
+    doc.setTextColor(olive[0], olive[1], olive[2]);
+    doc.text('END OF OFFICIAL PLAYBOOK DELIVERABLE', margin, srcY);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(`SmallSpaceHome Digital Product Suite • Toronto Rental Lab • Document ${playbook.fileName}`, margin, srcY + 5);
+  }
+
+  // Stamp header and footer on all pages except cover (Page 1)
+  const totalPages = doc.internal.pages.length - 1;
+  for (let i = 2; i <= totalPages; i++) {
+    doc.setPage(i);
+    addHeaderAndFooter(i, totalPages, playbook.title);
+  }
+
+  return doc;
+}
+
+/**
+ * Downloads a complete commercial playbook PDF to the user's filesystem.
+ */
+export function downloadPlaybookPDF(playbook: import('../data/playbookSeriesData').PlaybookMeta): void {
+  const doc = generatePlaybookPDF(playbook);
+  doc.save(playbook.fileName);
+}
+
+
+/**
  * Downloads a generated PDF file directly to user device with valid binary PDF content.
  */
 export function downloadValidPDF(

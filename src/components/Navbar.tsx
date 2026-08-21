@@ -10,17 +10,18 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab, onOpenSimulator }) => {
   const navItems: { id: TabId; label: string; number: string; icon: React.ElementType }[] = [
-    { id: 'deliverables-photography', label: 'Tactical Action Kits & Files (1–12)', number: '01', icon: ImageIcon },
-    { id: 'all-products', label: 'Store Posting Kits & Studio', number: '02', icon: Layers },
-    { id: 'first-product', label: '#1 Starter Kit: Zero-Damage Mounting', number: '03', icon: Sparkles },
-    { id: 'top-10', label: '12-Kit Catalog & Hacks', number: '04', icon: Home },
-    { id: 'audience', label: 'Audience & Problem Map', number: '05', icon: Compass },
-    { id: 'ecosystem', label: 'Ecosystem & Funnel Flow', number: '06', icon: Package },
-    { id: 'flagship', label: 'Master Kit Strategy', number: '07', icon: BookOpen },
-    { id: 'bundles', label: 'Bundles & Physical Merch', number: '08', icon: ShoppingBag },
-    { id: 'blog-funnel', label: 'Blog Funnel & CTAs', number: '09', icon: Calendar },
-    { id: 'store-architecture', label: 'Fourthwall Store Layout', number: '10', icon: DollarSign },
-    { id: 'roadmap', label: 'Launch Roadmap', number: '11', icon: ExternalLink },
+    { id: 'playbooks', label: '11 Digital Playbook Kits (Ebooks)', number: '01', icon: BookOpen },
+    { id: 'deliverables-photography', label: 'Tactical Action Kits & Files (1–12)', number: '02', icon: ImageIcon },
+    { id: 'all-products', label: 'Store Posting Kits & Studio', number: '03', icon: Layers },
+    { id: 'first-product', label: '#1 Starter Kit: Zero-Damage Mounting', number: '04', icon: Sparkles },
+    { id: 'top-10', label: '12-Kit Catalog & Hacks', number: '05', icon: Home },
+    { id: 'audience', label: 'Audience & Problem Map', number: '06', icon: Compass },
+    { id: 'ecosystem', label: 'Ecosystem & Funnel Flow', number: '07', icon: Package },
+    { id: 'flagship', label: 'Master Kit Strategy', number: '08', icon: BookOpen },
+    { id: 'bundles', label: 'Bundles & Physical Merch', number: '09', icon: ShoppingBag },
+    { id: 'blog-funnel', label: 'Blog Funnel & CTAs', number: '10', icon: Calendar },
+    { id: 'store-architecture', label: 'Fourthwall Store Layout', number: '11', icon: DollarSign },
+    { id: 'roadmap', label: 'Launch Roadmap', number: '12', icon: ExternalLink },
   ];
 
   return (
