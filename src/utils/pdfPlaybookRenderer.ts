@@ -789,8 +789,11 @@ export function renderPlaybookChapters(ctx: RenderContext) {
 
 /**
  * 5. 4x6" POCKET FIELD CARDS STANDALONE PDF RENDERER (PDF 02)
- * Generates exact 4x6" print-ready standalone cards with cut guides, large typography,
- * minimal text, 3-7 critical actions, essential measurements, and stop conditions.
+ * Generates FOUR independent, exact 4x6" (152.4 x 101.6 mm) print-ready field reference cards.
+ * Designed as rapid on-site field tools with architectural grid, high-contrast typography,
+ * 3-7 sequenced critical steps, key measurements, critical warnings, and prominent stop conditions.
+ *
+ * Brand Palette: Warm cream #FAFAF7, Warm dark ink #1C1917, Muted sage #8FAF8A, Muted tan #C4A882.
  */
 export function renderDedicated4x6PocketCardsPDF(
   doc: jsPDF,
@@ -799,218 +802,290 @@ export function renderDedicated4x6PocketCardsPDF(
 ) {
   const cardW = 152.4; // 6 inches in mm (landscape card)
   const cardH = 101.6; // 4 inches in mm
-  const cardMargin = 8;
+  const cardMargin = 6.5;
   const innerW = cardW - cardMargin * 2;
-  const { creamBg, softCharcoal, terracotta, sageGreen, amberRed, hairlineGrey, mutedText, sageLightBg, redLightBg } = PALETTE;
+  const innerH = cardH - cardMargin * 2;
 
-  const cardsData = [
-    {
-      num: '01',
-      type: 'SURFACE PREPARATION',
-      title: 'Substrate & 70% IPA Solvent Protocol',
-      purpose: 'Zero-failure adhesive bond activation without paint stripping',
-      specs: [
-        'Solvent: 70% Isopropyl Alcohol (IPA)',
-        'Evaporation: 5-minute flash dry',
-        'Min Temp: 15°C (59°F)',
-        'Max Humidity: 65% RH'
-      ],
-      steps: [
-        'Inspect substrate: Confirm painted drywall, sealed wood, glass, or glazed tile.',
-        'Wipe surface firmly with 70% IPA on a lint-free microfiber cloth.',
-        'Allow 5 full minutes for alcohol solvent to flash-dry completely.',
-        'Do NOT use Windex, dish soap, or household wipes (leaves silicone residue).',
-        'Test inconspicuous 1" spot if paint is unknown or matte builder-grade.'
-      ],
-      warning: 'Never apply to freshly painted walls (<30 days cure) or unsealed plaster.',
-      stopCondition: 'STOP if paint is chalky, peeling, or wall feels cold/damp to the touch.'
-    },
-    {
-      num: '02',
-      type: 'HARDWARE & INSTALLATION',
-      title: 'Load Physics & 40% Safety Buffer',
-      purpose: 'Safe working load calculations and permanent installation protocols',
-      specs: [
-        'CWL Formula: Rated * 0.60',
-        'Thumb Pressure: 30-60 sec',
-        'Adhesive Cure: 60 minutes',
-        'Eye-Level: 57" Centerline'
-      ],
-      steps: [
-        'Calculate Safe Load: CWL = Manufacturer Rated Capacity × 0.60.',
-        'Weigh object on kitchen scale — NEVER estimate payload by feel.',
-        'Apply hardware: Press firmly with thumbs for 30–60 seconds per point.',
-        'Hinge frame off wall; compress wall strips for 30 seconds each.',
-        'Wait full 60-minute curing window before hanging live payload.'
-      ],
-      warning: 'Adhesive alone is shear-rated only. Never hang heavy cantilevers >4" deep.',
-      stopCondition: 'STOP if object weight exceeds CWL. Upgrade to steel pin / monkey hook.'
-    },
-    {
-      num: '03',
-      type: 'REMOVAL & RESTORATION',
-      title: 'Zero-Damage Shearing & Spackle Touch-Up',
-      purpose: '100% deposit-safe removal and invisible surface restoration',
-      specs: [
-        'Stretch Ratio: 12-15 inches',
-        'Heat Setting: LOW (45 sec)',
-        'Floss Type: Unwaxed / Nylon',
-        'Spackle: Vinyl / DryDex'
-      ],
-      steps: [
-        'Pull Command tab straight down PARALLEL to the wall — NEVER pull outward.',
-        'Stretch slowly 12–15 inches until the adhesive releases cleanly.',
-        'If tab breaks or adhesive resists: Warm with hair dryer on LOW for 45 seconds.',
-        'Slide dental floss behind bracket in a gentle sawing motion to slice foam.',
-        'Roll remaining adhesive off wall with thumb; dab pinholes with spackle.'
-      ],
-      warning: 'Pulling outward at a 90° angle WILL delaminate and tear drywall paper.',
-      stopCondition: 'STOP if wall paper begins to lift. Re-apply low heat and use dental floss.'
-    },
-    {
-      num: '04',
-      type: 'HARDWARE STORE QUICK BUY',
-      title: 'Canadian Retailer Sourcing & Field Tool Kit',
-      purpose: 'Essential shopping list and stop-condition supplies for on-site execution',
-      specs: [
-        'Stores: Home Depot, CT, IKEA',
-        'Level: 9" Torpedo Magnetic',
-        'Spackle: DAP DryDex (Pink-to-White)',
-        'Alcohol: 70% USP Isopropyl'
-      ],
-      steps: [
-        '3M Command Large Picture Strips (Home Depot #1000674211 / CT #068-1204).',
-        'OOK 30 lb Hardened Steel Monkey Hooks (Home Depot CA / Amazon CA).',
-        '9-Inch Magnetic Torpedo Spirit Level + Soft 2B Mechanical Pencil.',
-        '70% USP Isopropyl Alcohol (500ml) + 3-pack Microfiber Cleaning Cloths.',
-        'DAP DryDex Spackling Compound (237ml) + 2" Flexible Plastic Putty Knife.'
-      ],
-      warning: 'Never buy 99% alcohol (dries too fast to dissolve grease) or rub-in wipes.',
-      stopCondition: 'STOP if fasteners lack clear weight ratings on retail packaging.'
-    }
+  // Architectural Brand Palette
+  const creamBg: [number, number, number] = [250, 250, 247];       // #FAFAF7 Warm Cream
+  const darkInk: [number, number, number] = [28, 25, 23];          // #1C1917 Warm Dark Ink
+  const mutedSage: [number, number, number] = [143, 175, 138];     // #8FAF8A Muted Sage Primary Accent
+  const mutedTan: [number, number, number] = [196, 168, 130];      // #C4A882 Muted Tan Secondary Accent
+  const sageDark: [number, number, number] = [74, 83, 62];         // #4A533E Deep Forest/Sage
+  const tanDark: [number, number, number] = [163, 130, 92];        // #A3825C Deep Tan
+  const hairlineGrey: [number, number, number] = [229, 223, 213];  // #E5DFD5 Clean Border
+  const mutedText: [number, number, number] = [115, 108, 100];     // Soft Charcoal
+  const whiteBg: [number, number, number] = [255, 255, 255];
+  const cardLightBg: [number, number, number] = [253, 252, 250];
+  const stopBg: [number, number, number] = [253, 246, 244];         // Soft stop-condition tint
+  const stopBorder: [number, number, number] = [197, 68, 48];       // Urgent stop border
+
+  // Extract from volume-specific enrichment or fallback to standard 4 cards
+  const volumeCards = enrichment.pocketCards && enrichment.pocketCards.length === 4
+    ? enrichment.pocketCards
+    : [
+        {
+          cardNumber: '01',
+          type: 'SURFACE PREPARATION',
+          title: 'Substrate & 70% IPA Solvent Protocol',
+          purpose: 'Zero-failure adhesive bond activation without paint stripping',
+          measurementsOrSpecs: [
+            'Solvent: 70% Isopropyl Alcohol (IPA)',
+            'Flash Dry: 2-minute evaporation',
+            'Min Temp: 15°C (59°F) [A]',
+            'Max Humidity: <65% RH'
+          ],
+          criticalSteps: [
+            '1. INSPECT: Confirm painted drywall, sealed wood, glazed tile, or glass [B].',
+            '2. DEGREASE: Wipe surface firmly with 70% IPA on lint-free microfiber cloth [A].',
+            '3. FLASH DRY: Allow 2 full minutes for alcohol to completely evaporate [B].',
+            '4. ZERO RESIDUE: Never use Windex, dish soap, or wet wipes (leaves silicone film) [A].',
+            '5. SPOT TEST: Test inconspicuous 1" spot if paint is unknown or builder-grade matte [B].'
+          ],
+          warningCondition: 'Never apply adhesive strips to freshly painted walls (<30 days cure) or raw plaster [B].',
+          stopCondition: 'STOP if paint is chalky, peeling, powdery, or surface feels damp to the touch [B].'
+        },
+        {
+          cardNumber: '02',
+          type: 'HARDWARE SELECTION / INSTALL',
+          title: 'Load Physics & 40% Safety Buffer',
+          purpose: 'Safe working load calculations and permanent installation protocols',
+          measurementsOrSpecs: [
+            'CWL Formula: Rated × 0.60 [C]',
+            'Thumb Pressure: 30s per point [A]',
+            'Unweighted Cure: 60 minutes [A]',
+            'Gallery Centerline: 57" to floor [C]'
+          ],
+          criticalSteps: [
+            '1. WEIGH OBJECT: Weigh tare load on digital scale — never estimate by feel [B].',
+            '2. CALCULATE CWL: Conservative Working Load = Rated Capacity × 0.60 [C].',
+            '3. INITIAL PRESS: Align hardware; apply 30 seconds firm thumb pressure [A].',
+            '4. HINGE OFF: Disengage payload; press wall-mounted strips 30s each [A].',
+            '5. COLD-FLOW CURE: Wait full 60-minute unweighted polymer cure before hanging [A].'
+          ],
+          warningCondition: 'Adhesives are shear-rated only. Never mount forward cantilevers >3.5" deep [B].',
+          stopCondition: 'STOP if payload exceeds CWL. Upgrade immediately to mechanical 3M Claw or steel pin [B].'
+        },
+        {
+          cardNumber: '03',
+          type: 'REMOVAL & RESTORATION',
+          title: 'Zero-Damage Shearing & Spackle Touch-Up',
+          purpose: '100% deposit-safe removal and invisible surface restoration',
+          measurementsOrSpecs: [
+            'Pull Vector: 0° Parallel to wall [A]',
+            'Stretch Distance: 12–15 inches [A]',
+            'Thermal Heat: Medium / 45 sec [B]',
+            'Spackle: DAP Fast \'N Final [A]'
+          ],
+          criticalSteps: [
+            '1. UNLOAD FIRST: Remove 100% of payload items before touching hardware [B].',
+            '2. 0° PARALLEL PULL: Stretch tab straight down against wall — NEVER pull outward [A].',
+            '3. SLOW EXTENSION: Stretch steadily 12–15" until adhesive polymer releases [A].',
+            '4. THERMAL FLOSS BACKUP: If tab snaps, warm 45s with hair dryer; saw with dental floss [B].',
+            '5. RESTORE & DAB: Roll residue away with thumb; dab micro-pinholes with lightweight spackle [B].'
+          ],
+          warningCondition: 'Pulling outward at a 90° angle will delaminate and tear drywall paper [A].',
+          stopCondition: 'STOP if wall paper begins to lift or bubble. Re-apply gentle heat and floss [B].'
+        },
+        {
+          cardNumber: '04',
+          type: 'HARDWARE STORE CARD',
+          title: 'Canadian Retailer Sourcing & Tool Kit',
+          purpose: 'Essential shopping list, certified SKUs, and field tool reference',
+          measurementsOrSpecs: [
+            'Est. Tool Budget: $32–$48 CAD',
+            'Retailers: Home Depot, CT, IKEA',
+            'Spirit Level: 9" Magnetic Torpedo',
+            'Solvent: 70% USP Isopropyl Alcohol'
+          ],
+          criticalSteps: [
+            '• 3M Command Large Picture Hanging Strips (Home Depot #1000674211 / CT #068-1204).',
+            '• 3M Claw 25 lb Drywall Picture Hangers (Home Depot / Amazon CA).',
+            '• 9" Magnetic Torpedo Spirit Level + Soft 2B Mechanical Pencil.',
+            '• 70% USP Isopropyl Alcohol (500ml) + 3-pack Microfiber Cleaning Cloths.',
+            '• DAP Fast \'N Final Lightweight Spackling (237ml) + 2" Flexible Plastic Putty Knife.'
+          ],
+          warningCondition: 'Never buy 99% alcohol (evaporates too rapidly) or pre-moistened wipes with oils [B].',
+          stopCondition: 'STOP if fasteners lack clear, verified load ratings on original packaging [B].'
+        }
+      ];
+
+  const cardThemeMap = [
+    { num: '01', headerBg: mutedTan, headerText: darkInk, badgeBg: mutedTan, accent: tanDark },
+    { num: '02', headerBg: mutedSage, headerText: darkInk, badgeBg: mutedSage, accent: sageDark },
+    { num: '03', headerBg: sageDark, headerText: whiteBg, badgeBg: sageDark, accent: sageDark },
+    { num: '04', headerBg: mutedTan, headerText: darkInk, badgeBg: mutedTan, accent: tanDark }
   ];
 
-  cardsData.forEach((card, idx) => {
+  volumeCards.forEach((card, idx) => {
     if (idx > 0) {
       doc.addPage([cardW, cardH], 'landscape');
     }
 
-    // Card Background
+    const theme = cardThemeMap[idx] || cardThemeMap[0];
+
+    // 1. Fill 4x6" Warm Cream Background Canvas (#FAFAF7)
     doc.setFillColor(creamBg[0], creamBg[1], creamBg[2]);
     doc.rect(0, 0, cardW, cardH, 'F');
 
-    // Outer Border & Cut Guides
+    // 2. Architectural Outer Cut Guide & Print-Safe Margin
     doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-    doc.setLineWidth(0.4);
-    doc.rect(cardMargin, cardMargin, innerW, cardH - cardMargin * 2);
+    doc.setLineWidth(0.35);
+    doc.rect(cardMargin, cardMargin, innerW, innerH);
 
-    // Inner Card Container
-    doc.setFillColor(255, 255, 255);
-    doc.roundedRect(cardMargin + 1, cardMargin + 1, innerW - 2, cardH - cardMargin * 2 - 2, 1.5, 1.5, 'FD');
+    // Corner Crop / Cut Marks for Physical Printing
+    const cropLen = 3;
+    doc.setDrawColor(darkInk[0], darkInk[1], darkInk[2]);
+    doc.setLineWidth(0.2);
+    // Top-left
+    doc.line(cardMargin - 1.5, cardMargin, cardMargin - 1.5 - cropLen, cardMargin);
+    doc.line(cardMargin, cardMargin - 1.5, cardMargin, cardMargin - 1.5 - cropLen);
+    // Top-right
+    doc.line(cardMargin + innerW + 1.5, cardMargin, cardMargin + innerW + 1.5 + cropLen, cardMargin);
+    doc.line(cardMargin + innerW, cardMargin - 1.5, cardMargin + innerW, cardMargin - 1.5 - cropLen);
+    // Bottom-left
+    doc.line(cardMargin - 1.5, cardMargin + innerH, cardMargin - 1.5 - cropLen, cardMargin + innerH);
+    doc.line(cardMargin, cardMargin + innerH + 1.5, cardMargin, cardMargin + innerH + 1.5 + cropLen);
+    // Bottom-right
+    doc.line(cardMargin + innerW + 1.5, cardMargin + innerH, cardMargin + innerW + 1.5 + cropLen, cardMargin + innerH);
+    doc.line(cardMargin + innerW, cardMargin + innerH + 1.5, cardMargin + innerW, cardMargin + innerH + 1.5 + cropLen);
 
-    // Top Header Banner
-    doc.setFillColor(terracotta[0], terracotta[1], terracotta[2]);
-    doc.roundedRect(cardMargin + 1, cardMargin + 1, innerW - 2, 9, 1.5, 1.5, 'F');
-    doc.rect(cardMargin + 1, cardMargin + 6, innerW - 2, 4, 'F'); // square bottom of banner
+    // 3. Inner White Field Card Container
+    doc.setFillColor(cardLightBg[0], cardLightBg[1], cardLightBg[2]);
+    doc.roundedRect(cardMargin + 1, cardMargin + 1, innerW - 2, innerH - 2, 1, 1, 'FD');
 
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7);
-    doc.setTextColor(255, 255, 255);
-    doc.text(`SMALLSPACEHOME.CA • POCKET FIELD CARD ${card.num} OF 04`, cardMargin + 4, cardMargin + 6);
-
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(6.5);
-    doc.text(`✂ 4x6" FIELD TOOL • VOL 0${playbook.volumeNumber}`, cardW - cardMargin - 4, cardMargin + 6, { align: 'right' });
-
-    // Card Title & Category
-    let curY = cardMargin + 14;
-    doc.setFont('times', 'bold');
-    doc.setFontSize(10.5);
-    doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-    doc.text(card.title, cardMargin + 4, curY);
-
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.5);
-    doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
-    doc.text(card.type.toUpperCase(), cardW - cardMargin - 4, curY, { align: 'right' });
-
-    curY += 4;
-    doc.setFont('helvetica', 'italic');
-    doc.setFontSize(6.5);
-    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
-    doc.text(`Purpose: ${card.purpose}`, cardMargin + 4, curY);
-
-    curY += 3;
-    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-    doc.setLineWidth(0.3);
-    doc.line(cardMargin + 4, curY, cardW - cardMargin - 4, curY);
-
-    // 2-Column Section: Left (Critical Steps), Right (Specs Box)
-    curY += 4;
-    const leftW = innerW * 0.64;
-    const rightW = innerW * 0.31;
-    const rightX = cardMargin + 4 + leftW + 3;
-
-    // Left Column: Critical Action Steps (3-7 items)
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.8);
-    doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-    doc.text('CRITICAL ACTIONS (IN SEQUENCE):', cardMargin + 4, curY);
-
-    let stepY = curY + 4;
-    card.steps.forEach((step, sIdx) => {
-      doc.setFillColor(terracotta[0], terracotta[1], terracotta[2]);
-      doc.circle(cardMargin + 6, stepY - 0.7, 0.6, 'F');
-
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(6.5);
-      doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-      const wrapped = doc.splitTextToSize(step, leftW - 8);
-      doc.text(wrapped, cardMargin + 9, stepY);
-      stepY += wrapped.length * 3.1 + 1.1;
-    });
-
-    // Right Column: Essential Specs Box
-    doc.setFillColor(sageLightBg[0], sageLightBg[1], sageLightBg[2]);
-    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-    doc.setLineWidth(0.3);
-    doc.roundedRect(rightX, curY - 1, rightW, 36, 1, 1, 'FD');
-    doc.setFillColor(sageGreen[0], sageGreen[1], sageGreen[2]);
-    doc.rect(rightX, curY - 1, 2, 36, 'F');
+    // 4. Compact Architectural Header Bar
+    const headBarH = 6.2;
+    doc.setFillColor(theme.headerBg[0], theme.headerBg[1], theme.headerBg[2]);
+    doc.rect(cardMargin + 1, cardMargin + 1, innerW - 2, headBarH, 'F');
 
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.5);
-    doc.setTextColor(sageGreen[0], sageGreen[1], sageGreen[2]);
-    doc.text('KEY SPECS & BENCHMARKS', rightX + 4, curY + 3.5);
-
-    let specY = curY + 8;
-    card.specs.forEach(sp => {
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(6);
-      doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-      const wrapped = doc.splitTextToSize(`• ${sp}`, rightW - 6);
-      doc.text(wrapped, rightX + 4, specY);
-      specY += wrapped.length * 2.9 + 1;
-    });
-
-    // Bottom Warning / Stop Condition Callout Box
-    const warnY = cardH - cardMargin - 14;
-    doc.setFillColor(redLightBg[0], redLightBg[1], redLightBg[2]);
-    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-    doc.setLineWidth(0.3);
-    doc.roundedRect(cardMargin + 4, warnY, innerW - 8, 10, 1, 1, 'FD');
-    doc.setFillColor(amberRed[0], amberRed[1], amberRed[2]);
-    doc.rect(cardMargin + 4, warnY, 2.5, 10, 'F');
-
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6);
-    doc.setTextColor(amberRed[0], amberRed[1], amberRed[2]);
-    doc.text(`⚠ STOP CONDITION: ${card.stopCondition}`, cardMargin + 9, warnY + 3.8);
+    doc.setFontSize(6.2);
+    doc.setTextColor(theme.headerText[0], theme.headerText[1], theme.headerText[2]);
+    doc.text(`SMALLSPACEHOME.CA  •  POCKET FIELD CARD 0${idx + 1} OF 04`, cardMargin + 3.5, cardMargin + 4.5);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(5.8);
-    doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-    doc.text(`Warning: ${card.warning}`, cardMargin + 9, warnY + 7.5);
+    doc.text(`4×6" FIELD TOOL  •  VOL 0${playbook.volumeNumber}`, cardW - cardMargin - 3.5, cardMargin + 4.5, { align: 'right' });
+
+    // 5. Card Title, Type Badge & Operational Purpose
+    let curY = cardMargin + 10.5;
+
+    // Type Badge (Top Right)
+    const typeLabel = (card.type || `FIELD CARD 0${idx + 1}`).toUpperCase();
+    doc.setFillColor(theme.accent[0], theme.accent[1], theme.accent[2]);
+    doc.roundedRect(cardW - cardMargin - 45, curY - 3.2, 41.5, 4.2, 0.6, 0.6, 'F');
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(5.4);
+    doc.setTextColor(whiteBg[0], whiteBg[1], whiteBg[2]);
+    doc.text(typeLabel, cardW - cardMargin - 24.25, curY - 0.4, { align: 'center' });
+
+    // Title in Sophisticated Serif
+    doc.setFont('times', 'bold');
+    doc.setFontSize(9.5);
+    doc.setTextColor(darkInk[0], darkInk[1], darkInk[2]);
+    doc.text(`Card 0${idx + 1}: ${card.title}`, cardMargin + 3.5, curY);
+
+    curY += 3.8;
+    // Purpose Statement
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(6.0);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(`Operational Purpose: ${card.purpose}`, cardMargin + 3.5, curY);
+
+    curY += 2.8;
+    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+    doc.setLineWidth(0.25);
+    doc.line(cardMargin + 3.5, curY, cardW - cardMargin - 3.5, curY);
+
+    // 6. Two-Column Architectural Body: Left (Critical Steps), Right (Essential Specs & Metrics)
+    curY += 3.2;
+    const colGap = 3.5;
+    const leftW = innerW * 0.63;
+    const rightW = innerW - leftW - colGap - 7;
+    const rightX = cardMargin + 3.5 + leftW + colGap;
+
+    // LEFT COLUMN: Sequenced Critical Actions (3-7 items)
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.2);
+    doc.setTextColor(darkInk[0], darkInk[1], darkInk[2]);
+    doc.text('CRITICAL ACTION STEPS (IN SEQUENCE):', cardMargin + 3.5, curY);
+
+    let stepY = curY + 3.5;
+    const steps = card.criticalSteps || card.steps || [];
+    steps.forEach((step: string, sIdx: number) => {
+      // Step Number Bullet Indicator
+      doc.setFillColor(theme.accent[0], theme.accent[1], theme.accent[2]);
+      doc.circle(cardMargin + 5.5, stepY - 0.6, 0.6, 'F');
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(5.7);
+      doc.setTextColor(darkInk[0], darkInk[1], darkInk[2]);
+      const wrapped = doc.splitTextToSize(step, leftW - 6);
+      doc.text(wrapped, cardMargin + 7.8, stepY);
+      stepY += wrapped.length * 2.7 + 1.0;
+    });
+
+    // RIGHT COLUMN: Essential Specifications & Measurements Box
+    const specsBoxH = 43;
+    doc.setFillColor(whiteBg[0], whiteBg[1], whiteBg[2]);
+    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+    doc.setLineWidth(0.3);
+    doc.roundedRect(rightX, curY - 0.8, rightW, specsBoxH, 0.8, 0.8, 'FD');
+
+    // Right Box Header Accent
+    doc.setFillColor(theme.accent[0], theme.accent[1], theme.accent[2]);
+    doc.rect(rightX, curY - 0.8, 1.8, specsBoxH, 'F');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(5.8);
+    doc.setTextColor(theme.accent[0], theme.accent[1], theme.accent[2]);
+    doc.text('KEY BENCHMARKS & SPECS', rightX + 3.2, curY + 3.2);
+
+    let specY = curY + 7.0;
+    const specs = card.measurementsOrSpecs || card.specs || [];
+    specs.forEach((sp: string) => {
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(5.4);
+      doc.setTextColor(darkInk[0], darkInk[1], darkInk[2]);
+      const wrapped = doc.splitTextToSize(`• ${sp}`, rightW - 5.5);
+      doc.text(wrapped, rightX + 3.2, specY);
+      specY += wrapped.length * 2.6 + 1.1;
+    });
+
+    // 7. Prominent Warning & Stop Condition Callout Box (Bottom)
+    const warnH = 15;
+    const warnY = cardH - cardMargin - warnH - 5.5;
+
+    doc.setFillColor(stopBg[0], stopBg[1], stopBg[2]);
+    doc.setDrawColor(stopBorder[0], stopBorder[1], stopBorder[2]);
+    doc.setLineWidth(0.3);
+    doc.roundedRect(cardMargin + 3.5, warnY, innerW - 7, warnH, 0.8, 0.8, 'FD');
+
+    // Left Red Bar
+    doc.setFillColor(stopBorder[0], stopBorder[1], stopBorder[2]);
+    doc.rect(cardMargin + 3.5, warnY, 2.0, warnH, 'F');
+
+    // Stop Condition (Top Line)
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(5.7);
+    doc.setTextColor(stopBorder[0], stopBorder[1], stopBorder[2]);
+    const stopLines = doc.splitTextToSize(`⚠ STOP CONDITION: ${card.stopCondition}`, innerW - 12);
+    doc.text(stopLines, cardMargin + 7.5, warnY + 3.6);
+
+    // Warning Line
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(5.3);
+    doc.setTextColor(darkInk[0], darkInk[1], darkInk[2]);
+    const warnLines = doc.splitTextToSize(`Critical Warning: ${card.warningCondition || card.warning}`, innerW - 12);
+    doc.text(warnLines, cardMargin + 7.5, warnY + 8.5);
+
+    // 8. Discreet SmallSpaceHome Footer
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(4.8);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(`SMALLSPACEHOME.CA  •  VOL 0${playbook.volumeNumber}: ${playbook.title.toUpperCase()}  •  CARD 0${idx + 1}/04`, cardMargin + 3.5, cardH - cardMargin - 1.8);
+    doc.text('TESTED IN TORONTO RENTAL LAB  •  SINGLE-USER LICENSE', cardW - cardMargin - 3.5, cardH - cardMargin - 1.8, { align: 'right' });
   });
 }
 
