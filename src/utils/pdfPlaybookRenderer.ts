@@ -1016,8 +1016,9 @@ export function renderDedicated4x6PocketCardsPDF(
 
 /**
  * 6. QUICK-START EXECUTION CHECKLIST STANDALONE PDF RENDERER (PDF 03)
- * Generates a dedicated single-page (1-page A4) operational execution sheet
- * organized strictly into: BEFORE, DURING, AFTER, REMOVE.
+ * Generates an architectural single-page (1-page A4) operational execution sheet
+ * organized strictly into four chronological stages: BEFORE → DURING → AFTER → REMOVE.
+ * Brand Palette: Warm cream #FAFAF7, Warm dark ink #1C1917, Muted sage #8FAF8A, Muted tan #C4A882.
  */
 export function renderDedicatedQuickStartChecklistPDF(
   doc: jsPDF,
@@ -1026,164 +1027,266 @@ export function renderDedicatedQuickStartChecklistPDF(
 ) {
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
-  const margin = 14;
+  const margin = 11;
   const contentWidth = pageWidth - margin * 2;
-  const { creamBg, softCharcoal, terracotta, sageGreen, amberRed, hairlineGrey, mutedText, sageLightBg, redLightBg } = PALETTE;
 
-  // Background
+  // SmallSpaceHome Architectural Brand Palette
+  const creamBg: [number, number, number] = [250, 250, 247];        // #FAFAF7 Warm Cream
+  const darkInk: [number, number, number] = [28, 25, 23];           // #1C1917 Warm Dark Ink
+  const mutedSage: [number, number, number] = [143, 175, 138];      // #8FAF8A Muted Sage Primary
+  const mutedTan: [number, number, number] = [196, 168, 130];       // #C4A882 Muted Tan Secondary
+  const sageDark: [number, number, number] = [74, 83, 62];          // #4A533E Deep Forest/Sage
+  const tanDark: [number, number, number] = [163, 130, 92];         // #A3825C Deep Tan
+  const hairlineGrey: [number, number, number] = [229, 223, 213];   // #E5DFD5 Clean Border
+  const mutedText: [number, number, number] = [115, 108, 100];      // Soft Charcoal
+  const whiteBg: [number, number, number] = [255, 255, 255];
+  const cardLightBg: [number, number, number] = [253, 252, 250];
+
+  // 1. Paint Warm Cream Page Canvas (#FAFAF7)
   doc.setFillColor(creamBg[0], creamBg[1], creamBg[2]);
   doc.rect(0, 0, pageWidth, pageHeight, 'F');
 
-  // Decorative Border
+  // Architectural Outer Border
   doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-  doc.setLineWidth(0.6);
-  doc.rect(margin - 3, margin - 3, contentWidth + 6, pageHeight - margin * 2 + 6);
+  doc.setLineWidth(0.4);
+  doc.rect(margin - 2, margin - 2, contentWidth + 4, pageHeight - margin * 2 + 4);
 
-  // Top Header Banner
-  doc.setFillColor(terracotta[0], terracotta[1], terracotta[2]);
-  doc.rect(margin, margin, contentWidth, 12, 'F');
+  // 2. Compact Top Brand Header Bar
+  let curY = margin;
+  doc.setFillColor(darkInk[0], darkInk[1], darkInk[2]);
+  doc.rect(margin, curY, contentWidth, 6.5, 'F');
 
+  // Top Left Eyebrow
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(8);
-  doc.setTextColor(255, 255, 255);
-  doc.text('SMALLSPACEHOME.CA • QUICK-START EXECUTION CHECKLIST', margin + 4, margin + 7.5);
+  doc.setFontSize(6.8);
+  doc.setTextColor(creamBg[0], creamBg[1], creamBg[2]);
+  doc.text('SMALLSPACEHOME.CA  •  QUICK-START FIELD EXECUTION SHEET', margin + 3.5, curY + 4.5);
 
+  // Top Right Deliverable Tag
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7);
-  doc.text(`DELIVERABLE PDF 03 • VOL 0${playbook.volumeNumber}`, pageWidth - margin - 4, margin + 7.5, { align: 'right' });
+  doc.setFontSize(6.5);
+  doc.text(`DELIVERABLE PDF 03  •  VOL 0${playbook.volumeNumber}`, pageWidth - margin - 3.5, curY + 4.5, { align: 'right' });
 
-  // Title & Subtitle
-  let curY = margin + 18;
+  curY += 9.5;
+
+  // 3. Document Title in Sophisticated Serif & Subtitle
   doc.setFont('times', 'bold');
-  doc.setFontSize(14);
-  doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-  doc.text(`${playbook.title}: On-Site Field Execution Checklist`, margin, curY);
+  doc.setFontSize(12.5);
+  doc.setTextColor(darkInk[0], darkInk[1], darkInk[2]);
+  const volTitle = `${playbook.title}: On-Site Field Execution Checklist`;
+  doc.text(volTitle, margin, curY);
 
-  curY += 5;
-  doc.setFont('helvetica', 'italic');
-  doc.setFontSize(7.5);
+  curY += 4.2;
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(6.8);
   doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
-  doc.text('Single-Page Operational Guide — Execute every phase directly without reopening the Master Playbook.', margin, curY);
+  doc.text('Single-Page Operational Guide  •  Tested in 510 sq ft Toronto Rental Lab  •  Execute all steps directly on site', margin, curY);
 
-  curY += 4;
-  doc.setDrawColor(terracotta[0], terracotta[1], terracotta[2]);
-  doc.setLineWidth(0.6);
-  doc.line(margin, curY, margin + 40, curY);
+  curY += 4.5;
 
-  curY += 6;
-
-  // 4 Execution Stages (BEFORE, DURING, AFTER, REMOVE)
-  const checklistSections = [
-    {
-      stage: 'STAGE 1: BEFORE INSTALLATION',
-      color: terracotta,
-      bgColor: sageLightBg,
-      items: [
-        'Identify Substrate: Confirm drywall (1/2"), heritage plaster, tile, solid wood, or hollow door.',
-        'Confirm Object Weight: Weigh on kitchen scale. Apply Conservative Working Load: CWL = Rated × 0.60.',
-        'Confirm Hardware Compatibility: Verify shear vs. tension load direction and fastener depth.',
-        'Check Surface Condition: Inspect for peeling paint, grease, humidity >65%, or chalky residue.',
-        'Check Manufacturer Requirements: Verify temperature is at least 15°C (59°F); check package date.',
-        'Confirm Measurements: Calculate 57" gallery centerline: Eye_Level = 57" + (Height / 2) - Drop.',
-        'Gather Essential Tools: 70% IPA, microfiber cloth, 9" magnetic level, 2B pencil, tape measure.'
-      ]
-    },
-    {
-      stage: 'STAGE 2: DURING INSTALLATION',
-      color: sageGreen,
-      bgColor: [255, 255, 255] as [number, number, number],
-      items: [
-        'Prepare Surface: Wipe thoroughly with 70% Isopropyl Alcohol; wait 5 full minutes to flash-dry.',
-        'Measure and Mark: Pencil light level guide mark with 9" torpedo level (do NOT indent wall).',
-        'Install Selected Method: Align hardware precisely; apply 30–60s firm thumb compression.',
-        'Verify Placement: Check alignment with spirit level before finalizing adhesive contact.',
-        'Complete Required Curing Period: Wait full 60 minutes for adhesive bond to polymerize before loading.'
-      ]
-    },
-    {
-      stage: 'STAGE 3: AFTER INSTALLATION (VERIFICATION)',
-      color: terracotta,
-      bgColor: sageLightBg,
-      items: [
-        'Perform Verification: Gradually transfer live weight to fastener; test for initial creep or flex.',
-        'Inspect Installation: Check for strip gap, bracket lean, or paper bubbling at wall contact point.',
-        'Record Configuration: Log fastener model, installation date, and payload weight.',
-        'Photograph Installation: Take front and angled baseline photos for rental move-out records.',
-        'Schedule Re-Check: Visually inspect adhesive contact perimeter at 48 hours and 30 days.'
-      ]
-    },
-    {
-      stage: 'STAGE 4: REMOVAL & RESTORATION (MOVE-OUT SAFE)',
-      color: amberRed,
-      bgColor: redLightBg,
-      items: [
-        'Follow Removal Procedure: Stretch tab straight down PARALLEL to wall; stretch 12–15 inches.',
-        'Thermal / Floss Backup: If tab resists, warm 45s on LOW with hair dryer; slide dental floss behind.',
-        'Inspect Surface: Inspect substrate for paint peeling, adhesive residue, or drywall paper tears.',
-        'Restore Where Appropriate: Roll residue off with thumb; dab pinholes with DAP DryDex spackle.',
-        'Photograph Final Condition: Capture clear photo of restored clean wall for deposit return file.'
-      ]
-    }
+  // 4. Workflow Progression Ribbon (BEFORE → DURING → AFTER → REMOVE)
+  const ribbonH = 5.8;
+  const stageWidth = (contentWidth - 9) / 4;
+  const stageHeaders = [
+    { label: '1. BEFORE (AUDIT)', bg: mutedTan, textCol: darkInk },
+    { label: '2. DURING (INSTALL)', bg: mutedSage, textCol: darkInk },
+    { label: '3. AFTER (VERIFY)', bg: mutedTan, textCol: darkInk },
+    { label: '4. REMOVE (RESTORE)', bg: sageDark, textCol: whiteBg }
   ];
 
-  checklistSections.forEach((section) => {
-    const boxH = section.items.length * 4.6 + 9;
+  stageHeaders.forEach((stg, sIdx) => {
+    const stgX = margin + sIdx * (stageWidth + 3);
+    doc.setFillColor(stg.bg[0], stg.bg[1], stg.bg[2]);
+    doc.roundedRect(stgX, curY, stageWidth, ribbonH, 0.8, 0.8, 'F');
 
-    doc.setFillColor(section.bgColor[0], section.bgColor[1], section.bgColor[2]);
-    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-    doc.setLineWidth(0.3);
-    doc.roundedRect(margin, curY, contentWidth, boxH, 1, 1, 'FD');
-
-    doc.setFillColor(section.color[0], section.color[1], section.color[2]);
-    doc.rect(margin, curY, 2.5, boxH, 'F');
-
-    // Section Header
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7.2);
-    doc.setTextColor(section.color[0], section.color[1], section.color[2]);
-    doc.text(section.stage, margin + 5, curY + 5);
+    doc.setFontSize(6.2);
+    doc.setTextColor(stg.textCol[0], stg.textCol[1], stg.textCol[2]);
+    doc.text(stg.label, stgX + stageWidth / 2, curY + 3.8, { align: 'center' });
 
-    let itemY = curY + 9.5;
-    section.items.forEach((item) => {
-      // Checkbox
-      doc.setDrawColor(section.color[0], section.color[1], section.color[2]);
-      doc.setLineWidth(0.3);
-      doc.rect(margin + 5, itemY - 2.5, 2.6, 2.6);
-
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(6.8);
-      doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-      const wrapped = doc.splitTextToSize(item, contentWidth - 14);
-      doc.text(wrapped, margin + 9.5, itemY);
-      itemY += wrapped.length * 3.3 + 1.2;
-    });
-
-    curY += boxH + 3.5;
+    // Connecting arrow indicator between stages
+    if (sIdx < 3) {
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(6.5);
+      doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+      doc.text('→', stgX + stageWidth + 1.5, curY + 4, { align: 'center' });
+    }
   });
 
-  // Bottom Sign-off & Verification Strip
-  const signY = pageHeight - margin - 12;
-  doc.setFillColor(255, 255, 255);
-  doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-  doc.setLineWidth(0.3);
-  doc.roundedRect(margin, signY, contentWidth, 11, 1, 1, 'FD');
+  curY += ribbonH + 4;
+
+  // 5. Four Chronological Stages
+  const rawSections = enrichment.executionChecklist && enrichment.executionChecklist.length === 4
+    ? enrichment.executionChecklist
+    : [
+        {
+          stageName: 'BEFORE',
+          title: 'Stage 1: Pre-Execution Substrate Audit & Dimension Verification',
+          items: [
+            'Identify substrate via knuckle-tap: modern drywall (1/2") vs heritage plaster vs tile vs door [B].',
+            'Weigh gross object assembly (frame + glass + hardware) on digital kitchen scale [B].',
+            'Confirm hardware compatibility; apply Conservative Working Load: CWL = Rated * 0.60 [C].',
+            'Inspect paint surface: verify cured >30 days with zero chalking, peeling, or moisture [B].',
+            'Verify room temperature is at least 15°C (59°F) and relative humidity is under 65% RH [A].',
+            'Calculate exact hanging coordinate using 57" Gallery Eye-Level Centerline Formula [C].',
+            'Assemble field kit: 70% IPA, microfiber cloth, 9" torpedo level, pencil, tape measure [B].'
+          ]
+        },
+        {
+          stageName: 'DURING',
+          title: 'Stage 2: Surface Preparation & Precision Assembly Protocol',
+          items: [
+            'Degrease target contact points with 70% Isopropyl Alcohol USP; wait 2 minutes to flash-dry [A].',
+            'Mark exact alignment coordinates with 9" torpedo level pencil guide (do not score paint) [B].',
+            'Apply interlocking hardware firmly with 30 seconds continuous thumb pressure per contact point [A].',
+            'Disengage frame carefully; press remaining wall strips with thumbs for 30s each [A].',
+            'Allow mandatory 60 minutes unweighted cure for adhesive polymer cross-linking before loading [A].'
+          ]
+        },
+        {
+          stageName: 'AFTER',
+          title: 'Stage 3: Load Verification & Photographic Documentation Protocol',
+          items: [
+            'Re-engage payload until audible clicks confirm mechanical hook-and-loop interlock [A].',
+            'Perform physical verification: apply gentle downward 25% test load (2–3 lbs manual shear) [B].',
+            'Verify horizontal and vertical alignment with 9" magnetic spirit level [B].',
+            'Record hardware model, installation date, and gross payload weight in maintenance log [B].',
+            'Photograph completed installation in daylight; schedule 48-hour check and 30-day audit [B].'
+          ]
+        },
+        {
+          stageName: 'REMOVE',
+          title: 'Stage 4: Zero-Damage Removal & Surface Restoration Protocol',
+          items: [
+            'Remove 100% of payload items before touching mounting hardware [B].',
+            'Grip stretch-release tab; pull strictly PARALLEL to wall surface (0° downward); stretch 12–15" [A].',
+            'If tab breaks: warm 45s with hair dryer on Medium; saw downward with unflavored dental floss [B].',
+            'Roll microscopic adhesive residue away with thumb friction; clean with 70% IPA [B].',
+            'Dab any micro-pinholes with DAP Fast \'N Final lightweight spackle; wipe flush with damp sponge [B].'
+          ]
+        }
+      ];
+
+  const stageThemes = [
+    { name: 'BEFORE', badgeBg: mutedTan, badgeText: darkInk, borderCol: mutedTan, checkpointLabel: 'Substrate verified, CWL calculated, & tools gathered' },
+    { name: 'DURING', badgeBg: mutedSage, badgeText: darkInk, borderCol: mutedSage, checkpointLabel: '70% IPA prepped, 30s pressure applied, & 60m cure complete' },
+    { name: 'AFTER', badgeBg: mutedTan, badgeText: darkInk, borderCol: mutedTan, checkpointLabel: '2–3 lb shear tested, level verified, & daylight photo logged' },
+    { name: 'REMOVE', badgeBg: sageDark, badgeText: whiteBg, borderCol: sageDark, checkpointLabel: '0° parallel stretch executed, residue rolled, & surface inspected' }
+  ];
+
+  rawSections.forEach((section, idx) => {
+    const theme = stageThemes[idx] || stageThemes[0];
+    const items = section.items;
+    
+    // Calculate compact dynamic block height to ensure single-page fit
+    const lineSpacing = 3.6;
+    const itemsHeight = items.length * lineSpacing;
+    const blockH = itemsHeight + 11.5;
+
+    // Card background & architectural border
+    doc.setFillColor(cardLightBg[0], cardLightBg[1], cardLightBg[2]);
+    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+    doc.setLineWidth(0.3);
+    doc.roundedRect(margin, curY, contentWidth, blockH, 1, 1, 'FD');
+
+    // Left Colored Accent Border Strip
+    doc.setFillColor(theme.badgeBg[0], theme.badgeBg[1], theme.badgeBg[2]);
+    doc.rect(margin, curY, 2.2, blockH, 'F');
+
+    // Stage Header Eyebrow & Title
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.8);
+    doc.setTextColor(theme.borderCol === sageDark ? sageDark[0] : (theme.borderCol === mutedSage ? sageDark[0] : tanDark[0]), theme.borderCol === sageDark ? sageDark[1] : (theme.borderCol === mutedSage ? sageDark[1] : tanDark[1]), theme.borderCol === sageDark ? sageDark[2] : (theme.borderCol === mutedSage ? sageDark[2] : tanDark[2]));
+    doc.text(`STAGE 0${idx + 1}: ${section.stageName.toUpperCase()}  —  ${section.title.replace(/^Stage \d+:\s*/i, '').toUpperCase()}`, margin + 5, curY + 4.2);
+
+    let itemY = curY + 7.8;
+
+    items.forEach((itemText) => {
+      // Printable Checkbox Element: Square Box [ ]
+      doc.setDrawColor(darkInk[0], darkInk[1], darkInk[2]);
+      doc.setLineWidth(0.3);
+      doc.setFillColor(whiteBg[0], whiteBg[1], whiteBg[2]);
+      doc.rect(margin + 5, itemY - 2.3, 2.7, 2.7, 'FD');
+
+      // Checkpoint Item Text (High Readability Sans-Serif)
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(6.4);
+      doc.setTextColor(darkInk[0], darkInk[1], darkInk[2]);
+      const wrapped = doc.splitTextToSize(itemText, contentWidth - 14);
+      doc.text(wrapped, margin + 9.5, itemY);
+
+      itemY += lineSpacing;
+    });
+
+    // Discrete Stage Checkpoint Sign-Off Line
+    const cpY = curY + blockH - 2.8;
+    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+    doc.setLineWidth(0.2);
+    doc.line(margin + 5, cpY - 1.2, margin + contentWidth - 5, cpY - 1.2);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(5.5);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(`STAGE 0${idx + 1} CHECKPOINT: [  ] ${theme.checkpointLabel}`, margin + 5, cpY + 1.2);
+
+    doc.setFont('helvetica', 'normal');
+    doc.text('Initials: ________   Date: ____ / ____ / 2026', pageWidth - margin - 5, cpY + 1.2, { align: 'right' });
+
+    curY += blockH + 2.5;
+  });
+
+  // 6. Master On-Site Field Verification & Sign-Off Strip (Bottom)
+  const signHeight = 15;
+  const signY = pageHeight - margin - signHeight - 4;
+
+  doc.setFillColor(whiteBg[0], whiteBg[1], whiteBg[2]);
+  doc.setDrawColor(sageDark[0], sageDark[1], sageDark[2]);
+  doc.setLineWidth(0.4);
+  doc.roundedRect(margin, signY, contentWidth, signHeight, 1, 1, 'FD');
+
+  // Sign-Off Header
+  doc.setFillColor(sageDark[0], sageDark[1], sageDark[2]);
+  doc.rect(margin, signY, contentWidth, 4.2, 'F');
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(6.2);
-  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
-  doc.text('FIELD VERIFICATION SIGN-OFF:', margin + 4, signY + 4.5);
+  doc.setTextColor(creamBg[0], creamBg[1], creamBg[2]);
+  doc.text('MASTER ON-SITE FIELD VERIFICATION & DEPOSIT DEFENSE SIGN-OFF', margin + 3.5, signY + 3);
 
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(6);
-  doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-  doc.text('Room / Location: _______________________', margin + 45, signY + 4.5);
-  doc.text('Verified Live Payload: _______ lbs', margin + 105, signY + 4.5);
-  doc.text('Date Installed: ____ / ____ / 2026', pageWidth - margin - 45, signY + 4.5);
-
+  // Field Input Lines for Hand / Digital Marking
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(5.8);
-  doc.setTextColor(amberRed[0], amberRed[1], amberRed[2]);
-  doc.text('MANDATORY SAFETY RULE: Do NOT exceed CWL = Rated * 0.60. Tested in Toronto Rental Lab.', margin + 4, signY + 8.8);
+  doc.setTextColor(darkInk[0], darkInk[1], darkInk[2]);
+  doc.text('Room / Spatial Zone:', margin + 4, signY + 7.5);
+  doc.setFont('helvetica', 'normal');
+  doc.text('_____________________________', margin + 27, signY + 7.5);
+
+  doc.setFont('helvetica', 'bold');
+  doc.text('Measured Tare Weight:', margin + 74, signY + 7.5);
+  doc.setFont('helvetica', 'normal');
+  doc.text('_______ lbs (CWL Applied)', margin + 102, signY + 7.5);
+
+  doc.setFont('helvetica', 'bold');
+  doc.text('Date Installed:', pageWidth - margin - 45, signY + 7.5);
+  doc.setFont('helvetica', 'normal');
+  doc.text('____ / ____ / 2026', pageWidth - margin - 26, signY + 7.5);
+
+  doc.setFont('helvetica', 'bold');
+  doc.text('Substrate Verified:', margin + 4, signY + 12);
+  doc.setFont('helvetica', 'normal');
+  doc.text('[  ] 1/2" Drywall   [  ] Plaster   [  ] Ceramic Tile   [  ] Wood / Door   [  ] Masonry', margin + 26, signY + 12);
+
+  doc.setFont('helvetica', 'bold');
+  doc.text('Inspector / Tenant Signature:', margin + 114, signY + 12);
+  doc.setFont('helvetica', 'normal');
+  doc.text('________________________', margin + 148, signY + 12);
+
+  // 7. Discreet Brand Footer
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(5.6);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text(`SMALLSPACEHOME.CA  •  VOL 0${playbook.volumeNumber}: ${playbook.title.toUpperCase()}  •  QUICK-START EXECUTION SHEET  •  VERSION 1.0 (AUGUST 2026)`, margin, pageHeight - margin + 0.5);
+  doc.text('EXACTLY 1 PAGE OPERATIONAL REFERENCE  •  SINGLE-USER PERSONAL USE LICENSE', pageWidth - margin, pageHeight - margin + 0.5, { align: 'right' });
 }
 
 /**

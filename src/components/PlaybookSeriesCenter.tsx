@@ -6,6 +6,7 @@ import {
   downloadQuickStartChecklistPDF,
   downloadThreePDFSuite
 } from '../utils/pdfGenerator';
+import { getVolumeEnrichment } from '../utils/playbookEnrichmentData';
 import { 
   BookOpen, 
   Download, 
@@ -18,7 +19,11 @@ import {
   CheckSquare, 
   Clock, 
   ChevronRight,
-  Search
+  Search,
+  Printer,
+  ListOrdered,
+  Square,
+  PenTool
 } from 'lucide-react';
 
 interface PlaybookSeriesCenterProps {
@@ -29,9 +34,26 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
   const [selectedVolumeId, setSelectedVolumeId] = useState<string>(PLAYBOOK_SERIES[0].id);
   const [searchQuery, setSearchQuery] = useState('');
   const [isDownloading, setIsDownloading] = useState(false);
-  const [activeTab, setActiveTab] = useState<'chapters' | 'license' | 'pocketCards' | 'sourcing'>('chapters');
+  const [activeTab, setActiveTab] = useState<'checklist' | 'chapters' | 'license' | 'pocketCards' | 'sourcing'>('checklist');
+  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
+  const [stageInitials, setStageInitials] = useState<Record<string, string>>({});
+  const [locationZone, setLocationZone] = useState('Toronto Rental Lab — Primary Wall');
+  const [measuredPayload, setMeasuredPayload] = useState('8.4');
+  const [substrateType, setSubstrateType] = useState('1/2" Drywall');
 
   const activePlaybook: PlaybookMeta = PLAYBOOK_SERIES.find(p => p.id === selectedVolumeId) || PLAYBOOK_SERIES[0];
+  const enrichment = getVolumeEnrichment(activePlaybook.id, activePlaybook.volumeNumber, activePlaybook.title, activePlaybook.category);
+
+  const toggleCheck = (itemId: string) => {
+    setCheckedItems(prev => ({
+      ...prev,
+      [itemId]: !prev[itemId]
+    }));
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
 
   const filteredPlaybooks = PLAYBOOK_SERIES.filter(p => {
     const q = searchQuery.toLowerCase();
@@ -291,6 +313,18 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
                 {/* Navigation Tabs */}
                 <div className="flex items-center border-b border-[#E5DFD5] pt-2 gap-2 sm:gap-6 overflow-x-auto">
                   <button
+                    onClick={() => setActiveTab('checklist')}
+                    className={`pb-3 text-xs font-semibold uppercase tracking-wider transition-colors border-b-2 whitespace-nowrap cursor-pointer flex items-center gap-1.5 ${
+                      activeTab === 'checklist'
+                        ? 'border-[#4A533E] text-[#4A533E] font-bold'
+                        : 'border-transparent text-[#1C1917]/60 hover:text-[#1C1917]'
+                    }`}
+                  >
+                    <ListOrdered className="w-3.5 h-3.5" />
+                    Quick-Start Checklist (PDF 03)
+                  </button>
+
+                  <button
                     onClick={() => setActiveTab('chapters')}
                     className={`pb-3 text-xs font-semibold uppercase tracking-wider transition-colors border-b-2 whitespace-nowrap cursor-pointer ${
                       activeTab === 'chapters'
@@ -336,6 +370,224 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
                 </div>
               </div>
             </div>
+
+            {/* Tab 0: Quick-Start Execution Checklist (PDF 03) */}
+            {activeTab === 'checklist' && (
+              <div className="space-y-6">
+                {/* Action Bar */}
+                <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-4 border border-[#E5DFD5] rounded-xs">
+                  <div className="flex items-center gap-2 text-xs">
+                    <span className="bg-[#4A533E] text-[#FAFAF7] font-bold px-2 py-0.5 rounded-xs text-[10px] uppercase tracking-wider">
+                      PDF 03
+                    </span>
+                    <span className="font-serif font-bold text-[#1C1917]">
+                      On-Site Single-Page Field Execution Sheet
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handlePrint}
+                      className="px-3 py-1.5 bg-[#FAFAF7] border border-[#E5DFD5] text-[#1C1917] text-xs font-medium rounded-xs hover:bg-[#E5DFD5]/40 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <Printer className="w-3.5 h-3.5 text-[#4A533E]" />
+                      <span>Print Sheet</span>
+                    </button>
+                    <button
+                      onClick={handleDownloadPDF03}
+                      className="px-3 py-1.5 bg-[#4A533E] text-white text-xs font-semibold rounded-xs hover:bg-[#3D4533] transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Download PDF 03 (1-Page PDF)</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Printable 1-Page Field Execution Sheet Card */}
+                <div className="bg-[#FAFAF7] border-2 border-[#E5DFD5] p-6 sm:p-8 rounded-xs shadow-sm space-y-6 max-w-4xl mx-auto print:border-none print:p-0 print:bg-white">
+                  {/* Top Architectural Header */}
+                  <div className="border-b-2 border-[#1C1917] pb-4 space-y-2">
+                    <div className="flex items-center justify-between text-[11px] font-sans font-bold tracking-widest text-[#1C1917]/70 uppercase">
+                      <span>SmallSpaceHome.ca • Quick-Start Execution Checklist</span>
+                      <span>Deliverable PDF 03 • Vol 0{activePlaybook.volumeNumber}</span>
+                    </div>
+                    <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#1C1917]">
+                      {activePlaybook.title}: On-Site Field Execution Checklist
+                    </h2>
+                    <p className="text-xs text-[#1C1917]/70 font-sans">
+                      Single-Page Operational Guide • Tested in 510 sq ft Toronto Rental Lab • Execute all steps directly on site without reopening Master Playbook
+                    </p>
+                  </div>
+
+                  {/* 4-Stage Chronological Workflow Ribbon */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+                    <div className="bg-[#C4A882]/25 border border-[#C4A882] p-2 rounded-xs font-bold text-[#1C1917]">
+                      1. BEFORE (AUDIT)
+                    </div>
+                    <div className="bg-[#8FAF8A]/25 border border-[#8FAF8A] p-2 rounded-xs font-bold text-[#1C1917]">
+                      2. DURING (INSTALL)
+                    </div>
+                    <div className="bg-[#C4A882]/25 border border-[#C4A882] p-2 rounded-xs font-bold text-[#1C1917]">
+                      3. AFTER (VERIFY)
+                    </div>
+                    <div className="bg-[#4A533E] text-white p-2 rounded-xs font-bold">
+                      4. REMOVE (RESTORE)
+                    </div>
+                  </div>
+
+                  {/* 4 Chronological Execution Stages */}
+                  <div className="space-y-4">
+                    {enrichment.executionChecklist.map((section, sIdx) => {
+                      const stageAccents = [
+                        { border: 'border-l-[#C4A882]', badge: 'bg-[#C4A882]/30 text-[#1C1917]', name: 'STAGE 1: BEFORE' },
+                        { border: 'border-l-[#8FAF8A]', badge: 'bg-[#8FAF8A]/30 text-[#1C1917]', name: 'STAGE 2: DURING' },
+                        { border: 'border-l-[#C4A882]', badge: 'bg-[#C4A882]/30 text-[#1C1917]', name: 'STAGE 3: AFTER' },
+                        { border: 'border-l-[#4A533E]', badge: 'bg-[#4A533E] text-white', name: 'STAGE 4: REMOVE' },
+                      ];
+                      const accent = stageAccents[sIdx] || stageAccents[0];
+
+                      return (
+                        <div
+                          key={sIdx}
+                          className={`bg-white border border-[#E5DFD5] ${accent.border} border-l-4 p-4 rounded-xs shadow-xs space-y-3`}
+                        >
+                          <div className="flex items-center justify-between border-b border-[#E5DFD5]/60 pb-2">
+                            <div className="flex items-center gap-2">
+                              <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-xs ${accent.badge}`}>
+                                {accent.name}
+                              </span>
+                              <h3 className="font-serif font-bold text-sm text-[#1C1917]">
+                                {section.title.replace(/^Stage \d+:\s*/i, '')}
+                              </h3>
+                            </div>
+                            <span className="text-[10px] text-[#1C1917]/50 font-mono">
+                              Phase 0{sIdx + 1}/04
+                            </span>
+                          </div>
+
+                          <div className="space-y-2 pt-1">
+                            {section.items.map((item, iIdx) => {
+                              const itemId = `vol${activePlaybook.volumeNumber}-s${sIdx}-i${iIdx}`;
+                              const isChecked = !!checkedItems[itemId];
+
+                              return (
+                                <div
+                                  key={iIdx}
+                                  onClick={() => toggleCheck(itemId)}
+                                  className={`flex items-start gap-3 p-1.5 rounded-xs transition-colors cursor-pointer group ${
+                                    isChecked ? 'bg-[#8FAF8A]/15' : 'hover:bg-[#FAF8F5]'
+                                  }`}
+                                >
+                                  {/* Printable Real Square Checkbox Element */}
+                                  <div className="mt-0.5 w-4 h-4 border border-[#1C1917] rounded-none flex items-center justify-center bg-white shrink-0 group-hover:border-[#4A533E]">
+                                    {isChecked && (
+                                      <div className="w-2.5 h-2.5 bg-[#4A533E]" />
+                                    )}
+                                  </div>
+                                  <span className={`text-xs leading-relaxed ${
+                                    isChecked ? 'text-[#1C1917]/60 line-through' : 'text-[#1C1917]'
+                                  }`}>
+                                    {item}
+                                  </span>
+                                </div>
+                              );
+                            })}
+                          </div>
+
+                          {/* Discrete Stage Checkpoint Sign-Off Line */}
+                          <div className="pt-2 border-t border-[#E5DFD5] flex flex-wrap items-center justify-between text-[11px] text-[#1C1917]/70 gap-2">
+                            <label className="flex items-center gap-1.5 font-bold text-[#4A533E]">
+                              <input
+                                type="checkbox"
+                                checked={!!checkedItems[`stage-signoff-${sIdx}`]}
+                                onChange={() => toggleCheck(`stage-signoff-${sIdx}`)}
+                                className="w-3.5 h-3.5 accent-[#4A533E]"
+                              />
+                              Stage 0{sIdx + 1} Sign-Off Checkpoint Verified
+                            </label>
+                            <div className="flex items-center gap-2">
+                              <span>Initials:</span>
+                              <input
+                                type="text"
+                                placeholder="____"
+                                value={stageInitials[sIdx] || ''}
+                                onChange={(e) => setStageInitials(prev => ({ ...prev, [sIdx]: e.target.value }))}
+                                className="w-16 px-1.5 py-0.5 bg-white border border-[#E5DFD5] text-[11px] rounded-none focus:outline-none focus:border-[#4A533E]"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Master On-Site Field Verification & Sign-Off Strip */}
+                  <div className="bg-white border-2 border-[#4A533E] p-4 rounded-xs space-y-3">
+                    <div className="bg-[#4A533E] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 -mx-4 -mt-4 rounded-t-xs">
+                      Master On-Site Field Verification & Deposit Defense Sign-Off
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs pt-1">
+                      <div>
+                        <label className="block text-[10px] uppercase font-bold text-[#1C1917]/60">
+                          Room / Spatial Zone
+                        </label>
+                        <input
+                          type="text"
+                          value={locationZone}
+                          onChange={(e) => setLocationZone(e.target.value)}
+                          className="w-full mt-1 px-2 py-1 bg-[#FAF8F5] border border-[#E5DFD5] text-xs rounded-none focus:outline-none focus:border-[#4A533E]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-[10px] uppercase font-bold text-[#1C1917]/60">
+                          Measured Tare Payload (lbs)
+                        </label>
+                        <input
+                          type="text"
+                          value={measuredPayload}
+                          onChange={(e) => setMeasuredPayload(e.target.value)}
+                          className="w-full mt-1 px-2 py-1 bg-[#FAF8F5] border border-[#E5DFD5] text-xs rounded-none focus:outline-none focus:border-[#4A533E]"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-[10px] uppercase font-bold text-[#1C1917]/60">
+                          Target Substrate
+                        </label>
+                        <select
+                          value={substrateType}
+                          onChange={(e) => setSubstrateType(e.target.value)}
+                          className="w-full mt-1 px-2 py-1 bg-[#FAF8F5] border border-[#E5DFD5] text-xs rounded-none focus:outline-none focus:border-[#4A533E]"
+                        >
+                          <option>1/2" Modern Drywall</option>
+                          <option>Heritage Lathe & Plaster</option>
+                          <option>Ceramic / Porcelain Tile</option>
+                          <option>Solid Wood / Cabinet Side</option>
+                          <option>Hollow Core Door</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="pt-2 border-t border-[#E5DFD5] flex flex-wrap items-center justify-between text-[11px] text-[#1C1917]/70 gap-2">
+                      <div className="flex items-center gap-2">
+                        <PenTool className="w-3.5 h-3.5 text-[#4A533E]" />
+                        <span>Inspector / Tenant Sign-Off: ____________________</span>
+                      </div>
+                      <span className="font-mono text-[10px]">
+                        Date: {new Date().toLocaleDateString('en-CA')}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Discreet Footer */}
+                  <div className="text-center text-[10px] text-[#1C1917]/50 pt-2 border-t border-[#E5DFD5] flex flex-wrap items-center justify-between">
+                    <span>SmallSpaceHome.ca • Field Execution Sheet • Vol 0{activePlaybook.volumeNumber}</span>
+                    <span>Single-Page Operational Reference • No Resale Allowed</span>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Tab 1: Chapters & Content Details */}
             {activeTab === 'chapters' && (
