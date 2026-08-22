@@ -739,79 +739,406 @@ export function renderPlaybookChapters(ctx: RenderContext) {
 }
 
 /**
- * 5. EXECUTION CHECKLIST (Standalone 4-Stage Workflow)
+ * 5. 4x6" POCKET FIELD CARDS STANDALONE PDF RENDERER (PDF 02)
+ * Generates exact 4x6" print-ready standalone cards with cut guides, large typography,
+ * minimal text, 3-7 critical actions, essential measurements, and stop conditions.
  */
-export function renderExecutionChecklist(ctx: RenderContext) {
-  const { doc, enrichment, pageHeight, margin, contentWidth } = ctx;
-  const { softCharcoal, terracotta, sageGreen, hairlineGrey, mutedText, sageLightBg } = PALETTE;
+export function renderDedicated4x6PocketCardsPDF(
+  doc: jsPDF,
+  playbook: PlaybookMeta,
+  enrichment: VolumeEnrichment
+) {
+  const cardW = 152.4; // 6 inches in mm (landscape card)
+  const cardH = 101.6; // 4 inches in mm
+  const cardMargin = 8;
+  const innerW = cardW - cardMargin * 2;
+  const { creamBg, softCharcoal, terracotta, sageGreen, amberRed, hairlineGrey, mutedText, sageLightBg, redLightBg } = PALETTE;
 
-  doc.addPage();
-  let chkY = 24;
+  const cardsData = [
+    {
+      num: '01',
+      type: 'SURFACE PREPARATION',
+      title: 'Substrate & 70% IPA Solvent Protocol',
+      purpose: 'Zero-failure adhesive bond activation without paint stripping',
+      specs: [
+        'Solvent: 70% Isopropyl Alcohol (IPA)',
+        'Evaporation: 5-minute flash dry',
+        'Min Temp: 15°C (59°F)',
+        'Max Humidity: 65% RH'
+      ],
+      steps: [
+        'Inspect substrate: Confirm painted drywall, sealed wood, glass, or glazed tile.',
+        'Wipe surface firmly with 70% IPA on a lint-free microfiber cloth.',
+        'Allow 5 full minutes for alcohol solvent to flash-dry completely.',
+        'Do NOT use Windex, dish soap, or household wipes (leaves silicone residue).',
+        'Test inconspicuous 1" spot if paint is unknown or matte builder-grade.'
+      ],
+      warning: 'Never apply to freshly painted walls (<30 days cure) or unsealed plaster.',
+      stopCondition: 'STOP if paint is chalky, peeling, or wall feels cold/damp to the touch.'
+    },
+    {
+      num: '02',
+      type: 'HARDWARE & INSTALLATION',
+      title: 'Load Physics & 40% Safety Buffer',
+      purpose: 'Safe working load calculations and permanent installation protocols',
+      specs: [
+        'CWL Formula: Rated * 0.60',
+        'Thumb Pressure: 30-60 sec',
+        'Adhesive Cure: 60 minutes',
+        'Eye-Level: 57" Centerline'
+      ],
+      steps: [
+        'Calculate Safe Load: CWL = Manufacturer Rated Capacity × 0.60.',
+        'Weigh object on kitchen scale — NEVER estimate payload by feel.',
+        'Apply hardware: Press firmly with thumbs for 30–60 seconds per point.',
+        'Hinge frame off wall; compress wall strips for 30 seconds each.',
+        'Wait full 60-minute curing window before hanging live payload.'
+      ],
+      warning: 'Adhesive alone is shear-rated only. Never hang heavy cantilevers >4" deep.',
+      stopCondition: 'STOP if object weight exceeds CWL. Upgrade to steel pin / monkey hook.'
+    },
+    {
+      num: '03',
+      type: 'REMOVAL & RESTORATION',
+      title: 'Zero-Damage Shearing & Spackle Touch-Up',
+      purpose: '100% deposit-safe removal and invisible surface restoration',
+      specs: [
+        'Stretch Ratio: 12-15 inches',
+        'Heat Setting: LOW (45 sec)',
+        'Floss Type: Unwaxed / Nylon',
+        'Spackle: Vinyl / DryDex'
+      ],
+      steps: [
+        'Pull Command tab straight down PARALLEL to the wall — NEVER pull outward.',
+        'Stretch slowly 12–15 inches until the adhesive releases cleanly.',
+        'If tab breaks or adhesive resists: Warm with hair dryer on LOW for 45 seconds.',
+        'Slide dental floss behind bracket in a gentle sawing motion to slice foam.',
+        'Roll remaining adhesive off wall with thumb; dab pinholes with spackle.'
+      ],
+      warning: 'Pulling outward at a 90° angle WILL delaminate and tear drywall paper.',
+      stopCondition: 'STOP if wall paper begins to lift. Re-apply low heat and use dental floss.'
+    },
+    {
+      num: '04',
+      type: 'HARDWARE STORE QUICK BUY',
+      title: 'Canadian Retailer Sourcing & Field Tool Kit',
+      purpose: 'Essential shopping list and stop-condition supplies for on-site execution',
+      specs: [
+        'Stores: Home Depot, CT, IKEA',
+        'Level: 9" Torpedo Magnetic',
+        'Spackle: DAP DryDex (Pink-to-White)',
+        'Alcohol: 70% USP Isopropyl'
+      ],
+      steps: [
+        '3M Command Large Picture Strips (Home Depot #1000674211 / CT #068-1204).',
+        'OOK 30 lb Hardened Steel Monkey Hooks (Home Depot CA / Amazon CA).',
+        '9-Inch Magnetic Torpedo Spirit Level + Soft 2B Mechanical Pencil.',
+        '70% USP Isopropyl Alcohol (500ml) + 3-pack Microfiber Cleaning Cloths.',
+        'DAP DryDex Spackling Compound (237ml) + 2" Flexible Plastic Putty Knife.'
+      ],
+      warning: 'Never buy 99% alcohol (dries too fast to dissolve grease) or rub-in wipes.',
+      stopCondition: 'STOP if fasteners lack clear weight ratings on retail packaging.'
+    }
+  ];
 
-  // Title
-  doc.setFont('times', 'bold');
-  doc.setFontSize(15);
-  doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-  doc.text('STAND-ALONE EXECUTION CHECKLIST: 4-STAGE WORKFLOW', margin, chkY);
-  chkY += 6;
-
-  doc.setDrawColor(terracotta[0], terracotta[1], terracotta[2]);
-  doc.setLineWidth(0.8);
-  doc.line(margin, chkY, margin + 40, chkY);
-  chkY += 7;
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
-  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
-  doc.text('A self-contained operational checklist — execute every stage on-site without reopening narrative chapters:', margin, chkY);
-  chkY += 6;
-
-  enrichment.executionChecklist.forEach(stage => {
-    if (chkY > pageHeight - 45) {
-      doc.addPage();
-      chkY = 24;
+  cardsData.forEach((card, idx) => {
+    if (idx > 0) {
+      doc.addPage([cardW, cardH], 'landscape');
     }
 
-    // Stage header box
+    // Card Background
+    doc.setFillColor(creamBg[0], creamBg[1], creamBg[2]);
+    doc.rect(0, 0, cardW, cardH, 'F');
+
+    // Outer Border & Cut Guides
+    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+    doc.setLineWidth(0.4);
+    doc.rect(cardMargin, cardMargin, innerW, cardH - cardMargin * 2);
+
+    // Inner Card Container
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(cardMargin + 1, cardMargin + 1, innerW - 2, cardH - cardMargin * 2 - 2, 1.5, 1.5, 'FD');
+
+    // Top Header Banner
+    doc.setFillColor(terracotta[0], terracotta[1], terracotta[2]);
+    doc.roundedRect(cardMargin + 1, cardMargin + 1, innerW - 2, 9, 1.5, 1.5, 'F');
+    doc.rect(cardMargin + 1, cardMargin + 6, innerW - 2, 4, 'F'); // square bottom of banner
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7);
+    doc.setTextColor(255, 255, 255);
+    doc.text(`SMALLSPACEHOME.CA • POCKET FIELD CARD ${card.num} OF 04`, cardMargin + 4, cardMargin + 6);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(6.5);
+    doc.text(`✂ 4x6" FIELD TOOL • VOL 0${playbook.volumeNumber}`, cardW - cardMargin - 4, cardMargin + 6, { align: 'right' });
+
+    // Card Title & Category
+    let curY = cardMargin + 14;
+    doc.setFont('times', 'bold');
+    doc.setFontSize(10.5);
+    doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
+    doc.text(card.title, cardMargin + 4, curY);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
+    doc.text(card.type.toUpperCase(), cardW - cardMargin - 4, curY, { align: 'right' });
+
+    curY += 4;
+    doc.setFont('helvetica', 'italic');
+    doc.setFontSize(6.5);
+    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+    doc.text(`Purpose: ${card.purpose}`, cardMargin + 4, curY);
+
+    curY += 3;
+    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+    doc.setLineWidth(0.3);
+    doc.line(cardMargin + 4, curY, cardW - cardMargin - 4, curY);
+
+    // 2-Column Section: Left (Critical Steps), Right (Specs Box)
+    curY += 4;
+    const leftW = innerW * 0.64;
+    const rightW = innerW * 0.31;
+    const rightX = cardMargin + 4 + leftW + 3;
+
+    // Left Column: Critical Action Steps (3-7 items)
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.8);
+    doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
+    doc.text('CRITICAL ACTIONS (IN SEQUENCE):', cardMargin + 4, curY);
+
+    let stepY = curY + 4;
+    card.steps.forEach((step, sIdx) => {
+      doc.setFillColor(terracotta[0], terracotta[1], terracotta[2]);
+      doc.circle(cardMargin + 6, stepY - 0.7, 0.6, 'F');
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(6.5);
+      doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
+      const wrapped = doc.splitTextToSize(step, leftW - 8);
+      doc.text(wrapped, cardMargin + 9, stepY);
+      stepY += wrapped.length * 3.1 + 1.1;
+    });
+
+    // Right Column: Essential Specs Box
     doc.setFillColor(sageLightBg[0], sageLightBg[1], sageLightBg[2]);
     doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
     doc.setLineWidth(0.3);
-    doc.roundedRect(margin, chkY, contentWidth, 7, 1, 1, 'FD');
-    doc.setFillColor(terracotta[0], terracotta[1], terracotta[2]);
-    doc.rect(margin, chkY, 3, 7, 'F');
+    doc.roundedRect(rightX, curY - 1, rightW, 36, 1, 1, 'FD');
+    doc.setFillColor(sageGreen[0], sageGreen[1], sageGreen[2]);
+    doc.rect(rightX, curY - 1, 2, 36, 'F');
 
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7.5);
-    doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
-    doc.text(stage.title.toUpperCase(), margin + 6, chkY + 5);
+    doc.setFontSize(6.5);
+    doc.setTextColor(sageGreen[0], sageGreen[1], sageGreen[2]);
+    doc.text('KEY SPECS & BENCHMARKS', rightX + 4, curY + 3.5);
 
-    chkY += 10;
-
-    stage.items.forEach(item => {
-      if (chkY > pageHeight - 16) {
-        doc.addPage();
-        chkY = 24;
-      }
-
-      // Checkbox
-      doc.setDrawColor(sageGreen[0], sageGreen[1], sageGreen[2]);
-      doc.setLineWidth(0.3);
-      doc.rect(margin, chkY - 2.8, 3, 3);
-
+    let specY = curY + 8;
+    card.specs.forEach(sp => {
       doc.setFont('helvetica', 'normal');
-      doc.setFontSize(7.5);
+      doc.setFontSize(6);
       doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-      const wrapped = doc.splitTextToSize(item, contentWidth - 6);
-      doc.text(wrapped, margin + 6, chkY);
-      chkY += wrapped.length * 3.8 + 2;
+      const wrapped = doc.splitTextToSize(`• ${sp}`, rightW - 6);
+      doc.text(wrapped, rightX + 4, specY);
+      specY += wrapped.length * 2.9 + 1;
     });
 
-    chkY += 4;
+    // Bottom Warning / Stop Condition Callout Box
+    const warnY = cardH - cardMargin - 14;
+    doc.setFillColor(redLightBg[0], redLightBg[1], redLightBg[2]);
+    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+    doc.setLineWidth(0.3);
+    doc.roundedRect(cardMargin + 4, warnY, innerW - 8, 10, 1, 1, 'FD');
+    doc.setFillColor(amberRed[0], amberRed[1], amberRed[2]);
+    doc.rect(cardMargin + 4, warnY, 2.5, 10, 'F');
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6);
+    doc.setTextColor(amberRed[0], amberRed[1], amberRed[2]);
+    doc.text(`⚠ STOP CONDITION: ${card.stopCondition}`, cardMargin + 9, warnY + 3.8);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(5.8);
+    doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
+    doc.text(`Warning: ${card.warning}`, cardMargin + 9, warnY + 7.5);
   });
 }
 
 /**
- * 6. APPENDIX (Hardware Specs, Formulas, 5-Column Troubleshooting Matrix & Retailer Sourcing)
+ * 6. QUICK-START EXECUTION CHECKLIST STANDALONE PDF RENDERER (PDF 03)
+ * Generates a dedicated single-page (1-page A4) operational execution sheet
+ * organized strictly into: BEFORE, DURING, AFTER, REMOVE.
+ */
+export function renderDedicatedQuickStartChecklistPDF(
+  doc: jsPDF,
+  playbook: PlaybookMeta,
+  enrichment: VolumeEnrichment
+) {
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 14;
+  const contentWidth = pageWidth - margin * 2;
+  const { creamBg, softCharcoal, terracotta, sageGreen, amberRed, hairlineGrey, mutedText, sageLightBg, redLightBg } = PALETTE;
+
+  // Background
+  doc.setFillColor(creamBg[0], creamBg[1], creamBg[2]);
+  doc.rect(0, 0, pageWidth, pageHeight, 'F');
+
+  // Decorative Border
+  doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+  doc.setLineWidth(0.6);
+  doc.rect(margin - 3, margin - 3, contentWidth + 6, pageHeight - margin * 2 + 6);
+
+  // Top Header Banner
+  doc.setFillColor(terracotta[0], terracotta[1], terracotta[2]);
+  doc.rect(margin, margin, contentWidth, 12, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8);
+  doc.setTextColor(255, 255, 255);
+  doc.text('SMALLSPACEHOME.CA • QUICK-START EXECUTION CHECKLIST', margin + 4, margin + 7.5);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.text(`DELIVERABLE PDF 03 • VOL 0${playbook.volumeNumber}`, pageWidth - margin - 4, margin + 7.5, { align: 'right' });
+
+  // Title & Subtitle
+  let curY = margin + 18;
+  doc.setFont('times', 'bold');
+  doc.setFontSize(14);
+  doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
+  doc.text(`${playbook.title}: On-Site Field Execution Checklist`, margin, curY);
+
+  curY += 5;
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(7.5);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text('Single-Page Operational Guide — Execute every phase directly without reopening the Master Playbook.', margin, curY);
+
+  curY += 4;
+  doc.setDrawColor(terracotta[0], terracotta[1], terracotta[2]);
+  doc.setLineWidth(0.6);
+  doc.line(margin, curY, margin + 40, curY);
+
+  curY += 6;
+
+  // 4 Execution Stages (BEFORE, DURING, AFTER, REMOVE)
+  const checklistSections = [
+    {
+      stage: 'STAGE 1: BEFORE INSTALLATION',
+      color: terracotta,
+      bgColor: sageLightBg,
+      items: [
+        'Identify Substrate: Confirm drywall (1/2"), heritage plaster, tile, solid wood, or hollow door.',
+        'Confirm Object Weight: Weigh on kitchen scale. Apply Conservative Working Load: CWL = Rated × 0.60.',
+        'Confirm Hardware Compatibility: Verify shear vs. tension load direction and fastener depth.',
+        'Check Surface Condition: Inspect for peeling paint, grease, humidity >65%, or chalky residue.',
+        'Check Manufacturer Requirements: Verify temperature is at least 15°C (59°F); check package date.',
+        'Confirm Measurements: Calculate 57" gallery centerline: Eye_Level = 57" + (Height / 2) - Drop.',
+        'Gather Essential Tools: 70% IPA, microfiber cloth, 9" magnetic level, 2B pencil, tape measure.'
+      ]
+    },
+    {
+      stage: 'STAGE 2: DURING INSTALLATION',
+      color: sageGreen,
+      bgColor: [255, 255, 255] as [number, number, number],
+      items: [
+        'Prepare Surface: Wipe thoroughly with 70% Isopropyl Alcohol; wait 5 full minutes to flash-dry.',
+        'Measure and Mark: Pencil light level guide mark with 9" torpedo level (do NOT indent wall).',
+        'Install Selected Method: Align hardware precisely; apply 30–60s firm thumb compression.',
+        'Verify Placement: Check alignment with spirit level before finalizing adhesive contact.',
+        'Complete Required Curing Period: Wait full 60 minutes for adhesive bond to polymerize before loading.'
+      ]
+    },
+    {
+      stage: 'STAGE 3: AFTER INSTALLATION (VERIFICATION)',
+      color: terracotta,
+      bgColor: sageLightBg,
+      items: [
+        'Perform Verification: Gradually transfer live weight to fastener; test for initial creep or flex.',
+        'Inspect Installation: Check for strip gap, bracket lean, or paper bubbling at wall contact point.',
+        'Record Configuration: Log fastener model, installation date, and payload weight.',
+        'Photograph Installation: Take front and angled baseline photos for rental move-out records.',
+        'Schedule Re-Check: Visually inspect adhesive contact perimeter at 48 hours and 30 days.'
+      ]
+    },
+    {
+      stage: 'STAGE 4: REMOVAL & RESTORATION (MOVE-OUT SAFE)',
+      color: amberRed,
+      bgColor: redLightBg,
+      items: [
+        'Follow Removal Procedure: Stretch tab straight down PARALLEL to wall; stretch 12–15 inches.',
+        'Thermal / Floss Backup: If tab resists, warm 45s on LOW with hair dryer; slide dental floss behind.',
+        'Inspect Surface: Inspect substrate for paint peeling, adhesive residue, or drywall paper tears.',
+        'Restore Where Appropriate: Roll residue off with thumb; dab pinholes with DAP DryDex spackle.',
+        'Photograph Final Condition: Capture clear photo of restored clean wall for deposit return file.'
+      ]
+    }
+  ];
+
+  checklistSections.forEach((section) => {
+    const boxH = section.items.length * 4.6 + 9;
+
+    doc.setFillColor(section.bgColor[0], section.bgColor[1], section.bgColor[2]);
+    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+    doc.setLineWidth(0.3);
+    doc.roundedRect(margin, curY, contentWidth, boxH, 1, 1, 'FD');
+
+    doc.setFillColor(section.color[0], section.color[1], section.color[2]);
+    doc.rect(margin, curY, 2.5, boxH, 'F');
+
+    // Section Header
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7.2);
+    doc.setTextColor(section.color[0], section.color[1], section.color[2]);
+    doc.text(section.stage, margin + 5, curY + 5);
+
+    let itemY = curY + 9.5;
+    section.items.forEach((item) => {
+      // Checkbox
+      doc.setDrawColor(section.color[0], section.color[1], section.color[2]);
+      doc.setLineWidth(0.3);
+      doc.rect(margin + 5, itemY - 2.5, 2.6, 2.6);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(6.8);
+      doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
+      const wrapped = doc.splitTextToSize(item, contentWidth - 14);
+      doc.text(wrapped, margin + 9.5, itemY);
+      itemY += wrapped.length * 3.3 + 1.2;
+    });
+
+    curY += boxH + 3.5;
+  });
+
+  // Bottom Sign-off & Verification Strip
+  const signY = pageHeight - margin - 12;
+  doc.setFillColor(255, 255, 255);
+  doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
+  doc.setLineWidth(0.3);
+  doc.roundedRect(margin, signY, contentWidth, 11, 1, 1, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(6.2);
+  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+  doc.text('FIELD VERIFICATION SIGN-OFF:', margin + 4, signY + 4.5);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(6);
+  doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
+  doc.text('Room / Location: _______________________', margin + 45, signY + 4.5);
+  doc.text('Verified Live Payload: _______ lbs', margin + 105, signY + 4.5);
+  doc.text('Date Installed: ____ / ____ / 2026', pageWidth - margin - 45, signY + 4.5);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(5.8);
+  doc.setTextColor(amberRed[0], amberRed[1], amberRed[2]);
+  doc.text('MANDATORY SAFETY RULE: Do NOT exceed CWL = Rated * 0.60. Tested in Toronto Rental Lab.', margin + 4, signY + 8.8);
+}
+
+/**
+ * 7. APPENDIX (5-Column Troubleshooting Matrix & Verified Retailer Sourcing)
  */
 export function renderAppendix(ctx: RenderContext) {
   const { doc, playbook, enrichment, margin } = ctx;
@@ -927,95 +1254,12 @@ export function renderAppendix(ctx: RenderContext) {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(8);
     doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
-    doc.text('END OF OFFICIAL TECHNICAL PLAYBOOK DELIVERABLE', margin, srcY);
+    doc.text('END OF PDF 01: OFFICIAL MASTER FIELD PLAYBOOK', margin, srcY);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
-    doc.text(`SmallSpaceHome Digital Product Suite • Toronto Rental Lab • Document ${playbook.fileName}`, margin, srcY + 5);
+    doc.text(`SmallSpaceHome Digital Product Suite • Toronto Rental Lab • Delivered as 3 Standalone PDFs`, margin, srcY + 5);
   }
 }
 
-/**
- * 7. 4x6" POCKET FIELD CARDS (4 Standalone Field Tools)
- */
-export function render4x6PocketCards(ctx: RenderContext) {
-  const { doc, enrichment, pageHeight, pageWidth, margin, contentWidth } = ctx;
-  const { softCharcoal, terracotta, amberRed, hairlineGrey, mutedText } = PALETTE;
-
-  doc.addPage();
-  let pockY = 24;
-
-  doc.setFont('times', 'bold');
-  doc.setFontSize(15);
-  doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-  doc.text('APPENDIX C: 4x6" POCKET COMPANION FIELD CARDS', margin, pockY);
-  pockY += 6;
-
-  doc.setDrawColor(terracotta[0], terracotta[1], terracotta[2]);
-  doc.setLineWidth(0.8);
-  doc.line(margin, pockY, margin + 40, pockY);
-  pockY += 8;
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
-  doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
-  doc.text('Print, screenshot, or cut these 4x6" field cards for instant reference while shopping or installing on-site:', margin, pockY);
-  pockY += 6;
-
-  enrichment.pocketCards.forEach((card) => {
-    if (pockY > pageHeight - 65) {
-      doc.addPage();
-      pockY = 24;
-    }
-
-    const cardH = card.criticalSteps.length * 4.2 + 30;
-    doc.setFillColor(255, 255, 255);
-    doc.setDrawColor(terracotta[0], terracotta[1], terracotta[2]);
-    doc.setLineWidth(0.6);
-    doc.roundedRect(margin, pockY, contentWidth, cardH, 2, 2, 'FD');
-
-    // Scissor Cut Guide
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.5);
-    doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
-    doc.text(`✂ [PRINT & CUT 4x6" POCKET FIELD CARD ${card.cardNumber}]`, pageWidth - margin - 62, pockY + 6);
-
-    // Card Title
-    doc.setFont('times', 'bold');
-    doc.setFontSize(9.5);
-    doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
-    doc.text(`CARD ${card.cardNumber}: ${card.title.toUpperCase()}`, margin + 5, pockY + 6.5);
-
-    // Purpose
-    doc.setFont('helvetica', 'italic');
-    doc.setFontSize(7.2);
-    doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
-    doc.text(`Purpose: ${card.purpose}`, margin + 5, pockY + 11);
-
-    doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-    doc.setLineWidth(0.3);
-    doc.line(margin + 5, pockY + 13, margin + contentWidth - 5, pockY + 13);
-
-    // Critical Steps
-    let bY = pockY + 17;
-    card.criticalSteps.forEach((step) => {
-      doc.setFillColor(terracotta[0], terracotta[1], terracotta[2]);
-      doc.circle(margin + 6, bY - 0.8, 0.6, 'F');
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(7.2);
-      doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-      const wrapped = doc.splitTextToSize(step, contentWidth - 14);
-      doc.text(wrapped, margin + 9, bY);
-      bY += wrapped.length * 3.4 + 1.2;
-    });
-
-    // Warning / Stop condition footer inside card
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.8);
-    doc.setTextColor(amberRed[0], amberRed[1], amberRed[2]);
-    doc.text(`STOP CONDITION: ${card.stopCondition}`, margin + 5, pockY + cardH - 3.5);
-
-    pockY += cardH + 6;
-  });
-}

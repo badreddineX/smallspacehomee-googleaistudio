@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { PLAYBOOK_SERIES, PlaybookMeta } from '../data/playbookSeriesData';
 import { 
-  downloadPlaybookPDF, 
-  downloadMasterAllInOnePDF, 
-  downloadProductAllInOnePDF 
+  downloadMasterPlaybookPDF,
+  downloadPocketCardsPDF,
+  downloadQuickStartChecklistPDF,
+  downloadThreePDFSuite
 } from '../utils/pdfGenerator';
 import { 
   BookOpen, 
@@ -16,14 +17,8 @@ import {
   Sparkles, 
   CheckSquare, 
   Clock, 
-  Tag, 
   ChevronRight,
-  Printer,
-  Info,
-  BadgePercent,
-  Search,
-  FileSpreadsheet,
-  Scissors
+  Search
 } from 'lucide-react';
 
 interface PlaybookSeriesCenterProps {
@@ -34,7 +29,6 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
   const [selectedVolumeId, setSelectedVolumeId] = useState<string>(PLAYBOOK_SERIES[0].id);
   const [searchQuery, setSearchQuery] = useState('');
   const [isDownloading, setIsDownloading] = useState(false);
-  const [isDownloadingMaster, setIsDownloadingMaster] = useState(false);
   const [activeTab, setActiveTab] = useState<'chapters' | 'license' | 'pocketCards' | 'sourcing'>('chapters');
 
   const activePlaybook: PlaybookMeta = PLAYBOOK_SERIES.find(p => p.id === selectedVolumeId) || PLAYBOOK_SERIES[0];
@@ -47,10 +41,10 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
            `volume ${p.volumeNumber}`.includes(q);
   });
 
-  const handleDownloadSingle = () => {
+  const handleDownloadSuite = () => {
     setIsDownloading(true);
     try {
-      downloadProductAllInOnePDF(activePlaybook);
+      downloadThreePDFSuite(activePlaybook);
     } catch (err) {
       console.error('PDF generation error:', err);
     } finally {
@@ -58,29 +52,16 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
     }
   };
 
-  const handleDownloadMasterCompendium = () => {
-    setIsDownloadingMaster(true);
-    try {
-      downloadMasterAllInOnePDF(PLAYBOOK_SERIES);
-    } catch (err) {
-      console.error('Master PDF generation error:', err);
-    } finally {
-      setTimeout(() => setIsDownloadingMaster(false), 1200);
-    }
+  const handleDownloadPDF01 = () => {
+    downloadMasterPlaybookPDF(activePlaybook);
   };
 
-  const handleDownloadAllIndividual = () => {
-    setIsDownloading(true);
-    let delay = 0;
-    PLAYBOOK_SERIES.forEach((p, idx) => {
-      setTimeout(() => {
-        downloadPlaybookPDF(p);
-        if (idx === PLAYBOOK_SERIES.length - 1) {
-          setIsDownloading(false);
-        }
-      }, delay);
-      delay += 600;
-    });
+  const handleDownloadPDF02 = () => {
+    downloadPocketCardsPDF(activePlaybook);
+  };
+
+  const handleDownloadPDF03 = () => {
+    downloadQuickStartChecklistPDF(activePlaybook);
   };
 
   return (
@@ -95,49 +76,40 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
                   Commercial Master Series
                 </span>
                 <span className="text-[#1C1917]/30 text-xs">•</span>
-                <span className="text-xs text-[#4A533E] font-medium">11 Digital Product Playbook Kits</span>
+                <span className="text-xs text-[#4A533E] font-medium">11 Digital Product Volumes</span>
                 <span className="text-[#1C1917]/30 text-xs">•</span>
-                <span className="text-xs text-[#1C1917]/60">All-In-One PDF Suite</span>
+                <span className="text-xs text-[#1C1917]/60">3-PDF Delivery Standard</span>
               </div>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
                 Digital Product Playbook Series (Volumes 01–11)
               </h1>
               <p className="text-[#1C1917]/75 font-serif italic text-sm sm:text-base max-w-3xl">
-                Integrated commercial vector PDF documents merging the complete <strong>Digital Product Playbook</strong>, <strong>Printable Pocket Cheatsheets</strong>, and <strong>Commercial License & Specs</strong> — with the explicit name of each product clearly organized.
+                Every SmallSpaceHome volume is delivered as <strong>exactly three standalone vector PDF files</strong>: PDF 01 Master Field Playbook (25–36 pages), PDF 02 4×6" Pocket Field Cards, and PDF 03 Quick-Start Execution Checklist.
               </p>
             </div>
 
-            {/* Master PDF Download Actions */}
+            {/* 3-PDF Download Action */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <button
-                onClick={handleDownloadMasterCompendium}
-                disabled={isDownloadingMaster}
+                onClick={handleDownloadSuite}
+                disabled={isDownloading}
                 className="bg-[#4A533E] hover:bg-[#38402F] text-[#FAF8F5] text-xs font-semibold px-5 py-3.5 border border-[#38402F] rounded-xs shadow-sm transition-all flex items-center justify-center gap-2.5 cursor-pointer ring-2 ring-[#4A533E]/20"
               >
                 <Download className="w-4 h-4" />
-                <span>{isDownloadingMaster ? 'Compiling 11 Products in One PDF...' : 'Download Master All-In-One PDF (All 11 Products)'}</span>
-              </button>
-
-              <button
-                onClick={handleDownloadAllIndividual}
-                disabled={isDownloading}
-                className="bg-white hover:bg-[#FAF8F5] text-[#1C1917] text-xs font-semibold px-4 py-3.5 border border-[#E5DFD5] hover:border-[#4A533E] rounded-xs shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Layers className="w-4 h-4 text-[#4A533E]" />
-                <span>{isDownloading ? 'Generating...' : 'Download Individual ZIP Bundle'}</span>
+                <span>{isDownloading ? 'Generating 3-PDF Suite...' : `Download 3-PDF Suite (Vol. 0${activePlaybook.volumeNumber})`}</span>
               </button>
             </div>
           </div>
 
-          {/* Value Feature Strip: 3-in-1 PDF Promise */}
+          {/* Value Feature Strip: 3 Standalone PDFs */}
           <div className="mt-6 pt-6 border-t border-[#E5DFD5] grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="bg-[#FAF8F5] border border-[#E5DFD5] p-3.5 rounded-xs flex items-start gap-3">
               <div className="w-7 h-7 bg-[#4A533E]/10 rounded-xs flex items-center justify-center text-[#4A533E] shrink-0 font-serif font-bold text-xs">
                 01
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#1C1917]">Commercial PDF & License</h4>
-                <p className="text-[11px] text-[#1C1917]/70 leading-snug">Personal use license terms, resale protections, and tenancy disclaimers.</p>
+                <h4 className="text-xs font-bold text-[#1C1917]">PDF 01: Master Field Playbook</h4>
+                <p className="text-[11px] text-[#1C1917]/70 leading-snug">Full tactical chapters (25–36 pages), formulas, license terms, and diagrams.</p>
               </div>
             </div>
 
@@ -146,8 +118,8 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
                 02
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#1C1917]">Digital Product Playbook</h4>
-                <p className="text-[11px] text-[#1C1917]/70 leading-snug">Full tactical chapters, formulas, architectural takeaways, and checklists.</p>
+                <h4 className="text-xs font-bold text-[#1C1917]">PDF 02: 4×6" Pocket Field Cards</h4>
+                <p className="text-[11px] text-[#1C1917]/70 leading-snug">4 companion cards formatted for printing and cutting for fast physical job execution.</p>
               </div>
             </div>
 
@@ -156,8 +128,8 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
                 03
               </div>
               <div>
-                <h4 className="text-xs font-bold text-[#1C1917]">Printable Pocket Cheatsheets</h4>
-                <p className="text-[11px] text-[#1C1917]/70 leading-snug">4x6" print & cut companion cards with border indicators and step checklists.</p>
+                <h4 className="text-xs font-bold text-[#1C1917]">PDF 03: Quick-Start Checklist</h4>
+                <p className="text-[11px] text-[#1C1917]/70 leading-snug">1-page operational roadmap covering pre-installation, execution, and cleanup.</p>
               </div>
             </div>
           </div>
@@ -202,7 +174,7 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
                         VOL 0{p.volumeNumber}
                       </span>
                       <span className="text-[10px] text-[#1C1917]/60 font-medium">
-                        {p.targetFileSize}
+                        3 Standalone PDFs
                       </span>
                     </div>
 
@@ -228,24 +200,24 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
             {/* Quality Standards Summary */}
             <div className="bg-white border border-[#E5DFD5] p-4 rounded-xs text-xs space-y-2">
               <span className="text-[9px] uppercase font-bold tracking-wider text-[#4A533E] block">
-                Digital Resale Standard Compliant
+                SmallSpaceHome Delivery Standard
               </span>
               <ul className="text-[11px] text-[#1C1917]/70 space-y-1">
                 <li className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3 h-3 text-[#4A533E]" />
-                  <span>No bleed, crop marks, or CMYK artifacts</span>
+                  <span>PDF 01: Master Field Playbook (25–36 pages)</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3 h-3 text-[#4A533E]" />
-                  <span>Interactive clickable Table of Contents</span>
+                  <span>PDF 02: 4×6" Pocket Field Cards</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3 h-3 text-[#4A533E]" />
-                  <span>Mandatory Personal Use License on Page 2</span>
+                  <span>PDF 03: Quick-Start Execution Checklist</span>
                 </li>
                 <li className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3 h-3 text-[#4A533E]" />
-                  <span>Embedded metadata & accessibility tagging</span>
+                  <span>100% PDF deliverables • No ZIP • No All-In-One</span>
                 </li>
               </ul>
             </div>
@@ -257,8 +229,6 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
             
             {/* Active Playbook Header Card */}
             <div className="bg-white border border-[#E5DFD5] p-6 sm:p-8 rounded-xs shadow-xs relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#4A533E]/5 rounded-bl-full pointer-events-none" />
-
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div className="flex items-center gap-2">
@@ -270,14 +240,28 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  {/* 3 Standalone PDF Download Triggers */}
+                  <div className="flex flex-wrap items-center gap-2">
                     <button
-                      onClick={handleDownloadSingle}
-                      disabled={isDownloading}
-                      className="bg-[#4A533E] hover:bg-[#38402F] text-[#FAF8F5] text-xs font-semibold px-5 py-2.5 rounded-xs shadow-xs transition-colors flex items-center gap-2 cursor-pointer"
+                      onClick={handleDownloadPDF01}
+                      className="bg-[#1C1917] hover:bg-[#4A533E] text-white text-[11px] font-semibold px-3 py-2 rounded-xs shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
                     >
-                      <Download className="w-4 h-4" />
-                      <span>{isDownloading ? 'Building All-In-One PDF...' : 'Download Product All-In-One PDF'}</span>
+                      <Download className="w-3.5 h-3.5" />
+                      <span>PDF 01 (Playbook)</span>
+                    </button>
+                    <button
+                      onClick={handleDownloadPDF02}
+                      className="bg-white hover:bg-[#FAF8F5] text-[#1C1917] text-[11px] font-semibold px-3 py-2 border border-[#E5DFD5] rounded-xs shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <Layers className="w-3.5 h-3.5 text-[#4A533E]" />
+                      <span>PDF 02 (Cards)</span>
+                    </button>
+                    <button
+                      onClick={handleDownloadPDF03}
+                      className="bg-white hover:bg-[#FAF8F5] text-[#1C1917] text-[11px] font-semibold px-3 py-2 border border-[#E5DFD5] rounded-xs shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <CheckSquare className="w-3.5 h-3.5 text-[#4A533E]" />
+                      <span>PDF 03 (Checklist)</span>
                     </button>
                   </div>
                 </div>
@@ -294,7 +278,7 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
                 <div className="bg-[#FAF8F5] border border-[#E5DFD5] p-4 rounded-xs text-xs space-y-2">
                   <div className="flex items-center justify-between text-[11px]">
                     <span className="font-bold text-[#4A533E]">CORE DELIVERABLE PROMISE:</span>
-                    <span className="text-[#1C1917]/60">Target: {activePlaybook.targetFileSize}</span>
+                    <span className="text-[#1C1917]/60">3 Standalone Vector PDFs</span>
                   </div>
                   <p className="text-[#1C1917]/80 leading-relaxed font-sans">
                     {activePlaybook.promise}
@@ -468,7 +452,7 @@ export const PlaybookSeriesCenter: React.FC<PlaybookSeriesCenterProps> = ({ onOp
                   <div key={idx} className="bg-white border-2 border-[#4A533E] p-5 rounded-xs shadow-xs space-y-3">
                     <div className="border-b border-[#E5DFD5] pb-2">
                       <span className="text-[9px] uppercase font-bold tracking-wider text-[#4A533E] block">
-                        Printable 4x6" Field Card
+                        Printable 4x6" Field Card 0{idx + 1}
                       </span>
                       <h4 className="font-serif font-bold text-sm text-[#1C1917]">
                         {card.title}

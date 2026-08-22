@@ -2,12 +2,13 @@ import { PRODUCTS_1_TO_4 } from './products/products1to4';
 import { PRODUCTS_5_TO_8 } from './products/products5to8';
 import { PRODUCTS_9_TO_11 } from './products/products9to11';
 import { PLAYBOOK_SERIES } from './playbookSeriesData';
+import { getVolumeEnrichment } from '../utils/playbookEnrichmentData';
 
 export interface DetailedDeliverableFile {
   id: string;
   fileName: string;
-  fileType: 'PDF Master Guide' | 'Ebook Playbook (Commercial Digital PDF)' | 'Spreadsheet (CSV/Excel)' | 'Notion Template' | 'Printable Cheatsheet' | 'Companion Tool' | 'High-Res Asset' | 'Action Checklist & Pocket Cards';
-  extension: '.pdf' | '.csv' | '.xlsx' | '.json' | '.png' | '.zip' | '.md';
+  fileType: 'PDF Master Field Playbook' | 'PDF 4×6" Pocket Field Cards' | 'PDF Quick-Start Execution Checklist' | 'PDF Document';
+  extension: '.pdf';
   fileSize: string;
   badge: string;
   description: string;
@@ -15,75 +16,60 @@ export interface DetailedDeliverableFile {
   downloadableContent: string;
 }
 
-export function generatePlaybookDeliverableFile(volumeNumber: number): DetailedDeliverableFile {
+/**
+ * Generates the permanent 3-PDF Deliverable Suite for any SmallSpaceHome product volume:
+ * 1. PDF 01 — MASTER FIELD PLAYBOOK (Learn + Understand + Decide)
+ * 2. PDF 02 — 4×6" POCKET FIELD CARDS (Quick Field Reference)
+ * 3. PDF 03 — QUICK-START EXECUTION CHECKLIST (Execute)
+ */
+export function generateThreePDFDeliverables(volumeNumber: number): DetailedDeliverableFile[] {
   const playbook = PLAYBOOK_SERIES.find(p => p.volumeNumber === volumeNumber) || PLAYBOOK_SERIES[0];
-  
-  const chaptersMarkdown = playbook.chapters.map(ch => `
-### CHAPTER 0${ch.chapterNumber}: ${ch.title.toUpperCase()}
-*${ch.subtitle} • Reading Duration: ${ch.readingMinutes} mins*
+  const enrichment = getVolumeEnrichment(playbook.id, playbook.volumeNumber, playbook.title, playbook.category);
 
-${ch.content}
-
-${ch.keyTakeaways && ch.keyTakeaways.length > 0 ? `**Key Architectural Takeaways:**\n${ch.keyTakeaways.map(t => `- ${t}`).join('\n')}` : ''}
-
-${ch.checklistItems && ch.checklistItems.length > 0 ? `**Tactical Execution Checklist:**\n${ch.checklistItems.map(c => `- [ ] ${c}`).join('\n')}` : ''}
-`).join('\n\n---\n\n');
-
-  const pocketCardsMarkdown = playbook.pocketCards.map((c, i) => `
-#### CARD 0${i + 1} (4x6" Field Card): ${c.title}
-*${c.description}*
-${c.bulletPoints.map(b => `- ${b}`).join('\n')}
-`).join('\n');
-
-  const sourcingMarkdown = playbook.sourcesAndRetailers.map(s => `| ${s.category} | ${s.retailer} | ${s.recommendedItems} | ${s.webUrl} |`).join('\n');
-
-  const fullContent = `# ${playbook.title}
-## ${playbook.subtitle}
-*Publication by SmallSpaceHome Editorial Design & Architecture Research Group • Toronto Rental Lab*
-*ISBN: ${playbook.isbn} • Edition: ${playbook.edition} • Commercial Price: $${playbook.priceCad} CAD (Perceived Value: $${playbook.perceivedValueCad} CAD)*
-
----
-
-### PAGE 2: MANDATORY COMMERCIAL NOTICE & PERSONAL USE LICENSE
-**Grant of License:** SmallSpaceHome Inc. grants the purchaser a single-user, non-exclusive, non-transferable Personal Use License for this Digital Product Playbook Kit.
-**Digital Resale Protection:** You may NOT resell, sub-license, distribute, redistribute, bundle, or share this digital ebook or its component assets in whole or in part on any digital marketplace (e.g., Fourthwall, Gumroad, Etsy, Shopify) or file-sharing network.
-**Intellectual Property:** All content remains the exclusive copyright of SmallSpaceHome Inc.
-**Tenant & Structural Disclaimer:** Fastener and load recommendations are based on standard North American rental drywall construction. Always test in inconspicuous spots and adhere to local residential tenancy laws.
-
----
-
-### CORE DELIVERABLE PROMISE
-${playbook.promise}
-*Target Audience: ${playbook.audience}*
-
----
-
-${chaptersMarkdown}
-
----
-
-### APPENDIX A: PRINTABLE 4x6" POCKET COMPANION FIELD CARDS
-${pocketCardsMarkdown}
-
----
-
-### APPENDIX B: VERIFIED CANADIAN SOURCING & RETAILER MATRIX
-| Category | Verified Retailer | Recommended Model / SKU | Source URL |
-|---|---|---|---|
-${sourcingMarkdown}
-`;
-
-  return {
-    id: `playbook-vol-0${playbook.volumeNumber}`,
-    fileName: playbook.fileName,
-    fileType: 'Ebook Playbook (Commercial Digital PDF)',
+  // 1. PDF 01 — MASTER FIELD PLAYBOOK
+  const pdf1: DetailedDeliverableFile = {
+    id: `playbook-vol-0${playbook.volumeNumber}-pdf-01`,
+    fileName: `SmallSpaceHome_Vol_0${playbook.volumeNumber}_Master_Field_Playbook.pdf`,
+    fileType: 'PDF Master Field Playbook',
     extension: '.pdf',
     fileSize: playbook.targetFileSize,
-    badge: `3-in-1 Master PDF (Playbook + Pocket Cards + Matrix)`,
-    description: `Unified 3-in-1 Master Commercial Publication: Combines (1) The full ${playbook.chapters.length}-Chapter Strategy Playbook, (2) Printable 4x6" Pocket Field Cards, and (3) Verified Canadian Sourcing & Decision Matrix into one complete, print-ready digital package.`,
-    previewSnippet: `VOL 0${playbook.volumeNumber}: ${playbook.title}\nISBN: ${playbook.isbn} • ${playbook.targetFileSize}\n[3-IN-1 UNIFIED SUITE]\n• PART 1: ${playbook.chapters.length} In-Depth Strategic Chapters & Decision Tables\n• PART 2: ${playbook.pocketCards.length} Printable 4x6" Pocket Field Companion Cards\n• PART 3: Verified Canadian Sourcing Directory & Personal Use Commercial License`,
-    downloadableContent: fullContent.trim()
+    badge: 'PDF 01 • Master Field Playbook (Learn · Understand · Decide)',
+    description: `The complete core publication (~25–36 pages). Includes cover, personal use license, safety disclaimers, copyright, table of contents, ${playbook.chapters.length} tactical chapters, structural schematics, worked formulas, 5-column troubleshooting matrix, and Canadian retailer sourcing directory.`,
+    previewSnippet: `[PDF 01 — MASTER FIELD PLAYBOOK]\nVOL 0${playbook.volumeNumber}: ${playbook.title}\nISBN: ${playbook.isbn} • Target Size: ${playbook.targetFileSize}\n\n• MANDATORY LICENSE & SAFETY DISCLAIMER (Page 2)\n• ${playbook.chapters.length} STRATEGIC CHAPTERS & WORKED FORMULAS\n• APPENDIX A: 5-COLUMN TROUBLESHOOTING MATRIX\n• APPENDIX B: VERIFIED CANADIAN SOURCING MATRIX\n• RUNNING HEADERS & FOOTERS ON ALL CONTENT PAGES`,
+    downloadableContent: `# ${playbook.title} — MASTER FIELD PLAYBOOK (PDF 01)\n## ${playbook.subtitle}\n*ISBN: ${playbook.isbn} • Author: ${playbook.author} • Publisher: ${playbook.publisher}*\n\n${playbook.chapters.map(c => `### Chapter 0${c.chapterNumber}: ${c.title}\n${c.content}`).join('\n\n')}`
   };
+
+  // 2. PDF 02 — 4x6" POCKET FIELD CARDS
+  const pdf2: DetailedDeliverableFile = {
+    id: `playbook-vol-0${playbook.volumeNumber}-pdf-02`,
+    fileName: `SmallSpaceHome_Vol_0${playbook.volumeNumber}_Pocket_Field_Cards_4x6.pdf`,
+    fileType: 'PDF 4×6" Pocket Field Cards',
+    extension: '.pdf',
+    fileSize: '4 Cards • 4x6" Print-Ready • 850 KB',
+    badge: 'PDF 02 • 4×6" Pocket Field Cards (Quick Field Reference)',
+    description: 'Dedicated standalone 4×6" print-ready reference cards with cut guides. Contains: Card 01 Surface Preparation, Card 02 Hardware Selection / Installation, Card 03 Removal & Restoration, Card 04 Hardware Store Quick Buy.',
+    previewSnippet: `[PDF 02 — 4×6" POCKET FIELD CARDS]\n• CARD 01: Surface Preparation (Solvent protocols & substrate check)\n• CARD 02: Hardware Selection / Installation (Load physics, 40% safety buffer formula)\n• CARD 03: Removal & Restoration (Zero-damage stretch & spackle repair)\n• CARD 04: Hardware Store Quick Buy (Canadian SKUs & shopping list)\n\nPrint-ready & phone-readable with cut guides and high-contrast typography.`,
+    downloadableContent: `# ${playbook.title} — 4x6" POCKET FIELD CARDS (PDF 02)\n\n${enrichment.pocketCards.map(c => `### CARD ${c.cardNumber}: ${c.title}\n- Purpose: ${c.purpose}\n- Critical Steps:\n${c.criticalSteps.map(s => `  * ${s}`).join('\n')}\n- Stop Condition: ${c.stopCondition}`).join('\n\n')}`
+  };
+
+  // 3. PDF 03 — QUICK-START EXECUTION CHECKLIST
+  const pdf3: DetailedDeliverableFile = {
+    id: `playbook-vol-0${playbook.volumeNumber}-pdf-03`,
+    fileName: `SmallSpaceHome_Vol_0${playbook.volumeNumber}_Quick_Start_Execution_Checklist.pdf`,
+    fileType: 'PDF Quick-Start Execution Checklist',
+    extension: '.pdf',
+    fileSize: '1 Page • High-Density A4 • 350 KB',
+    badge: 'PDF 03 • Quick-Start Execution Checklist (Execute)',
+    description: 'Dedicated standalone 1-page operational execution sheet organized strictly into 4 stages: (1) BEFORE, (2) DURING, (3) AFTER, and (4) REMOVE. Dense, highly actionable with checkboxes and field sign-off lines.',
+    previewSnippet: `[PDF 03 — QUICK-START EXECUTION CHECKLIST]\n• STAGE 1: BEFORE INSTALLATION (Substrate, Weight, Compatibility, Tools)\n• STAGE 2: DURING INSTALLATION (Surface prep, Measure/mark, Cure window)\n• STAGE 3: AFTER INSTALLATION (Verification, Inspection, Photography)\n• STAGE 4: REMOVAL & RESTORATION (Move-out safe, Spackle touch-up)\n\nSingle-page high-density operational field guide.`,
+    downloadableContent: `# ${playbook.title} — QUICK-START EXECUTION CHECKLIST (PDF 03)\n\n${enrichment.executionChecklist.map(s => `### ${s.stageName}: ${s.title}\n${s.items.map(i => `- [ ] ${i}`).join('\n')}`).join('\n\n')}`
+  };
+
+  return [pdf1, pdf2, pdf3];
+}
+
+export function generatePlaybookDeliverableFile(volumeNumber: number): DetailedDeliverableFile {
+  return generateThreePDFDeliverables(volumeNumber)[0];
 }
 
 export interface ProductAssetBundle {

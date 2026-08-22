@@ -1,37 +1,31 @@
 import React, { useState } from 'react';
 import { TOP_20_PRODUCTS } from '../data/strategyData';
 import { getProductAssetBundle, DetailedDeliverableFile } from '../data/productAssetsData';
-import { PLAYBOOK_SERIES } from '../data/playbookSeriesData';
+import { PLAYBOOK_SERIES, PlaybookMeta } from '../data/playbookSeriesData';
 import { 
   downloadValidPDF, 
-  downloadProductAllInOnePDF, 
-  downloadMasterAllInOnePDF 
+  downloadMasterPlaybookPDF,
+  downloadPocketCardsPDF,
+  downloadQuickStartChecklistPDF,
+  downloadThreePDFSuite
 } from '../utils/pdfGenerator';
-import { CsvTableViewer } from './CsvTableViewer';
-import { NotionWorkspaceViewer } from './NotionWorkspaceViewer';
 import { EditorialPdfViewer } from './EditorialPdfViewer';
 import { 
   Download, 
   Copy, 
   Check, 
   FileText, 
-  Table, 
-  CheckSquare, 
   Image as ImageIcon, 
   Sparkles, 
-  Eye, 
-  Layers, 
-  Search, 
   Maximize2, 
-  FolderDown, 
   ShieldCheck, 
   Compass, 
   ArrowRight,
-  ExternalLink,
-  Info,
   Printer,
   FileCheck2,
-  FileSpreadsheet
+  CheckCircle2,
+  Layers,
+  Search
 } from 'lucide-react';
 
 interface DeliverablesAndPhotographyCenterProps {
@@ -48,12 +42,13 @@ export const DeliverablesAndPhotographyCenter: React.FC<DeliverablesAndPhotograp
   const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [isPhotoZoomed, setIsPhotoZoomed] = useState(false);
-  const [pdfViewTab, setPdfViewTab] = useState<'formatted' | 'raw'>('formatted');
 
   const activeProduct = TOP_20_PRODUCTS.find(p => p.id === selectedProductId) || TOP_20_PRODUCTS[0];
   const assetBundle = getProductAssetBundle(selectedProductId);
 
   const activeFile = assetBundle.files.find(f => f.id === selectedFileId) || assetBundle.files[0];
+
+  const matchedPlaybook: PlaybookMeta = PLAYBOOK_SERIES.find(p => p.volumeNumber === activeProduct.rank) || PLAYBOOK_SERIES[0];
 
   const filteredProducts = TOP_20_PRODUCTS.filter(p => {
     const query = searchQuery.toLowerCase();
@@ -69,132 +64,41 @@ export const DeliverablesAndPhotographyCenter: React.FC<DeliverablesAndPhotograp
   };
 
   const handleDownloadSingleFile = (file: DetailedDeliverableFile) => {
-    const isPdf = file.fileName.toLowerCase().endsWith('.pdf') || 
-                  file.fileType.toLowerCase().includes('pdf') || 
-                  file.fileType.toLowerCase().includes('printable');
-    
-    const isCsv = file.fileName.toLowerCase().endsWith('.csv') || 
-                  file.fileType.toLowerCase().includes('spreadsheet');
+    const fileId = file.id.toLowerCase();
+    const fileName = file.fileName.toLowerCase();
 
-    const isJson = file.fileName.toLowerCase().endsWith('.json') || 
-                   file.fileType.toLowerCase().includes('notion');
-
-    if (isPdf) {
-      // Generate genuine multi-page vector PDF using jsPDF + autoTable
-      downloadValidPDF(file.downloadableContent, file.fileName, activeProduct.title, file.badge);
+    if (fileId.includes('pdf-01') || fileName.includes('master_field_playbook') || fileId.endsWith('-1')) {
+      downloadMasterPlaybookPDF(matchedPlaybook);
       return;
     }
 
-    if (isCsv) {
-      const blob = new Blob([file.downloadableContent], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      let name = file.fileName;
-      if (!name.toLowerCase().endsWith('.csv')) {
-        name = name.replace(/\.[a-z0-9]+$/i, '') + '.csv';
-      }
-      link.download = name;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+    if (fileId.includes('pdf-02') || fileName.includes('pocket_field_cards') || fileId.endsWith('-2')) {
+      downloadPocketCardsPDF(matchedPlaybook);
       return;
     }
 
-    if (isJson) {
-      const blob = new Blob([file.downloadableContent], { type: 'application/json;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      let name = file.fileName;
-      if (!name.toLowerCase().endsWith('.json')) {
-        name = name.replace(/\.[a-z0-9]+$/i, '') + '.json';
-      }
-      link.download = name;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
+    if (fileId.includes('pdf-03') || fileName.includes('quick_start') || fileId.endsWith('-3')) {
+      downloadQuickStartChecklistPDF(matchedPlaybook);
       return;
     }
 
-    // Default: Markdown / Text
-    const blob = new Blob([file.downloadableContent], { type: 'text/markdown;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = file.fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    // Fallback vector PDF download
+    downloadValidPDF(file.downloadableContent, file.fileName, activeProduct.title, file.badge);
   };
 
-  const handleDownloadAllFiles = () => {
-    const combinedContent = assetBundle.files.map((file, idx) => {
-      return `================================================================================
-FILE ${idx + 1}: ${file.fileName} (${file.fileType})
-SIZE: ${file.fileSize}
-PURPOSE: ${file.description}
-================================================================================
-
-${file.downloadableContent}
-
-`;
-    }).join('\n\n');
-
-    const blob = new Blob([combinedContent], { type: 'text/markdown;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `SmallSpaceHome_Product_${activeProduct.rank}_${activeProduct.id}_Complete_Deliverable_Bundle.md`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
-
-  const handleExportMasterPDF = () => {
-    // Collect all markdown and printable content across the bundle into a comprehensive publication
-    const publicationContent = assetBundle.files.map((f, i) => `## MODULE 0${i + 1}: ${f.fileName.replace(/_/g, ' ').replace(/\.[a-z0-9]+$/i, '')}\n*Deliverable Type: ${f.fileType} • Size: ${f.fileSize}*\n\n${f.downloadableContent}`).join('\n\n---\n\n');
-    downloadValidPDF(
-      publicationContent, 
-      `SmallSpaceHome_Product_${activeProduct.rank}_${activeProduct.id}_Master_Publication.pdf`, 
-      activeProduct.title, 
-      'Complete Product Master Publication'
-    );
-  };
-
-  const handleDownloadProductAllInOne = () => {
-    const matchedPlaybook = PLAYBOOK_SERIES.find(p => p.volumeNumber === activeProduct.rank) || PLAYBOOK_SERIES[0];
-    downloadProductAllInOnePDF(matchedPlaybook);
-  };
-
-  const handleDownloadMasterAllInOne = () => {
-    downloadMasterAllInOnePDF(PLAYBOOK_SERIES);
+  const handleDownloadThreePDFSuite = () => {
+    downloadThreePDFSuite(matchedPlaybook);
   };
 
   const getFileIcon = (file: DetailedDeliverableFile) => {
-    const isCsv = file.fileName.toLowerCase().endsWith('.csv') || file.fileType.toLowerCase().includes('spreadsheet');
-    const isJson = file.fileName.toLowerCase().endsWith('.json') || file.fileType.toLowerCase().includes('notion');
-    const isPdf = file.fileName.toLowerCase().endsWith('.pdf') || file.fileType.toLowerCase().includes('printable') || file.fileType.toLowerCase().includes('pdf');
-
-    if (isCsv) return <FileSpreadsheet className="w-4 h-4 text-emerald-700" />;
-    if (isJson) return <Layers className="w-4 h-4 text-indigo-700" />;
-    if (isPdf) return <FileCheck2 className="w-4 h-4 text-rose-700" />;
-    return <FileText className="w-4 h-4 text-[#4A533E]" />;
+    if (file.id.includes('pdf-01') || file.fileName.includes('01_Master')) {
+      return <FileText className="w-4 h-4 text-[#4A533E]" />;
+    }
+    if (file.id.includes('pdf-02') || file.fileName.includes('02_Pocket')) {
+      return <Layers className="w-4 h-4 text-emerald-800" />;
+    }
+    return <FileCheck2 className="w-4 h-4 text-amber-800" />;
   };
-
-  const isActiveFilePdf = activeFile.fileName.toLowerCase().endsWith('.pdf') || 
-                          activeFile.fileType.toLowerCase().includes('pdf') || 
-                          activeFile.fileType.toLowerCase().includes('printable');
-
-  const isActiveFileCsv = activeFile.fileName.toLowerCase().endsWith('.csv') || 
-                          activeFile.fileType.toLowerCase().includes('spreadsheet');
-
-  const isActiveFileJson = activeFile.fileName.toLowerCase().endsWith('.json') || 
-                           activeFile.fileType.toLowerCase().includes('notion');
 
   return (
     <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-200">
@@ -206,32 +110,25 @@ ${file.downloadableContent}
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#4A533E]" />
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] text-[#4A533E]">
-                SmallSpaceHome.ca • Tactical Action Kits & Renter Hacks Vault
+                SmallSpaceHome.ca • 3-PDF Standard Product Delivery System
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
-              Tactical Action Kits & Deliverable Formats (1–11)
+              3-PDF Deliverable Suite & Photography Vault (Vols. 01–11)
             </h1>
             <p className="text-xs sm:text-sm text-[#1C1917]/80 max-w-3xl leading-relaxed">
-              Every digital product is engineered as an actionable, high-converting <strong>Tactical Action Kit</strong> loaded with tested renter hacks, zero-damage hardware tricks, printable pocket cheat sheets, and plug-and-play dimension calculators tested in our 510 sq ft Toronto rental test lab.
+              Every SmallSpaceHome product is delivered as <strong>exactly three separate standalone PDF files</strong>: (1) PDF 01 Master Field Playbook (25–36 pages), (2) PDF 02 4×6" Pocket Field Cards, and (3) PDF 03 Quick-Start Execution Checklist — tested in our 510 sq ft Toronto rental test lab.
             </p>
           </div>
 
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-2.5 shrink-0">
             <button
-              onClick={handleDownloadProductAllInOne}
+              onClick={handleDownloadThreePDFSuite}
               className="w-full sm:w-auto px-4 py-2.5 bg-[#4A533E] hover:bg-[#38402F] text-[#FAF8F5] text-xs font-bold tracking-wider transition-all cursor-pointer border border-[#38402F] shadow-xs flex items-center justify-center gap-2 ring-2 ring-[#4A533E]/20"
             >
               <Download className="w-4 h-4" />
-              <span>Download Product #{activeProduct.rank} All-In-One PDF</span>
-            </button>
-            <button
-              onClick={handleDownloadMasterAllInOne}
-              className="w-full sm:w-auto px-3.5 py-2.5 bg-[#1C1917] hover:bg-[#4A533E] text-white text-xs font-bold tracking-wider transition-all cursor-pointer border border-[#1C1917] flex items-center justify-center gap-1.5"
-            >
-              <FileCheck2 className="w-3.5 h-3.5 text-[#D9D3C7]" />
-              <span>Master 11-Product PDF</span>
+              <span>Download 3-PDF Suite (Vol. 0{activeProduct.rank})</span>
             </button>
             {onOpenStoreKit && (
               <button
@@ -252,29 +149,29 @@ ${file.downloadableContent}
           <div className="flex items-center gap-2">
             <ImageIcon className="w-4 h-4 text-[#4A533E]" />
             <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">
-              Select from All 11 Tactical Action Kits
+              Select from All 11 Product Volumes
             </span>
           </div>
 
           <div className="flex items-center gap-2.5 w-full sm:w-auto">
             <div className="relative flex-1 sm:w-64">
-              <Search className="w-3.5 h-3.5 absolute left-2.5 top-1/2 -translate-y-1/2 text-[#1C1917]/50" />
+              <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#1C1917]/40" />
               <input
                 type="text"
+                placeholder="Filter products..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search kits, hacks, rooms..."
-                className="w-full bg-[#FAF8F5] border border-[#E5DFD5] pl-8 pr-2.5 py-1.5 text-xs font-medium focus:outline-hidden focus:border-[#4A533E]"
+                className="w-full pl-8 pr-3 py-1.5 text-xs bg-[#FAF8F5] border border-[#E5DFD5] rounded-xs focus:outline-none focus:border-[#4A533E]"
               />
             </div>
-            <span className="text-[10px] font-bold bg-[#FAF8F5] px-2 py-1.5 border border-[#E5DFD5] text-[#4A533E] shrink-0">
-              {filteredProducts.length} Action Kits
+            <span className="text-[11px] text-[#1C1917]/60 font-mono shrink-0">
+              {filteredProducts.length} Products
             </span>
           </div>
         </div>
 
-        {/* Responsive Grid for all 20 products */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-10 gap-2 sm:gap-2.5">
+        {/* Thumbnail Selector Strip */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 pt-1">
           {filteredProducts.map((p) => {
             const isSelected = p.id === selectedProductId;
             const bundle = getProductAssetBundle(p.id);
@@ -285,14 +182,13 @@ ${file.downloadableContent}
                   setSelectedProductId(p.id);
                   setSelectedFileId(null);
                 }}
-                className={`text-left p-1.5 sm:p-2 border transition-all cursor-pointer flex flex-col justify-between group rounded-xs ${
+                className={`p-2 border text-left transition-all cursor-pointer flex flex-col gap-2 rounded-xs group relative ${
                   isSelected 
-                    ? 'bg-[#1C1917] text-[#FAF8F5] border-[#1C1917] shadow-xs scale-[1.02]' 
-                    : 'bg-[#FAF8F5] text-[#1C1917] border-[#E5DFD5] hover:border-[#4A533E]/50 hover:bg-white'
+                    ? 'bg-[#4A533E] text-white border-[#4A533E] shadow-sm' 
+                    : 'bg-[#FAF8F5] hover:bg-white border-[#E5DFD5] hover:border-[#4A533E]/50 text-[#1C1917]'
                 }`}
               >
-                {/* Photo Thumbnail */}
-                <div className="relative aspect-4/3 w-full overflow-hidden bg-stone-200 border border-black/10 mb-1.5 rounded-xs">
+                <div className="aspect-16/10 bg-stone-200 overflow-hidden relative border border-black/10">
                   <img 
                     src={bundle.photography.url} 
                     alt={bundle.photography.alt}
@@ -303,7 +199,7 @@ ${file.downloadableContent}
                   <span className={`absolute top-0.5 left-0.5 text-[8px] font-black px-1 py-0.2 ${
                     isSelected ? 'bg-[#4A533E] text-white' : 'bg-black/70 text-white'
                   }`}>
-                    #{p.rank}
+                    VOL 0{p.rank}
                   </span>
                 </div>
                 <div className="leading-tight">
@@ -311,7 +207,7 @@ ${file.downloadableContent}
                     {p.title}
                   </span>
                   <span className={`text-[9px] block mt-0.5 ${isSelected ? 'text-[#FAF8F5]/80' : 'text-[#4A533E]'}`}>
-                    ${p.recommendedPrice} CAD • {bundle.files.length} Files
+                    ${p.recommendedPrice} CAD • 3 Standalone PDFs
                   </span>
                 </div>
               </button>
@@ -333,7 +229,7 @@ ${file.downloadableContent}
               <div className="flex items-center gap-2">
                 <ImageIcon className="w-4 h-4 text-[#D9D3C7]" />
                 <span className="text-xs font-bold uppercase tracking-wider text-white">
-                  Product #{activeProduct.rank} Architectural Photography
+                  Vol. 0{activeProduct.rank} Architectural Photography
                 </span>
               </div>
               <button
@@ -360,7 +256,7 @@ ${file.downloadableContent}
               {/* Product Rank & Format Badge */}
               <div className="absolute top-3 left-3 bg-[#1C1917]/90 backdrop-blur-xs text-[#FAF8F5] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs border border-white/20">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4A533E]" />
-                <span>Product #{activeProduct.rank} • {activeProduct.format}</span>
+                <span>Vol. 0{activeProduct.rank} • 3 Standalone PDFs</span>
               </div>
 
               {/* Price Tag in CAD */}
@@ -430,7 +326,7 @@ ${file.downloadableContent}
               <div className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#4A533E]" />
                 <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">
-                  Tactical Kit Details
+                  Product Strategy Overview
                 </span>
               </div>
               <span className="text-[10px] font-bold uppercase px-2 py-0.5 bg-[#4A533E] text-white">
@@ -512,7 +408,7 @@ ${file.downloadableContent}
 
         </div>
 
-        {/* Right Column: Deliverable Asset Files Explorer & Direct Exporter (7 cols) */}
+        {/* Right Column: 3 Standalone Deliverable PDF Files Explorer (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
           
           <div className="bg-white border border-[#E5DFD5] shadow-xs overflow-hidden">
@@ -523,45 +419,38 @@ ${file.downloadableContent}
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4 text-[#D9D3C7]" />
                   <h2 className="text-sm font-bold uppercase tracking-wider text-white">
-                    Deliverable Asset File Package ({assetBundle.files.length} Files)
+                    Deliverable PDF Suite (Exactly 3 Standalone PDF Files)
                   </h2>
                 </div>
                 <p className="text-[11px] text-[#D9D3C7] mt-0.5">
-                  Real, downloadable, copyable master files formatted for direct customer delivery
+                  100% PDF deliverables • No ZIP • No All-In-One • No CSV/DOCX
                 </p>
               </div>
 
               <div className="flex items-center gap-2 flex-wrap">
                 <button
-                  onClick={() => handleDownloadSingleFile(assetBundle.files[0])}
-                  className="px-3.5 py-1.5 bg-[#FAF8F5] hover:bg-[#4A533E] text-[#1C1917] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border border-[#E5DFD5] flex items-center justify-center gap-1.5 shrink-0 shadow-xs"
+                  onClick={handleDownloadThreePDFSuite}
+                  className="px-3.5 py-1.5 bg-[#4A533E] hover:bg-[#38402F] text-white text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border border-white/20 flex items-center justify-center gap-1.5 shrink-0 shadow-xs"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  <span>Download 3-in-1 Master PDF</span>
-                </button>
-                <button
-                  onClick={handleDownloadAllFiles}
-                  className="px-3.5 py-1.5 bg-[#4A533E] hover:bg-white hover:text-[#1C1917] text-white text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer border border-white/20 flex items-center justify-center gap-1.5 shrink-0"
-                >
-                  <FolderDown className="w-3.5 h-3.5" />
-                  <span>Export Bundle (.ZIP/MD)</span>
+                  <span>Download All 3 PDFs</span>
                 </button>
               </div>
             </div>
 
-            {/* File Item List */}
+            {/* File Item List: Exactly 3 Separate PDFs */}
             <div className="p-4 sm:p-5 space-y-3 bg-[#FAF8F5] border-b border-[#E5DFD5]">
               <div className="flex items-center justify-between">
                 <div className="text-[10px] font-bold uppercase tracking-wider text-[#4A533E]">
-                  Select File to Inspect & Download:
+                  Customer-Facing Deliverables:
                 </div>
                 <div className="text-[9px] text-[#1C1917]/70 font-serif italic">
-                  💡 File 01 includes the Unified 3-in-1 Master PDF (Playbook + Pocket Cards + Matrix)
+                  PDF 01 (Playbook) • PDF 02 (Cards) • PDF 03 (Checklist)
                 </div>
               </div>
 
               <div className="grid grid-cols-1 gap-2.5">
-                {assetBundle.files.map((file) => {
+                {assetBundle.files.map((file, idx) => {
                   const isSelected = file.id === activeFile.id;
                   return (
                     <div
@@ -604,7 +493,7 @@ ${file.downloadableContent}
                             e.stopPropagation();
                             handleCopy(file.downloadableContent, `file-${file.id}`);
                           }}
-                          title="Copy File Content"
+                          title="Copy File Outline"
                           className="p-1.5 bg-[#FAF8F5] hover:bg-[#1C1917] hover:text-white text-[#1C1917] border border-[#E5DFD5] transition-colors cursor-pointer"
                         >
                           {copiedKey === `file-${file.id}` ? (
@@ -618,11 +507,11 @@ ${file.downloadableContent}
                             e.stopPropagation();
                             handleDownloadSingleFile(file);
                           }}
-                          title="Download File"
+                          title="Download PDF"
                           className="px-2.5 py-1.5 bg-[#1C1917] hover:bg-[#4A533E] text-white text-[10px] font-bold uppercase tracking-wider border border-[#1C1917] transition-colors cursor-pointer flex items-center gap-1"
                         >
                           <Download className="w-3 h-3" />
-                          <span>Download</span>
+                          <span>Download PDF 0{idx + 1}</span>
                         </button>
                       </div>
                     </div>
@@ -634,100 +523,35 @@ ${file.downloadableContent}
             {/* Active File Content Viewer */}
             <div className="p-4 sm:p-5 space-y-4 bg-white">
               
-              {/* Dynamic View Mode Router based on file type */}
-              {isActiveFileCsv ? (
-                <CsvTableViewer 
-                  fileName={activeFile.fileName}
-                  csvContent={activeFile.downloadableContent}
-                  badge={activeFile.badge}
-                  description={activeFile.description}
-                />
-              ) : isActiveFileJson ? (
-                <NotionWorkspaceViewer 
-                  fileName={activeFile.fileName}
-                  jsonContent={activeFile.downloadableContent}
-                  badge={activeFile.badge}
-                  description={activeFile.description}
-                  productTitle={activeProduct.title}
-                />
-              ) : isActiveFilePdf ? (
-                <EditorialPdfViewer
-                  fileName={activeFile.fileName}
-                  fileSize={activeFile.fileSize}
-                  badge={activeFile.badge}
-                  description={activeFile.description}
-                  productTitle={activeProduct.title}
-                  rawContent={activeFile.downloadableContent}
-                />
-              ) : (
-                /* Standard Markdown / Text Viewer */
-                <div className="bg-white border border-[#E5DFD5] shadow-xs rounded-xs overflow-hidden">
-                  <div className="bg-[#FAF8F5] p-3.5 sm:p-4 border-b border-[#E5DFD5] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="space-y-0.5">
-                      <div className="flex items-center gap-2">
-                        <FileText className="w-4 h-4 text-[#4A533E]" />
-                        <span className="font-mono font-bold text-xs text-[#1C1917]">{activeFile.fileName}</span>
-                        <span className="text-[9px] font-bold uppercase px-1.5 py-0.2 bg-[#4A533E] text-white">
-                          {activeFile.badge}
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-[#1C1917]/70">{activeFile.description}</p>
-                    </div>
+              <EditorialPdfViewer
+                fileName={activeFile.fileName}
+                fileSize={activeFile.fileSize}
+                badge={activeFile.badge}
+                description={activeFile.description}
+                productTitle={activeProduct.title}
+                rawContent={activeFile.downloadableContent}
+              />
 
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => handleCopy(activeFile.downloadableContent, 'md-copy')}
-                        className="px-2.5 py-1 bg-white hover:bg-[#FAF8F5] text-[#1C1917] text-[10px] font-bold uppercase tracking-wider border border-[#E5DFD5] transition-colors cursor-pointer flex items-center gap-1"
-                      >
-                        {copiedKey === 'md-copy' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
-                        <span>Copy Markdown</span>
-                      </button>
-                      <button
-                        onClick={() => handleDownloadSingleFile(activeFile)}
-                        className="px-3 py-1 bg-[#4A533E] hover:bg-[#1C1917] text-white text-[10px] font-bold uppercase tracking-wider border border-[#4A533E] transition-colors cursor-pointer flex items-center gap-1"
-                      >
-                        <Download className="w-3 h-3" />
-                        <span>Download .md</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="p-4 sm:p-5">
-                    <pre className="bg-[#1C1917] text-[#FAF8F5] p-3.5 sm:p-4 text-xs font-mono leading-relaxed overflow-x-auto max-h-[380px] border border-[#1C1917] whitespace-pre-wrap break-words select-all">
-                      {activeFile.downloadableContent}
-                    </pre>
-                  </div>
-                </div>
-              )}
-
-              {/* Master Publication Quick Actions */}
+              {/* 3-PDF Delivery Standard Quick Action */}
               <div className="bg-[#FAF8F5] border border-[#E5DFD5] p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <div className="flex items-center gap-2 text-xs text-[#1C1917]/80">
                   <Sparkles className="w-4 h-4 text-[#4A533E]" />
-                  <span>Generate all files for <strong>{activeProduct.title}</strong> in one click:</span>
+                  <span>Download the complete 3-PDF package for <strong>{activeProduct.title}</strong>:</span>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 shrink-0">
                   <button
-                    onClick={handleDownloadProductAllInOne}
-                    className="px-3 py-1.5 bg-[#4A533E] hover:bg-[#38402F] text-[#FAF8F5] text-[10px] font-bold uppercase tracking-wider border border-[#38402F] transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
+                    onClick={handleDownloadThreePDFSuite}
+                    className="px-3.5 py-1.5 bg-[#4A533E] hover:bg-[#38402F] text-[#FAF8F5] text-[10px] font-bold uppercase tracking-wider border border-[#38402F] transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
                   >
                     <Download className="w-3 h-3 text-[#FAF8F5]" />
-                    <span>Download All-In-One PDF (Playbook + Cards + License)</span>
-                  </button>
-
-                  <button
-                    onClick={handleDownloadAllFiles}
-                    className="px-3 py-1.5 bg-white hover:bg-[#FAF8F5] text-[#1C1917] text-[10px] font-bold uppercase tracking-wider border border-[#E5DFD5] transition-colors cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                  >
-                    <FolderDown className="w-3 h-3 text-[#4A533E]" />
-                    <span>Download All 4 Files (.md)</span>
+                    <span>Download 3-PDF Suite (PDF 01, 02, 03)</span>
                   </button>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[10px] text-[#1C1917]/60 pt-1 gap-1">
-                <span>Direct Digital Asset Fulfillment Ready • All 20 Catalog Products Supported</span>
+                <span>Direct 3-PDF Digital Fulfillment • Exact Standards Across All 11 Product Volumes</span>
                 <span>Matches smallspacehome.ca design identity & spatial engineering standards</span>
               </div>
             </div>
@@ -739,10 +563,10 @@ ${file.downloadableContent}
             <ShieldCheck className="w-5 h-5 text-[#4A533E] shrink-0 mt-0.5" />
             <div className="text-xs space-y-1">
               <span className="font-bold text-[#1C1917] block">
-                Instant Digital Delivery Standard
+                SmallSpaceHome 3-PDF Delivery Standard
               </span>
               <p className="text-[#1C1917]/70 leading-relaxed">
-                All deliverable files (PDF, CSV, Notion JSON, Markdown) are generated on-demand with vector crispness and clean data formatting. Compatible with Fourthwall, Shopify, Gumroad, and Etsy digital product fulfillment.
+                Every purchase fulfills directly into three distinct, publication-grade vector PDFs: <strong>PDF 01 Master Field Playbook</strong> (core chapters & formulas), <strong>PDF 02 4×6" Pocket Field Cards</strong> (quick field companion), and <strong>PDF 03 Quick-Start Execution Checklist</strong> (1-page operational sheet). No ZIP files, no generic text dumps, and no merged all-in-one compendiums.
               </p>
             </div>
           </div>

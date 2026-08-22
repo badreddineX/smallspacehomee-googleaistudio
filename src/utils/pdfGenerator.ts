@@ -8,9 +8,9 @@ import {
   renderLicenseAndDisclaimer,
   renderTableOfContents,
   renderPlaybookChapters,
-  renderExecutionChecklist,
+  renderDedicated4x6PocketCardsPDF,
+  renderDedicatedQuickStartChecklistPDF,
   renderAppendix,
-  render4x6PocketCards,
   addRunningHeaderAndFooter,
   PALETTE
 } from './pdfPlaybookRenderer';
@@ -415,18 +415,24 @@ export function generateProfessionalPDF({
 }
 
 /**
- * Generates a full, publication-ready commercial PDF Playbook for any of the 11 volumes
- * in the SmallSpaceHome Digital Product Playbook Series following the Master Playbook architecture:
- * - Cover page with luxury typography, ISBN, volume badge, and metadata (Page 1)
- * - Personal Use License + Important Safety & Property Disclaimers (Page 2)
- * - Table of Contents with interactive link navigation (Page 3)
- * - Structured multi-page Chapters, architectural schematics, formulas, stop conditions & checklists
- * - Stand-alone 4-Stage Operational Execution Checklist (Before · During · After · Remove)
- * - Appendix A: 5-Column Structured Troubleshooting Matrix
- * - Appendix B: Verified Canadian Retailer & Sourcing Matrix
- * - Appendix C: 4x6" Printable Pocket Field Cards (Cards 01–04)
+ * ============================================================================
+ * SMALLSPACEHOME 3-PDF DELIVERY SYSTEM
+ * PERMANENT STANDARD: Every product is delivered as EXACTLY THREE SEPARATE PDFs
+ * 1. PDF 01 — MASTER FIELD PLAYBOOK (Learn + Understand + Decide)
+ * 2. PDF 02 — 4x6" POCKET FIELD CARDS (Quick Field Reference)
+ * 3. PDF 03 — QUICK-START EXECUTION CHECKLIST (Execute)
+ * ============================================================================
  */
-export function generatePlaybookPDF(playbook: PlaybookMeta): jsPDF {
+
+/**
+ * PDF 01 — MASTER FIELD PLAYBOOK
+ * The complete core publication (25–36 pages depending on volume depth).
+ * Includes: Cover, Personal Use License, Legal/Safety Disclaimers, Copyright,
+ * Version/Date, Table of Contents, Chapters, Architectural Schematics, Worked Formulas,
+ * Decision Matrices, Appendix A (5-Column Troubleshooting Matrix), Appendix B (Canadian Retailers & Sourcing).
+ * Purpose: LEARN + UNDERSTAND + DECIDE
+ */
+export function generateMasterPlaybookPDF(playbook: PlaybookMeta): jsPDF {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -434,10 +440,10 @@ export function generatePlaybookPDF(playbook: PlaybookMeta): jsPDF {
   });
 
   doc.setProperties({
-    title: playbook.title,
-    subject: `${playbook.volumeLabel} - ${playbook.category}`,
+    title: `${playbook.title} — Master Field Playbook (PDF 01)`,
+    subject: `PDF 01: Master Field Playbook — ${playbook.volumeLabel} (${playbook.category})`,
     author: playbook.author,
-    keywords: `SmallSpaceHome, ${playbook.category}, Rental Apartment, Toronto Rental Lab, DIY, Architecture`,
+    keywords: `SmallSpaceHome, ${playbook.category}, Master Field Playbook, PDF 01, Toronto Rental Lab, DIY, Architecture`,
     creator: 'SmallSpaceHome Digital Publishing OS',
   });
 
@@ -452,38 +458,75 @@ export function generatePlaybookPDF(playbook: PlaybookMeta): jsPDF {
   // 3. Table of Contents & Roadmap (Page 3)
   renderTableOfContents(ctx);
 
-  // 4. Chapters & Tactical Execution
+  // 4. Chapters & Tactical Execution (Pages 4+)
   renderPlaybookChapters(ctx);
 
-  // 5. Standalone Execution Checklist (Before · During · After · Remove)
-  renderExecutionChecklist(ctx);
-
-  // 6. Appendix: Troubleshooting Matrix & Canadian Sourcing
+  // 5. Appendix A (Troubleshooting Matrix) & Appendix B (Canadian Retailers & Sourcing)
   renderAppendix(ctx);
-
-  // 7. 4x6" Printable Pocket Field Cards
-  render4x6PocketCards(ctx);
 
   // Add running headers and footers to all pages except Cover (Page 1)
   const totalPages = doc.internal.pages.length - 1;
   for (let i = 2; i <= totalPages; i++) {
     doc.setPage(i);
-    addRunningHeaderAndFooter(ctx, i, totalPages, playbook.title);
+    addRunningHeaderAndFooter(ctx, i, totalPages, `${playbook.title} • MASTER FIELD PLAYBOOK`);
   }
 
   return doc;
 }
 
-/**
- * Generates the unified Master All-In-One PDF containing all 11 Products in a single document:
- * 1. Commercial Specifications, Licensing & Disclaimers
- * 2. Complete Chapter Guides, Architectural Schematics & Formulas
- * 3. Standalone 4-Stage Execution Checklists & 5-Column Troubleshooting Matrices
- * 4. Printable 4x6" Field Companion Reference Cards (Cards 01-04)
- */
-export function generateMasterAllInOneCompendiumPDF(playbooks?: PlaybookMeta[]): jsPDF {
-  const series = playbooks || PLAYBOOK_SERIES;
+export function downloadMasterPlaybookPDF(playbook: PlaybookMeta): void {
+  const doc = generateMasterPlaybookPDF(playbook);
+  const cleanName = `SmallSpaceHome_Vol_0${playbook.volumeNumber}_Master_Field_Playbook.pdf`;
+  doc.save(cleanName);
+}
 
+/**
+ * PDF 02 — 4x6" POCKET FIELD CARDS
+ * A dedicated standalone 4x6" print-ready reference PDF containing exactly 4 cards:
+ * Card 01: Surface Preparation (Solvent protocols & substrate check)
+ * Card 02: Hardware & Installation (Load physics, 40% safety buffer formula)
+ * Card 03: Removal & Restoration (Zero-damage stretch & spackle repair)
+ * Card 04: Hardware Store Quick Buy (Canadian SKUs & shopping list)
+ * Purpose: QUICK FIELD REFERENCE
+ */
+export function generatePocketCardsPDF(playbook: PlaybookMeta): jsPDF {
+  // 4x6 inches in mm = 152.4 x 101.6 mm (landscape card)
+  const doc = new jsPDF({
+    orientation: 'landscape',
+    unit: 'mm',
+    format: [152.4, 101.6],
+  });
+
+  doc.setProperties({
+    title: `${playbook.title} — 4x6" Pocket Field Cards (PDF 02)`,
+    subject: `PDF 02: 4x6" Pocket Field Reference Cards — ${playbook.volumeLabel}`,
+    author: playbook.author,
+    keywords: `SmallSpaceHome, 4x6 Cards, Pocket Field Cards, PDF 02, Field Companion, Toronto Rental Lab`,
+    creator: 'SmallSpaceHome Digital Publishing OS',
+  });
+
+  const enrichment = getVolumeEnrichment(playbook.id, playbook.volumeNumber, playbook.title, playbook.category);
+  renderDedicated4x6PocketCardsPDF(doc, playbook, enrichment);
+
+  return doc;
+}
+
+export function downloadPocketCardsPDF(playbook: PlaybookMeta): void {
+  const doc = generatePocketCardsPDF(playbook);
+  const cleanName = `SmallSpaceHome_Vol_0${playbook.volumeNumber}_Pocket_Field_Cards_4x6.pdf`;
+  doc.save(cleanName);
+}
+
+/**
+ * PDF 03 — QUICK-START EXECUTION CHECKLIST
+ * A dedicated single-page (1-page A4) operational execution sheet organized strictly into:
+ * 1. BEFORE (Substrate, Weight, Compatibility, Surface, Manufacturer, Measurements, Tools)
+ * 2. DURING (Prepare surface, Measure/mark, Install method, Verify placement, Curing time)
+ * 3. AFTER (Verification, Inspection, Record configuration, Photograph, Schedule re-check)
+ * 4. REMOVE (Removal procedure, Surface inspection, Restoration, Final photograph)
+ * Purpose: EXECUTE
+ */
+export function generateQuickStartChecklistPDF(playbook: PlaybookMeta): jsPDF {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -491,185 +534,45 @@ export function generateMasterAllInOneCompendiumPDF(playbooks?: PlaybookMeta[]):
   });
 
   doc.setProperties({
-    title: 'SmallSpaceHome - Master All-In-One Commercial Product Compendium',
-    subject: 'All 11 Digital Product Playbooks + Printable Pocket Cheatsheets + Commercial Specifications & Licensing',
-    author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
-    keywords: 'SmallSpaceHome, All Products, Digital Playbooks, Pocket Cheatsheets, Commercial PDF, Renter Friendly, Toronto Rental Lab',
+    title: `${playbook.title} — Quick-Start Execution Checklist (PDF 03)`,
+    subject: `PDF 03: Quick-Start Field Execution Checklist — ${playbook.volumeLabel}`,
+    author: playbook.author,
+    keywords: `SmallSpaceHome, Execution Checklist, PDF 03, Field Guide, Toronto Rental Lab`,
     creator: 'SmallSpaceHome Digital Publishing OS',
   });
 
-  const pageWidth = doc.internal.pageSize.getWidth();
-  const pageHeight = doc.internal.pageSize.getHeight();
-  const margin = 18;
-  const contentWidth = pageWidth - margin * 2;
-  const { creamBg, softCharcoal, terracotta, sageGreen, hairlineGrey } = PALETTE;
-
-  // Master Compendium Cover
-  doc.setFillColor(creamBg[0], creamBg[1], creamBg[2]);
-  doc.rect(0, 0, pageWidth, pageHeight, 'F');
-
-  doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-  doc.setLineWidth(0.8);
-  doc.rect(margin - 4, margin - 4, contentWidth + 8, pageHeight - margin * 2 + 8);
-
-  doc.setFillColor(terracotta[0], terracotta[1], terracotta[2]);
-  doc.rect(margin, margin, contentWidth, 14, 'F');
-
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(8.5);
-  doc.setTextColor(creamBg[0], creamBg[1], creamBg[2]);
-  doc.text('SMALLSPACEHOME.CA • ALL-IN-ONE COMMERCIAL MASTER COMPENDIUM', margin + 4, margin + 9);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
-  doc.text('11 PRODUCTS IN ONE PDF', pageWidth - margin - 4, margin + 9, { align: 'right' });
-
-  // Volume & Badge Pill
-  doc.setFillColor(255, 255, 255);
-  doc.setDrawColor(terracotta[0], terracotta[1], terracotta[2]);
-  doc.setLineWidth(0.4);
-  doc.roundedRect(margin, margin + 20, contentWidth, 8.5, 1.5, 1.5, 'FD');
-
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(7.5);
-  doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
-  doc.text('COMPLETE 11-VOLUME ARCHIVE: PLAYBOOKS + 4x6" FIELD CARDS + COMMERCIAL LICENSING', margin + 4, margin + 26);
-
-  // Grand Title
-  let curY = margin + 40;
-  doc.setFont('times', 'bold');
-  doc.setFontSize(22);
-  doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-  doc.text('The SmallSpaceHome Master Product Suite', margin, curY);
-  curY += 8;
-
-  doc.setFont('times', 'italic');
-  doc.setFontSize(11.5);
-  doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
-  doc.text('The Complete 11-Volume Field Playbook Library, 4x6" Pocket Field Cards & Sourcing Matrices', margin, curY);
-  curY += 8;
-
-  doc.setDrawColor(terracotta[0], terracotta[1], terracotta[2]);
-  doc.setLineWidth(1);
-  doc.line(margin, curY, margin + 45, curY);
-  curY += 8;
-
-  // Overview Box
-  doc.setFillColor(255, 255, 255);
-  doc.setDrawColor(hairlineGrey[0], hairlineGrey[1], hairlineGrey[2]);
-  doc.setLineWidth(0.4);
-  doc.roundedRect(margin, curY, contentWidth, 26, 1.5, 1.5, 'FD');
-  doc.setFillColor(sageGreen[0], sageGreen[1], sageGreen[2]);
-  doc.rect(margin, curY, 3, 26, 'F');
-
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(8);
-  doc.setTextColor(sageGreen[0], sageGreen[1], sageGreen[2]);
-  doc.text('COMPREHENSIVE MASTER ARCHIVE OF ALL 11 SPATIAL OPTIMIZATION SYSTEMS:', margin + 6, curY + 6);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7.5);
-  doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-  doc.text('1. COMMERCIAL & TECHNICAL LICENSING: Single-user personal license, legal disclaimers, and 40% safety margin.', margin + 6, curY + 12);
-  doc.text('2. FULL TACTICAL CHAPTERS: Comprehensive narrative guides, architectural schematics, and worked formulas.', margin + 6, curY + 17);
-  doc.text('3. STAND-ALONE CHECKLISTS & 4x6" FIELD CARDS: On-site operational checklists and cut-ready pocket companion cards.', margin + 6, curY + 22);
-
-  curY += 32;
-
-  // Product Summary Table
-  const productSummaryRows = series.map((p) => [
-    `Vol. 0${p.volumeNumber}`,
-    p.title.length > 50 ? p.title.substring(0, 48) + '...' : p.title,
-    `$${p.priceCad} CAD`,
-    p.isbn
-  ]);
-
-  autoTable(doc, {
-    startY: curY,
-    head: [['Vol.', 'Product Name', 'Retail ($CAD)', 'Registered ISBN']],
-    body: productSummaryRows,
-    margin: { left: margin, right: margin },
-    styles: {
-      fontSize: 7,
-      font: 'helvetica',
-      textColor: [43, 40, 37],
-      cellPadding: 1.6,
-      lineColor: [220, 213, 203],
-      lineWidth: 0.2
-    },
-    headStyles: {
-      fillColor: [195, 111, 74],
-      textColor: [250, 247, 242],
-      fontStyle: 'bold'
-    },
-    alternateRowStyles: {
-      fillColor: [250, 247, 242]
-    }
-  });
-
-  // Render each volume in the master compendium
-  series.forEach((vol) => {
-    const volCtx = createRenderContext(doc, vol);
-    renderPlaybookCover(volCtx);
-    renderLicenseAndDisclaimer(volCtx);
-    renderTableOfContents(volCtx);
-    renderPlaybookChapters(volCtx);
-    renderExecutionChecklist(volCtx);
-    renderAppendix(volCtx);
-    render4x6PocketCards(volCtx);
-  });
-
-  // Stamp running header and footer across all master pages (except Cover)
-  const totalMasterPages = doc.internal.pages.length - 1;
-  for (let i = 2; i <= totalMasterPages; i++) {
-    doc.setPage(i);
-    const enrichment = getVolumeEnrichment(series[0].id, 1, series[0].title, series[0].category);
-    addRunningHeaderAndFooter(
-      {
-        doc,
-        playbook: series[0],
-        enrichment,
-        pageWidth,
-        pageHeight,
-        margin,
-        contentWidth,
-        tocTargets: {}
-      },
-      i,
-      totalMasterPages,
-      'MASTER 11-PRODUCT COMPENDIUM'
-    );
-  }
+  const enrichment = getVolumeEnrichment(playbook.id, playbook.volumeNumber, playbook.title, playbook.category);
+  renderDedicatedQuickStartChecklistPDF(doc, playbook, enrichment);
 
   return doc;
 }
 
-/**
- * Downloads the Master All-In-One Compendium PDF containing all 11 Products
- * (Playbooks + Printable Pocket Cheatsheets + Commercial Specs & License).
- */
-export function downloadMasterAllInOnePDF(playbooks?: PlaybookMeta[]): void {
-  const doc = generateMasterAllInOneCompendiumPDF(playbooks);
-  doc.save('SmallSpaceHome_Master_All_In_One_11_Product_Compendium.pdf');
-}
-
-/**
- * Downloads a single product's All-In-One PDF (Playbook + Pocket Cheatsheets + Commercial License).
- */
-export function downloadProductAllInOnePDF(playbook: PlaybookMeta): void {
-  const doc = generatePlaybookPDF(playbook);
-  let cleanName = playbook.fileName;
-  if (!cleanName.toLowerCase().includes('all_in_one')) {
-    cleanName = cleanName.replace('.pdf', '_All_In_One_Playbook_And_Cheatsheets.pdf');
-  }
+export function downloadQuickStartChecklistPDF(playbook: PlaybookMeta): void {
+  const doc = generateQuickStartChecklistPDF(playbook);
+  const cleanName = `SmallSpaceHome_Vol_0${playbook.volumeNumber}_Quick_Start_Execution_Checklist.pdf`;
   doc.save(cleanName);
 }
 
 /**
- * Downloads a complete commercial playbook PDF to the user's filesystem.
+ * Downloads the complete 3-PDF deliverable suite for a product:
+ * Downloads PDF 01 (Master Playbook), PDF 02 (4x6" Pocket Cards), and PDF 03 (Execution Checklist)
+ * as separate standalone PDF files.
  */
+export function downloadThreePDFSuite(playbook: PlaybookMeta): void {
+  downloadMasterPlaybookPDF(playbook);
+  setTimeout(() => downloadPocketCardsPDF(playbook), 350);
+  setTimeout(() => downloadQuickStartChecklistPDF(playbook), 700);
+}
+
+/**
+ * Alias for generating PDF 01 (Master Field Playbook) for backwards compatibility.
+ */
+export function generatePlaybookPDF(playbook: PlaybookMeta): jsPDF {
+  return generateMasterPlaybookPDF(playbook);
+}
+
 export function downloadPlaybookPDF(playbook: PlaybookMeta): void {
-  const doc = generatePlaybookPDF(playbook);
-  doc.save(playbook.fileName);
+  downloadMasterPlaybookPDF(playbook);
 }
 
 /**
