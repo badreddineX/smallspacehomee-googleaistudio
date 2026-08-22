@@ -42,10 +42,10 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectFlagship
             <span>Tactical Action Kits Catalog</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-serif text-[#1A1A1A] font-bold">
-            12 High-Value Tactical Action Kits & Renter Hacks
+            11 High-Value Tactical Action Kits & Renter Hacks
           </h2>
           <p className="text-xs sm:text-sm text-[#1A1A1A]/70 mt-0.5 font-serif italic">
-            Engineered exclusively for urban renters and spaces under 800 sq ft. Each kit delivers zero-damage hardware formulas, multi-page vector field playbooks, pocket cheat cards, and automated dimension calculators.
+            Engineered exclusively for urban renters and spaces under 800 sq ft. Each kit delivers zero-damage hardware formulas, 30+ page vector field playbooks, pocket cheat cards, and automated dimension calculators.
           </p>
         </div>
       </div>

@@ -735,67 +735,6 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
     ],
     blogTriggers: ['Small Bathroom Organization', 'Tiny Shower Hacks', 'Over Toilet Storage Ideas', 'Pedestal Sink Storage'],
     fourthwallCategory: 'Tactical Action Kits'
-  },
-  {
-    id: 'kit-balcony-patio-oasis',
-    rank: 12,
-    title: 'The Urban Balcony & Micro-Patio Green Oasis Kit',
-    tagline: 'Transform a 4x8 ft concrete apartment balcony into a private Scandinavian outdoor lounge.',
-    level: 'quick-win',
-    priceRange: '$17 – $24 CAD',
-    recommendedPrice: 19,
-    format: 'Visual Field Playbook (.PDF) + Balcony Layout Cards + Weatherproof Matrix (.CSV) + Notion Hub',
-    targetProblem: 'Concrete rental balconies sitting unused, dirty, and windswept with zero privacy from neighboring towers.',
-    valueProposition: 'Railing-mounted folding tables, interlocking acacia wood tiles, privacy ivy screens, and vertical herb garden blueprints.',
-    differentiation: 'Tested for strict condo board bylaws, zero wind-hazard mounting, and rapid winterization teardown protocols.',
-    blogCategory: 'Balcony & Outdoor Living',
-    difficulty: 'Low',
-    isTop10: false,
-    roomZone: 'Balcony',
-    renterSafetyRating: '100% Condo Bylaw Safe',
-    viralHook: 'The $40 railing bar table hack that turns a tiny concrete balcony into a sunset wine bar.',
-    scores: {
-      problemSeverity: 8,
-      searchAlignment: 9,
-      audienceRelevance: 8,
-      productUsefulness: 8,
-      perceivedValue: 8,
-      differentiation: 9,
-      visualPotential: 10,
-      easeOfProduction: 9,
-      bundlePotential: 8,
-      upsellPotential: 7,
-      evergreenPotential: 9,
-      blogPromotionFit: 9,
-      pinterestPotential: 10,
-      flagshipPotential: 6,
-      totalScore: 118
-    },
-    whyBuild: 'Balconies are high-aspiration aesthetic upgrades that explode in search volume during spring and summer months.',
-    deliverables: [
-      'Urban Balcony Green Oasis Visual Playbook (Printable PDF)',
-      'Railing Bar & Deck Tile Blueprint Cards (Printable PDF)',
-      'Balcony Wind Safety & Weatherproof Material Matrix (Interactive CSV / Sheets)',
-      '1-Click Balcony Herb Garden & Layout Hub (Notion Dashboard)'
-    ],
-    secretHacks: [
-      'Railing-clamp foldable wooden bar table (zero floor footprint; folds flat against railing when not in use)',
-      'Snap-together interlocking acacia wood deck tiles (covers cold gray concrete in 20 minutes without tools)',
-      'Faux boxwood privacy ivy roll secured with heavy-duty black zip ties to block neighbor sight lines',
-      'Solar-powered micro LED string lights woven through railing mesh for zero-plug ambient evening glow'
-    ],
-    proTips: [
-      'Check condo rules for weight restrictions on planters—use lightweight fiberglass or resin pots filled with perlite at the bottom instead of heavy clay and soil.',
-      'Choose outdoor furniture that folds flat to hang on wall hooks during winter months.'
-    ],
-    keyModules: [
-      'Module 1: Deck Tile Flooring & Drainage Layout Specs',
-      'Module 2: Zero-Footprint Railing Bar & Foldable Seating Hacks',
-      'Module 3: Wind-Safe Privacy Screening & Greenery Grid',
-      'Module 4: Solar Warm Lighting & Rapid Winter Storage Protocol'
-    ],
-    blogTriggers: ['Small Balcony Ideas', 'Apartment Patio Decor', 'Balcony Flooring Hacks', 'Railing Table DIY'],
-    fourthwallCategory: 'Tactical Action Kits'
   }
 ];
 

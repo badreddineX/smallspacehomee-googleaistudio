@@ -30,10 +30,10 @@ export const EcosystemFlow: React.FC<EcosystemFlowProps> = ({ onSelectProduct, o
   const [selectedZone, setSelectedZone] = useState<string>('All');
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
 
-  // Filter 12 products
-  const products: DigitalProduct[] = TOP_20_PRODUCTS.slice(0, 12);
+  // Filter 11 products
+  const products: DigitalProduct[] = TOP_20_PRODUCTS.slice(0, 11);
 
-  const zones = ['All', 'Universal', 'Kitchen', 'Closet & Bedroom', 'Living & Studio', 'Bathroom', 'Balcony'];
+  const zones = ['All', 'Universal', 'Kitchen', 'Closet & Bedroom', 'Living & Studio', 'Bathroom'];
 
   const filteredProducts = selectedZone === 'All' 
     ? products 
@@ -243,19 +243,19 @@ export const EcosystemFlow: React.FC<EcosystemFlowProps> = ({ onSelectProduct, o
 
           <div className="pt-4 border-t border-[#E5DFD5] flex items-center justify-between text-[11px]">
             <span className="text-[#4A533E] font-bold uppercase tracking-wider">
-              3 Themed Bundles
+              3 Themed Problem Bundles
             </span>
             <button 
-              onClick={() => handleTabClick('bundles')}
+              onClick={() => handleTabClick('all-products')}
               className="text-[#4A533E] hover:text-[#1C1917] font-semibold underline text-xs cursor-pointer flex items-center gap-1"
             >
-              <span>Explore Bundles</span>
+              <span>Explore Action Kits</span>
               <ChevronRight className="w-3 h-3" />
             </button>
           </div>
         </div>
 
-        {/* Tier 3: Ultimate 12-Kit Master Vault */}
+        {/* Tier 3: Ultimate 11-Kit Master Vault */}
         <div className="bg-[#1C1917] text-[#FAF8F5] border border-[#1C1917] p-6 shadow-md flex flex-col justify-between space-y-4 relative">
           <div className="absolute -top-2.5 right-4 bg-[#A85A3C] text-white text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 shadow-xs">
             Save 63% ($260 Value)
@@ -274,26 +274,26 @@ export const EcosystemFlow: React.FC<EcosystemFlowProps> = ({ onSelectProduct, o
             </h3>
 
             <p className="text-xs text-[#FAF8F5]/70 leading-relaxed font-sans">
-              The definitive encyclopedia: every single action kit, 150+ secret hacks, 12 printable pocket card decks, 12 CSV calculators, and 12 Notion dashboards.
+              The definitive encyclopedia: all 11 action kits, 150+ secret hacks, 11 printable pocket card decks, 11 CSV calculators, and 11 Notion dashboards.
             </p>
 
             <div className="space-y-1.5 pt-2 text-xs text-[#FAF8F5]/80">
               <div className="font-bold text-[#D9D3C7] text-[9px] uppercase tracking-[0.15em]">Master Access Includes:</div>
               <div className="flex items-center gap-2 text-xs text-[#FAF8F5]/90">
                 <Sparkles className="w-3.5 h-3.5 text-[#D9D3C7] shrink-0" />
-                <span>All 12 Tactical Action Kits (150+ Secret Hacks)</span>
+                <span>All 11 Tactical Action Kits (150+ Secret Hacks)</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-[#FAF8F5]/90">
                 <Sparkles className="w-3.5 h-3.5 text-[#D9D3C7] shrink-0" />
-                <span>12 Printable Pocket Flashcard Reference Decks</span>
+                <span>11 Printable Pocket Flashcard Reference Decks</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-[#FAF8F5]/90">
                 <Sparkles className="w-3.5 h-3.5 text-[#D9D3C7] shrink-0" />
-                <span>12 Interactive CSV Clearance & Load Calculators</span>
+                <span>11 Interactive CSV Clearance & Load Calculators</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-[#FAF8F5]/90">
                 <Sparkles className="w-3.5 h-3.5 text-[#D9D3C7] shrink-0" />
-                <span>12 Connected Notion Room & Inventory Hubs</span>
+                <span>11 Connected Notion Room & Inventory Hubs</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-[#FAF8F5]/90">
                 <Sparkles className="w-3.5 h-3.5 text-[#D9D3C7] shrink-0" />
@@ -469,7 +469,7 @@ export const EcosystemFlow: React.FC<EcosystemFlowProps> = ({ onSelectProduct, o
                   Step 5: Master Vault
                 </span>
                 <p className="text-xs font-medium text-white mt-1">
-                  The Ultimate Renter Action Vault (All 12 Kits)
+                  The Ultimate Renter Action Vault (All 11 Kits)
                 </p>
               </div>
               <div className="pt-2 border-t border-white/15 flex items-center justify-between">
@@ -486,7 +486,7 @@ export const EcosystemFlow: React.FC<EcosystemFlowProps> = ({ onSelectProduct, o
         </div>
       </div>
 
-      {/* Interactive 12-Product Master Catalog Grid */}
+      {/* Interactive 11-Product Master Catalog Grid */}
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E5DFD5] pb-4">
           <div>
@@ -497,7 +497,7 @@ export const EcosystemFlow: React.FC<EcosystemFlowProps> = ({ onSelectProduct, o
               </span>
             </div>
             <h3 className="font-serif text-xl sm:text-2xl text-[#1C1917] font-bold">
-              The 12 Tactical Action Kits Matrix
+              The 11 Tactical Action Kits Matrix
             </h3>
             <p className="text-xs text-[#1C1917]/70">
               Filter by room zone to inspect every individual kit, deliverables, and bundle positioning.

@@ -210,7 +210,7 @@ ${file.downloadableContent}
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
-              Tactical Action Kits & Deliverable Formats (1–12)
+              Tactical Action Kits & Deliverable Formats (1–11)
             </h1>
             <p className="text-xs sm:text-sm text-[#1C1917]/80 max-w-3xl leading-relaxed">
               Every digital product is engineered as an actionable, high-converting <strong>Tactical Action Kit</strong> loaded with tested renter hacks, zero-damage hardware tricks, printable pocket cheat sheets, and plug-and-play dimension calculators tested in our 510 sq ft Toronto rental test lab.
@@ -252,7 +252,7 @@ ${file.downloadableContent}
           <div className="flex items-center gap-2">
             <ImageIcon className="w-4 h-4 text-[#4A533E]" />
             <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">
-              Select from All 12 Tactical Action Kits
+              Select from All 11 Tactical Action Kits
             </span>
           </div>
 

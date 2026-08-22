@@ -24,12 +24,7 @@ export type TabId =
   | 'audience' 
   | 'top-20' 
   | 'top-10' 
-  | 'ecosystem' 
-  | 'flagship' 
-  | 'bundles' 
-  | 'blog-funnel' 
-  | 'store-architecture' 
-  | 'roadmap';
+  | 'store-architecture';
 
 export type ProductLevel = 'quick-win' | 'premium' | 'flagship';
 

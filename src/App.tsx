@@ -6,19 +6,14 @@ import { AllProductsStudio } from './components/AllProductsStudio';
 import { FirstProductExperience } from './components/FirstProductExperience';
 import { AudienceSection } from './components/AudienceSection';
 import { ProductCatalog } from './components/ProductCatalog';
-import { EcosystemFlow } from './components/EcosystemFlow';
-import { FlagshipDeepDive } from './components/FlagshipDeepDive';
-import { BundleArchitecture } from './components/BundleArchitecture';
-import { BlogFunnelEngine } from './components/BlogFunnelEngine';
 import { StoreArchitecture } from './components/StoreArchitecture';
-import { ProductionRoadmap } from './components/ProductionRoadmap';
 import { RevenueSimulator } from './components/RevenueSimulator';
 import { TabId } from './types';
 import { TrendingUp, ExternalLink } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabId>('playbooks');
-  const [selectedStudioProductId, setSelectedStudioProductId] = useState<string>('flagship-ss-os');
+  const [selectedStudioProductId, setSelectedStudioProductId] = useState<string>('kit-zero-damage-mounting');
   const [isSimulatorOpen, setIsSimulatorOpen] = useState(false);
 
   const handleLaunchProductStudio = (productId: string) => {
@@ -52,28 +47,15 @@ export default function App() {
       case 'top-10':
         return (
           <ProductCatalog 
-            onSelectFlagship={() => handleLaunchProductStudio('flagship-ss-os')}
+            onSelectFlagship={() => handleLaunchProductStudio('kit-zero-damage-mounting')}
             onSelectProductStudio={handleLaunchProductStudio}
           />
         );
-      case 'ecosystem':
-        return <EcosystemFlow />;
-      case 'flagship':
-        return <FlagshipDeepDive onOpenLiveProduct={() => handleLaunchProductStudio('flagship-ss-os')} />;
-      case 'bundles':
-        return <BundleArchitecture />;
-      case 'blog-funnel':
-        return <BlogFunnelEngine />;
       case 'store-architecture':
         return <StoreArchitecture />;
-      case 'roadmap':
-        return <ProductionRoadmap />;
       default:
         return (
-          <DeliverablesAndPhotographyCenter 
-            initialProductId={selectedStudioProductId} 
-            onOpenStoreKit={handleLaunchProductStudio}
-          />
+          <PlaybookSeriesCenter onOpenProduct={handleLaunchProductStudio} />
         );
     }
   };
@@ -114,11 +96,11 @@ export default function App() {
               </div>
 
               <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight text-[#1C1917] leading-tight">
-                High-Value Digital Products for Small-Space Living
+                11 High-Value Digital Playbooks & Spatial Systems
               </h1>
 
               <p className="text-[#1C1917]/80 text-sm sm:text-base leading-relaxed max-w-2xl font-serif italic">
-                Architectural layout calculators, renter-safe mounting blueprints, legal tenant notice templates, and Notion operating systems designed specifically for urban apartments under 800 sq ft.
+                Architectural layout calculators, renter-safe mounting blueprints, legal tenant defense protocols, and 30+ page vector field playbooks engineered specifically for urban apartments under 800 sq ft.
               </p>
             </div>
 
@@ -126,14 +108,14 @@ export default function App() {
             <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 self-start lg:self-center">
               <div className="bg-white px-4 py-3 border border-[#E5DFD5] text-xs min-w-[130px] shadow-xs rounded-xs">
                 <span className="text-[#4A533E] block text-[9px] uppercase font-bold tracking-[0.15em]">Catalog Scope</span>
-                <span className="text-[#1C1917] font-serif font-bold text-lg">20 Products</span>
-                <span className="text-[#4A533E] text-[10px] block mt-0.5 font-medium">Full Master Bundles</span>
+                <span className="text-[#1C1917] font-serif font-bold text-lg">11 Master Kits</span>
+                <span className="text-[#4A533E] text-[10px] block mt-0.5 font-medium">Complete Ebook Suite</span>
               </div>
 
               <div className="bg-white px-4 py-3 border border-[#E5DFD5] text-xs min-w-[130px] shadow-xs rounded-xs">
-                <span className="text-[#4A533E] block text-[9px] uppercase font-bold tracking-[0.15em]">Flagship Price</span>
-                <span className="text-[#1C1917] font-serif font-bold text-lg">$79 CAD</span>
-                <span className="text-[#1C1917]/60 text-[10px] block mt-0.5 font-medium">SS-OS Master Suite</span>
+                <span className="text-[#4A533E] block text-[9px] uppercase font-bold tracking-[0.15em]">Core Tiering</span>
+                <span className="text-[#1C1917] font-serif font-bold text-lg">$19 – $29 CAD</span>
+                <span className="text-[#1C1917]/60 text-[10px] block mt-0.5 font-medium">Instant Digital PDF</span>
               </div>
 
               <button
@@ -169,6 +151,12 @@ export default function App() {
 
           <div className="flex flex-wrap items-center gap-4 text-[#1C1917]/80 font-medium">
             <button
+              onClick={() => setActiveTab('playbooks')}
+              className="hover:text-[#4A533E] transition-colors cursor-pointer tracking-wider text-[11px]"
+            >
+              11 Playbooks
+            </button>
+            <button
               onClick={() => setActiveTab('deliverables-photography')}
               className="hover:text-[#4A533E] transition-colors cursor-pointer tracking-wider text-[11px]"
             >
@@ -184,13 +172,7 @@ export default function App() {
               onClick={() => setActiveTab('top-10')}
               className="hover:text-[#4A533E] transition-colors cursor-pointer tracking-wider text-[11px]"
             >
-              Top 10 Catalog
-            </button>
-            <button
-              onClick={() => setActiveTab('flagship')}
-              className="hover:text-[#4A533E] transition-colors cursor-pointer tracking-wider text-[11px]"
-            >
-              Flagship Strategy
+              11 Products Catalog
             </button>
             <a
               href="https://smallspacehome.ca"

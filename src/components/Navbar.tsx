@@ -10,18 +10,13 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab, onOpenSimulator }) => {
   const navItems: { id: TabId; label: string; number: string; icon: React.ElementType }[] = [
-    { id: 'playbooks', label: '11 Digital Playbook Kits (Ebooks)', number: '01', icon: BookOpen },
-    { id: 'deliverables-photography', label: 'Tactical Action Kits & Files (1–12)', number: '02', icon: ImageIcon },
-    { id: 'all-products', label: 'Store Posting Kits & Studio', number: '03', icon: Layers },
+    { id: 'playbooks', label: '11 Digital Playbooks & Master Guides', number: '01', icon: BookOpen },
+    { id: 'deliverables-photography', label: 'Tactical Action Kits & Deliverables', number: '02', icon: ImageIcon },
+    { id: 'all-products', label: 'Store Posting Kits & Product Studio', number: '03', icon: Layers },
     { id: 'first-product', label: '#1 Starter Kit: Zero-Damage Mounting', number: '04', icon: Sparkles },
-    { id: 'top-10', label: '12-Kit Catalog & Hacks', number: '05', icon: Home },
-    { id: 'audience', label: 'Audience & Problem Map', number: '06', icon: Compass },
-    { id: 'ecosystem', label: 'Ecosystem & Funnel Flow', number: '07', icon: Package },
-    { id: 'flagship', label: 'Master Kit Strategy', number: '08', icon: BookOpen },
-    { id: 'bundles', label: 'Bundles & Physical Merch', number: '09', icon: ShoppingBag },
-    { id: 'blog-funnel', label: 'Blog Funnel & CTAs', number: '10', icon: Calendar },
-    { id: 'store-architecture', label: 'Fourthwall Store Layout', number: '11', icon: DollarSign },
-    { id: 'roadmap', label: 'Launch Roadmap', number: '12', icon: ExternalLink },
+    { id: 'top-10', label: '11-Product Catalog & Core Hacks', number: '05', icon: Home },
+    { id: 'audience', label: 'Audience & Problem Architecture', number: '06', icon: Compass },
+    { id: 'store-architecture', label: 'Fourthwall Storefront Architecture', number: '07', icon: DollarSign },
   ];
 
   return (
