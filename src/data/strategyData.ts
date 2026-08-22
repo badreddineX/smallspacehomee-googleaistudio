@@ -68,21 +68,21 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-zero-damage-mounting',
     rank: 1,
-    title: 'The Zero-Damage Renter Mounting & Secret Wall Hacks Kit',
-    tagline: 'Hang 45-lb heavy mirrors, floating shelves, and gallery walls without a single drill hole or lost deposit.',
+    title: 'Hang Mirrors, Shelves & Art Without Damaging Rental Walls: The Zero-Damage Mounting System',
+    tagline: 'A field-tested engineering system to mount heavy mirrors, floating shelves, and gallery walls with zero drywall tears and zero deposit loss.',
     level: 'quick-win',
     priceRange: '$19 – $29 CAD',
     recommendedPrice: 24,
     format: 'Visual Field Playbook (.PDF) + Pocket Hacks Deck + Load Calculator (.CSV) + Notion Hub',
-    targetProblem: 'Renters are banned from drilling holes into rental walls, resulting in zero vertical storage and bare, depressing rooms.',
-    valueProposition: 'The definitive tactical guide to hanging heavy frames, floating plants, and curtain rods safely with 100% zero wall damage.',
-    differentiation: 'Tested in a 510 sq ft Toronto Rental Lab. Includes actual shear-force calculations, hot-glue+tape painter tricks, and thermal blow-dryer residue removal protocols.',
+    targetProblem: 'Renters are restricted from drilling structural holes into rental walls, resulting in lost vertical storage and blank, unpersonalized spaces.',
+    valueProposition: 'The definitive tactical guide to hanging frames, floating plants, and curtain rods safely using documented shear mechanics, proper prep, and zero-damage hardware.',
+    differentiation: 'Tested in our 510 sq ft Toronto Rental Lab. Grounded in substrate mechanics, 70% IPA de-oiling protocols, 3M Claw shear vectors, and 60-second thermal blow-dryer adhesive release.',
     blogCategory: 'Renter Hacks & Wall Mounting',
     difficulty: 'Low',
     isTop10: true,
     roomZone: 'Universal',
-    renterSafetyRating: '100% Zero Damage Guarantee',
-    viralHook: 'The $4 hardware store hack that holds a 35-lb mirror with ZERO drill holes.',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
+    viralHook: 'The $4 hardware store hack that holds a heavy framed mirror without drilling anchors or damaging drywall.',
     scores: {
       problemSeverity: 10,
       searchAlignment: 10,
@@ -100,28 +100,28 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
       flagshipPotential: 9,
       totalScore: 137
     },
-    whyBuild: 'The #1 universal high-converting digital product. Renter mounting fear is the highest search intent query on Pinterest and TikTok.',
+    whyBuild: 'The #1 universal high-converting digital product. Renter mounting fear and lease preservation are the highest search intent queries across urban renters.',
     deliverables: [
-      'Zero-Damage Renter Mounting Visual Field Guide (Printable & Vector PDF)',
-      'Pocket Hacks & Tricks Quick-Reference Flashcards (Printable PDF)',
-      'Adhesive & Tension Load Weight Safety Matrix (Interactive CSV / Sheets)',
+      'Master Zero-Damage Mounting Visual Field Playbook (30+ Page Vector PDF)',
+      'Zero-Damage Installation Pocket Field Cards (Printable 4x6" PDF)',
+      'Interactive Substrate & Load Weight Safety Calculator (Interactive CSV / Sheets)',
       '1-Click Renter Hardware & Tool Checklist (Notion Dashboard)'
     ],
     secretHacks: [
-      'The Painter’s Tape + Hot Glue Trick for heavy acoustic panels and lightweight shelves',
-      'The 3M Claw 45-degree drywall shear-angle weight distribution multiplier',
-      'Tension-rod closet and curtain anchor reinforcement with non-slip silicone pads',
-      'Blow-dryer 60-second thermal release hack for clean adhesive strip removal without paint peel'
+      'The Painter’s Tape + Hot Glue Hybrid Trick for lightweight acoustic panels and decorative ledges',
+      'The 3M Claw 45-degree drywall shear-angle weight distribution multiplier (no drywall anchors required)',
+      'Tension-rod anchor reinforcement with high-friction silicone pads for curtain rods and closets',
+      'Blow-dryer 60-second thermal release protocol for clean adhesive strip removal without paint peel'
     ],
     proTips: [
-      'Always clean rental walls with 70% Isopropyl alcohol before applying adhesive—removes invisible grease layer that causes 80% of adhesive failures.',
-      'For mirrors over 20 lbs, use two diagonal anchor points spaced 16 inches apart to distribute vertical shear load across 2 drywall planes.'
+      'Always clean rental walls with 70% Isopropyl alcohol before applying adhesive—removes the microscopic grease film that causes over 80% of adhesive failures.',
+      'For mirrors over 20 lbs, distribute the vertical shear load across two diagonal anchor points spaced 16 inches apart.'
     ],
     keyModules: [
-      'Module 1: Adhesive Chemistry & The 70% Alcohol Prep Rule',
-      'Module 2: Heavy Mirror & Art Hanging without Stud Drilling',
-      'Module 3: Tension Rod Engineering for Curtains, Closets & Plants',
-      'Module 4: Emergency Paint-Peel Repair & Move-Out Touchup Protocol'
+      'Chapter 1: Substrate Diagnosis & The 70% IPA Clean Protocol',
+      'Chapter 2: Heavy Mirror & Art Hanging Without Stud Drilling',
+      'Chapter 3: Tension Rod Engineering for Curtains, Closets & Plants',
+      'Chapter 4: Safe Removal & Emergency Paint-Peel Repair SOP'
     ],
     blogTriggers: ['Renter Wall Decor', 'How to Hang Heavy Mirrors Without Nails', 'Command Strip Hacks', 'Apartment Decorating Tips'],
     fourthwallCategory: 'Tactical Action Kits'
@@ -129,21 +129,21 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-micro-kitchen-maxima',
     rank: 2,
-    title: 'The 500 Sq Ft Micro-Kitchen & Cabinet Space Doubler Kit',
-    tagline: 'Double your usable kitchen storage and food prep area in a cramped galley kitchen under 45 sq ft.',
+    title: 'Double Your Usable Kitchen & Cabinet Space: 500 Sq Ft Galley Kitchen Maximizer',
+    tagline: 'Unlock 18+ cubic feet of dead cabinet space and create 40% more food prep area in a compact kitchen under 45 sq ft.',
     level: 'quick-win',
     priceRange: '$19 – $27 CAD',
     recommendedPrice: 22,
     format: 'Visual Field Playbook (.PDF) + Cabinet Blueprint Cards + Dimensions Calculator (.CSV) + Notion Hub',
-    targetProblem: 'Tiny apartment kitchens with 2 feet of counter space, deep unorganized cabinets, and overflowing spice containers.',
-    valueProposition: 'Unlocks 18+ cubic feet of dead cabinet space and creates 40% more food prep surface using renter-safe hardware tricks.',
+    targetProblem: 'Tiny apartment kitchens with under 2 feet of usable prep counter, deep chaotic lower cabinets, and overflowing pantry items.',
+    valueProposition: 'Creates organized vertical layers and expands meal prep surfaces using non-destructive hardware tricks and over-sink spatial bridges.',
     differentiation: 'Provides exact inch-by-inch cabinet door interior clearances, over-sink cutting board specs, and magnetic spice rack layouts.',
     blogCategory: 'Kitchen Organization & Prep Hacks',
     difficulty: 'Low',
     isTop10: true,
     roomZone: 'Kitchen',
-    renterSafetyRating: '100% Zero Modification Needed',
-    viralHook: 'How to double your kitchen cabinet capacity without spending more than $25.',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
+    viralHook: 'How to double your kitchen cabinet capacity without spending more than $25 on hardware.',
     scores: {
       problemSeverity: 10,
       searchAlignment: 10,
@@ -169,9 +169,9 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
       '1-Click Kitchen Zone & Pantry Organizer (Notion Dashboard)'
     ],
     secretHacks: [
-      'Inside-cabinet-door tension rod trick to hold cutting boards and pot lids upright',
+      'Inside-cabinet-door tension rod retention to hold cutting boards and pot lids upright in 2 inches of depth',
       'Under-shelf magnetic strip for stainless spice jars (frees up an entire cabinet shelf)',
-      'The Over-Sink Solid Wood Cutting Board Bridge (creates 3 sq ft of instant prep space)',
+      'The Over-Sink Solid Wood Cutting Board Bridge (creates 3 sq ft of instant food prep space)',
       'Vertical tension sheet pan organizers replacing horizontal stacking chaos'
     ],
     proTips: [
@@ -190,8 +190,8 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-closet-quadrupler',
     rank: 3,
-    title: 'The Small Closet Quadrupler & Vertical Storage Hack Kit',
-    tagline: 'Turn a cramped 3-foot single-rod rental closet into a 4-tiered boutique wardrobe with zero carpentry.',
+    title: 'Quadruple Your Closet & Wardrobe Capacity: Vertical Organization Playbook',
+    tagline: 'Turn a cramped 3-foot single-rod rental closet into a 4-tiered boutique wardrobe with zero carpentry or wall alterations.',
     level: 'quick-win',
     priceRange: '$19 – $29 CAD',
     recommendedPrice: 24,
@@ -203,7 +203,7 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
     difficulty: 'Low',
     isTop10: true,
     roomZone: 'Closet & Bedroom',
-    renterSafetyRating: '100% Zero-Drill Suspended System',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
     viralHook: 'Fit 120 garments in a 36-inch rental closet without wrinkles or squishing.',
     scores: {
       problemSeverity: 10,
@@ -251,20 +251,20 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-deposit-protection-defense',
     rank: 4,
-    title: 'The Renter Security Deposit Defense & Emergency Repair Kit',
-    tagline: 'The exact move-out protocol, landlord pushback scripts, and $12 repair tricks that saved $14,000+ in deposit deductions.',
+    title: 'Rental Move-Out Restoration & Deposit Protection Guide: Tenant Defense System',
+    tagline: 'The exact move-out inspection protocol, tenant pushback scripts, and $12 repair SOPs to protect your full security deposit.',
     level: 'quick-win',
     priceRange: '$22 – $32 CAD',
     recommendedPrice: 27,
     format: 'Field Repair Playbook (.PDF) + Landlord Script Cards + Move-Out Inspection Matrix (.CSV) + Notion Vault',
-    targetProblem: 'Landlords charging $500–$2,000 for standard nail holes, baseboard scuffs, paint discoloration, and uncleaned appliances.',
+    targetProblem: 'Landlords charging $500–$2,000 for standard nail holes, baseboard scuffs, paint discoloration, and ordinary wear-and-tear.',
     valueProposition: 'Gives renters legal pushback copy-paste scripts, timestamped photo checklists, and foolproof $12 DIY repair formulas.',
-    differentiation: 'Includes legally verified Canadian & US tenant dispute clauses for "Normal Wear and Tear" vs "Tenant Damage".',
+    differentiation: 'Includes documented Canadian & US tenant clauses distinguishing "Normal Wear and Tear" from "Tenant Damage".',
     blogCategory: 'Tenant Rights & Rental Hacks',
     difficulty: 'Medium',
     isTop10: true,
     roomZone: 'Universal',
-    renterSafetyRating: '100% Tenant-Shielded',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
     viralHook: 'How to fix nail holes in rental walls with an $8 spackle tube and chalk so landlords can’t see them.',
     scores: {
       problemSeverity: 10,
@@ -283,7 +283,7 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
       flagshipPotential: 9,
       totalScore: 130
     },
-    whyBuild: 'High perceived financial ROI. Spending $27 to protect a $2,000 deposit is an instant no-brainer purchase.',
+    whyBuild: 'High perceived financial ROI. Spending $27 to protect a $2,000 deposit is an instant high-intent purchase.',
     deliverables: [
       'Renter Security Deposit Defense Playbook (Printable PDF)',
       'Landlord Negotiation & Pushback Script Cards (Printable PDF)',
@@ -291,20 +291,20 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
       '1-Click Deposit Claim & Inspection Vault (Notion Dashboard)'
     ],
     secretHacks: [
-      'The $8 Spackle + White Chalk rubbing technique that perfectly matches rental matte wall textures',
-      'The Magic Eraser + Dawn dish soap baseboard restoration trick (clears 5 years of scuffs in 8 minutes)',
-      'Timestamped wide-angle video walk-through protocol that is legally airtight in tenant tribunals',
-      'The "Pre-Existing Condition" certified mail clause that stops move-out deductions before they happen'
+      'The $8 Spackle + White Chalk rubbing technique that matches rental matte wall textures seamlessly',
+      'The Magic Eraser + Dawn dish soap baseboard restoration protocol (removes years of scuffs in 8 minutes)',
+      'Timestamped wide-angle video walk-through protocol for clear condition records',
+      'The Pre-Existing Condition notification template that stops move-out deductions before they happen'
     ],
     proTips: [
-      'Always request a preliminary joint walk-through 14 days before your lease end date—landlords are required to give you an itemized deficiency list so you can fix items yourself.',
-      'Take photos with a physical ruler placed next to any pre-existing floor scratch or cabinet chip to establish scale and pre-existence.'
+      'Always request a preliminary joint walk-through 14 days before your lease end date to obtain an itemized deficiency list.',
+      'Take photos with a physical ruler placed next to any pre-existing floor scratch or cabinet chip to document scale.'
     ],
     keyModules: [
       'Module 1: Move-In 4K Photographic Evidence Protocol',
       'Module 2: The $12 Emergency Drywall & Paint Matching Kit',
       'Module 3: Appliance Deep-Clean & Grout Restoration Hacks',
-      'Module 4: Legally Airtight Landlord Pushback Scripts & Letters'
+      'Module 4: Documented Tenant Pushback Scripts & Templates'
     ],
     blogTriggers: ['How to Get Security Deposit Back', 'Apartment Move Out Checklist', 'Fixing Holes in Rental Walls', 'Landlord Disputes'],
     fourthwallCategory: 'Tactical Action Kits'
@@ -312,20 +312,20 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-studio-acoustic-privacy',
     rank: 5,
-    title: 'The Studio Apartment Acoustic Privacy & Soundproofing Hacks Kit',
-    tagline: 'Block 75% of hallway footsteps, elevator hums, and loud neighbor conversations in thin-walled rentals.',
+    title: 'Studio Privacy & Noise Reduction Playbook: Acoustic & Soundproofing System',
+    tagline: 'Block up to 75% of hallway footsteps, elevator hums, and conversational bleed in thin-walled rentals with zero wall destruction.',
     level: 'quick-win',
     priceRange: '$19 – $27 CAD',
     recommendedPrice: 22,
     format: 'Acoustic Field Playbook (.PDF) + Sound-Lock Blueprints + Decibel Matrix (.CSV) + Notion Hub',
-    targetProblem: 'Thin apartment doors, hollow drywall, and uninsulated window frames letting loud hallway noises destroy sleep and work focus.',
+    targetProblem: 'Thin apartment doors, hollow drywall, and uninsulated window frames letting hallway noises destroy sleep and work focus.',
     valueProposition: 'Renter-safe acoustic dampening, door jamb air seals, and acoustic curtain positioning hacks to create library-quiet calm.',
     differentiation: 'Zero construction required. Uses acoustic mass principles, weatherstripping air locks, and sound deflection angles.',
     blogCategory: 'Studio Privacy & Soundproofing',
     difficulty: 'Low',
     isTop10: true,
     roomZone: 'Living & Studio',
-    renterSafetyRating: '100% Zero-Damage Peelable Seals',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
     viralHook: 'The $14 door seal hack that cuts hallway apartment noise by 12 decibels instantly.',
     scores: {
       problemSeverity: 9,
@@ -358,8 +358,8 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
       'Pink noise speaker placement directly facing the entry door to create acoustic masking field'
     ],
     proTips: [
-      'Sound travels like water through air gaps. If light shines under your front door or around the frame, 90% of hallway noise is entering through that air leak—seal the air to kill the sound.',
-      'Place high-pile wool rugs with dense rubber felt pads beneath your desk chair and bed to kill impact echo.'
+      'Sound travels like water through air gaps. If light shines under your front door, 90% of hallway noise enters through that air gap—seal the perimeter air first.',
+      'Place high-pile wool rugs with dense rubber felt pads beneath your desk chair and bed to dampen impact vibrations.'
     ],
     keyModules: [
       'Module 1: Front Door Acoustic Air-Lock Architecture',
@@ -373,20 +373,20 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-entryway-dropzone',
     rank: 6,
-    title: 'The Micro-Entryway 6-Inch "Drop Zone" & Clutter-Stop Kit',
-    tagline: 'Stop coat, shoe, and mail clutter the exact second you open your front door with zero floor space required.',
+    title: 'Create an Entryway in Small Spaces: 6-Inch Drop Zone & Hallway System',
+    tagline: 'Stop coat, shoe, and key clutter the second you open your front door with an ultra-slim 6-inch architectural drop zone.',
     level: 'quick-win',
     priceRange: '$17 – $24 CAD',
     recommendedPrice: 19,
     format: 'Visual Field Playbook (.PDF) + 6-Inch Blueprint Cards + Drop Zone Calculator (.CSV) + Notion Hub',
     targetProblem: 'Rentals with no foyer or front closet, causing coats, boots, keys, and backpacks to pile up inside the door.',
-    valueProposition: 'Creates an ultra-slim 6-inch architectural drop zone that stores 8 pairs of shoes, 6 jackets, keys, and mail with zero floor clutter.',
+    valueProposition: 'Creates an ultra-slim 6-inch architectural drop zone that stores shoes, jackets, keys, and mail with zero floor clutter.',
     differentiation: 'Engineered specifically for narrow hallways under 38 inches wide where standard furniture blocks door clearance.',
     blogCategory: 'Entryway & Hallway Organization',
     difficulty: 'Low',
     isTop10: true,
     roomZone: 'Entryway',
-    renterSafetyRating: '100% Zero-Floor Footprint',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
     viralHook: 'The 6-inch floating picture ledge entryway console that holds everything without blocking your doorway.',
     scores: {
       problemSeverity: 9,
@@ -434,7 +434,7 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-underbed-hidden-storage',
     rank: 7,
-    title: 'The Under-Bed & Hidden Space Secret Storage Blueprint',
+    title: 'Unlock Hidden Under-Bed & Furniture Storage: Secret Volume Blueprint',
     tagline: 'Unlock 28 cubic feet of invisible, dust-proof storage hiding beneath your bed, sofa, and cabinet toe-kicks.',
     level: 'quick-win',
     priceRange: '$19 – $27 CAD',
@@ -447,7 +447,7 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
     difficulty: 'Low',
     isTop10: false,
     roomZone: 'Closet & Bedroom',
-    renterSafetyRating: '100% Hidden & Dust-Proof',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
     viralHook: 'How to store 4 large suitcases and 12 winter coats under your bed completely invisibly.',
     scores: {
       problemSeverity: 9,
@@ -495,8 +495,8 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-studio-zoning-separation',
     rank: 8,
-    title: 'The Studio Living-Bed Separation & Visual Privacy Kit',
-    tagline: 'Create 3 distinct "rooms" (Bedroom, Living, Dining) in a single open studio without building walls.',
+    title: 'Divide a Studio Without Building Walls: Living-Bed Separation Playbook',
+    tagline: 'Create 3 distinct zones (Bedroom, Living, Dining) in an open studio using floating bookcases and tension tracks without building walls.',
     level: 'quick-win',
     priceRange: '$19 – $29 CAD',
     recommendedPrice: 24,
@@ -508,7 +508,7 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
     difficulty: 'Medium',
     isTop10: false,
     roomZone: 'Living & Studio',
-    renterSafetyRating: '100% No-Drill Divider Systems',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
     viralHook: 'How to make a 400 sq ft studio feel like a real 1-bedroom apartment without building walls.',
     scores: {
       problemSeverity: 9,
@@ -556,8 +556,8 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-wfh-desk-reset',
     rank: 9,
-    title: 'The WFH Multi-Use Desk & 15-Minute Room Reset Kit',
-    tagline: 'Transition your small living room from high-focus executive office to cozy evening sanctuary in 15 minutes.',
+    title: 'Work From Home in a Small Space: Multi-Use Desk & 15-Minute Evening Reset',
+    tagline: 'Transition your compact living room from high-focus executive office to tranquil evening lounge in 15 minutes.',
     level: 'quick-win',
     priceRange: '$17 – $24 CAD',
     recommendedPrice: 19,
@@ -569,7 +569,7 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
     difficulty: 'Low',
     isTop10: false,
     roomZone: 'Living & Studio',
-    renterSafetyRating: '100% Clean & Invisible Cables',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
     viralHook: 'The $9 under-desk cable trough hack that makes all your monitors and chargers vanish in seconds.',
     scores: {
       problemSeverity: 9,
@@ -617,7 +617,7 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-optical-expander-lighting',
     rank: 10,
-    title: 'The Optical Illusion Small Space Expander & Lighting Kit',
+    title: 'Make a Small Apartment Look Bigger: Light, Mirrors & Vertical Illusion',
     tagline: 'Make a 450 sq ft apartment look and feel like 800 sq ft using proven daylight bounce angles and 2200K ambient layers.',
     level: 'quick-win',
     priceRange: '$19 – $27 CAD',
@@ -630,7 +630,7 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
     difficulty: 'Low',
     isTop10: false,
     roomZone: 'Universal',
-    renterSafetyRating: '100% Renter Safe Atmosphere',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
     viralHook: 'The curtain hanging trick that adds 18 inches of perceived ceiling height to any rental.',
     scores: {
       problemSeverity: 8,
@@ -678,8 +678,8 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
   {
     id: 'kit-bathroom-vanity-shower',
     rank: 11,
-    title: 'The Small Bathroom Vanity & Shower Vertical Maximizer',
-    tagline: 'Eliminate shampoo bottle floor clutter and countertop chaos in tiny 5x7 rental bathrooms.',
+    title: 'Maximize Small Bathroom & Shower Storage: Zero-Drill Vanity System',
+    tagline: 'Eliminate shampoo bottle floor clutter and countertop chaos in tiny 5x7 rental bathrooms with rust-proof tension mechanics.',
     level: 'quick-win',
     priceRange: '$17 – $24 CAD',
     recommendedPrice: 19,
@@ -691,7 +691,7 @@ export const TOP_20_PRODUCTS: DigitalProduct[] = [
     difficulty: 'Low',
     isTop10: false,
     roomZone: 'Bathroom',
-    renterSafetyRating: '100% Zero-Rust Tension Safe',
+    renterSafetyRating: 'Designed around non-destructive and reversible rental solutions',
     viralHook: 'How to get 4 shelves of storage in a 5x7 rental bathroom with zero drilling.',
     scores: {
       problemSeverity: 9,
@@ -853,17 +853,17 @@ export const FOURTHWALL_STORE_ARCHITECTURE = {
   collections: [
     {
       id: 'col-action-kits',
-      title: 'Tactical Action Kits & Renter Hacks',
-      description: 'Tested zero-damage mounting tricks, small kitchen space doublers, closet quadruplers, and deposit defense playbooks.',
+      title: 'Tactical Action Kits & Renter Systems',
+      description: 'Tested zero-damage mounting systems, small kitchen space doublers, closet quadruplers, and deposit defense playbooks.',
       featuredProducts: [
-        'The Zero-Damage Renter Mounting & Secret Wall Hacks Kit ($24 CAD)',
-        'The 500 Sq Ft Micro-Kitchen & Cabinet Space Doubler Kit ($22 CAD)',
-        'The Small Closet Quadrupler & Vertical Storage Hack Kit ($24 CAD)'
+        'Hang Mirrors, Shelves & Art: Zero-Damage Mounting System ($24 CAD)',
+        'Double Your Usable Kitchen Space: 500 Sq Ft Galley Maximizer ($22 CAD)',
+        'Quadruple Your Closet Capacity: Vertical Organization Playbook ($24 CAD)'
       ]
     },
     {
       id: 'col-curated-bundles',
-      title: 'Curated 3-in-1 Action Bundles (Save 35%+)',
+      title: 'Curated 3-in-1 Problem Bundles (Save 35%+)',
       description: 'Themed multi-kit bundles designed to solve spatial dilemmas across your entire apartment for maximum savings.',
       featuredProducts: [
         'The Renter Defense & Security 3-in-1 Bundle ($47 CAD)',
@@ -873,25 +873,25 @@ export const FOURTHWALL_STORE_ARCHITECTURE = {
     },
     {
       id: 'col-master-vault',
-      title: 'The Master Action Vault (All 12 Kits)',
-      description: 'The complete encyclopedia of 12 tactical action kits, 150+ secret hacks, printable cards, and Notion dashboards.',
+      title: 'The Master Action Vault (All 11 Kits)',
+      description: 'The complete encyclopedia of 11 tactical action kits, visual blueprints, calculators, and printable field cards.',
       featuredProducts: [
-        'The Ultimate Renter Master Action Vault ($97 CAD • $260 Value)'
+        'The Ultimate Renter Master Action Vault ($97 CAD • $248 Value)'
       ]
     }
   ],
   checkoutBumps: [
     {
       id: 'bump-pocket-cards',
-      title: 'Laminated Printable Pocket Hack Cards Deck ($5 CAD)',
+      title: 'Zero-Damage Installation Pocket Field Cards ($7 CAD)',
       triggerConditions: 'Any single Tactical Action Kit added to cart',
-      takeRateEstimate: '38%'
+      takeRateEstimate: '34%'
     },
     {
-      id: 'bump-landlord-script',
-      title: 'Emergency Landlord Pushback & Deposit Dispute Script Pack ($7 CAD)',
+      id: 'bump-deposit-script',
+      title: 'Rental Restoration & Deposit Defense Pushback Pack ($9 CAD)',
       triggerConditions: 'Any Renter Security or Moving Kit added to cart',
-      takeRateEstimate: '29%'
+      takeRateEstimate: '28%'
     }
   ]
 };

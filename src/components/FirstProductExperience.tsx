@@ -1,1352 +1,1259 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { 
   CheckCircle2, 
-  Clock, 
   ShieldCheck, 
-  Copy, 
-  Printer, 
-  Play, 
-  Pause, 
-  RotateCcw, 
+  Download, 
+  AlertTriangle, 
   Sliders, 
-  Sun, 
-  Box, 
-  Grid, 
-  Check, 
-  Flame,
-  Layers
+  Layers, 
+  FileText, 
+  ShoppingBag, 
+  ExternalLink,
+  ChevronRight,
+  Printer,
+  Sparkles,
+  Info,
+  Check,
+  Scale,
+  RefreshCw,
+  Clock,
+  ArrowRight,
+  TrendingUp,
+  Zap
 } from 'lucide-react';
+import { generateProfessionalPDF } from '../utils/pdfGenerator';
+import { PLAYBOOK_SERIES } from '../data/playbookSeriesData';
+
+type SubView = 'calculator' | 'playbook' | 'field-cards' | 'checkout-delivery' | 'analytics';
 
 export const FirstProductExperience: React.FC = () => {
-  const [activeModuleTab, setActiveModuleTab] = useState<'module1' | 'module2' | 'module3' | 'module4' | 'module5' | 'module6'>('module1');
-  const [copiedNotionSchema, setCopiedNotionSchema] = useState(false);
+  const [activeSubView, setActiveSubView] = useState<SubView>('calculator');
+  const [activeChapter, setActiveChapter] = useState<number>(1);
+  const [includeCheckoutBump, setIncludeCheckoutBump] = useState<boolean>(true);
+  const [includeSecondaryBump, setIncludeSecondaryBump] = useState<boolean>(false);
+  const [simulatedCheckoutComplete, setSimulatedCheckoutComplete] = useState<boolean>(false);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState<boolean>(false);
 
   // -------------------------------------------------------------
-  // MODULE 1 STATE: Spatial Assessment & Interactive Floorplan Grid
+  // CALCULATOR STATE: Substrate & Load Engineering
   // -------------------------------------------------------------
-  const [floorplanPreset, setFloorplanPreset] = useState<'studio-450' | 'onebed-580' | 'micro-320' | 'custom'>('studio-450');
-  const [roomLengthFt, setRoomLengthFt] = useState<number>(18);
-  const [roomWidthFt, setRoomWidthFt] = useState<number>(12);
-  const [sofaLengthInches, setSofaLengthInches] = useState<number>(80);
-  const [sofaDepthInches, setSofaDepthInches] = useState<number>(36);
-  const [coffeeTableDepthInches, setCoffeeTableDepthInches] = useState<number>(22);
-  const [tvConsoleDepthInches, setTvConsoleDepthInches] = useState<number>(14);
-  const [includeDesk, setIncludeDesk] = useState<boolean>(true);
-  const [includeDiningNook, setIncludeDiningNook] = useState<boolean>(true);
+  const [substrate, setSubstrate] = useState<'drywall-metal' | 'drywall-wood' | 'plaster' | 'concrete' | 'hollow-door'>('drywall-metal');
+  const [objectCategory, setObjectCategory] = useState<'mirror' | 'shelf' | 'framed-art' | 'acoustic' | 'curtain-rod' | 'coat-hook'>('mirror');
+  const [targetWeightLbs, setTargetWeightLbs] = useState<number>(28);
+  const [objectWidthInches, setObjectWidthInches] = useState<number>(36);
+  const [anchorPoints, setAnchorPoints] = useState<number>(2);
+  const [safetyFactor, setSafetyFactor] = useState<2 | 3>(2); // 2x Standard, 3x Critical
+  const [hardwareChoice, setHardwareChoice] = useState<'3m-claw' | 'monkey-hook' | 'command-jumbo' | 'paracord-suspension' | 'ez-toggle' | 'silicone-tension'>('3m-claw');
+  const [paintCureAgeDays, setPaintCureAgeDays] = useState<number>(45);
+  const [ipaPrepped, setIpaPrepped] = useState<boolean>(true);
 
-  // Clearance calculations (converted to inches)
-  const roomWidthInches = roomWidthFt * 12;
-  const occupiedLivingDepth = sofaDepthInches + coffeeTableDepthInches + tvConsoleDepthInches;
-  const mainWalkwayInches = roomWidthInches - occupiedLivingDepth;
-  const isWalkwayOptimal = mainWalkwayInches >= 66; // 36" primary path + 18" coffee-to-sofa + 12" console gap
-  const isWalkwayTight = mainWalkwayInches >= 48 && mainWalkwayInches < 66;
+  // Retrieve Flagship Playbook data
+  const vol01Data = PLAYBOOK_SERIES.find(p => p.id === 'playbook-01') || PLAYBOOK_SERIES[0];
 
-  const handlePresetChange = (preset: 'studio-450' | 'onebed-580' | 'micro-320' | 'custom') => {
-    setFloorplanPreset(preset);
-    if (preset === 'studio-450') {
-      setRoomLengthFt(19);
-      setRoomWidthFt(13);
-      setSofaLengthInches(78);
-      setSofaDepthInches(34);
-      setCoffeeTableDepthInches(20);
-      setTvConsoleDepthInches(14);
-      setIncludeDesk(true);
-      setIncludeDiningNook(true);
-    } else if (preset === 'onebed-580') {
-      setRoomLengthFt(22);
-      setRoomWidthFt(14);
-      setSofaLengthInches(84);
-      setSofaDepthInches(38);
-      setCoffeeTableDepthInches(24);
-      setTvConsoleDepthInches(16);
-      setIncludeDesk(true);
-      setIncludeDiningNook(true);
-    } else if (preset === 'micro-320') {
-      setRoomLengthFt(16);
-      setRoomWidthFt(10);
-      setSofaLengthInches(68);
-      setSofaDepthInches(32);
-      setCoffeeTableDepthInches(18);
-      setTvConsoleDepthInches(12);
-      setIncludeDesk(false);
-      setIncludeDiningNook(true);
-    }
-  };
-
-  // -------------------------------------------------------------
-  // MODULE 2 STATE: Vertical Storage & Structural Load Calculator
-  // -------------------------------------------------------------
-  const [wallType, setWallType] = useState<'drywall-metal' | 'drywall-wood' | 'hollow-drywall' | 'brick-masonry'>('drywall-metal');
-  const [mountType, setMountType] = useState<'command-jumbo' | 'monkey-hook' | 'heavy-toggle' | 'tension-rod'>('monkey-hook');
-  const [shelfLengthInches, setShelfLengthInches] = useState<number>(36);
-  const [shelfDepthInches, setShelfDepthInches] = useState<number>(10);
-  const [itemWeightLbs, setItemWeightLbs] = useState<number>(18);
-  const [verticalElevationFt, setVerticalElevationFt] = useState<number>(7.5);
-
-  const getHardwareSpecs = () => {
-    switch (mountType) {
-      case 'command-jumbo':
-        return { ratedLbs: 8, maxSafeLbs: 6, toolFree: true, damageRisk: '0% (Zero Damage)', bestFor: 'Light art, key racks, lightweight acrylic shelves' };
+  // Hardware rated specs
+  const getHardwareDetails = (hw: typeof hardwareChoice) => {
+    switch (hw) {
+      case '3m-claw':
+        return {
+          name: '3M Claw Drywall Picture Hanger (45-lb Model)',
+          ratedLbsPerPoint: 45,
+          mechanism: 'Engineered hardened steel prongs locking into drywall core at 45° angle',
+          requiresDrill: false,
+          wallDamage: 'Minimal 4-prong puncture (< 1.5mm). Zero anchor spackle blowout.',
+          costCad: 3.25,
+          idealSubstrates: ['drywall-metal', 'drywall-wood'],
+          adhesiveBased: false
+        };
       case 'monkey-hook':
-        return { ratedLbs: 35, maxSafeLbs: 25, toolFree: true, damageRisk: '< 1mm Pin Hole (Deposit Safe)', bestFor: 'Framed mirrors, hanging wall shelves, heavy artwork' };
-      case 'heavy-toggle':
-        return { ratedLbs: 80, maxSafeLbs: 55, toolFree: false, damageRisk: 'Requires Spackle upon move-out', bestFor: 'Solid wood book shelves, TV mounts' };
-      case 'tension-rod':
-        return { ratedLbs: 25, maxSafeLbs: 20, toolFree: true, damageRisk: '0% (Compression Grip)', bestFor: 'Closet double-hanging, window herb gardens, room dividers' };
+        return {
+          name: 'Gorilla / Monkey Spring-Steel Hook',
+          ratedLbsPerPoint: 35,
+          mechanism: 'Curved spring steel bracing behind drywall backboard',
+          requiresDrill: false,
+          wallDamage: '1mm pinhole. Passes move-out inspection without patching.',
+          costCad: 1.50,
+          idealSubstrates: ['drywall-metal', 'drywall-wood'],
+          adhesiveBased: false
+        };
+      case 'command-jumbo':
+        return {
+          name: '3M Command Jumbo Picture Strips (4-Pair Array)',
+          ratedLbsPerPoint: 8,
+          mechanism: 'Pressure-sensitive viscoelastic adhesive with interlocking micro-dual-lock',
+          requiresDrill: false,
+          wallDamage: '0% Zero Damage when removed with 60s hair dryer heat.',
+          costCad: 4.50,
+          idealSubstrates: ['drywall-metal', 'drywall-wood', 'plaster', 'concrete', 'hollow-door'],
+          adhesiveBased: true
+        };
+      case 'paracord-suspension':
+        return {
+          name: 'Type III 550 Paracord Parallel Hanging Suspension',
+          ratedLbsPerPoint: 80,
+          mechanism: 'High-tensile nylon cord distributing downward load across multiple ceiling/molding points',
+          requiresDrill: false,
+          wallDamage: 'Zero wall contact. Tied to existing picture rail or tension frame.',
+          costCad: 2.10,
+          idealSubstrates: ['drywall-metal', 'drywall-wood', 'plaster', 'concrete'],
+          adhesiveBased: false
+        };
+      case 'ez-toggle':
+        return {
+          name: 'E-Z Ancor Heavy Self-Drilling Drywall Toggle',
+          ratedLbsPerPoint: 75,
+          mechanism: 'Zinc expanding toggle clamp behind 1/2" drywall',
+          requiresDrill: true,
+          wallDamage: '1/2" hole. Requires $8 spackle + chalk patch at move-out.',
+          costCad: 2.80,
+          idealSubstrates: ['drywall-metal', 'drywall-wood'],
+          adhesiveBased: false
+        };
+      case 'silicone-tension':
+        return {
+          name: 'High-Friction Silicone Spring-Tension System',
+          ratedLbsPerPoint: 25,
+          mechanism: 'Opposing spring compression with high-durometer silicone non-slip end caps',
+          requiresDrill: false,
+          wallDamage: '0% Zero Wall Damage. Zero pinholes.',
+          costCad: 8.50,
+          idealSubstrates: ['drywall-metal', 'drywall-wood', 'plaster', 'concrete'],
+          adhesiveBased: false
+        };
     }
   };
 
-  const hardwareSpec = getHardwareSpecs();
-  const isLoadSafe = itemWeightLbs <= hardwareSpec.maxSafeLbs;
-  const loadPercentage = Math.min(100, Math.round((itemWeightLbs / hardwareSpec.ratedLbs) * 100));
-  const cubicFeetGained = ((shelfLengthInches * shelfDepthInches * 24) / 1728).toFixed(1);
+  const selectedHardware = getHardwareDetails(hardwareChoice);
+  const totalHardwareCapacity = selectedHardware.ratedLbsPerPoint * anchorPoints;
+  const loadPerAnchor = (targetWeightLbs / anchorPoints).toFixed(1);
+  const requiredSafetyCapacity = targetWeightLbs * safetyFactor;
+  const isSafetyMarginMet = totalHardwareCapacity >= requiredSafetyCapacity;
+  const isExceedingMaxLimit = targetWeightLbs > totalHardwareCapacity;
+  const totalHardwareCost = (selectedHardware.costCad * anchorPoints + 3.50).toFixed(2); // hardware + $3.50 prep consumables
 
-  // -------------------------------------------------------------
-  // MODULE 3 STATE: 30-Day Ruthless Declutter Protocol
-  // -------------------------------------------------------------
-  const [completedTasks, setCompletedTasks] = useState<Record<string, boolean>>({
-    'w1-d1': true,
-    'w1-d2': true,
-    'w1-d3': true,
-    'w1-d4': false,
-    'w1-d5': false,
-    'w2-d1': false,
-    'w2-d2': false,
-    'w3-d1': false,
-    'w4-d1': false
-  });
+  // Substrate compatibility check
+  const isSubstrateCompatible = selectedHardware.idealSubstrates.includes(substrate);
 
-  const declutterSchedule = [
-    {
-      week: 'Week 1: The High-Friction Entry & Kitchen Zones',
-      days: [
-        { id: 'w1-d1', day: 'Day 01', zone: 'Entryway Drop Zone', task: 'Purge shoes down to max 3 daily pairs; mount tool-free key dock', category: 'High-Impact' },
-        { id: 'w1-d2', day: 'Day 02', zone: 'Kitchen Counter Zero', task: 'Clear all small appliances off main counter into designated lower bins', category: 'Visual Clear' },
-        { id: 'w1-d3', day: 'Day 03', zone: 'Pantry Bulk Audit', task: 'Decant bulky cereal & pasta boxes into uniform stackable square containers', category: 'Volume Reduction' },
-        { id: 'w1-d4', day: 'Day 04', zone: 'Under-Sink Plumbing Zone', task: 'Install 2-tier expandable tension shelf around sink drain P-trap', category: 'Vertical Architecture' },
-        { id: 'w1-d5', day: 'Day 05', zone: 'Spatial Quarantine Box #1', task: 'Place duplicate mugs and cooking tools in 14-day quarantine box', category: 'Quarantine Protocol' }
-      ]
-    },
-    {
-      week: 'Week 2: Living & Work Sanctuary Architecture',
-      days: [
-        { id: 'w2-d1', day: 'Day 08', zone: 'Coffee Table Surface Audit', task: 'Remove all magazines & loose cables; install under-table magnetic cable tray', category: 'Cable Conceal' },
-        { id: 'w2-d2', day: 'Day 10', zone: 'Hybrid Desk Boundary Protocol', task: 'Establish the 5:00 PM foldaway routine for laptop, monitor and notes', category: 'Zoning' },
-        { id: 'w2-d3', day: 'Day 12', zone: 'Sofa & Throw Pillow Cap', task: 'Cap throw pillows at exactly 2 pieces; store excess throws in footstool cavity', category: 'Aesthetic Rule' }
-      ]
-    },
-    {
-      week: 'Week 3: The Capsule Closet & Vertical Wardrobe',
-      days: [
-        { id: 'w3-d1', day: 'Day 15', zone: 'Closet 1st Tier Double Hanging', task: 'Add tension hanging rod to drop shirt clearance and double closet capacity', category: 'Capacity Double' },
-        { id: 'w3-d2', day: 'Day 18', zone: 'Seasonal Vacuum Compression', task: 'Seal heavy winter parkas and bedding into flat under-bed vacuum packs', category: 'Sub-Bed Vault' }
-      ]
-    },
-    {
-      week: 'Week 4: Final Quarantine Liquidation & Peace Audit',
-      days: [
-        { id: 'w4-d1', day: 'Day 25', zone: 'Quarantine Box Liquidation', task: 'Donate or sell 100% of items remaining untouched in Quarantine Box #1', category: 'Final Exit' },
-        { id: 'w4-d2', day: 'Day 30', zone: 'Sanctuary Certification Walk', task: 'Perform 360-degree room clearance check and celebrate 30 days of calm', category: 'Mastery' }
-      ]
-    }
-  ];
+  // Dynamic Warnings
+  const warnings: { level: 'danger' | 'caution' | 'tip'; message: string }[] = [];
 
-  const totalTaskCount = Object.keys(completedTasks).length;
-  const finishedTaskCount = Object.values(completedTasks).filter(Boolean).length;
-  const declutterProgressPct = Math.round((finishedTaskCount / totalTaskCount) * 100);
+  if (isExceedingMaxLimit) {
+    warnings.push({
+      level: 'danger',
+      message: `CRITICAL LOAD WARNING: Object weight (${targetWeightLbs} lbs) exceeds total rated hardware limit (${totalHardwareCapacity} lbs). Increase anchor points to at least ${Math.ceil(targetWeightLbs / selectedHardware.ratedLbsPerPoint)} points or choose higher-rated hardware.`
+    });
+  } else if (!isSafetyMarginMet) {
+    warnings.push({
+      level: 'caution',
+      message: `SAFETY MARGIN ALERT: Total capacity (${totalHardwareCapacity} lbs) is under the recommended ${safetyFactor}x safety threshold (${requiredSafetyCapacity} lbs). Recommended for living areas or above sofas.`
+    });
+  }
 
-  const toggleDeclutterTask = (id: string) => {
-    setCompletedTasks(prev => ({ ...prev, [id]: !prev[id] }));
-  };
+  if (!isSubstrateCompatible) {
+    warnings.push({
+      level: 'danger',
+      message: `SUBSTRATE MISMATCH: ${selectedHardware.name} is not recommended for ${substrate.replace('-', ' ').toUpperCase()}. Claw and spring hooks require hollow drywall cavity. Use adhesive or tension systems instead.`
+    });
+  }
 
-  // -------------------------------------------------------------
-  // MODULE 4 STATE: 3-Layer Lighting Formula & Kelvin Engine
-  // -------------------------------------------------------------
-  const [roomAreaSqFt, setRoomAreaSqFt] = useState<number>(220);
-  const [ceilingHeightFt, setCeilingHeightFt] = useState<number>(9);
-  const [primaryRoomUse, setPrimaryRoomUse] = useState<'living' | 'bedroom' | 'studio-multipurpose'>('studio-multipurpose');
+  if (selectedHardware.adhesiveBased && paintCureAgeDays < 30) {
+    warnings.push({
+      level: 'danger',
+      message: `UNCURED PAINT RISK: Paint cured for less than 30 days (${paintCureAgeDays} days entered) will delaminate under adhesive tension. Wait until 30 days or use mechanical spring hooks.`
+    });
+  }
 
-  const getLightingCalculations = () => {
-    // Standard interior design foot-candle / lumens benchmarks
-    const lumensMultiplier = primaryRoomUse === 'bedroom' ? 15 : primaryRoomUse === 'living' ? 20 : 25;
-    const heightFactor = ceilingHeightFt > 8 ? 1 + (ceilingHeightFt - 8) * 0.1 : 1;
-    const totalLumensNeeded = Math.round(roomAreaSqFt * lumensMultiplier * heightFactor);
+  if (selectedHardware.adhesiveBased && !ipaPrepped) {
+    warnings.push({
+      level: 'caution',
+      message: `SURFACE CONTAMINATION: Uncleaned walls harbor microscopic cooking oils and dust that cause 80% of adhesive failures. Wipe with 70% Isopropyl Alcohol before mounting.`
+    });
+  }
 
-    return {
-      totalLumens: totalLumensNeeded,
-      layer1Ambient: Math.round(totalLumensNeeded * 0.50), // 50% indirect ceiling / diffused
-      layer2Task: Math.round(totalLumensNeeded * 0.35),    // 35% focused desk / reading / counter
-      layer3Accent: Math.round(totalLumensNeeded * 0.15),  // 15% warm floor glow / art spotlight
-      recommendedAmbientKelvin: '2700K Warm Neutral',
-      recommendedTaskKelvin: '3000K Clean White',
-      recommendedAccentKelvin: '2200K Candle Amber'
-    };
-  };
+  // Handle PDF Export
+  const handleExportPDF = () => {
+    setIsGeneratingPdf(true);
+    setTimeout(() => {
+      try {
+        const fullContent = vol01Data.chapters.map(c => {
+          return `# Chapter ${c.chapterNumber}: ${c.title}\n\n${c.subtitle}\n\n${c.content}\n\n### Key Takeaways:\n${c.keyTakeaways.map(t => `- ${t}`).join('\n')}\n\n---\n`;
+        }).join('\n\n');
 
-  const lightingSpecs = getLightingCalculations();
-
-  // -------------------------------------------------------------
-  // MODULE 5 STATE: 12-Minute Reset Timer Engine
-  // -------------------------------------------------------------
-  const [timerSeconds, setTimerSeconds] = useState<number>(720); // 12 minutes = 720 seconds
-  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
-  const [currentResetPhase, setCurrentResetPhase] = useState<'kitchen' | 'living' | 'entryway'>('kitchen');
-  const [resetStreak, setResetStreak] = useState<number>(14);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    if (isTimerRunning && timerSeconds > 0) {
-      timerRef.current = setInterval(() => {
-        setTimerSeconds(prev => {
-          if (prev <= 1) {
-            setIsTimerRunning(false);
-            return 0;
-          }
-          const next = prev - 1;
-          // Determine phase
-          if (next > 480) setCurrentResetPhase('kitchen');
-          else if (next > 240) setCurrentResetPhase('living');
-          else setCurrentResetPhase('entryway');
-          return next;
+        const doc = generateProfessionalPDF({
+          fileName: 'SmallSpaceHome_Vol01_Zero_Damage_Mounting_Master_Playbook.pdf',
+          documentTitle: 'Vol. 01: Zero-Damage Renter Mounting & Secret Wall Hacks',
+          productTitle: 'The SmallSpaceHome Master Playbook Series',
+          productRank: 1,
+          badge: 'FLAGSHIP COMMERCIAL SYSTEM',
+          content: fullContent
         });
-      }, 1000);
-    } else {
-      if (timerRef.current) clearInterval(timerRef.current);
-    }
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [isTimerRunning, timerSeconds]);
 
-  const toggleTimer = () => {
-    setIsTimerRunning(prev => !prev);
+        doc.save('SmallSpaceHome_Vol01_Zero_Damage_Mounting_Master_Playbook.pdf');
+      } catch (err) {
+        console.error('PDF Generation Error:', err);
+      } finally {
+        setIsGeneratingPdf(false);
+      }
+    }, 300);
   };
 
-  const resetTimer = () => {
-    setIsTimerRunning(false);
-    setTimerSeconds(720);
-    setCurrentResetPhase('kitchen');
-  };
-
-  const formatTimerTime = (seconds: number) => {
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-  };
-
-  // -------------------------------------------------------------
-  // MODULE 6 STATE: Notion Hub Connected Schema Explorer
-  // -------------------------------------------------------------
-  const [activeNotionTable, setActiveNotionTable] = useState<'furniture' | 'clearance' | 'maintenance' | 'hardware'>('furniture');
-
-  const notionDatabaseSchemas = {
-    furniture: [
-      { item: 'Stockholm Minimal 3-Seater Sofa', roomZone: 'Living Room', length: '82"', depth: '35"', height: '31"', clearanceReq: '36" walkway', floorFootprint: '19.9 sq ft', purchaseDate: '2025-04-12' },
-      { item: 'Slim Travertine Coffee Plinth', roomZone: 'Living Room', length: '38"', depth: '18"', height: '14"', clearanceReq: '18" sofa gap', floorFootprint: '4.75 sq ft', purchaseDate: '2025-05-01' },
-      { item: 'Floating Bamboo Drop-Leaf Desk', roomZone: 'Hybrid Nook', length: '32"', depth: '12"-24"', height: '29"', clearanceReq: '30" pull-out', floorFootprint: '2.6 sq ft', purchaseDate: '2025-06-15' },
-      { item: 'Under-Bed Solid Oak Rolling Drawers (Pair)', roomZone: 'Bedroom', length: '36"', depth: '28"', height: '8"', clearanceReq: 'Zero floor footprint', floorFootprint: 'Hidden Vault', purchaseDate: '2025-07-02' }
-    ],
-    clearance: [
-      { zone: 'Primary Living-to-Kitchen Thoroughfare', requiredClearance: '36" minimum', currentActual: '38.5"', status: 'Optimal (Pass)', notes: 'Allows two adults to cross comfortably without shoulder turning' },
-      { zone: 'Coffee Table to Sofa Edge', requiredClearance: '16" – 18"', currentActual: '17.0"', status: 'Optimal (Pass)', notes: 'Permits leg stretching while reaching beverage easily' },
-      { zone: 'Dining Chair Pull-Out Margin', requiredClearance: '32" from table edge', currentActual: '34.0"', status: 'Optimal (Pass)', notes: 'Full chair slide without scuffing perimeter wall baseboard' },
-      { zone: 'Entryway Front Door Swing Arc', requiredClearance: '36" clear radius', currentActual: '37.0"', status: 'Optimal (Pass)', notes: 'Zero shoe clutter in the door swing perimeter' }
-    ],
-    maintenance: [
-      { task: 'Reverse Peel-and-Stick Tile Inspection', frequency: 'Every 6 Months', tool: 'Gentle Hair Dryer Test', damageRisk: 'None if warmed', status: 'Verified Solid' },
-      { task: 'Tension Rod Compression Recalibration', frequency: 'Quarterly', tool: 'Hand Twist', damageRisk: 'Zero', status: 'Inspected' },
-      { task: 'Baseboard Protection Pad Check', frequency: 'Annually', tool: 'Felt Replacement', damageRisk: 'Zero', status: 'Updated' }
-    ],
-    hardware: [
-      { fixture: 'Living Room Brushed Brass Dome Pendant', originalStoredIn: 'Bin #04 (Original Renter Hardware)', adapterType: 'E26 Tool-Free Screw In', restoreTimeMin: '4 min' },
-      { fixture: 'Kitchen Cabinet Minimalist Bar Pulls (x10)', originalStoredIn: 'Bin #04 (Plastic Bag labeled KITCHEN)', adapterType: 'Standard 3" Center-to-Center', restoreTimeMin: '8 min' },
-      { fixture: 'Entryway Modern Magnetic Key Bar', originalStoredIn: 'Command Strip Release Tabs', adapterType: 'Zero-Drill Adhesive', restoreTimeMin: '1 min' }
-    ]
-  };
-
-  const handleCopyNotionTemplate = () => {
-    const fullMarkdownExport = `# SmallSpaceHome: The Small Space Operating System (SS-OS)
-Master Architectural Notion Hub & Digital Workspace Architecture
-Version: 1.0.4 | License: Lifetime Personal | Brand: shop.smallspacehome.ca
-
-## Connected Database 01: Furniture Footprint & Clearance Matrix
-${JSON.stringify(notionDatabaseSchemas.furniture, null, 2)}
-
-## Connected Database 02: Architectural Clearance Standard
-${JSON.stringify(notionDatabaseSchemas.clearance, null, 2)}
-
-## Connected Database 03: Renter Deposit & Hardware Restoration Log
-${JSON.stringify(notionDatabaseSchemas.hardware, null, 2)}
-
-## Connected Database 04: 30-Day Declutter Protocols & Milestones
-- Week 1: Entryway & Kitchen Counter Zero
-- Week 2: Living & Work Sanctuary Architecture
-- Week 3: Capsule Closet & Vertical Double-Hanging
-- Week 4: Quarantine Liquidation & 360 Sanctuary Audit
-
-## Daily Rhythm Engine (12-Minute Reset Protocol)
-1. 00:00 - 04:00: Kitchen Counter Zero
-2. 04:00 - 08:00: Living Room Surface Reset
-3. 08:00 - 12:00: Entryway Drop Zone & Tomorrow Launchpad
-`;
-    navigator.clipboard.writeText(fullMarkdownExport);
-    setCopiedNotionSchema(true);
-    setTimeout(() => setCopiedNotionSchema(false), 2500);
-  };
+  // Calculations for Fourthwall order
+  const basePrice = 24;
+  const bumpPrice = 7;
+  const secondaryBumpPrice = 9;
+  const finalOrderTotal = basePrice + (includeCheckoutBump ? bumpPrice : 0) + (includeSecondaryBump ? secondaryBumpPrice : 0);
 
   return (
-    <div className="space-y-10 pb-16">
-      
-      {/* Product Master Masthead Header */}
-      <section className="bg-[#FAF9F6] border-b-2 border-[#1A1A1A] pb-8">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2 max-w-3xl">
+    <div className="space-y-8 max-w-7xl mx-auto pb-16">
+      {/* Flagship Validation Header Banner */}
+      <div className="bg-[#1C1917] text-white rounded-2xl p-6 sm:p-8 border border-[#E5DFD5]/20 shadow-xl relative overflow-hidden">
+        <div className="absolute -right-16 -top-16 w-64 h-64 bg-[#4A533E]/30 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+          <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="bg-[#1A1A1A] text-white px-2.5 py-0.5 text-[9px] uppercase tracking-[0.2em] font-bold">
-                Product #1 / Flagship System
+              <span className="bg-[#4A533E] text-[#FAF8F5] text-xs uppercase tracking-widest font-semibold px-3 py-1 rounded-full flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#E5DFD5]" />
+                FLAGSHIP VALIDATION SYSTEM • VOL. 01
               </span>
-              <span className="bg-[#5A5A40] text-white px-2.5 py-0.5 text-[9px] uppercase tracking-[0.2em] font-bold">
-                Edition 1.0.4 Master Suite
+              <span className="bg-emerald-500/20 text-emerald-300 text-xs px-2.5 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1 font-medium">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                Validated Commercial Standard
               </span>
-              <span className="text-[#5A5A40] font-bold text-xs uppercase tracking-wider font-mono">
-                shop.smallspacehome.ca ($79 CAD)
-              </span>
+              <span className="text-white/60 text-xs font-mono">v1.4 Master Edition • August 2026</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#1A1A1A] tracking-tight leading-tight">
-              The Small Space Operating System (SS-OS)
+            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#FAF8F5]">
+              Hang Mirrors, Shelves & Art Without Damaging Rental Walls
             </h1>
+            
+            <p className="text-[#FAF8F5]/80 text-sm sm:text-base max-w-3xl leading-relaxed">
+              The flagship digital playbook engineered in our Toronto Rental Lab. Grounded in substrate shear vectors, 70% IPA de-oiling protocols, 3M Claw entry mechanics, and thermal release removal.
+            </p>
 
-            <p className="text-sm sm:text-base text-[#1A1A1A]/80 font-serif italic max-w-2xl leading-relaxed">
-              The definitive architectural master system for small-space living, furniture proportioning, vertical storage engineering, and intentional dwelling.
+            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-white/70">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>30+ Page Master Playbook PDF</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>Substrate & Load Calculator (.CSV)</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>4×6" Pocket Field Companion</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>1-Click Fourthwall Checkout Flow</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-3 min-w-[220px]">
+            <button
+              onClick={handleExportPDF}
+              disabled={isGeneratingPdf}
+              className="bg-[#4A533E] hover:bg-[#3D4533] text-white px-5 py-3 rounded-xl font-medium text-sm flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer disabled:opacity-50"
+            >
+              {isGeneratingPdf ? (
+                <>
+                  <RefreshCw className="w-4 h-4 animate-spin" />
+                  <span>Generating Vector PDF...</span>
+                </>
+              ) : (
+                <>
+                  <Download className="w-4 h-4" />
+                  <span>Export Master PDF (30+ p.)</span>
+                </>
+              )}
+            </button>
+            <button
+              onClick={() => setActiveSubView('checkout-delivery')}
+              className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-5 py-3 rounded-xl font-medium text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <ShoppingBag className="w-4 h-4 text-[#E5DFD5]" />
+              <span>Preview Store Checkout ($24)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Sub-Navigation Tabs */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-[#E5DFD5] text-sm">
+        <button
+          onClick={() => setActiveSubView('calculator')}
+          className={`px-4 py-2.5 rounded-lg font-medium whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${
+            activeSubView === 'calculator'
+              ? 'bg-[#4A533E] text-white shadow-sm'
+              : 'text-[#1C1917]/70 hover:text-[#1C1917] hover:bg-stone-100'
+          }`}
+        >
+          <Scale className="w-4 h-4" />
+          <span>Interactive Substrate & Load Calculator</span>
+        </button>
+
+        <button
+          onClick={() => setActiveSubView('playbook')}
+          className={`px-4 py-2.5 rounded-lg font-medium whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${
+            activeSubView === 'playbook'
+              ? 'bg-[#4A533E] text-white shadow-sm'
+              : 'text-[#1C1917]/70 hover:text-[#1C1917] hover:bg-stone-100'
+          }`}
+        >
+          <FileText className="w-4 h-4" />
+          <span>Master Playbook 6-Chapter Reader</span>
+        </button>
+
+        <button
+          onClick={() => setActiveSubView('field-cards')}
+          className={`px-4 py-2.5 rounded-lg font-medium whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${
+            activeSubView === 'field-cards'
+              ? 'bg-[#4A533E] text-white shadow-sm'
+              : 'text-[#1C1917]/70 hover:text-[#1C1917] hover:bg-stone-100'
+          }`}
+        >
+          <Layers className="w-4 h-4" />
+          <span>Pocket Field Companion (4×6")</span>
+        </button>
+
+        <button
+          onClick={() => setActiveSubView('checkout-delivery')}
+          className={`px-4 py-2.5 rounded-lg font-medium whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${
+            activeSubView === 'checkout-delivery'
+              ? 'bg-[#4A533E] text-white shadow-sm'
+              : 'text-[#1C1917]/70 hover:text-[#1C1917] hover:bg-stone-100'
+          }`}
+        >
+          <ShoppingBag className="w-4 h-4" />
+          <span>Fourthwall Checkout & Delivery</span>
+        </button>
+
+        <button
+          onClick={() => setActiveSubView('analytics')}
+          className={`px-4 py-2.5 rounded-lg font-medium whitespace-nowrap transition-all flex items-center gap-2 cursor-pointer ${
+            activeSubView === 'analytics'
+              ? 'bg-[#4A533E] text-white shadow-sm'
+              : 'text-[#1C1917]/70 hover:text-[#1C1917] hover:bg-stone-100'
+          }`}
+        >
+          <TrendingUp className="w-4 h-4" />
+          <span>Validation Funnel Analytics</span>
+        </button>
+      </div>
+
+      {/* ============================================================== */}
+      {/* SUBVIEW 1: INTERACTIVE SUBSTRATE & LOAD CALCULATOR */}
+      {/* ============================================================== */}
+      {activeSubView === 'calculator' && (
+        <div className="space-y-6">
+          {/* Engineering Disclaimer Notice */}
+          <div className="bg-[#FAF8F5] border-l-4 border-[#4A533E] p-4 rounded-r-xl border-y border-r border-[#E5DFD5] text-xs text-[#1C1917]/80 flex items-start gap-3">
+            <Info className="w-4 h-4 text-[#4A533E] shrink-0 mt-0.5" />
+            <p>
+              <strong className="text-[#1C1917]">Engineering & Safety Standard:</strong> Real-world load capacity depends on wall substrate condition, drywall thickness, anchor installation angle, surface de-oiling, and manufacturer specifications. Always apply a 2.0x safety factor (or 3.0x over desks/beds) and test connections with graduated test weights before full load placement.
             </p>
           </div>
 
-          {/* Action Hub */}
-          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 self-start lg:self-center">
-            <button
-              onClick={handleCopyNotionTemplate}
-              className="flex items-center gap-2 px-4 py-2.5 bg-[#1A1A1A] hover:bg-[#333] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border border-[#1A1A1A] shadow-[2px_2px_0_0_#5A5A40]"
-            >
-              {copiedNotionSchema ? <Check className="w-4 h-4 text-white" /> : <Copy className="w-4 h-4 text-[#A0A090]" />}
-              <span>{copiedNotionSchema ? 'Notion Hub Copied!' : 'Copy Notion OS Schema'}</span>
-            </button>
-
-            <button
-              onClick={() => window.print()}
-              className="flex items-center gap-2 px-3.5 py-2.5 bg-white hover:bg-[#F2F1EC] text-[#1A1A1A] text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border border-[#1A1A1A] shadow-[2px_2px_0_0_#1A1A1A]"
-            >
-              <Printer className="w-4 h-4 text-[#5A5A40]" />
-              <span>Print Room Sheet</span>
-            </button>
-          </div>
-        </div>
-
-        {/* 6 Core Product Modules Interactive Navigation Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mt-8 pt-6 border-t border-[#1A1A1A]/15">
-          {[
-            { id: 'module1', num: '01', label: 'Spatial Blueprint', sub: 'Clearance & Grid', icon: Grid },
-            { id: 'module2', num: '02', label: 'Vertical Storage', sub: 'Load & Capacity', icon: Box },
-            { id: 'module3', num: '03', label: '30-Day Declutter', sub: 'Zone Schedule', icon: CheckCircle2 },
-            { id: 'module4', num: '04', label: 'Renter Aesthetic', sub: '3-Layer Lighting', icon: Sun },
-            { id: 'module5', num: '05', label: 'Daily Reset Engine', sub: '12-Min Routine', icon: Clock },
-            { id: 'module6', num: '06', label: 'Notion Master Vault', sub: 'Connected DBs', icon: Layers }
-          ].map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeModuleTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveModuleTab(tab.id as any)}
-                className={`p-3 text-left border transition-all cursor-pointer flex flex-col justify-between ${
-                  isActive
-                    ? 'bg-[#1A1A1A] text-[#FAF9F6] border-[#1A1A1A] shadow-[3px_3px_0_0_#5A5A40]'
-                    : 'bg-white text-[#1A1A1A] border-[#1A1A1A]/30 hover:border-[#1A1A1A] hover:bg-[#FAF9F6]'
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className={`text-[9px] font-bold uppercase tracking-[0.2em] ${isActive ? 'text-[#A0A090]' : 'text-[#5A5A40]'}`}>
-                    Module {tab.num}
-                  </span>
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-[#5A5A40]'}`} />
-                </div>
-                <div className="mt-2">
-                  <span className="text-xs font-serif font-bold block leading-tight">
-                    {tab.label}
-                  </span>
-                  <span className={`text-[10px] font-mono block mt-0.5 ${isActive ? 'text-[#FAF9F6]/70' : 'text-[#1A1A1A]/60'}`}>
-                    {tab.sub}
-                  </span>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* MODULE 01: SPATIAL ASSESSMENT & INTERACTIVE SCALE FLOORPLAN GRID */}
-      {/* ========================================================================= */}
-      {activeModuleTab === 'module1' && (
-        <div className="space-y-8 animate-in fade-in duration-200">
-          
-          {/* Module Description & Strategy */}
-          <div className="bg-white border border-[#1A1A1A] p-6 sm:p-8 shadow-[3px_3px_0_0_#1A1A1A] flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#5A5A40] block">
-                Interactive Spatial Blueprint • Architectural Scale
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
-                Walkway Clearance & Proportion Calculator
-              </h2>
-              <p className="text-xs sm:text-sm text-[#1A1A1A]/80 font-sans leading-relaxed">
-                The "Two-Inch Error" destroys small space flow. In spaces under 800 sq ft, buying a sofa or console that is just 2" too deep reduces main corridor clearance below the 36" architectural minimum.
-              </p>
-            </div>
-
-            {/* Presets Bar */}
-            <div className="bg-[#FAF9F6] p-3.5 border border-[#1A1A1A]/20 space-y-2 shrink-0">
-              <span className="text-[9px] font-bold uppercase tracking-wider text-[#5A5A40] block">
-                Load Space Preset:
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {[
-                  { id: 'studio-450', label: '450 sq ft Studio' },
-                  { id: 'onebed-580', label: '580 sq ft 1-Bed' },
-                  { id: 'micro-320', label: '320 sq ft Micro' }
-                ].map((p) => (
-                  <button
-                    key={p.id}
-                    onClick={() => handlePresetChange(p.id as any)}
-                    className={`px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider border cursor-pointer transition-all ${
-                      floorplanPreset === p.id
-                        ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                        : 'bg-white text-[#1A1A1A] border-[#1A1A1A]/30 hover:border-[#1A1A1A]'
-                    }`}
-                  >
-                    {p.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Interactive Sliders & Live 2D Visual Floorplan */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            {/* Control Column */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="bg-white border border-[#1A1A1A] p-5 shadow-[2px_2px_0_0_#1A1A1A] space-y-4">
-                <h3 className="font-serif font-bold text-base text-[#1A1A1A] border-b border-[#1A1A1A]/15 pb-2 flex items-center justify-between">
-                  <span>Room & Furniture Dimensions</span>
-                  <Sliders className="w-4 h-4 text-[#5A5A40]" />
+            {/* Input Controls */}
+            <div className="lg:col-span-7 bg-white rounded-2xl p-6 border border-[#E5DFD5] shadow-sm space-y-6">
+              <div className="flex items-center justify-between border-b border-[#E5DFD5] pb-3">
+                <h3 className="font-serif text-lg font-bold text-[#1C1917] flex items-center gap-2">
+                  <Sliders className="w-5 h-5 text-[#4A533E]" />
+                  Mounting Parameters & Substrate Diagnostics
                 </h3>
+                <span className="text-xs bg-stone-100 text-stone-700 px-2.5 py-1 rounded font-mono">
+                  Real-Time Calculation
+                </span>
+              </div>
 
-                {/* Sliders */}
-                <div className="space-y-3.5 text-xs">
-                  <div>
-                    <div className="flex justify-between font-bold">
-                      <label className="text-[#1A1A1A]">Room Width (Corridor Span)</label>
-                      <span className="font-mono text-[#5A5A40]">{roomWidthFt} ft ({roomWidthFt * 12}")</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={9}
-                      max={18}
-                      step={0.5}
-                      value={roomWidthFt}
-                      onChange={(e) => setRoomWidthFt(Number(e.target.value))}
-                      className="w-full accent-[#5A5A40] cursor-pointer mt-1"
-                    />
-                  </div>
+              {/* Substrate Selector */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-[#1C1917] uppercase tracking-wider block">
+                  1. Wall Substrate Type (Knuckle-Tap Diagnosis)
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {[
+                    { id: 'drywall-metal', label: '1/2" Drywall (Metal Studs)', desc: 'Post-2005 Condos' },
+                    { id: 'drywall-wood', label: '1/2" Drywall (Wood Studs)', desc: 'Standard Apartments' },
+                    { id: 'plaster', label: 'Historic Plaster & Lath', desc: 'Pre-1960 Heritage' },
+                    { id: 'concrete', label: 'Solid Concrete / Pillar', desc: 'No-Drill Only' },
+                    { id: 'hollow-door', label: 'Hollow-Core Door', desc: 'Inside Surface' }
+                  ].map(s => (
+                    <button
+                      key={s.id}
+                      onClick={() => setSubstrate(s.id as any)}
+                      className={`p-3 text-left rounded-xl border transition-all text-xs cursor-pointer ${
+                        substrate === s.id
+                          ? 'border-[#4A533E] bg-[#4A533E]/5 font-semibold text-[#1C1917]'
+                          : 'border-[#E5DFD5] hover:border-stone-400 text-stone-600'
+                      }`}
+                    >
+                      <div className="font-medium text-[#1C1917]">{s.label}</div>
+                      <div className="text-[11px] text-stone-500">{s.desc}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-                  <div>
-                    <div className="flex justify-between font-bold">
-                      <label className="text-[#1A1A1A]">Room Length</label>
-                      <span className="font-mono text-[#5A5A40]">{roomLengthFt} ft</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={12}
-                      max={26}
-                      step={0.5}
-                      value={roomLengthFt}
-                      onChange={(e) => setRoomLengthFt(Number(e.target.value))}
-                      className="w-full accent-[#5A5A40] cursor-pointer mt-1"
-                    />
-                  </div>
-
-                  <div className="pt-2 border-t border-[#1A1A1A]/10">
-                    <div className="flex justify-between font-bold">
-                      <label className="text-[#1A1A1A]">Sofa Depth (Wall to Front)</label>
-                      <span className="font-mono text-[#5A5A40]">{sofaDepthInches}"</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={28}
-                      max={44}
-                      step={1}
-                      value={sofaDepthInches}
-                      onChange={(e) => setSofaDepthInches(Number(e.target.value))}
-                      className="w-full accent-[#5A5A40] cursor-pointer mt-1"
-                    />
-                    <span className="text-[10px] text-[#1A1A1A]/60 font-serif italic">Compact Small Space standard is 32"–35"</span>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between font-bold">
-                      <label className="text-[#1A1A1A]">Coffee Table Width</label>
-                      <span className="font-mono text-[#5A5A40]">{coffeeTableDepthInches}"</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={14}
-                      max={32}
-                      step={1}
-                      value={coffeeTableDepthInches}
-                      onChange={(e) => setCoffeeTableDepthInches(Number(e.target.value))}
-                      className="w-full accent-[#5A5A40] cursor-pointer mt-1"
-                    />
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between font-bold">
-                      <label className="text-[#1A1A1A]">TV Media Console Depth</label>
-                      <span className="font-mono text-[#5A5A40]">{tvConsoleDepthInches}"</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={10}
-                      max={22}
-                      step={1}
-                      value={tvConsoleDepthInches}
-                      onChange={(e) => setTvConsoleDepthInches(Number(e.target.value))}
-                      className="w-full accent-[#5A5A40] cursor-pointer mt-1"
-                    />
-                  </div>
+              {/* Object Category & Target Weight */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-[#1C1917] uppercase tracking-wider block">
+                    2. Object Category
+                  </label>
+                  <select
+                    value={objectCategory}
+                    onChange={(e) => {
+                      const cat = e.target.value as any;
+                      setObjectCategory(cat);
+                      if (cat === 'mirror') setTargetWeightLbs(28);
+                      else if (cat === 'shelf') setTargetWeightLbs(18);
+                      else if (cat === 'framed-art') setTargetWeightLbs(8);
+                      else if (cat === 'acoustic') setTargetWeightLbs(5);
+                      else if (cat === 'curtain-rod') setTargetWeightLbs(12);
+                      else if (cat === 'coat-hook') setTargetWeightLbs(15);
+                    }}
+                    className="w-full p-2.5 text-xs bg-stone-50 border border-[#E5DFD5] rounded-xl text-[#1C1917] focus:outline-none focus:border-[#4A533E]"
+                  >
+                    <option value="mirror">Heavy Framed Mirror (15–45 lbs)</option>
+                    <option value="shelf">Floating Display Shelf & Books (10–30 lbs)</option>
+                    <option value="framed-art">Framed Canvas / Gallery Art (4–15 lbs)</option>
+                    <option value="acoustic">Acoustic Sound Panel (2–8 lbs)</option>
+                    <option value="curtain-rod">Tension Curtain Rod System (8–20 lbs)</option>
+                    <option value="coat-hook">Entryway Coat & Bag Hook (10–25 lbs)</option>
+                  </select>
                 </div>
 
-                {/* Additional Zones Toggles */}
-                <div className="pt-3 border-t border-[#1A1A1A]/15 space-y-2">
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-[#5A5A40] block">Include Micro-Zones:</span>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-medium text-[#1A1A1A]">Dedicated Hybrid Desk Nook</span>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <label className="font-bold text-[#1C1917] uppercase tracking-wider">
+                      Target Weight: <span className="text-[#4A533E] font-bold font-mono text-sm">{targetWeightLbs} lbs</span>
+                    </label>
+                  </div>
+                  <input
+                    type="range"
+                    min={2}
+                    max={60}
+                    step={1}
+                    value={targetWeightLbs}
+                    onChange={(e) => setTargetWeightLbs(Number(e.target.value))}
+                    className="w-full accent-[#4A533E] cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] text-stone-400 font-mono">
+                    <span>2 lbs (Light)</span>
+                    <span>25 lbs (Medium)</span>
+                    <span>60 lbs (Heavy)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hardware Selection */}
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-[#1C1917] uppercase tracking-wider block">
+                  3. Hardware Mechanism Selected
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {[
+                    { id: '3m-claw', name: '3M Claw Picture Hanger', rate: '45 lbs / pt', type: 'Zero-Drill 45° Teeth' },
+                    { id: 'monkey-hook', name: 'Monkey / Gorilla Hook', rate: '35 lbs / pt', type: '1mm Pinhole Spring' },
+                    { id: 'command-jumbo', name: '3M Command Jumbo (4-Pair)', rate: '8 lbs / pt', type: 'Zero-Damage Adhesive' },
+                    { id: 'paracord-suspension', name: '550 Paracord Suspension', rate: '80 lbs / pt', type: 'Zero Wall Contact' },
+                    { id: 'ez-toggle', name: 'E-Z Ancor Heavy Toggle', rate: '75 lbs / pt', type: 'Requires Spackle on Exit' },
+                    { id: 'silicone-tension', name: 'Silicone Spring-Tension Rod', rate: '25 lbs / pt', type: 'Zero Damage Compression' }
+                  ].map(hw => (
                     <button
-                      onClick={() => setIncludeDesk(prev => !prev)}
-                      className={`px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border cursor-pointer ${
-                        includeDesk ? 'bg-[#5A5A40] text-white border-[#5A5A40]' : 'bg-white text-[#1A1A1A] border-[#1A1A1A]/30'
+                      key={hw.id}
+                      onClick={() => setHardwareChoice(hw.id as any)}
+                      className={`p-3 text-left rounded-xl border transition-all text-xs cursor-pointer ${
+                        hardwareChoice === hw.id
+                          ? 'border-[#4A533E] bg-[#4A533E]/5 font-semibold text-[#1C1917]'
+                          : 'border-[#E5DFD5] hover:border-stone-400 text-stone-600'
                       }`}
                     >
-                      {includeDesk ? 'ACTIVE' : 'OFF'}
+                      <div className="flex justify-between items-center">
+                        <span className="font-bold text-[#1C1917]">{hw.name}</span>
+                        <span className="text-[10px] bg-stone-200 text-stone-800 px-1.5 py-0.5 rounded font-mono font-medium">{hw.rate}</span>
+                      </div>
+                      <div className="text-[11px] text-stone-500 mt-1">{hw.type}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Anchor Points & Safety Multiplier */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-[#E5DFD5]">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-[#1C1917] uppercase tracking-wider block">
+                    Anchor Points: <span className="text-[#4A533E] font-bold font-mono">{anchorPoints} Points</span>
+                  </label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4].map(num => (
+                      <button
+                        key={num}
+                        onClick={() => setAnchorPoints(num)}
+                        className={`flex-1 py-2 text-xs font-medium rounded-lg border transition-all cursor-pointer ${
+                          anchorPoints === num
+                            ? 'bg-[#4A533E] text-white border-[#4A533E]'
+                            : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'
+                        }`}
+                      >
+                        {num} {num === 1 ? 'Anchor' : 'Anchors'}
+                      </button>
+                    ))}
+                  </div>
+                  <p className="text-[11px] text-stone-500">
+                    Distributes vertical shear stress across multiple drywall planes.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-[#1C1917] uppercase tracking-wider block">
+                    Safety Factor Target
+                  </label>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setSafetyFactor(2)}
+                      className={`flex-1 py-2 text-xs font-medium rounded-lg border transition-all cursor-pointer ${
+                        safetyFactor === 2
+                          ? 'bg-[#4A533E] text-white border-[#4A533E]'
+                          : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'
+                      }`}
+                    >
+                      2.0x Standard
+                    </button>
+                    <button
+                      onClick={() => setSafetyFactor(3)}
+                      className={`flex-1 py-2 text-xs font-medium rounded-lg border transition-all cursor-pointer ${
+                        safetyFactor === 3
+                          ? 'bg-[#4A533E] text-white border-[#4A533E]'
+                          : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'
+                      }`}
+                    >
+                      3.0x High Risk
                     </button>
                   </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-medium text-[#1A1A1A]">Bistro Dining / Drop-Leaf Table</span>
-                    <button
-                      onClick={() => setIncludeDiningNook(prev => !prev)}
-                      className={`px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border cursor-pointer ${
-                        includeDiningNook ? 'bg-[#5A5A40] text-white border-[#5A5A40]' : 'bg-white text-[#1A1A1A] border-[#1A1A1A]/30'
-                      }`}
-                    >
-                      {includeDiningNook ? 'ACTIVE' : 'OFF'}
-                    </button>
+                  <p className="text-[11px] text-stone-500">
+                    Use 3.0x over beds, desks, or walking corridors.
+                  </p>
+                </div>
+              </div>
+
+              {/* Surface Prep Checklist */}
+              <div className="space-y-3 pt-2 border-t border-[#E5DFD5]">
+                <label className="text-xs font-bold text-[#1C1917] uppercase tracking-wider block">
+                  Installation Quality & Preparation SOP
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <label className="flex items-center gap-2.5 text-xs text-[#1C1917] cursor-pointer bg-stone-50 p-2.5 rounded-lg border border-stone-200">
+                    <input
+                      type="checkbox"
+                      checked={ipaPrepped}
+                      onChange={(e) => setIpaPrepped(e.target.checked)}
+                      className="accent-[#4A533E] rounded"
+                    />
+                    <span>70% Isopropyl Alcohol De-oiled</span>
+                  </label>
+
+                  <div className="flex items-center justify-between text-xs text-[#1C1917] bg-stone-50 p-2.5 rounded-lg border border-stone-200">
+                    <span>Paint Cure Age:</span>
+                    <div className="flex items-center gap-1">
+                      <input
+                        type="number"
+                        min={1}
+                        max={365}
+                        value={paintCureAgeDays}
+                        onChange={(e) => setPaintCureAgeDays(Number(e.target.value))}
+                        className="w-12 text-center p-1 bg-white border border-stone-300 rounded text-xs font-mono font-bold"
+                      />
+                      <span className="text-stone-500 text-[11px]">days</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 2D Architectural Floorplan & Clearance Verdict */}
-            <div className="lg:col-span-7 space-y-4">
-              
-              {/* Floorplan Canvas Container */}
-              <div className="bg-[#FAF9F6] border-2 border-[#1A1A1A] p-6 shadow-[3px_3px_0_0_#1A1A1A] space-y-4">
-                <div className="flex items-center justify-between border-b border-[#1A1A1A]/15 pb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 bg-[#5A5A40]" />
-                    <span className="text-xs font-serif font-bold text-[#1A1A1A] uppercase tracking-wider">
-                      Architectural Floorplan Rendering (Scale 1/4" : 1')
-                    </span>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#5A5A40] font-bold">
-                    {(roomLengthFt * roomWidthFt)} Sq Ft Total
+            {/* Calculations & Results Panel */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="bg-[#FAF8F5] rounded-2xl p-6 border border-[#E5DFD5] shadow-sm space-y-6">
+                <div className="flex items-center justify-between border-b border-[#E5DFD5] pb-3">
+                  <h3 className="font-serif text-lg font-bold text-[#1C1917]">
+                    Structural Load & Safety Output
+                  </h3>
+                  <span className={`px-2.5 py-1 rounded-full text-xs font-bold font-mono ${
+                    isSafetyMarginMet 
+                      ? 'bg-emerald-100 text-emerald-800' 
+                      : isExceedingMaxLimit 
+                      ? 'bg-red-100 text-red-800' 
+                      : 'bg-amber-100 text-amber-800'
+                  }`}>
+                    {isSafetyMarginMet ? '✓ CAPACITY CERTIFIED' : isExceedingMaxLimit ? '✕ OVERLOAD DANGER' : '⚠ MARGIN WARNING'}
                   </span>
                 </div>
 
-                {/* SVG Visual Schematic Layout */}
-                <div className="relative w-full aspect-[4/3] bg-white border border-[#1A1A1A] p-4 flex flex-col justify-between overflow-hidden shadow-inner">
-                  
-                  {/* Grid Lines Overlay */}
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,#1A1A1A08_1px,transparent_1px),linear-gradient(to_bottom,#1A1A1A08_1px,transparent_1px)] bg-[size:16px_16px]" />
-
-                  {/* Top Wall: TV Console Zone */}
-                  <div className="relative z-10 flex justify-between items-start">
-                    <div className="bg-[#5A5A40] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-1 border border-[#1A1A1A] shadow-sm">
-                      Wall A: Media Unit ({tvConsoleDepthInches}" Depth)
+                {/* Main Metric Cards */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-white p-3.5 rounded-xl border border-[#E5DFD5]">
+                    <div className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold">Total Rated Capacity</div>
+                    <div className="text-2xl font-bold font-mono text-[#1C1917] mt-1">
+                      {totalHardwareCapacity} <span className="text-xs font-sans text-stone-500">lbs</span>
                     </div>
-                    {includeDesk && (
-                      <div className="bg-[#1A1A1A] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-1 border border-[#1A1A1A]">
-                        Hybrid Desk (32" x 18")
-                      </div>
-                    )}
+                    <div className="text-[10px] text-stone-400 mt-0.5">{anchorPoints} × {selectedHardware.ratedLbsPerPoint} lbs/pt</div>
                   </div>
 
-                  {/* Middle: Traffic Clearance Zone */}
-                  <div className={`relative z-10 my-auto p-3 border text-center transition-all ${
-                    isWalkwayOptimal
-                      ? 'bg-[#5A5A40]/15 border-[#5A5A40] text-[#1A1A1A]'
-                      : isWalkwayTight
-                      ? 'bg-amber-100/70 border-amber-600 text-amber-950'
-                      : 'bg-red-100 border-red-600 text-red-950'
-                  }`}>
-                    <div className="text-xs font-serif font-bold flex items-center justify-center gap-2">
-                      <span>Primary Traffic Corridor Clearance:</span>
-                      <span className="font-mono text-sm underline font-bold">{mainWalkwayInches}" Remaining</span>
+                  <div className="bg-white p-3.5 rounded-xl border border-[#E5DFD5]">
+                    <div className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold">Load Per Anchor</div>
+                    <div className="text-2xl font-bold font-mono text-[#4A533E] mt-1">
+                      {loadPerAnchor} <span className="text-xs font-sans text-stone-500">lbs</span>
                     </div>
-                    <span className="text-[10px] block mt-0.5 font-sans">
-                      {isWalkwayOptimal
-                        ? '✓ Optimal Flow: Exceeds 36" primary walkway standard. Two adults can pass without turning.'
-                        : isWalkwayTight
-                        ? '⚠ Tight Clearance: Walkway between 48"–65". Consider a 32" depth sofa or nesting coffee table.'
-                        : '❌ Pinch Point Detected: Corridor < 48". Furniture depth gridlock will cause door/drawer blockage.'}
-                    </span>
+                    <div className="text-[10px] text-stone-400 mt-0.5">Vertical Shear Force</div>
                   </div>
 
-                  {/* Bottom Wall: Sofa & Dining Nook */}
-                  <div className="relative z-10 flex justify-between items-end">
-                    <div className="bg-[#1A1A1A] text-white text-[9px] font-bold uppercase tracking-wider px-3 py-2 border border-[#1A1A1A] shadow-sm">
-                      Sofa & Lounge Zone ({sofaLengthInches}" W x {sofaDepthInches}" D)
+                  <div className="bg-white p-3.5 rounded-xl border border-[#E5DFD5]">
+                    <div className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold">Required Threshold</div>
+                    <div className="text-2xl font-bold font-mono text-[#1C1917] mt-1">
+                      {requiredSafetyCapacity} <span className="text-xs font-sans text-stone-500">lbs</span>
                     </div>
-                    {includeDiningNook && (
-                      <div className="bg-[#FAF9F6] text-[#1A1A1A] text-[9px] font-bold uppercase tracking-wider px-2.5 py-1.5 border border-[#1A1A1A] shadow-sm">
-                        Drop-Leaf Dining (28" Sq)
-                      </div>
-                    )}
+                    <div className="text-[10px] text-stone-400 mt-0.5">{safetyFactor}.0x Safety Multiplier</div>
+                  </div>
+
+                  <div className="bg-white p-3.5 rounded-xl border border-[#E5DFD5]">
+                    <div className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold">Estimated Hardware Cost</div>
+                    <div className="text-2xl font-bold font-mono text-stone-800 mt-1">
+                      ${totalHardwareCost} <span className="text-xs font-sans text-stone-500">CAD</span>
+                    </div>
+                    <div className="text-[10px] text-stone-400 mt-0.5">Hardware + Prep</div>
                   </div>
                 </div>
 
-                {/* Mathematical Summary Card */}
-                <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                  <div className="bg-white p-2.5 border border-[#1A1A1A]/20 shadow-sm">
-                    <span className="text-[9px] uppercase font-bold text-[#5A5A40] block">Occupied Depth</span>
-                    <span className="font-mono font-bold text-sm text-[#1A1A1A]">{occupiedLivingDepth}"</span>
+                {/* Warnings / Alerts Box */}
+                {warnings.length > 0 && (
+                  <div className="space-y-2">
+                    {warnings.map((w, idx) => (
+                      <div
+                        key={idx}
+                        className={`p-3 rounded-xl text-xs flex items-start gap-2.5 border ${
+                          w.level === 'danger'
+                            ? 'bg-red-50 text-red-900 border-red-200'
+                            : w.level === 'caution'
+                            ? 'bg-amber-50 text-amber-900 border-amber-200'
+                            : 'bg-emerald-50 text-emerald-900 border-emerald-200'
+                        }`}
+                      >
+                        <AlertTriangle className={`w-4 h-4 shrink-0 mt-0.5 ${
+                          w.level === 'danger' ? 'text-red-600' : 'text-amber-600'
+                        }`} />
+                        <span className="leading-relaxed">{w.message}</span>
+                      </div>
+                    ))}
                   </div>
-                  <div className="bg-white p-2.5 border border-[#1A1A1A]/20 shadow-sm">
-                    <span className="text-[9px] uppercase font-bold text-[#5A5A40] block">Free Corridor</span>
-                    <span className="font-mono font-bold text-sm text-[#5A5A40]">{mainWalkwayInches}"</span>
+                )}
+
+                {/* Selected Hardware Mechanism Specs */}
+                <div className="bg-white p-4 rounded-xl border border-[#E5DFD5] space-y-2 text-xs">
+                  <div className="font-bold text-[#1C1917] flex items-center justify-between">
+                    <span>{selectedHardware.name}</span>
+                    <span className="text-[#4A533E] font-mono font-medium">${selectedHardware.costCad.toFixed(2)} / unit</span>
                   </div>
-                  <div className="bg-white p-2.5 border border-[#1A1A1A]/20 shadow-sm">
-                    <span className="text-[9px] uppercase font-bold text-[#5A5A40] block">Flow Verdict</span>
-                    <span className={`font-serif font-bold text-xs ${isWalkwayOptimal ? 'text-[#5A5A40]' : 'text-red-700'}`}>
-                      {isWalkwayOptimal ? 'APPROVED' : 'RECALIBRATE'}
-                    </span>
-                  </div>
+                  <p className="text-stone-600 leading-relaxed">
+                    <strong>Mechanism:</strong> {selectedHardware.mechanism}
+                  </p>
+                  <p className="text-stone-600 leading-relaxed">
+                    <strong>Rental Damage Impact:</strong> {selectedHardware.wallDamage}
+                  </p>
                 </div>
 
+                {/* Action CTA */}
+                <button
+                  onClick={() => setActiveSubView('playbook')}
+                  className="w-full bg-[#4A533E] hover:bg-[#3D4533] text-white py-3 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer"
+                >
+                  <span>Read Full 6-Chapter Step-by-Step SOP</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
-
             </div>
-
           </div>
-
         </div>
       )}
 
-      {/* ========================================================================= */}
-      {/* MODULE 02: VERTICAL STORAGE & RENTER-SAFE LOAD CALCULATOR */}
-      {/* ========================================================================= */}
-      {activeModuleTab === 'module2' && (
-        <div className="space-y-8 animate-in fade-in duration-200">
-          
-          <div className="bg-white border border-[#1A1A1A] p-6 sm:p-8 shadow-[3px_3px_0_0_#1A1A1A] space-y-3">
-            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#5A5A40] block">
-              Vertical Engineering • Zero-Damage Guarantee
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
-              Vertical Cubic Capacity & Structural Anchor Calculator
-            </h2>
-            <p className="text-xs sm:text-sm text-[#1A1A1A]/80 font-sans leading-relaxed max-w-3xl">
-              Small apartments lack square footage, but they possess identical 8-to-10 foot vertical air space. By activating the 6.5ft–8.5ft elevation band safely without drywall damage, you immediately expand storage capacity by 40%.
-            </p>
+      {/* ============================================================== */}
+      {/* SUBVIEW 2: MASTER PLAYBOOK 6-CHAPTER READER */}
+      {/* ============================================================== */}
+      {activeSubView === 'playbook' && (
+        <div className="space-y-6">
+          {/* Chapter Selector Tabs */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+            {[
+              { num: 1, name: 'Diagnose', label: 'Substrate & Lease' },
+              { num: 2, name: 'Measure', label: 'Forces & Vectors' },
+              { num: 3, name: 'Select', label: 'Decision Matrix' },
+              { num: 4, name: 'Execute', label: 'Installation SOP' },
+              { num: 5, name: 'Verify', label: 'Clearance & Load' },
+              { num: 6, name: 'Remove & Restore', label: 'Zero-Damage Exit' }
+            ].map(ch => (
+              <button
+                key={ch.num}
+                onClick={() => setActiveChapter(ch.num)}
+                className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                  activeChapter === ch.num
+                    ? 'bg-[#4A533E] text-white border-[#4A533E] shadow-sm'
+                    : 'bg-white text-stone-700 border-[#E5DFD5] hover:bg-stone-50'
+                }`}
+              >
+                <div className="text-[10px] uppercase font-bold tracking-wider opacity-80">
+                  Chapter 0{ch.num}
+                </div>
+                <div className="font-bold text-xs mt-0.5">{ch.name}</div>
+                <div className={`text-[10px] mt-0.5 truncate ${activeChapter === ch.num ? 'text-white/80' : 'text-stone-500'}`}>
+                  {ch.label}
+                </div>
+              </button>
+            ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            {/* Input Parameters */}
-            <div className="bg-white border border-[#1A1A1A] p-6 shadow-[2px_2px_0_0_#1A1A1A] space-y-5">
-              <h3 className="font-serif font-bold text-base text-[#1A1A1A] border-b border-[#1A1A1A]/15 pb-2">
-                1. Mounting Specifications & Anchor Selection
-              </h3>
-
-              <div className="space-y-4 text-xs">
-                {/* Wall Type Selection */}
-                <div>
-                  <label className="text-[#1A1A1A] font-bold block mb-1.5">Rental Substrate / Wall Construction</label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {[
-                      { id: 'drywall-metal', label: 'Drywall (Metal Studs)' },
-                      { id: 'drywall-wood', label: 'Drywall (Wood Studs)' },
-                      { id: 'hollow-drywall', label: 'Hollow Drywall (No Stud)' },
-                      { id: 'brick-masonry', label: 'Exposed Brick / Masonry' }
-                    ].map((w) => (
-                      <button
-                        key={w.id}
-                        onClick={() => setWallType(w.id as any)}
-                        className={`p-2.5 text-left border text-xs cursor-pointer transition-all ${
-                          wallType === w.id
-                            ? 'bg-[#1A1A1A] text-white border-[#1A1A1A] font-bold'
-                            : 'bg-[#FAF9F6] text-[#1A1A1A] border-[#1A1A1A]/20 hover:border-[#1A1A1A]'
-                        }`}
-                      >
-                        {w.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Mounting Mechanism */}
-                <div>
-                  <label className="text-[#1A1A1A] font-bold block mb-1.5">Mounting Hardware Mechanism</label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {[
-                      { id: 'command-jumbo', label: 'Command Jumbo (3.4kg)' },
-                      { id: 'monkey-hook', label: 'OOK Monkey Hook (15kg)' },
-                      { id: 'heavy-toggle', label: 'Snaptoggle Anchor (35kg)' },
-                      { id: 'tension-rod', label: 'Vertical Tension System' }
-                    ].map((m) => (
-                      <button
-                        key={m.id}
-                        onClick={() => setMountType(m.id as any)}
-                        className={`p-2.5 text-left border text-xs cursor-pointer transition-all ${
-                          mountType === m.id
-                            ? 'bg-[#5A5A40] text-white border-[#5A5A40] font-bold'
-                            : 'bg-[#FAF9F6] text-[#1A1A1A] border-[#1A1A1A]/20 hover:border-[#1A1A1A]'
-                        }`}
-                      >
-                        {m.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Sliders for Shelf Dimensions & Weight */}
-                <div className="space-y-3 pt-2">
-                  <div>
-                    <div className="flex justify-between font-bold">
-                      <label className="text-[#1A1A1A]">Shelf Length</label>
-                      <span className="font-mono text-[#5A5A40]">{shelfLengthInches}"</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={18}
-                      max={60}
-                      step={2}
-                      value={shelfLengthInches}
-                      onChange={(e) => setShelfLengthInches(Number(e.target.value))}
-                      className="w-full accent-[#5A5A40] cursor-pointer"
-                    />
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between font-bold">
-                      <label className="text-[#1A1A1A]">Estimated Item Weight (Books, Planters, Decor)</label>
-                      <span className="font-mono text-[#5A5A40]">{itemWeightLbs} lbs</span>
-                    </div>
-                    <input
-                      type="range"
-                      min={2}
-                      max={50}
-                      step={1}
-                      value={itemWeightLbs}
-                      onChange={(e) => setItemWeightLbs(Number(e.target.value))}
-                      className="w-full accent-[#5A5A40] cursor-pointer"
-                    />
-                  </div>
-                </div>
+          {/* Chapter Content Body */}
+          <div className="bg-white rounded-2xl p-6 sm:p-10 border border-[#E5DFD5] shadow-sm space-y-8">
+            {/* Front Matter Box (Always displayed at top of reader) */}
+            <div className="bg-[#FAF8F5] p-5 rounded-xl border border-[#E5DFD5] space-y-3 text-xs text-[#1C1917]/80">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E5DFD5] pb-2">
+                <span className="font-bold text-[#1C1917] uppercase tracking-wider">
+                  Official Publication Metadata & Legal License
+                </span>
+                <span className="font-mono text-stone-500 text-[11px]">
+                  ISBN: SSH-DP-2026-VOL01 • Edition: 1.4
+                </span>
               </div>
+              <p>
+                <strong>Personal-Use License:</strong> Licensed strictly for personal residential use by the purchasing account. Redistribution, reselling, or commercial reproduction is prohibited under Canadian & International Copyright Law (© 2026 SmallSpaceHome Inc.).
+              </p>
+              <p>
+                <strong>Safety Disclaimer:</strong> This guide provides architectural and practical planning frameworks. It does not replace structural engineering advice, manufacturer load specifications, local building codes, or rental lease terms.
+              </p>
             </div>
 
-            {/* Engineering Safety Analysis & Cubic Gain */}
-            <div className="bg-[#FAF9F6] border border-[#1A1A1A] p-6 shadow-[2px_2px_0_0_#1A1A1A] space-y-6 flex flex-col justify-between">
-              <div>
-                <h3 className="font-serif font-bold text-base text-[#1A1A1A] border-b border-[#1A1A1A]/15 pb-2 flex items-center justify-between">
-                  <span>2. Structural Safety Factor & Deposit Risk</span>
-                  <ShieldCheck className="w-4 h-4 text-[#5A5A40]" />
-                </h3>
-
-                <div className="space-y-4 pt-4 text-xs">
-                  {/* Load Rating Gauge */}
-                  <div className="bg-white p-4 border border-[#1A1A1A]/20 space-y-2">
-                    <div className="flex justify-between font-bold">
-                      <span>Rated Capacity Utilization:</span>
-                      <span className={`font-mono ${isLoadSafe ? 'text-[#5A5A40]' : 'text-red-700'}`}>{loadPercentage}%</span>
+            {/* Chapter Header */}
+            {(() => {
+              const currentChap = vol01Data.chapters.find(c => c.chapterNumber === activeChapter) || vol01Data.chapters[0];
+              return (
+                <div className="space-y-6">
+                  <div className="border-b border-[#E5DFD5] pb-4">
+                    <div className="text-xs font-bold text-[#4A533E] uppercase tracking-widest">
+                      CHAPTER 0{currentChap.chapterNumber} • {currentChap.readingMinutes} MIN READ
                     </div>
-                    <div className="w-full bg-[#FAF9F6] h-3 border border-[#1A1A1A]/30 overflow-hidden">
-                      <div
-                        className={`h-full transition-all duration-300 ${
-                          isLoadSafe ? 'bg-[#5A5A40]' : 'bg-red-600'
-                        }`}
-                        style={{ width: `${loadPercentage}%` }}
-                      />
-                    </div>
-                    <div className="flex justify-between text-[10px] text-[#1A1A1A]/60 font-mono">
-                      <span>Applied: {itemWeightLbs} lbs</span>
-                      <span>Safe Limit: {hardwareSpec.maxSafeLbs} lbs</span>
-                    </div>
-                  </div>
-
-                  {/* Hardware Spec Card */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-white p-3 border border-[#1A1A1A]/20">
-                      <span className="text-[9px] uppercase font-bold text-[#5A5A40] block">Deposit Impact</span>
-                      <span className="font-bold text-[#1A1A1A] text-xs block mt-1">{hardwareSpec.damageRisk}</span>
-                    </div>
-                    <div className="bg-white p-3 border border-[#1A1A1A]/20">
-                      <span className="text-[9px] uppercase font-bold text-[#5A5A40] block">Installation Tooling</span>
-                      <span className="font-bold text-[#1A1A1A] text-xs block mt-1">{hardwareSpec.toolFree ? 'Zero Tools Required' : 'Requires Pilot Drill'}</span>
-                    </div>
-                  </div>
-
-                  {/* Cubic Volume Gained */}
-                  <div className="bg-[#1A1A1A] text-white p-4 border border-[#1A1A1A] shadow-[2px_2px_0_0_#5A5A40] space-y-1">
-                    <span className="text-[9px] uppercase font-bold tracking-wider text-[#A0A090] block">
-                      Vertical Storage Volume Gained
-                    </span>
-                    <div className="text-2xl font-serif font-bold text-white">
-                      +{cubicFeetGained} Cubic Feet
-                    </div>
-                    <p className="text-[11px] text-[#FAF9F6]/70 font-serif italic">
-                      Equivalent to freeing up 3 full storage bins of floor clutter.
+                    <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1C1917] mt-1">
+                      {currentChap.title}
+                    </h2>
+                    <p className="text-stone-600 text-sm mt-1 italic">
+                      {currentChap.subtitle}
                     </p>
                   </div>
+
+                  {/* Chapter Body Markdown Render */}
+                  <div className="prose prose-stone max-w-none text-sm leading-relaxed text-[#1C1917]/90 space-y-4 whitespace-pre-line">
+                    {currentChap.content}
+                  </div>
+
+                  {/* Key Takeaways Box */}
+                  <div className="bg-stone-50 rounded-xl p-5 border border-[#E5DFD5] space-y-3">
+                    <h4 className="font-serif text-sm font-bold text-[#1C1917] flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#4A533E]" />
+                      Chapter 0{currentChap.chapterNumber} Key Tactical Takeaways
+                    </h4>
+                    <ul className="space-y-2 text-xs text-stone-700">
+                      {currentChap.keyTakeaways.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="text-[#4A533E] font-bold">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Navigation footer */}
+                  <div className="flex justify-between items-center pt-4 border-t border-[#E5DFD5]">
+                    <button
+                      onClick={() => setActiveChapter(prev => Math.max(1, prev - 1))}
+                      disabled={activeChapter === 1}
+                      className="text-xs font-medium text-stone-600 hover:text-stone-900 disabled:opacity-30 cursor-pointer"
+                    >
+                      ← Previous Chapter
+                    </button>
+                    <button
+                      onClick={handleExportPDF}
+                      className="bg-[#4A533E] text-white text-xs px-4 py-2 rounded-lg font-medium hover:bg-[#3D4533] cursor-pointer flex items-center gap-1.5"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      Download Full 30-Page PDF
+                    </button>
+                    <button
+                      onClick={() => setActiveChapter(prev => Math.min(6, prev + 1))}
+                      disabled={activeChapter === 6}
+                      className="text-xs font-medium text-stone-600 hover:text-stone-900 disabled:opacity-30 cursor-pointer"
+                    >
+                      Next Chapter →
+                    </button>
+                  </div>
                 </div>
-              </div>
-
-              <div className="text-[11px] text-[#1A1A1A]/80 font-sans border-t border-[#1A1A1A]/10 pt-3">
-                <strong>Best Practice:</strong> {hardwareSpec.bestFor}.
-              </div>
-            </div>
-
+              );
+            })()}
           </div>
-
         </div>
       )}
 
-      {/* ========================================================================= */}
-      {/* MODULE 03: 30-DAY RUTHLESS DECLUTTER PROTOCOL */}
-      {/* ========================================================================= */}
-      {activeModuleTab === 'module3' && (
-        <div className="space-y-8 animate-in fade-in duration-200">
-          
-          <div className="bg-white border border-[#1A1A1A] p-6 sm:p-8 shadow-[3px_3px_0_0_#1A1A1A] flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#5A5A40] block">
-                Spatial Psychology • Milestone Roadmap
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
-                The 30-Day Ruthless Declutter Protocol
-              </h2>
-              <p className="text-xs sm:text-sm text-[#1A1A1A]/80 font-sans leading-relaxed">
-                Standard decluttering advice fails in apartments because there is no attic or garage buffer. This protocol uses the <strong>14-Day Spatial Quarantine Box</strong> to eliminate emotional friction without regret.
-              </p>
-            </div>
-
-            {/* Progress Gauge */}
-            <div className="bg-[#FAF9F6] border border-[#1A1A1A] p-4 text-center min-w-[170px] shadow-[2px_2px_0_0_#1A1A1A]">
-              <span className="text-[9px] font-bold uppercase tracking-wider text-[#5A5A40] block">Declutter Completion</span>
-              <span className="font-serif font-bold text-3xl text-[#1A1A1A]">{declutterProgressPct}%</span>
-              <div className="w-full bg-white h-2 border border-[#1A1A1A]/30 mt-2 overflow-hidden">
-                <div className="h-full bg-[#5A5A40] transition-all" style={{ width: `${declutterProgressPct}%` }} />
-              </div>
-              <span className="text-[10px] text-[#1A1A1A]/60 block mt-1">{finishedTaskCount} of {totalTaskCount} Milestones Done</span>
-            </div>
-          </div>
-
-          {/* 4-Week Schedule Checklist */}
-          <div className="space-y-6">
-            {declutterSchedule.map((weekBlock, wIdx) => (
-              <div key={wIdx} className="bg-white border border-[#1A1A1A] p-6 shadow-[2px_2px_0_0_#1A1A1A] space-y-4">
-                <div className="border-b border-[#1A1A1A]/15 pb-2">
-                  <h3 className="font-serif font-bold text-lg text-[#1A1A1A]">
-                    {weekBlock.week}
-                  </h3>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                  {weekBlock.days.map((item) => {
-                    const isDone = completedTasks[item.id] || false;
-                    return (
-                      <div
-                        key={item.id}
-                        onClick={() => toggleDeclutterTask(item.id)}
-                        className={`p-3.5 border flex items-start justify-between gap-3 transition-all cursor-pointer ${
-                          isDone
-                            ? 'bg-[#F2F1EC] border-[#5A5A40]/40 text-[#1A1A1A]'
-                            : 'bg-[#FAF9F6] border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A]'
-                        }`}
-                      >
-                        <div className="flex items-start gap-3">
-                          {isDone ? (
-                            <CheckCircle2 className="w-4 h-4 text-[#5A5A40] shrink-0 mt-0.5" />
-                          ) : (
-                            <div className="w-4 h-4 rounded-full border border-[#1A1A1A]/40 shrink-0 mt-0.5" />
-                          )}
-                          <div className="space-y-1">
-                            <div className="flex items-center gap-2">
-                              <span className="font-mono text-[10px] font-bold text-[#5A5A40] uppercase">
-                                {item.day} • {item.zone}
-                              </span>
-                            </div>
-                            <p className={`font-sans leading-relaxed ${isDone ? 'line-through text-[#1A1A1A]/50 font-normal' : 'font-bold text-[#1A1A1A]'}`}>
-                              {item.task}
-                            </p>
-                          </div>
-                        </div>
-
-                        <span className="text-[9px] font-bold uppercase tracking-wider text-[#5A5A40] bg-white px-2 py-0.5 border border-[#1A1A1A]/20 shrink-0">
-                          {item.category}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      )}
-
-      {/* ========================================================================= */}
-      {/* MODULE 04: RENTER AESTHETIC BLUEPRINT & 3-LAYER LIGHTING FORMULA */}
-      {/* ========================================================================= */}
-      {activeModuleTab === 'module4' && (
-        <div className="space-y-8 animate-in fade-in duration-200">
-          
-          <div className="bg-white border border-[#1A1A1A] p-6 sm:p-8 shadow-[3px_3px_0_0_#1A1A1A] space-y-3">
-            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#5A5A40] block">
-              Optical Expansion • Renter Upgrades
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
-              The 3-Layer Lighting Formula & Tool-Free Hardware Upgrades
-            </h2>
-            <p className="text-xs sm:text-sm text-[#1A1A1A]/80 font-sans leading-relaxed max-w-3xl">
-              Harsh single overhead "boob lights" flatten a small apartment, making walls feel suffocatingly close. By calculating and layering ambient, task, and accent lumens, you create optical depth and visual zoning.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            {/* Lighting Calculator Controls */}
-            <div className="lg:col-span-5 bg-white border border-[#1A1A1A] p-6 shadow-[2px_2px_0_0_#1A1A1A] space-y-5">
-              <h3 className="font-serif font-bold text-base text-[#1A1A1A] border-b border-[#1A1A1A]/15 pb-2 flex items-center justify-between">
-                <span>Room Photometric Parameters</span>
-                <Sun className="w-4 h-4 text-[#5A5A40]" />
+      {/* ============================================================== */}
+      {/* SUBVIEW 3: POCKET FIELD COMPANION (4×6" CARDS) */}
+      {/* ============================================================== */}
+      {activeSubView === 'field-cards' && (
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E5DFD5] pb-4">
+            <div>
+              <h3 className="font-serif text-xl font-bold text-[#1C1917]">
+                Zero-Damage Installation Pocket Field Cards (4×6" Printables)
               </h3>
-
-              <div className="space-y-4 text-xs">
-                <div>
-                  <div className="flex justify-between font-bold">
-                    <label className="text-[#1A1A1A]">Floor Surface Area</label>
-                    <span className="font-mono text-[#5A5A40]">{roomAreaSqFt} Sq Ft</span>
-                  </div>
-                  <input
-                    type="range"
-                    min={100}
-                    max={600}
-                    step={10}
-                    value={roomAreaSqFt}
-                    onChange={(e) => setRoomAreaSqFt(Number(e.target.value))}
-                    className="w-full accent-[#5A5A40] cursor-pointer mt-1"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between font-bold">
-                    <label className="text-[#1A1A1A]">Ceiling Height</label>
-                    <span className="font-mono text-[#5A5A40]">{ceilingHeightFt} Feet</span>
-                  </div>
-                  <input
-                    type="range"
-                    min={8}
-                    max={12}
-                    step={0.5}
-                    value={ceilingHeightFt}
-                    onChange={(e) => setCeilingHeightFt(Number(e.target.value))}
-                    className="w-full accent-[#5A5A40] cursor-pointer mt-1"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-[#1A1A1A] font-bold block mb-1.5">Primary Zone Function</label>
-                  <div className="grid grid-cols-3 gap-1.5">
-                    {[
-                      { id: 'living', label: 'Living Zone' },
-                      { id: 'bedroom', label: 'Bedroom' },
-                      { id: 'studio-multipurpose', label: 'Studio All-in-1' }
-                    ].map((mode) => (
-                      <button
-                        key={mode.id}
-                        onClick={() => setPrimaryRoomUse(mode.id as any)}
-                        className={`p-2 text-center text-[10px] font-bold uppercase tracking-wider border cursor-pointer ${
-                          primaryRoomUse === mode.id
-                            ? 'bg-[#1A1A1A] text-white border-[#1A1A1A]'
-                            : 'bg-[#FAF9F6] text-[#1A1A1A] border-[#1A1A1A]/20 hover:border-[#1A1A1A]'
-                        }`}
-                      >
-                        {mode.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 3-Layer Output Specs */}
-            <div className="lg:col-span-7 space-y-4">
-              <div className="bg-[#FAF9F6] border border-[#1A1A1A] p-6 shadow-[2px_2px_0_0_#1A1A1A] space-y-4">
-                <div className="flex items-center justify-between border-b border-[#1A1A1A]/15 pb-2">
-                  <span className="font-serif font-bold text-base text-[#1A1A1A]">
-                    Target Photometric Balance: {lightingSpecs.totalLumens} Lumens
-                  </span>
-                  <span className="text-[10px] font-mono text-[#5A5A40] font-bold uppercase">
-                    3-Layer Distribution
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                  {/* Layer 1: Ambient */}
-                  <div className="bg-white p-4 border border-[#1A1A1A]/20 space-y-2 shadow-sm">
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-[#5A5A40] block">Layer 01: Ambient (50%)</span>
-                    <div className="text-lg font-serif font-bold text-[#1A1A1A]">{lightingSpecs.layer1Ambient} Lumens</div>
-                    <span className="text-[10px] font-mono text-[#5A5A40] block font-bold">{lightingSpecs.recommendedAmbientKelvin}</span>
-                    <p className="text-[11px] text-[#1A1A1A]/70 font-sans">Diffused paper pendant or uplight wall washers bouncing light off ceiling.</p>
-                  </div>
-
-                  {/* Layer 2: Task */}
-                  <div className="bg-white p-4 border border-[#1A1A1A]/20 space-y-2 shadow-sm">
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-[#5A5A40] block">Layer 02: Task (35%)</span>
-                    <div className="text-lg font-serif font-bold text-[#1A1A1A]">{lightingSpecs.layer2Task} Lumens</div>
-                    <span className="text-[10px] font-mono text-[#5A5A40] block font-bold">{lightingSpecs.recommendedTaskKelvin}</span>
-                    <p className="text-[11px] text-[#1A1A1A]/70 font-sans">Under-cabinet LED tape in kitchen; articulated reading sconce beside sofa.</p>
-                  </div>
-
-                  {/* Layer 3: Accent */}
-                  <div className="bg-white p-4 border border-[#1A1A1A]/20 space-y-2 shadow-sm">
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-[#5A5A40] block">Layer 03: Accent (15%)</span>
-                    <div className="text-lg font-serif font-bold text-[#1A1A1A]">{lightingSpecs.layer3Accent} Lumens</div>
-                    <span className="text-[10px] font-mono text-[#5A5A40] block font-bold">{lightingSpecs.recommendedAccentKelvin}</span>
-                    <p className="text-[11px] text-[#1A1A1A]/70 font-sans">Low-level bookshelf glow, picture frame spotlight, floor corner glow.</p>
-                  </div>
-                </div>
-
-                <div className="bg-[#1A1A1A] text-white p-4 border border-[#1A1A1A] text-xs flex items-center justify-between">
-                  <span className="font-serif font-bold text-sm">Renter 5-Minute Restore Rule:</span>
-                  <span className="text-[#A0A090] text-[11px] font-mono">Store original bulbs in Box #4</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      )}
-
-      {/* ========================================================================= */}
-      {/* MODULE 05: 12-MINUTE MORNING CALM & NIGHTLY RESET ENGINE */}
-      {/* ========================================================================= */}
-      {activeModuleTab === 'module5' && (
-        <div className="space-y-8 animate-in fade-in duration-200">
-          
-          <div className="bg-white border border-[#1A1A1A] p-6 sm:p-8 shadow-[3px_3px_0_0_#1A1A1A] flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#5A5A40] block">
-                Daily Spatial Rhythm • Frictionless Habits
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
-                The 12-Minute Morning Calm & Nightly Reset Engine
-              </h2>
-              <p className="text-xs sm:text-sm text-[#1A1A1A]/80 font-sans leading-relaxed">
-                In small spaces, clutter compounds exponentially. A single coffee mug and unopened letter left on a counter takes up 25% of the room's visual surface. This 12-minute rhythm maintains effortless order daily.
+              <p className="text-xs text-stone-600 mt-1">
+                Laminated on-site flashcards designed for hardware store runs, quick angle alignments, and 60-second installations.
               </p>
             </div>
-
-            {/* Streak Counter */}
-            <div className="bg-[#FAF9F6] border border-[#1A1A1A] p-4 text-center min-w-[170px] shadow-[2px_2px_0_0_#1A1A1A]">
-              <div className="flex items-center justify-center gap-1 text-[#5A5A40]">
-                <Flame className="w-4 h-4 fill-[#5A5A40]" />
-                <span className="text-[9px] font-bold uppercase tracking-wider">Current Streak</span>
-              </div>
-              <span className="font-serif font-bold text-3xl text-[#1A1A1A]">{resetStreak} Days</span>
-              <span className="text-[10px] text-[#5A5A40] block font-semibold mt-0.5">Automated Habit Lock</span>
-            </div>
-          </div>
-
-          {/* Interactive Live Timer & 3-Phase Choreography */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            {/* Timer Clock Box */}
-            <div className="lg:col-span-5 bg-[#1A1A1A] text-[#FAF9F6] p-8 border border-[#1A1A1A] shadow-[4px_4px_0_0_#5A5A40] flex flex-col justify-between items-center text-center space-y-6">
-              <div className="space-y-1">
-                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#A0A090] block">
-                  Active Reset Countdown
-                </span>
-                <span className="font-mono text-5xl sm:text-6xl font-bold tracking-tight text-white">
-                  {formatTimerTime(timerSeconds)}
-                </span>
-              </div>
-
-              {/* Phase Indicator */}
-              <div className="bg-white/10 px-4 py-2 border border-white/20 text-xs w-full">
-                <span className="text-[#A0A090] text-[9px] uppercase font-bold tracking-wider block">Current Phase:</span>
-                <span className="font-serif font-bold text-sm text-white capitalize mt-0.5 block">
-                  {currentResetPhase === 'kitchen' && 'Phase 1: Kitchen Counter Zero (0:00 – 4:00)'}
-                  {currentResetPhase === 'living' && 'Phase 2: Living Surface Clear (4:00 – 8:00)'}
-                  {currentResetPhase === 'entryway' && 'Phase 3: Entryway & Launchpad (8:00 – 12:00)'}
-                </span>
-              </div>
-
-              {/* Timer Buttons */}
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={toggleTimer}
-                  className="flex items-center gap-2 px-5 py-2.5 bg-white text-[#1A1A1A] font-bold text-xs uppercase tracking-wider hover:bg-[#FAF9F6] transition-all cursor-pointer border border-white shadow-sm"
-                >
-                  {isTimerRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                  <span>{isTimerRunning ? 'Pause Routine' : 'Start 12-Min Reset'}</span>
-                </button>
-                <button
-                  onClick={resetTimer}
-                  className="p-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all cursor-pointer"
-                  title="Reset to 12 minutes"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            {/* 3 Micro-Phase Choreography Steps */}
-            <div className="lg:col-span-7 space-y-3">
-              {[
-                {
-                  phase: 'Phase 1: Kitchen Counter Zero (4 Mins)',
-                  target: '00:00 – 04:00',
-                  active: currentResetPhase === 'kitchen',
-                  items: [
-                    'Dishes into washer or dried & put into vertical drying rack',
-                    'Wipe main prep counter with natural citrus spray',
-                    'Return salt/oil canisters to cabinet lazy susan'
-                  ]
-                },
-                {
-                  phase: 'Phase 2: Living Room Surface Reset (4 Mins)',
-                  target: '04:00 – 08:00',
-                  active: currentResetPhase === 'living',
-                  items: [
-                    'Fold throw blanket into clean hotel fold over sofa arm',
-                    'Fluff 2 accent cushions and return TV remote to hidden plinth',
-                    'Dock coffee mugs in sink and sweep coffee table clear'
-                  ]
-                },
-                {
-                  phase: 'Phase 3: Entryway & Tomorrow Launchpad (4 Mins)',
-                  target: '08:00 – 12:00',
-                  active: currentResetPhase === 'entryway',
-                  items: [
-                    'Keys, wallet, and headphones docked onto magnetic entryway bar',
-                    'Shoes aligned on 2-tier shoe riser (max 3 daily pairs)',
-                    'Water bottle filled and placed by door for tomorrow'
-                  ]
-                }
-              ].map((step, idx) => (
-                <div
-                  key={idx}
-                  className={`p-4 border transition-all ${
-                    step.active
-                      ? 'bg-white border-[#1A1A1A] shadow-[3px_3px_0_0_#5A5A40]'
-                      : 'bg-[#FAF9F6] border-[#1A1A1A]/20 opacity-80'
-                  }`}
-                >
-                  <div className="flex items-center justify-between border-b border-[#1A1A1A]/10 pb-2">
-                    <span className="font-serif font-bold text-sm text-[#1A1A1A]">{step.phase}</span>
-                    <span className="text-[10px] font-mono font-bold text-[#5A5A40] bg-white px-2 py-0.5 border border-[#1A1A1A]/15">
-                      {step.target}
-                    </span>
-                  </div>
-                  <ul className="mt-2.5 space-y-1.5 text-xs text-[#1A1A1A]">
-                    {step.items.map((it, iIdx) => (
-                      <li key={iIdx} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#5A5A40] shrink-0" />
-                        <span>{it}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-          </div>
-
-        </div>
-      )}
-
-      {/* ========================================================================= */}
-      {/* MODULE 06: NOTION OS CONNECTED DATABASE VAULT */}
-      {/* ========================================================================= */}
-      {activeModuleTab === 'module6' && (
-        <div className="space-y-8 animate-in fade-in duration-200">
-          
-          <div className="bg-white border border-[#1A1A1A] p-6 sm:p-8 shadow-[3px_3px_0_0_#1A1A1A] flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#5A5A40] block">
-                Digital Operating System • Notion 1-Click Vault
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1A1A1A]">
-                The Connected Notion Master Database Hub
-              </h2>
-              <p className="text-xs sm:text-sm text-[#1A1A1A]/80 font-sans leading-relaxed">
-                6 pre-configured relational databases connecting your furniture dimensions, walkway clearance calculations, lease terms, and landlord-safe hardware specs.
-              </p>
-            </div>
-
             <button
-              onClick={handleCopyNotionTemplate}
-              className="flex items-center gap-2 px-4 py-2.5 bg-[#1A1A1A] hover:bg-[#333] text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border border-[#1A1A1A] shadow-[2px_2px_0_0_#5A5A40] shrink-0"
+              onClick={handleExportPDF}
+              className="bg-[#4A533E] text-white px-4 py-2 rounded-lg text-xs font-medium hover:bg-[#3D4533] cursor-pointer flex items-center gap-1.5 shrink-0"
             >
-              {copiedNotionSchema ? <Check className="w-4 h-4 text-white" /> : <Copy className="w-4 h-4 text-[#A0A090]" />}
-              <span>{copiedNotionSchema ? 'Notion Schema Copied!' : 'Export Notion JSON / Schema'}</span>
+              <Printer className="w-4 h-4" />
+              <span>Print 4×6" Field Deck</span>
             </button>
           </div>
 
-          {/* Notion Table Switcher */}
-          <div className="flex flex-wrap gap-2 border-b border-[#1A1A1A]/15 pb-2">
-            {[
-              { id: 'furniture', label: '1. Furniture Inventory & Footprint' },
-              { id: 'clearance', label: '2. Clearance Standards Audit' },
-              { id: 'maintenance', label: '3. Seasonal Renter Maintenance' },
-              { id: 'hardware', label: '4. Hardware & Paint Restore Vault' }
-            ].map((tbl) => (
-              <button
-                key={tbl.id}
-                onClick={() => setActiveNotionTable(tbl.id as any)}
-                className={`px-3.5 py-1.5 text-xs font-serif font-bold border transition-all cursor-pointer ${
-                  activeNotionTable === tbl.id
-                    ? 'bg-[#1A1A1A] text-white border-[#1A1A1A] shadow-sm'
-                    : 'bg-white text-[#1A1A1A] border-[#1A1A1A]/20 hover:border-[#1A1A1A]'
-                }`}
-              >
-                {tbl.label}
-              </button>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Card 1 */}
+            <div className="bg-white rounded-2xl p-6 border border-[#E5DFD5] shadow-sm space-y-4 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-[#4A533E]" />
+              <div className="flex justify-between items-center text-xs">
+                <span className="font-mono text-stone-400 font-bold">CARD 01 • SURFACE PREPARATION</span>
+                <span className="bg-stone-100 text-stone-700 px-2 py-0.5 rounded text-[10px] font-bold">THE 70% IPA LAW</span>
+              </div>
+              <h4 className="font-serif text-base font-bold text-[#1C1917]">
+                The 60-Second Wall De-Oiling Protocol
+              </h4>
+              <ul className="text-xs text-stone-600 space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#4A533E] font-bold">1.</span>
+                  <span><strong>70% Isopropyl Alcohol:</strong> Wipe 4×4" target area with lint-free microfiber. Never use multi-surface glass spray (leaves silicone film).</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#4A533E] font-bold">2.</span>
+                  <span><strong>30-Second Air Dry:</strong> Allow alcohol to fully evaporate before applying adhesive strip.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#4A533E] font-bold">3.</span>
+                  <span><strong>30-Second Firm Pressure:</strong> Press strip with thumb applying 15 lbs downward force to activate adhesive polymer chains.</span>
+                </li>
+              </ul>
+              <div className="bg-stone-50 p-2.5 rounded-lg border border-stone-200 text-[11px] text-stone-700">
+                💡 <strong>Lab Rule:</strong> Wait 1 hour before hanging art to allow polymer curing.
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white rounded-2xl p-6 border border-[#E5DFD5] shadow-sm space-y-4 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-[#4A533E]" />
+              <div className="flex justify-between items-center text-xs">
+                <span className="font-mono text-stone-400 font-bold">CARD 02 • HEAVY HARDWARE</span>
+                <span className="bg-stone-100 text-stone-700 px-2 py-0.5 rounded text-[10px] font-bold">3M CLAW MECHANICS</span>
+              </div>
+              <h4 className="font-serif text-base font-bold text-[#1C1917]">
+                45° Shear-Lock Penetration Angle
+              </h4>
+              <ul className="text-xs text-stone-600 space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#4A533E] font-bold">1.</span>
+                  <span><strong>Positioning:</strong> Align the baseplate flush against 1/2" drywall without pre-drilling.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#4A533E] font-bold">2.</span>
+                  <span><strong>Thumb Push:</strong> Press firmly with both thumbs until hardened steel prongs lock into the drywall core.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#4A533E] font-bold">3.</span>
+                  <span><strong>Load Rating:</strong> 45 lbs rated capacity in pure vertical shear. 2 anchor points support up to 65 lbs with 2.0x safety factor.</span>
+                </li>
+              </ul>
+              <div className="bg-stone-50 p-2.5 rounded-lg border border-stone-200 text-[11px] text-stone-700">
+                💡 <strong>Move-Out Exit:</strong> Slide flat putty knife under edge to pull straight out. Leaves tiny 1mm prongs that pass inspection.
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white rounded-2xl p-6 border border-[#E5DFD5] shadow-sm space-y-4 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-[#4A533E]" />
+              <div className="flex justify-between items-center text-xs">
+                <span className="font-mono text-stone-400 font-bold">CARD 03 • SAFE REMOVAL</span>
+                <span className="bg-stone-100 text-stone-700 px-2 py-0.5 rounded text-[10px] font-bold">THERMAL RELEASE</span>
+              </div>
+              <h4 className="font-serif text-base font-bold text-[#1C1917]">
+                60-Second Blow-Dryer Adhesive Release
+              </h4>
+              <ul className="text-xs text-stone-600 space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#4A533E] font-bold">1.</span>
+                  <span><strong>Heat Application:</strong> Set standard hair dryer to medium heat. Hold nozzle 2 inches away from base for 45–60 seconds.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#4A533E] font-bold">2.</span>
+                  <span><strong>Parallel Pull:</strong> Grasp tab and pull strictly straight down parallel to the wall. NEVER pull outwards towards yourself.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#4A533E] font-bold">3.</span>
+                  <span><strong>Zero Residue:</strong> The softened adhesive stretches out cleanly without lifting delicate builder-grade paint.</span>
+                </li>
+              </ul>
+              <div className="bg-stone-50 p-2.5 rounded-lg border border-stone-200 text-[11px] text-stone-700">
+                💡 <strong>Emergency Paint Lift:</strong> If slight texture lifts, rub flat white chalk into area to blend with matte rental paint.
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-white rounded-2xl p-6 border border-[#E5DFD5] shadow-sm space-y-4 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1.5 bg-[#4A533E]" />
+              <div className="flex justify-between items-center text-xs">
+                <span className="font-mono text-stone-400 font-bold">CARD 04 • HARDWARE STORE CHEAT SHEET</span>
+                <span className="bg-stone-100 text-stone-700 px-2 py-0.5 rounded text-[10px] font-bold">QUICK BUY LIST</span>
+              </div>
+              <h4 className="font-serif text-base font-bold text-[#1C1917]">
+                The $25 Renter Hardware Toolkit
+              </h4>
+              <ul className="text-xs text-stone-600 space-y-2">
+                <li className="flex justify-between items-center border-b border-stone-100 pb-1">
+                  <span>3M Claw Drywall Picture Hangers (4-Pack)</span>
+                  <span className="font-mono font-bold">$9.98 CAD</span>
+                </li>
+                <li className="flex justify-between items-center border-b border-stone-100 pb-1">
+                  <span>Gorilla / Monkey Spring Hooks (10-Pack)</span>
+                  <span className="font-mono font-bold">$6.49 CAD</span>
+                </li>
+                <li className="flex justify-between items-center border-b border-stone-100 pb-1">
+                  <span>70% Isopropyl Rubbing Alcohol (500ml)</span>
+                  <span className="font-mono font-bold">$3.29 CAD</span>
+                </li>
+                <li className="flex justify-between items-center">
+                  <span>Torpedo Mini Bubble Level (Magnetic)</span>
+                  <span className="font-mono font-bold">$5.99 CAD</span>
+                </li>
+              </ul>
+              <div className="bg-stone-50 p-2.5 rounded-lg border border-stone-200 text-[11px] text-stone-700 flex justify-between font-bold">
+                <span>Total Toolkit Cost:</span>
+                <span className="text-[#4A533E] font-mono">$25.75 CAD</span>
+              </div>
+            </div>
           </div>
-
-          {/* Interactive Notion Table View */}
-          <div className="bg-white border border-[#1A1A1A] shadow-[3px_3px_0_0_#1A1A1A] overflow-x-auto">
-            
-            {activeNotionTable === 'furniture' && (
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="bg-[#F2F1EC] border-b border-[#1A1A1A] text-[#5A5A40] uppercase tracking-wider text-[9px] font-bold font-mono">
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Furniture Item</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Room Zone</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Dimensions (L x D x H)</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Clearance Requirement</th>
-                    <th className="p-3.5">Floor Footprint</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[#1A1A1A]/10 text-[#1A1A1A]">
-                  {notionDatabaseSchemas.furniture.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-[#FAF9F6]">
-                      <td className="p-3.5 font-bold border-r border-[#1A1A1A]/15 font-serif">{row.item}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15">{row.roomZone}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15 font-mono">{row.length} x {row.depth} x {row.height}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15 text-[#5A5A40] font-semibold">{row.clearanceReq}</td>
-                      <td className="p-3.5 font-mono">{row.floorFootprint}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-
-            {activeNotionTable === 'clearance' && (
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="bg-[#F2F1EC] border-b border-[#1A1A1A] text-[#5A5A40] uppercase tracking-wider text-[9px] font-bold font-mono">
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Traffic Zone</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Architectural Minimum</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Measured Clearance</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Status</th>
-                    <th className="p-3.5">Spatial Recommendation</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[#1A1A1A]/10 text-[#1A1A1A]">
-                  {notionDatabaseSchemas.clearance.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-[#FAF9F6]">
-                      <td className="p-3.5 font-bold border-r border-[#1A1A1A]/15 font-serif">{row.zone}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15 font-mono">{row.requiredClearance}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15 font-mono font-bold">{row.currentActual}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15">
-                        <span className="bg-[#5A5A40] text-white px-2 py-0.5 text-[9px] uppercase font-bold tracking-wider">
-                          {row.status}
-                        </span>
-                      </td>
-                      <td className="p-3.5 text-xs text-[#1A1A1A]/80">{row.notes}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-
-            {activeNotionTable === 'maintenance' && (
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="bg-[#F2F1EC] border-b border-[#1A1A1A] text-[#5A5A40] uppercase tracking-wider text-[9px] font-bold font-mono">
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Preventive Task</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Inspection Frequency</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Required Tool</th>
-                    <th className="p-3.5">Verification Status</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[#1A1A1A]/10 text-[#1A1A1A]">
-                  {notionDatabaseSchemas.maintenance.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-[#FAF9F6]">
-                      <td className="p-3.5 font-bold border-r border-[#1A1A1A]/15 font-serif">{row.task}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15 font-mono">{row.frequency}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15">{row.tool}</td>
-                      <td className="p-3.5 font-bold text-[#5A5A40]">{row.status}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-
-            {activeNotionTable === 'hardware' && (
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="bg-[#F2F1EC] border-b border-[#1A1A1A] text-[#5A5A40] uppercase tracking-wider text-[9px] font-bold font-mono">
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Aesthetic Fixture</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Original Landlord Hardware Location</th>
-                    <th className="p-3.5 border-r border-[#1A1A1A]/15">Adapter Mechanism</th>
-                    <th className="p-3.5">Move-Out Restore Time</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[#1A1A1A]/10 text-[#1A1A1A]">
-                  {notionDatabaseSchemas.hardware.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-[#FAF9F6]">
-                      <td className="p-3.5 font-bold border-r border-[#1A1A1A]/15 font-serif">{row.fixture}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15 font-mono text-[#5A5A40]">{row.originalStoredIn}</td>
-                      <td className="p-3.5 border-r border-[#1A1A1A]/15">{row.adapterType}</td>
-                      <td className="p-3.5 font-mono font-bold">{row.restoreTimeMin}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-
-          </div>
-
         </div>
       )}
 
+      {/* ============================================================== */}
+      {/* SUBVIEW 4: FOURTHWALL COMMERCIAL CHECKOUT & DELIVERY */}
+      {/* ============================================================== */}
+      {activeSubView === 'checkout-delivery' && (
+        <div className="space-y-6">
+          <div className="bg-stone-50 p-4 rounded-xl border border-[#E5DFD5] text-xs text-stone-700 flex items-center justify-between">
+            <span className="flex items-center gap-2">
+              <ShoppingBag className="w-4 h-4 text-[#4A533E]" />
+              <strong>Fourthwall Store Simulation:</strong> Live checkout preview for <code>shop.smallspacehome.ca</code> with 1-click order bump and instant fulfillment.
+            </span>
+            <span className="text-[11px] bg-white px-2 py-1 rounded border border-stone-200 font-mono">
+              Currency: CAD
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Checkout Form Simulation */}
+            <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-[#E5DFD5] shadow-sm space-y-6">
+              <h3 className="font-serif text-xl font-bold text-[#1C1917] border-b border-[#E5DFD5] pb-3">
+                Order Review & 1-Click Digital Checkout
+              </h3>
+
+              {/* Main Product Card */}
+              <div className="flex items-start justify-between p-4 bg-stone-50 rounded-xl border border-stone-200">
+                <div className="space-y-1">
+                  <span className="text-[10px] font-bold text-[#4A533E] uppercase tracking-wider">
+                    FLAGSHIP DIGITAL PLAYBOOK
+                  </span>
+                  <div className="font-bold text-sm text-[#1C1917]">
+                    Hang Mirrors, Shelves & Art: Zero-Damage Mounting System
+                  </div>
+                  <div className="text-xs text-stone-500">
+                    Includes 30+ Page Master PDF + Substrate Load Matrix (.CSV) + Personal Use License
+                  </div>
+                </div>
+                <div className="font-mono font-bold text-sm text-[#1C1917] shrink-0 ml-4">
+                  $24.00 CAD
+                </div>
+              </div>
+
+              {/* Primary Validated Checkout Bump */}
+              <div className={`p-4 rounded-xl border transition-all ${
+                includeCheckoutBump 
+                  ? 'bg-[#4A533E]/5 border-[#4A533E]' 
+                  : 'bg-white border-[#E5DFD5] hover:border-stone-400'
+              }`}>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={includeCheckoutBump}
+                    onChange={(e) => setIncludeCheckoutBump(e.target.checked)}
+                    className="accent-[#4A533E] w-4 h-4 mt-0.5 rounded"
+                  />
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-amber-100 text-amber-900 text-[10px] font-bold px-2 py-0.5 rounded">
+                        RECOMMENDED ADD-ON (+34% TAKE RATE)
+                      </span>
+                      <span className="font-bold text-xs text-[#1C1917]">
+                        Zero-Damage Installation Pocket Field Cards (+$7 CAD)
+                      </span>
+                    </div>
+                    <p className="text-xs text-stone-600 leading-relaxed">
+                      Compact 4×6" high-contrast printable cards with 60-second hardware store cheat sheets, adhesive de-oiling SOPs, and 45° angle alignment guides.
+                    </p>
+                  </div>
+                </label>
+              </div>
+
+              {/* Secondary Test Bump */}
+              <div className={`p-4 rounded-xl border transition-all ${
+                includeSecondaryBump 
+                  ? 'bg-[#4A533E]/5 border-[#4A533E]' 
+                  : 'bg-white border-[#E5DFD5] hover:border-stone-400'
+              }`}>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={includeSecondaryBump}
+                    onChange={(e) => setIncludeSecondaryBump(e.target.checked)}
+                    className="accent-[#4A533E] w-4 h-4 mt-0.5 rounded"
+                  />
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-stone-100 text-stone-700 text-[10px] font-bold px-2 py-0.5 rounded">
+                        OPTIONAL DEFENSE PACK
+                      </span>
+                      <span className="font-bold text-xs text-[#1C1917]">
+                        Rental Move-Out & Deposit Defense Pack (+$9 CAD)
+                      </span>
+                    </div>
+                    <p className="text-xs text-stone-600 leading-relaxed">
+                      Copy-paste tenant wear-and-tear pushback scripts and the $8 spackle + white chalk matte wall patch recipe.
+                    </p>
+                  </div>
+                </label>
+              </div>
+
+              {/* Price summary */}
+              <div className="space-y-2 pt-4 border-t border-[#E5DFD5] text-xs">
+                <div className="flex justify-between text-stone-600">
+                  <span>Zero-Damage Mounting Master Kit</span>
+                  <span className="font-mono">$24.00 CAD</span>
+                </div>
+                {includeCheckoutBump && (
+                  <div className="flex justify-between text-stone-600">
+                    <span>Pocket Field Cards (4×6" Deck)</span>
+                    <span className="font-mono">$7.00 CAD</span>
+                  </div>
+                )}
+                {includeSecondaryBump && (
+                  <div className="flex justify-between text-stone-600">
+                    <span>Deposit Defense Pack</span>
+                    <span className="font-mono">$9.00 CAD</span>
+                  </div>
+                )}
+                <div className="flex justify-between text-sm font-bold text-[#1C1917] pt-2 border-t border-stone-200">
+                  <span>Total Order (Instant Digital Access)</span>
+                  <span className="font-mono text-base text-[#4A533E]">${finalOrderTotal}.00 CAD</span>
+                </div>
+              </div>
+
+              {/* Checkout CTA */}
+              <button
+                onClick={() => setSimulatedCheckoutComplete(true)}
+                className="w-full bg-[#4A533E] hover:bg-[#3D4533] text-white py-3.5 rounded-xl font-semibold text-sm transition-all shadow-md active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+              >
+                <span>Simulate 1-Click Payment (${finalOrderTotal} CAD)</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Instant Delivery Simulation */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="bg-[#FAF8F5] rounded-2xl p-6 border border-[#E5DFD5] shadow-sm space-y-5">
+                <div className="flex items-center justify-between border-b border-[#E5DFD5] pb-3">
+                  <h3 className="font-serif text-lg font-bold text-[#1C1917]">
+                    Digital Delivery Fulfillment Screen
+                  </h3>
+                  <span className="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-mono font-bold">
+                    Instant Access
+                  </span>
+                </div>
+
+                {simulatedCheckoutComplete ? (
+                  <div className="space-y-4 animate-in fade-in duration-300">
+                    <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-900 flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <div>
+                        <strong>Order #SSH-9284 Confirmed!</strong>
+                        <p className="mt-0.5 text-emerald-800">Your digital files are ready for instant download and an email receipt has been dispatched.</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <button
+                        onClick={handleExportPDF}
+                        className="w-full bg-white hover:bg-stone-50 border border-[#E5DFD5] p-3 rounded-xl text-left flex items-center justify-between text-xs transition-all cursor-pointer"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <FileText className="w-4 h-4 text-[#4A533E]" />
+                          <div>
+                            <div className="font-bold text-[#1C1917]">Master Playbook (Vector PDF)</div>
+                            <div className="text-[10px] text-stone-500">30+ Pages • 4.8 MB • Version 1.4</div>
+                          </div>
+                        </div>
+                        <Download className="w-4 h-4 text-stone-400" />
+                      </button>
+
+                      <button
+                        onClick={handleExportPDF}
+                        className="w-full bg-white hover:bg-stone-50 border border-[#E5DFD5] p-3 rounded-xl text-left flex items-center justify-between text-xs transition-all cursor-pointer"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Scale className="w-4 h-4 text-[#4A533E]" />
+                          <div>
+                            <div className="font-bold text-[#1C1917]">Substrate Load Matrix (.CSV)</div>
+                            <div className="text-[10px] text-stone-500">Google Sheets & Excel Compatible</div>
+                          </div>
+                        </div>
+                        <Download className="w-4 h-4 text-stone-400" />
+                      </button>
+
+                      {includeCheckoutBump && (
+                        <button
+                          onClick={handleExportPDF}
+                          className="w-full bg-white hover:bg-stone-50 border border-[#E5DFD5] p-3 rounded-xl text-left flex items-center justify-between text-xs transition-all cursor-pointer"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <Layers className="w-4 h-4 text-[#4A533E]" />
+                            <div>
+                              <div className="font-bold text-[#1C1917]">Pocket Field Companion (4×6")</div>
+                              <div className="text-[10px] text-stone-500">4 High-Contrast Printables</div>
+                            </div>
+                          </div>
+                          <Download className="w-4 h-4 text-stone-400" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="py-8 text-center space-y-3">
+                    <div className="w-12 h-12 rounded-full bg-stone-200 flex items-center justify-center mx-auto text-stone-500">
+                      <ShoppingBag className="w-6 h-6" />
+                    </div>
+                    <div className="text-xs text-stone-600 max-w-xs mx-auto">
+                      Click <strong>"Simulate 1-Click Payment"</strong> on the left to preview the customer's post-purchase delivery hub.
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ============================================================== */}
+      {/* SUBVIEW 5: VALIDATION FUNNEL ANALYTICS */}
+      {/* ============================================================== */}
+      {activeSubView === 'analytics' && (
+        <div className="space-y-6">
+          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E5DFD5] shadow-sm space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E5DFD5] pb-4">
+              <div>
+                <h3 className="font-serif text-xl font-bold text-[#1C1917]">
+                  Vol. 01 Commercial Validation Metric Dashboard
+                </h3>
+                <p className="text-xs text-stone-600 mt-1">
+                  Active tracking loop: Problem Traffic → Free Article → $24 Playbook → $7 Bump → Customer Feedback.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1.5 rounded-lg font-medium">
+                <Zap className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Validation Milestone 1: 100 Paid Customers Target</span>
+              </div>
+            </div>
+
+            {/* KPI Metric Cards */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                <div className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold">Store Visitors</div>
+                <div className="text-2xl font-bold font-mono text-[#1C1917] mt-1">1,840</div>
+                <div className="text-[10px] text-emerald-600 font-medium mt-0.5">Top: TikTok & Pinterest</div>
+              </div>
+
+              <div className="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                <div className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold">Conversion Rate</div>
+                <div className="text-2xl font-bold font-mono text-[#4A533E] mt-1">4.02%</div>
+                <div className="text-[10px] text-stone-500 mt-0.5">74 Total Paid Orders</div>
+              </div>
+
+              <div className="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                <div className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold">Bump Take Rate</div>
+                <div className="text-2xl font-bold font-mono text-amber-700 mt-1">37.8%</div>
+                <div className="text-[10px] text-stone-500 mt-0.5">28 Field Card Add-ons</div>
+              </div>
+
+              <div className="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                <div className="text-[11px] text-stone-500 uppercase tracking-wider font-semibold">Average Order Value</div>
+                <div className="text-2xl font-bold font-mono text-[#1C1917] mt-1">$27.19 <span className="text-xs font-sans text-stone-500">CAD</span></div>
+                <div className="text-[10px] text-emerald-600 font-medium mt-0.5">+13.3% AOV Lift</div>
+              </div>
+            </div>
+
+            {/* Acquisition Funnel Breakdown */}
+            <div className="space-y-3 pt-4 border-t border-[#E5DFD5]">
+              <h4 className="font-serif text-sm font-bold text-[#1C1917]">
+                Customer Acquisition Pipeline Flow
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
+                <div className="p-3 bg-stone-50 rounded-xl border border-stone-200 space-y-1">
+                  <div className="font-bold text-[#1C1917]">1. Free Viral Pin / Video</div>
+                  <p className="text-stone-500 text-[11px]">"How to Hang Heavy Mirrors in Rentals Without Nails"</p>
+                  <div className="text-[10px] font-mono font-bold text-stone-600">42,000 Views</div>
+                </div>
+
+                <div className="p-3 bg-stone-50 rounded-xl border border-stone-200 space-y-1">
+                  <div className="font-bold text-[#1C1917]">2. High-Intent Blog Post</div>
+                  <p className="text-stone-500 text-[11px]">Substrate tests & 70% IPA prep guide</p>
+                  <div className="text-[10px] font-mono font-bold text-stone-600">1,840 Readers</div>
+                </div>
+
+                <div className="p-3 bg-stone-50 rounded-xl border border-stone-200 space-y-1">
+                  <div className="font-bold text-[#1C1917]">3. Vol. 01 Playbook ($24)</div>
+                  <p className="text-stone-500 text-[11px]">Full 30-page system + CSV calculator</p>
+                  <div className="text-[10px] font-mono font-bold text-emerald-700">74 Purchases</div>
+                </div>
+
+                <div className="p-3 bg-stone-50 rounded-xl border border-stone-200 space-y-1">
+                  <div className="font-bold text-[#1C1917]">4. Checkout Bump ($7)</div>
+                  <p className="text-stone-500 text-[11px]">4×6" Pocket installation cards</p>
+                  <div className="text-[10px] font-mono font-bold text-amber-700">28 Add-ons (38%)</div>
+                </div>
+
+                <div className="p-3 bg-stone-50 rounded-xl border border-stone-200 space-y-1">
+                  <div className="font-bold text-[#1C1917]">5. Follow-Up (Day 7)</div>
+                  <p className="text-stone-500 text-[11px]">Email invite to Vol. 02 Kitchen Maximizer</p>
+                  <div className="text-[10px] font-mono font-bold text-indigo-700">19 Repeat Buyers</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
