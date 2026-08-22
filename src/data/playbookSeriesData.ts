@@ -71,8 +71,8 @@ export const PLAYBOOK_SERIES: PlaybookMeta[] = [
     isbn: 'SSH-DP-2026-VOL01',
     copyrightYear: 2026,
     author: 'SmallSpaceHome Editorial Design & Architecture Research Group',
-    publisher: 'SmallSpaceHome Inc. • Toronto Rental Lab',
-    edition: 'Second Commercial Master Edition, 2026',
+    publisher: 'SmallSpaceHome • Toronto Rental Lab',
+    edition: 'First Public Commercial Edition (Version 1.0), August 2026',
     language: 'en-CA',
     chapters: [
       {
@@ -80,19 +80,21 @@ export const PLAYBOOK_SERIES: PlaybookMeta[] = [
         title: 'Assessing Space Constraints, Substrates & Lease Realities',
         subtitle: 'Substrate diagnosis, provincial lease rights, and establishing your baseline',
         readingMinutes: 5,
-        content: `Renting in urban apartments requires balancing personal aesthetic expression with strict lease obligations. Most rental agreements contain generic clauses prohibiting "structural alterations," yet decorating with damage-free systems is a standard tenant right.
+        content: `Renting in urban apartments requires balancing personal aesthetic expression with strict lease obligations. Most rental agreements contain generic clauses prohibiting "structural alterations," yet decorating with damage-free, reversible systems is a standard tenant practice.
 
 SUBSTRATE RECONNAISSANCE:
 Before driving any fastener or placing any adhesive, you must identify what lies behind your paint layer:
-1. POST-2005 CONDOS: Standard 1/2-inch gypsum drywall over light-gauge metal studs. Finish is usually flat builder-grade latex paint prone to paper tearing if adhesives are pulled outward.
-2. PRE-1950 HERITAGE WALK-UPS: Brittle plaster over wooden lath. Plaster shatters easily when struck with standard nails or heavy toggle bolts, creating large crater blowouts.
-3. CONCRETE / MASONRY PILLARS: Solid poured concrete with thin skim coats. Expansion anchors require hammer drilling (prohibited in leases); only high-strength adhesive shear systems or mechanical tension poles can be used.
+1. POST-2005 CONDOS: Standard 1/2-inch gypsum drywall over light-gauge metal studs. Finish is usually flat builder-grade latex paint prone to paper tearing if adhesives are pulled outward rather than parallel to the wall.
+2. PRE-1950 HERITAGE WALK-UPS: Brittle plaster over wooden lath. Plaster can crumble when struck with standard nails or heavy toggle bolts, creating crater blowouts.
+3. CONCRETE / MASONRY PILLARS: Solid poured concrete with thin skim coats. Expansion anchors require hammer drilling (prohibited in leases); only high-strength adhesive shear systems or mechanical tension poles can be used without drilling.
 
 DECISION RULE: Execute the Knuckle-Tap Resonance Test:
-• Hollow drum ring $\to$ Modern drywall (stud spacing: 16" on-center).
-• High-frequency dense thud $\to$ Plaster & lath or concrete.`,
+• Hollow drum ring → Modern drywall (typical stud spacing: 16" on-center).
+• High-frequency dense thud → Plaster & lath or concrete.
+
+*Note: Substrate integrity varies widely by building age and humidity; always verify on an inconspicuous corner before hanging heavy fixtures.*`,
         keyTakeaways: [
-          'Know your lease rights: Tenant decorating is permissible provided walls are restored to move-in condition.',
+          'Know your lease rights: Tenant decorating is permissible provided walls are restored to baseline move-in condition.',
           'Never assume all walls in a unit are identical: exterior boundary walls often feature masonry or metal furring channels.',
           'Identify paint age: Paint cured for less than 30 days must never receive pressure-sensitive adhesive.'
         ],
@@ -105,36 +107,37 @@ DECISION RULE: Execute the Knuckle-Tap Resonance Test:
       {
         chapterNumber: 2,
         title: 'Choosing the Right Hardware & Safe Working Load Protocols',
-        subtitle: 'Shear physics, the 40% Safety Buffer, and choosing fasteners by load bracket',
+        subtitle: 'Shear physics, the conservative 40% Safety Buffer, and choosing fasteners by load bracket',
         readingMinutes: 6,
-        content: `Commercial packaging claims (e.g. "Holds up to 16 lbs") reflect static vertical shear tests conducted on polished steel in climate-controlled labs. In real rentals, paint elasticity, humidity fluctuations, and micro-vibrations from closing doors significantly reduce holding capacity.
+        content: `Commercial packaging claims (e.g., "Holds up to 16 lbs") reflect static vertical shear tests conducted on smooth test substrates in laboratory conditions (such as 3M Command™ testing protocols). In real-world rental apartments, variables like paint flexibility, humidity shifts, and micro-vibrations from closing doors can reduce holding capacity.
 
-THE 40% SAFETY BUFFER FORMULA:
-Always reduce manufacturer weight ratings by 40% to calculate the Conservative Working Load (CWL):
+THE CONSERVATIVE 40% SAFETY BUFFER (RULE OF THUMB):
+To account for real-world conditions, conservative practice recommends reducing manufacturer weight ratings by 40% to calculate the Conservative Working Load (CWL):
 $$\\text{CWL} = \\text{Rated Weight} \\times 0.60$$
+*(Important: This is a conservative planning guideline, not a structural guarantee. Real-world capacity depends on substrate condition, paint bond, and installation quality.)*
 
-HARDWARE SELECTION BRACKETS:
-• UNDER 2 LBS (0.9 KG): Small poster strips or micro adhesive hooks. Ideal for unframed prints, cable clips, and calendar boards.
-• 2 TO 10 LBS (0.9–4.5 KG): Interlocking hook-and-loop picture hanging strips (4 corner pairs minimum). Distributes shear load evenly across four points.
-• 10 TO 25 LBS (4.5–11.3 KG): Drywall claw hangers (micro-pins that leave only pinpricks) or dual-bracket picture rail moulding hooks into top picture rails.
-• OVER 25 LBS (11.3+ KG): Strictly floor-grounded leaners with safety anti-tip tether straps into solid wood studs, or floor-to-ceiling tension architectural columns.`,
+HARDWARE SELECTION BRACKETS (CONSERVATIVE ESTIMATES):
+• UNDER 2 LBS (0.9 KG): Small poster strips or micro adhesive hooks (rated ~1 lb per strip). Ideal for unframed prints, cable clips, and calendar boards.
+• 2 TO 10 LBS (0.9–4.5 KG): Interlocking hook-and-loop picture hanging strips (4 corner pairs minimum; per 3M specifications, 4 pairs of Large strips are rated up to 16 lbs, providing a healthy safety margin for a 10 lb frame).
+• 10 TO 25 LBS (4.5–11.3 KG): Drywall claw hangers (e.g., 3M Claw™ rated for 15–25 lbs on 1/2" drywall) or dual-bracket picture rail hooks in heritage moulding.
+• OVER 25 LBS (11.3+ KG): Strictly floor-grounded leaners with safety anti-tip tether straps anchored into solid wood studs, or floor-to-ceiling compressive tension columns.`,
         keyTakeaways: [
-          'Never hang items near the maximum printed package rating; always apply the 40% safety reduction buffer.',
-          'Interlocking hook-and-loop strips distribute shear load 300% better than single hook adhesive mounts.',
-          'Items over 25 lbs must use gravity-grounded floor furniture or mechanical stud anchors.'
+          'Never hang items near the maximum printed package rating; always apply a conservative safety reduction buffer.',
+          'Interlocking hook-and-loop strips distribute shear load across multiple points far better than single-point adhesive hooks.',
+          'Items over 25 lbs should prioritize floor-grounded support or mechanical stud anchoring.'
         ],
         checklistItems: [
           'Weigh complete object with glass, frame, and mounting wire on a digital kitchen scale.',
-          'Calculate required fastener pairs using: (Total Weight in lbs) / 3.0 = Number of Medium Strip Pairs.',
-          'Verify that hardware chosen matches the specific load bracket.'
+          'Calculate required fastener pairs using: (Total Weight in lbs) / 3.0 = Number of Medium Strip Pairs (conservative estimate).',
+          'Verify that hardware chosen matches the specific load bracket on product packaging.'
         ],
         tableData: {
-          headers: ['Weight Bracket', 'Recommended Hardware', 'Safe Working Load', 'Risk Level'],
+          headers: ['Weight Bracket', 'Recommended Hardware', 'Safe Working Load (Est.)', 'Rating Basis / Source'],
           rows: [
-            ['Under 2 lbs', 'Poster / Foam Mini Strips', '1.2 lbs max', 'Very Low (Safe)'],
-            ['2 to 10 lbs', 'Interlocking Hook-and-Loop (4 corner pairs)', '6.0 lbs max', 'Low (Verified Safe)'],
-            ['10 to 25 lbs', 'Curved Drywall Claw / Hardened Steel Pins', '16.0 lbs max', 'Moderate (Requires Pinprick)'],
-            ['Over 25 lbs', 'Floor-Grounded Leaner + Anti-Tip Strap', '100+ lbs capacity', 'Zero Wall Risk']
+            ['Under 2 lbs', 'Poster / Foam Mini Strips', '1.2 lbs max', 'Manufacturer Lab Rating with 40% Safety Buffer'],
+            ['2 to 10 lbs', 'Interlocking Hook-and-Loop (4 corner pairs)', '6.0–8.0 lbs max', '3M Command™ 4-Pair Rating (16 lbs rated)'],
+            ['10 to 25 lbs', 'Curved Drywall Claw / Hardened Steel Pins', '15.0–18.0 lbs max', '3M Claw™ 25lb Rating with 40% Safety Buffer'],
+            ['Over 25 lbs', 'Floor-Grounded Leaner + Anti-Tip Strap', '100+ lbs capacity', 'Gravity Floor Support + Anti-Tip Restraint']
           ]
         }
       },
@@ -143,33 +146,33 @@ HARDWARE SELECTION BRACKETS:
         title: 'Safe Wall Mounting Decisions by Surface Type',
         subtitle: 'The comprehensive decision matrix for Drywall, Plaster, Tile, and Hollow Doors',
         readingMinutes: 7,
-        content: `Fastener failure is primarily a mismatch between the wall substrate and fastener chemistry. What works flawlessly on smooth drywall will fail catastrophically on bathroom ceramic tile or textured plaster.
+        content: `Fastener failure is frequently a mismatch between the wall substrate and fastener chemistry. What works reliably on smooth drywall can behave differently on textured plaster or glazed ceramic tile.
 
 SURFACE-BY-SURFACE DECISION RULES:
 
 1. MODERN GYPSUM DRYWALL (FLAT/EGGSHELL LATEX):
 • SAFE: Interlocking hook-and-loop strips with 70% IPA solvent prep; curved steel drywall claws.
-• CAUTION: Foam double-sided tape (causes paper peeling during removal).
+• CAUTION: Permanent foam double-sided tape (causes paper peeling during removal).
 • DANGER / AVOID: Heavy expansion plastic plugs in open drywall cavities without stud backing.
 
 2. HERITAGE PLASTER & LATH:
-• SAFE: Hardened steel fine-gauge picture pins (2mm diameter) driven at a 45-degree angle; top moulding picture rail hooks.
+• SAFE: Hardened steel fine-gauge picture pins (approx. 2mm diameter) driven at a 45-degree angle; top moulding picture rail hooks.
 • CAUTION: Heavy adhesive strips on brittle unprimed lime wash paint (adhesive can pull away top lime plaster skin).
-• DANGER / AVOID: Standard spiral screw anchors (shatters brittle plaster keys behind lath).
+• DANGER / AVOID: Standard spiral screw anchors (can shatter brittle plaster keys behind lath).
 
 3. BATHROOM CERAMIC TILE & GLASS:
 • SAFE: Heavy-duty vacuum-lock suction cups with silicone seals; non-porous clear acrylic mounting strips.
-• CAUTION: Foam tape (breaks down under steam humidity).
+• CAUTION: Standard foam tape (breaks down under steam humidity).
 • DANGER / AVOID: Drilling tile grout lines without landlord written permission.
 
 4. HOLLOW-CORE WOOD DOORS (VENEER):
 • SAFE: Padded over-door friction hanging brackets; lightweight micro-strips under 1.5 lbs.
 • CAUTION: Self-adhesive utility hooks loaded with heavy wet towels.
-• DANGER / AVOID: Threaded screw hooks (hollow veneer is only 3mm thick and strips under load).`,
+• DANGER / AVOID: Threaded screw hooks (hollow veneer is typically only 3mm thick and can strip under load).`,
         keyTakeaways: [
-          'Never use adhesive foam tape on drywall; it lacks parallel stretch release tabs and tears drywall paper.',
-          'Plaster walls require top moulding hooks or 45-degree angled hardened pins to prevent crumbling.',
-          'For ceramic tile, non-porous suction levers or removable acrylic gel strips are 100% damage-free.'
+          'Never use permanent adhesive foam tape on drywall; it lacks parallel stretch-release tabs and can tear drywall paper.',
+          'Plaster walls require top moulding hooks or 45-degree angled hardened pins to minimize crumbling.',
+          'For ceramic tile, non-porous suction levers or removable acrylic gel strips provide reversible mounting.'
         ],
         checklistItems: [
           'Verify surface classification against the Surface Decision Matrix.',
@@ -191,20 +194,20 @@ SURFACE-BY-SURFACE DECISION RULES:
         title: 'Small-Space Layout Planning, Sightlines & Eye-Level Geometry',
         subtitle: 'The 57" gallery centerline standard and multi-stud weight distribution',
         readingMinutes: 6,
-        content: `In compact apartments under 700 sq ft, visual clutter shrinks perceived room volume faster than physical furniture. Proper wall zoning organizes sightlines, creates artificial depth, and prevents chaotic clustering.
+        content: `In compact apartments under 700 sq ft, visual clutter shrinks perceived room volume faster than physical furniture. Proper wall zoning organizes sightlines, creates perceived depth, and prevents chaotic clustering.
 
 THE 57-INCH CENTERLINE GALLERY FORMULA:
-Museums and luxury galleries position the vertical center of artwork precisely 57 inches (145 cm) from the finished floor—the average human eye level.
+Museums and galleries standardly position the vertical center of artwork approximately 57 inches (145 cm) from the finished floor—the standard eye-level benchmark.
 $$\\text{Hook Height} = 57\\text{"} + \\frac{\\text{Frame Height}}{2} - \\text{Drop from Top of Frame to Mounting Point}$$
 
 ZONING BY ROOM FUNCTION:
 1. ENTRYWAY LANDING ZONE: Mount drop-shelves and key rails between 42" and 48" from floor. Keep profile under 4" depth to maintain clear 36" corridor flow.
 2. STUDIO LIVING & SLEEP DIVISION: Use vertically suspended acoustic divider panels or open shelving tension columns to divide sleeping zones from desk areas without building physical partitions.
-3. VERTICAL SIGHTLINE EXTENSION: Hang mirrors opposite primary window openings to bounce natural daylight into dark galley corridors, doubling visual depth.`,
+3. VERTICAL SIGHTLINE EXTENSION: Hang mirrors opposite primary window openings to bounce natural daylight into dark galley corridors, increasing perceived visual depth.`,
         keyTakeaways: [
-          'The 57" centerline formula ensures cohesive, professional gallery alignment across varied frame sizes.',
+          'The 57" centerline formula provides cohesive gallery alignment across varied frame sizes.',
           'Maintain a minimum 36" clear walkway corridor in tight entryways by keeping wall accessories under 4" depth.',
-          'Position mirrors opposite natural light sources to visually double studio apartment square footage.'
+          'Position mirrors opposite natural light sources to visually brighten studio apartments.'
         ],
         checklistItems: [
           'Measure from finished floor to mark 57-inch centerline on wall with a faint pencil tick.',
@@ -217,32 +220,32 @@ ZONING BY ROOM FUNCTION:
         title: 'Zero-Damage Vertical Storage & Heavy Mirror Strutting',
         subtitle: 'Gravity leaners, tension columns, over-door mechanics, and acoustic floating rails',
         readingMinutes: 7,
-        content: `When floor space is at a premium, vertical walls are your most valuable storage real estate. However, mounting heavy functional storage requires smart mechanical leverage rather than relying solely on chemical adhesive bonds.
+        content: `When floor space is at a premium, vertical walls are your most valuable storage real estate. However, mounting heavy functional items benefits from mechanical leverage rather than relying solely on adhesive bonds.
 
 TACTICAL VERTICAL STORAGE BLUEPRINTS:
 
 1. THE FLOOR-GROUNDED HEAVY MIRROR BLUEPRINT:
-Full-length mirrors (25–65 lbs) make compact rooms look expansive, but hanging them entirely on drywall is high-risk.
-• IMPLEMENTATION: Place mirror base on the floor with anti-skid silicone rubber pads set 8–12 inches out from the wall baseboard. The mirror leans back at a safe 5-degree angle. Gravity supports 92% of the gross weight.
-• RETENTION: Secure the top frame using a single non-load-bearing anti-tip tension strap tethered into a stud with a single 2mm pin to prevent accidental tip-over.
+Full-length mirrors (25–65 lbs) make compact rooms look expansive, but hanging them entirely on drywall carries risk of anchor failure.
+• IMPLEMENTATION: Place mirror base on the floor with anti-skid silicone rubber pads set 8–12 inches out from the wall baseboard. Leaning the mirror at a 5°–8° tilt transfers an estimated 85–92% of gross weight directly to the floor.
+• RETENTION: Secure the top frame using a non-load-bearing anti-tip tether strap anchored into a stud or with a fine pin to prevent accidental tipping.
 
 2. FLOOR-TO-CEILING TENSION STORAGE COLUMNS:
-Adjustable spring-loaded aluminum tension poles (e.g. Telescopic tension columns) wedge securely between floor and ceiling using 80 lbs of compressive spring force with padded rubber feet.
-• CAPACITY: Mount floating shelves, shoe racks, or bike hooks directly to the column with zero screws in walls or ceiling.
+Adjustable spring-loaded aluminum tension poles wedge securely between floor and ceiling using compressive spring force with padded rubber feet.
+• CAPACITY: Mount floating shelves, shoe racks, or bike hooks directly to the column with zero screws in walls or ceiling (verify manufacturer ceiling load limits).
 
 3. OVER-DOOR CANTILEVER BRACKET UPGRADES:
-Transform hollow-core bedroom and closet doors into heavy pantry or shoe organizers:
+Transform hollow-core bedroom and closet doors into pantry or shoe organizers:
 • Line bracket contact points with 1mm self-adhesive felt tape to prevent door-frame scuffing.
-• Secure bottom of organizer basket with hook-and-loop strips to eliminate annoying door-swing clatter.`,
+• Secure bottom of organizer basket with hook-and-loop strips to eliminate door-swing clatter.`,
         keyTakeaways: [
-          'Gravity-grounded leaning mirror setups transfer 92% of weight to the floor while requiring zero load-bearing drywall anchors.',
+          'Gravity-grounded leaning mirror setups transfer the majority of weight to the floor while requiring only a light anti-tip tether.',
           'Tension poles provide structural floor-to-ceiling storage without touching or penetrating drywall.',
-          'Always damp over-door organizer brackets with felt tape to protect painted door frames from abrasion.'
+          'Always protect over-door organizer brackets with felt tape to shield painted door frames from abrasion.'
         ],
         checklistItems: [
           'Install silicone anti-slip floor pads beneath bases of leaning mirrors or ladder desks.',
           'Apply felt protective padding to all over-door hanging bracket hooks.',
-          'Verify tension column compressive lock before loading shelves with heavy books.'
+          'Verify tension column compressive lock before loading shelves with heavy items.'
         ]
       },
       {
@@ -250,25 +253,25 @@ Transform hollow-core bedroom and closet doors into heavy pantry or shoe organiz
         title: 'Common Mistakes & The High-Risk Danger Zone',
         subtitle: 'Overhead zones, cantilever lever arms, and chemical cleaner disasters to strictly avoid',
         readingMinutes: 6,
-        content: `Understanding what NOT to do is just as important as knowing proper installation techniques. The majority of catastrophic mounting failures stem from three preventable mistakes:
+        content: `Understanding what NOT to do is just as important as knowing proper installation techniques. Common mounting failures stem from three preventable mistakes:
 
 THE THREE FORBIDDEN MOUNTING SINS:
 
 1. THE OVERHEAD HEADBOARD HAZARD:
-> DANGER: Never mount heavy glass frames, mirrors, or projecting shelves directly over beds, cribs, or primary sofa seating using adhesive strips alone. Thermal cycling, humidity, and micro-vibrations can cause sudden release during sleep.
+> DANGER: Never mount heavy glass frames, mirrors, or projecting shelves directly over beds, cribs, or primary sofa seating using adhesive strips alone. Thermal cycling, humidity, and micro-vibrations can cause unexpected release over time.
 • FIX: Use floor-standing headboard units, soft tapestry hangings, or ultra-lightweight foam-core prints under 1 lb.
 
-2. THE CANTILEVER ROTATIONAL TORQUE DISASTER:
-Adhesive strips are engineered exclusively for vertical shear (pulling straight down). When you attach a 6-inch deep floating shelf, placing a 3-lb object on the outer edge creates a rotational lever arm that multiplies outward peeling force by 400% at the top edge.
-• RULE: Floating display shelves must always utilize bottom diagonal brackets or floor-grounded vertical supports.
+2. THE CANTILEVER ROTATIONAL TORQUE FACTOR:
+Adhesive strips are engineered primarily for vertical shear (pulling straight down). When you attach a 6-inch deep floating shelf, placing an object on the outer edge creates a rotational lever arm that significantly increases outward peeling force at the top edge.
+• RULE: Floating display shelves should utilize diagonal brackets or floor-grounded vertical supports rather than adhesive strips alone.
 
 3. CLEANING WALLS WITH SILICONE / WAX-BASED SPRAYS:
-Using Windex, Lysol wipes, or multi-surface cleaner prior to mounting deposits surfactants and silicone lubricants onto paint pores, guaranteeing bond failure within 72 hours.
-• RULE: Strictly use 70% Isopropyl Alcohol USP. No exceptions.`,
+Using household glass sprays, disinfectant wipes, or multi-surface cleaner prior to mounting can leave surfactants or silicone films on paint, compromising adhesive bonding.
+• RULE: Use 70% Isopropyl Alcohol USP for surface degreasing as recommended by adhesive manufacturers (e.g. 3M Command™).`,
         keyTakeaways: [
-          'Never place adhesive-mounted heavy frames above sleeping or high-traffic seating zones.',
-          'Projecting shelves convert vertical loads into destructive peeling torque; avoid floating adhesive shelves.',
-          'Common household cleaners contain lubricating surfactants that ruin adhesive bonding.'
+          'Never place adhesive-mounted heavy glass frames above sleeping or high-traffic seating zones.',
+          'Projecting shelves convert vertical loads into outward peeling torque; avoid floating adhesive shelves.',
+          'Common household cleaners contain surfactants that interfere with adhesive bonding.'
         ],
         checklistItems: [
           'Audit bedroom and sofa zones to ensure zero heavy glass is mounted overhead on adhesive.',
@@ -311,17 +314,17 @@ PROJECT 3: DAMAGE-FREE CABLE CAMOUFLAGE
         title: 'Troubleshooting, Environmental Audits & 24-Hour Maintenance',
         subtitle: 'Thermal audits, humidity peeling prevention, and the 60-minute cure milestone',
         readingMinutes: 5,
-        content: `Environmental shifts in rental apartments—such as winter radiator cycling or high-humidity summer days—affect adhesive flexibility. Conducting seasonal health audits ensures your wall systems remain 100% secure year-round.
+        content: `Environmental shifts in rental apartments—such as winter radiator cycling or high-humidity summer days—affect adhesive flexibility. Conducting seasonal health audits ensures your wall systems remain securely bonded year-round.
 
-THE MANDATORY 60-MINUTE COLD-FLOW CURE:
+THE MANDATORY 60-MINUTE COLD-FLOW CURE (PER 3M COMMAND™ INSTRUCTIONS):
 Pressure-sensitive viscoelastic acrylic adhesives require at least 60 minutes under zero load to flow microscopically into paint pores and achieve maximum chemical bond strength.
 > RULE: Always disengage frame from wall strips after initial alignment, press wall strips firmly for 30 seconds each, and wait a full 60 minutes before re-attaching artwork.
 
 SEASONAL THERMAL & HUMIDITY AUDITS:
-• WINTER EXTERIOR WALL AUDIT: Exterior concrete walls in Canadian winters can drop below 10°C (50°F). Adhesives become glassy and brittle below 12°C. Ensure indoor temperature is maintained at 18°C+ during initial installation.
+• WINTER EXTERIOR WALL AUDIT: Exterior concrete walls in cold climates can drop below 10°C (50°F). Adhesives become glassy and brittle below 12°C. Ensure indoor temperature is maintained at 18°C+ during initial installation.
 • SUMMER HUMIDITY AUDIT: When indoor relative humidity exceeds 70%, moisture can condense behind heavy frames. Use 1/4-inch silicone rubber bumper pads on bottom frame corners to maintain a breathing air gap between frame and wall.`,
         keyTakeaways: [
-          'The 60-minute cure cycle is non-negotiable and increases ultimate shear strength by 300%.',
+          'The 60-minute cure cycle is essential for viscoelastic adhesive bonding before dynamic loading.',
           'Exterior walls in cold climates must be thermally stabilized before applying adhesive fasteners.',
           'Bottom bumper pads provide air circulation and prevent moisture buildup behind frames.'
         ],
@@ -336,11 +339,11 @@ SEASONAL THERMAL & HUMIDITY AUDITS:
         title: 'Move-Out Protocol, Thermal Floss Release & Deposit Defense',
         subtitle: 'The Hair Dryer + Dental Floss sawing method, micro-spackle restoration, and landlord letters',
         readingMinutes: 6,
-        content: `The ultimate test of any renter mounting system is the move-out inspection. By following our laboratory-tested thermal release protocol, you can remove dozens of wall fixtures in under an hour with zero paint peel, zero drywall blowout, and zero deposit deductions.
+        content: `The ultimate test of any renter mounting system is the move-out inspection. By following our field-tested thermal release protocol, you can remove wall fixtures cleanly while minimizing paint peel, drywall damage, and deposit disputes.
 
 THE 5-STEP THERMAL FLOSS RELEASE PROTOCOL:
 If an adhesive tab breaks, or if the strip has been on the wall for multiple years:
-1. NEVER PRY WITH A METAL TOOL: Putty knives and screwdrivers crush drywall gypsum.
+1. NEVER PRY WITH A METAL TOOL: Putty knives and screwdrivers can crush drywall gypsum core.
 2. THERMAL SOFTENING: Set a hair dryer to Medium heat. Direct warm air onto the plastic mount for 45–60 seconds from 4 inches away to soften the acrylic polymer matrix.
 3. DENTAL FLOSS SAWING: Take an 18-inch length of unflavored dental floss or nylon fishing line. Wrap ends around your fingers, slide floss behind the top of the bracket, and gently saw downward in a steady slicing motion.
 4. RESIDUE ROLLING: Roll away any remaining adhesive rubber film using firm thumb friction.

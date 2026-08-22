@@ -30,7 +30,6 @@ export const FirstProductExperience: React.FC = () => {
   const [activeSubView, setActiveSubView] = useState<SubView>('calculator');
   const [activeChapter, setActiveChapter] = useState<number>(1);
   const [includeCheckoutBump, setIncludeCheckoutBump] = useState<boolean>(true);
-  const [includeSecondaryBump, setIncludeSecondaryBump] = useState<boolean>(false);
   const [simulatedCheckoutComplete, setSimulatedCheckoutComplete] = useState<boolean>(false);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState<boolean>(false);
 
@@ -50,16 +49,18 @@ export const FirstProductExperience: React.FC = () => {
   // Retrieve Flagship Playbook data
   const vol01Data = PLAYBOOK_SERIES.find(p => p.id === 'playbook-01') || PLAYBOOK_SERIES[0];
 
-  // Hardware rated specs
+  // Hardware rated specs with source basis and estimation notes
   const getHardwareDetails = (hw: typeof hardwareChoice) => {
     switch (hw) {
       case '3m-claw':
         return {
           name: '3M Claw Drywall Picture Hanger (45-lb Model)',
           ratedLbsPerPoint: 45,
-          mechanism: 'Engineered hardened steel prongs locking into drywall core at 45° angle',
+          ratingType: 'Manufacturer Spec' as const,
+          sourceBasis: '3M Claw™ lab shear rating in 1/2" drywall (conservative field range: 35–45 lbs/pt)',
+          mechanism: 'Hardened steel prongs locking into drywall gypsum core at a 45° angle',
           requiresDrill: false,
-          wallDamage: 'Minimal 4-prong puncture (< 1.5mm). Zero anchor spackle blowout.',
+          wallDamage: 'Minimal 4-prong puncture (< 1.5mm). Passes move-out inspection without spackle blowout.',
           costCad: 3.25,
           idealSubstrates: ['drywall-metal', 'drywall-wood'],
           adhesiveBased: false
@@ -68,9 +69,11 @@ export const FirstProductExperience: React.FC = () => {
         return {
           name: 'Gorilla / Monkey Spring-Steel Hook',
           ratedLbsPerPoint: 35,
-          mechanism: 'Curved spring steel bracing behind drywall backboard',
+          ratingType: 'Manufacturer Spec' as const,
+          sourceBasis: 'Standard spring-steel drywall hook shear rating in 1/2" drywall',
+          mechanism: 'Curved spring steel self-bracing behind drywall backboard',
           requiresDrill: false,
-          wallDamage: '1mm pinhole. Passes move-out inspection without patching.',
+          wallDamage: '1mm pinhole. Easily disguised or wiped flush.',
           costCad: 1.50,
           idealSubstrates: ['drywall-metal', 'drywall-wood'],
           adhesiveBased: false
@@ -79,9 +82,11 @@ export const FirstProductExperience: React.FC = () => {
         return {
           name: '3M Command Jumbo Picture Strips (4-Pair Array)',
           ratedLbsPerPoint: 8,
+          ratingType: 'Conservative Field Estimate' as const,
+          sourceBasis: '3M Command™ 4-pair set rated up to 16 lbs; conservatively modeled at 8 lbs/pt for 50% safety factor',
           mechanism: 'Pressure-sensitive viscoelastic adhesive with interlocking micro-dual-lock',
           requiresDrill: false,
-          wallDamage: '0% Zero Damage when removed with 60s hair dryer heat.',
+          wallDamage: 'Zero wall damage when pulled parallel or released with 60s warm air.',
           costCad: 4.50,
           idealSubstrates: ['drywall-metal', 'drywall-wood', 'plaster', 'concrete', 'hollow-door'],
           adhesiveBased: true
@@ -90,9 +95,11 @@ export const FirstProductExperience: React.FC = () => {
         return {
           name: 'Type III 550 Paracord Parallel Hanging Suspension',
           ratedLbsPerPoint: 80,
-          mechanism: 'High-tensile nylon cord distributing downward load across multiple ceiling/molding points',
+          ratingType: 'Conservative Field Estimate' as const,
+          sourceBasis: 'Commercial Type III 550 Paracord 550 lb breaking strength; conservatively estimated at 80 lbs working load',
+          mechanism: 'High-tensile nylon cord distributing downward load across ceiling molding or picture rail hooks',
           requiresDrill: false,
-          wallDamage: 'Zero wall contact. Tied to existing picture rail or tension frame.',
+          wallDamage: 'Zero wall contact. Suspended from picture rail or tension frame.',
           costCad: 2.10,
           idealSubstrates: ['drywall-metal', 'drywall-wood', 'plaster', 'concrete'],
           adhesiveBased: false
@@ -101,9 +108,11 @@ export const FirstProductExperience: React.FC = () => {
         return {
           name: 'E-Z Ancor Heavy Self-Drilling Drywall Toggle',
           ratedLbsPerPoint: 75,
-          mechanism: 'Zinc expanding toggle clamp behind 1/2" drywall',
+          ratingType: 'Manufacturer Spec' as const,
+          sourceBasis: 'E-Z Ancor heavy drywall toggle packaging specification in 1/2" drywall',
+          mechanism: 'Zinc expanding toggle clamp behind 1/2" drywall cavity',
           requiresDrill: true,
-          wallDamage: '1/2" hole. Requires $8 spackle + chalk patch at move-out.',
+          wallDamage: '1/2" hole. Requires small spackle dab at move-out.',
           costCad: 2.80,
           idealSubstrates: ['drywall-metal', 'drywall-wood'],
           adhesiveBased: false
@@ -112,9 +121,11 @@ export const FirstProductExperience: React.FC = () => {
         return {
           name: 'High-Friction Silicone Spring-Tension System',
           ratedLbsPerPoint: 25,
+          ratingType: 'Conservative Field Estimate' as const,
+          sourceBasis: 'Spring-loaded telescopic column compression estimate with non-skid silicone pads',
           mechanism: 'Opposing spring compression with high-durometer silicone non-slip end caps',
           requiresDrill: false,
-          wallDamage: '0% Zero Wall Damage. Zero pinholes.',
+          wallDamage: 'Zero Wall Damage. Zero mechanical penetration.',
           costCad: 8.50,
           idealSubstrates: ['drywall-metal', 'drywall-wood', 'plaster', 'concrete'],
           adhesiveBased: false
@@ -158,14 +169,14 @@ export const FirstProductExperience: React.FC = () => {
   if (selectedHardware.adhesiveBased && paintCureAgeDays < 30) {
     warnings.push({
       level: 'danger',
-      message: `UNCURED PAINT RISK: Paint cured for less than 30 days (${paintCureAgeDays} days entered) will delaminate under adhesive tension. Wait until 30 days or use mechanical spring hooks.`
+      message: `UNCURED PAINT RISK: Paint cured for less than 30 days (${paintCureAgeDays} days entered) may delaminate under adhesive tension. Wait until 30 days or use mechanical spring hooks.`
     });
   }
 
   if (selectedHardware.adhesiveBased && !ipaPrepped) {
     warnings.push({
       level: 'caution',
-      message: `SURFACE CONTAMINATION: Uncleaned walls harbor microscopic cooking oils and dust that cause 80% of adhesive failures. Wipe with 70% Isopropyl Alcohol before mounting.`
+      message: `SURFACE CONTAMINATION: Uncleaned walls harbor microscopic cooking oils and dust that frequently cause adhesive release. Wipe with 70% Isopropyl Alcohol before mounting.`
     });
   }
 
@@ -196,11 +207,10 @@ export const FirstProductExperience: React.FC = () => {
     }, 300);
   };
 
-  // Calculations for Fourthwall order
+  // Calculations for Fourthwall order (Singular $7 Field Cards Tested Bump)
   const basePrice = 24;
   const bumpPrice = 7;
-  const secondaryBumpPrice = 9;
-  const finalOrderTotal = basePrice + (includeCheckoutBump ? bumpPrice : 0) + (includeSecondaryBump ? secondaryBumpPrice : 0);
+  const finalOrderTotal = basePrice + (includeCheckoutBump ? bumpPrice : 0);
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto pb-16">
@@ -219,7 +229,7 @@ export const FirstProductExperience: React.FC = () => {
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 Validated Commercial Standard
               </span>
-              <span className="text-white/60 text-xs font-mono">v1.4 Master Edition • August 2026</span>
+              <span className="text-white/60 text-xs font-mono">v1.0 Public Edition • August 2026</span>
             </div>
 
             <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#FAF8F5]">
@@ -651,10 +661,22 @@ export const FirstProductExperience: React.FC = () => {
                 )}
 
                 {/* Selected Hardware Mechanism Specs */}
-                <div className="bg-white p-4 rounded-xl border border-[#E5DFD5] space-y-2 text-xs">
+                <div className="bg-white p-4 rounded-xl border border-[#E5DFD5] space-y-2.5 text-xs">
                   <div className="font-bold text-[#1C1917] flex items-center justify-between">
                     <span>{selectedHardware.name}</span>
                     <span className="text-[#4A533E] font-mono font-medium">${selectedHardware.costCad.toFixed(2)} / unit</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[10px] font-semibold px-2 py-0.5 rounded border ${
+                      selectedHardware.ratingType === 'Manufacturer Spec'
+                        ? 'bg-blue-50 text-blue-800 border-blue-200'
+                        : 'bg-amber-50 text-amber-800 border-amber-200'
+                    }`}>
+                      {selectedHardware.ratingType}
+                    </span>
+                    <span className="text-[11px] text-stone-500 italic truncate">
+                      {selectedHardware.sourceBasis}
+                    </span>
                   </div>
                   <p className="text-stone-600 leading-relaxed">
                     <strong>Mechanism:</strong> {selectedHardware.mechanism}
@@ -662,6 +684,9 @@ export const FirstProductExperience: React.FC = () => {
                   <p className="text-stone-600 leading-relaxed">
                     <strong>Rental Damage Impact:</strong> {selectedHardware.wallDamage}
                   </p>
+                  <div className="p-2.5 bg-stone-50 rounded-lg border border-stone-200 text-[11px] text-stone-500 leading-relaxed">
+                    <strong>Engineering Note:</strong> Real-world load capacity depends on substrate condition, drywall density, paint cure, humidity, and installation technique. Never treat rated numbers as a guarantee; always maintain a 2.0x–3.0x safety factor.
+                  </div>
                 </div>
 
                 {/* Action CTA */}
@@ -722,15 +747,19 @@ export const FirstProductExperience: React.FC = () => {
                   Official Publication Metadata & Legal License
                 </span>
                 <span className="font-mono text-stone-500 text-[11px]">
-                  ISBN: SSH-DP-2026-VOL01 • Edition: 1.4
+                  ISBN: SSH-DP-2026-VOL01 • Edition: 1.0 (Public Release)
                 </span>
               </div>
               <p>
-                <strong>Personal-Use License:</strong> Licensed strictly for personal residential use by the purchasing account. Redistribution, reselling, or commercial reproduction is prohibited under Canadian & International Copyright Law (© 2026 SmallSpaceHome Inc.).
+                <strong>Personal-Use License:</strong> Licensed strictly for personal residential use by the purchasing account. Redistribution, reselling, or commercial reproduction is prohibited under Canadian & International Copyright Law (© 2026 SmallSpaceHome. All rights reserved.).
               </p>
               <p>
-                <strong>Safety Disclaimer:</strong> This guide provides architectural and practical planning frameworks. It does not replace structural engineering advice, manufacturer load specifications, local building codes, or rental lease terms.
+                <strong>Safety Disclaimer:</strong> This guide provides architectural and practical planning frameworks. It does not replace structural engineering advice, manufacturer load specifications, local building codes, or rental lease terms. Real-world load capacity depends on substrate condition, drywall density, paint cure, humidity, and installation technique.
               </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 border-t border-stone-200 text-[11px] text-stone-600">
+                <div><strong>Update Policy:</strong> Lifetime digital updates & errata for registered purchasers.</div>
+                <div><strong>Technical Support:</strong> <span className="font-mono">support@smallspacehome.ca</span></div>
+              </div>
             </div>
 
             {/* Chapter Header */}
@@ -1019,35 +1048,6 @@ export const FirstProductExperience: React.FC = () => {
                 </label>
               </div>
 
-              {/* Secondary Test Bump */}
-              <div className={`p-4 rounded-xl border transition-all ${
-                includeSecondaryBump 
-                  ? 'bg-[#4A533E]/5 border-[#4A533E]' 
-                  : 'bg-white border-[#E5DFD5] hover:border-stone-400'
-              }`}>
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={includeSecondaryBump}
-                    onChange={(e) => setIncludeSecondaryBump(e.target.checked)}
-                    className="accent-[#4A533E] w-4 h-4 mt-0.5 rounded"
-                  />
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="bg-stone-100 text-stone-700 text-[10px] font-bold px-2 py-0.5 rounded">
-                        OPTIONAL DEFENSE PACK
-                      </span>
-                      <span className="font-bold text-xs text-[#1C1917]">
-                        Rental Move-Out & Deposit Defense Pack (+$9 CAD)
-                      </span>
-                    </div>
-                    <p className="text-xs text-stone-600 leading-relaxed">
-                      Copy-paste tenant wear-and-tear pushback scripts and the $8 spackle + white chalk matte wall patch recipe.
-                    </p>
-                  </div>
-                </label>
-              </div>
-
               {/* Price summary */}
               <div className="space-y-2 pt-4 border-t border-[#E5DFD5] text-xs">
                 <div className="flex justify-between text-stone-600">
@@ -1058,12 +1058,6 @@ export const FirstProductExperience: React.FC = () => {
                   <div className="flex justify-between text-stone-600">
                     <span>Pocket Field Cards (4×6" Deck)</span>
                     <span className="font-mono">$7.00 CAD</span>
-                  </div>
-                )}
-                {includeSecondaryBump && (
-                  <div className="flex justify-between text-stone-600">
-                    <span>Deposit Defense Pack</span>
-                    <span className="font-mono">$9.00 CAD</span>
                   </div>
                 )}
                 <div className="flex justify-between text-sm font-bold text-[#1C1917] pt-2 border-t border-stone-200">
@@ -1113,7 +1107,7 @@ export const FirstProductExperience: React.FC = () => {
                           <FileText className="w-4 h-4 text-[#4A533E]" />
                           <div>
                             <div className="font-bold text-[#1C1917]">Master Playbook (Vector PDF)</div>
-                            <div className="text-[10px] text-stone-500">30+ Pages • 4.8 MB • Version 1.4</div>
+                            <div className="text-[10px] text-stone-500">30+ Pages • 4.8 MB • Version 1.0</div>
                           </div>
                         </div>
                         <Download className="w-4 h-4 text-stone-400" />
