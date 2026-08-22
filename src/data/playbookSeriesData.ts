@@ -77,330 +77,433 @@ export const PLAYBOOK_SERIES: PlaybookMeta[] = [
     chapters: [
       {
         chapterNumber: 1,
-        title: 'Assessing Space Constraints, Substrates & Lease Realities',
-        subtitle: 'Substrate diagnosis, provincial lease rights, and establishing your baseline',
-        readingMinutes: 5,
-        content: `Renting in urban apartments requires balancing personal aesthetic expression with strict lease obligations. Most rental agreements contain generic clauses prohibiting "structural alterations," yet decorating with damage-free, reversible systems is a standard tenant practice.
+        title: 'DIAGNOSE: Substrate Identification, Surface Condition & Boundary Constraints',
+        subtitle: 'Substrate acoustic testing, paint cure audits, environmental limits, and the Diagnostic Decision Tree',
+        readingMinutes: 6,
+        content: `Renting in urban multi-family buildings requires balancing personal interior design with lease integrity. Successful mounting begins with identifying what lies behind the paint layer and recognizing substrate limits before placing any hardware.
 
-SUBSTRATE RECONNAISSANCE:
-Before driving any fastener or placing any adhesive, you must identify what lies behind your paint layer:
-1. POST-2005 CONDOS: Standard 1/2-inch gypsum drywall over light-gauge metal studs. Finish is usually flat builder-grade latex paint prone to paper tearing if adhesives are pulled outward rather than parallel to the wall.
-2. PRE-1950 HERITAGE WALK-UPS: Brittle plaster over wooden lath. Plaster can crumble when struck with standard nails or heavy toggle bolts, creating crater blowouts.
-3. CONCRETE / MASONRY PILLARS: Solid poured concrete with thin skim coats. Expansion anchors require hammer drilling (prohibited in leases); only high-strength adhesive shear systems or mechanical tension poles can be used without drilling.
+1. SUBSTRATE IDENTIFICATION & ACOUSTIC RESONANCE:
+Before driving any fastener or mounting adhesive, identify the substrate material [B]:
+• MODERN GYPSUM DRYWALL (1/2" or 5/8" on light-gauge steel or wood studs) [B]: Acoustic knuckle-tap produces a hollow, resonant ring. The paper face carries shear loads; core gypsum crumbles if toggle anchors rotate freely.
+• HERITAGE PLASTER & LATH (Pre-1950 walk-ups) [B]: Acoustic knuckle-tap produces a dense, high-frequency thud. Plaster is brittle lime/gypsum over cedar lath; standard nails or spiral anchors shatter keys behind the lath, causing crater blowouts.
+• POURED CONCRETE & MASONRY PILLARS [B]: Solid resistance with zero deflection. Expansion anchors require percussion hammer drilling (prohibited in residential leases); non-drilling shear adhesives or floor-to-ceiling compressive tension columns must be used.
+• GLAZED CERAMIC & PORCELAIN TILE [B]: Non-porous, smooth, and brittle. Fasteners rely on silicone vacuum suction or non-marring acrylic elastomer gel; mechanical drilling risks cracking expensive tiles.
+• HOLLOW-CORE WOOD DOORS [B]: Face veneer is only 3mm thick over an internal cardboard honeycomb grid. Wood screws strip under live loads; requires padded over-door brackets.
 
-DECISION RULE: Execute the Knuckle-Tap Resonance Test:
-• Hollow drum ring → Modern drywall (typical stud spacing: 16" on-center).
-• High-frequency dense thud → Plaster & lath or concrete.
+2. SURFACE-CONDITION ASSESSMENT:
+• Paint Cure Milestone [A]: Paint must be cured for at least 30 days. Adhesives applied to fresh paint bond to uncured paint film, pulling it away upon removal.
+• Sheen Identification [B]: Flat/Matte latex provides maximum mechanical interlocking for adhesives. High-gloss enamel requires extra degreasing and 20% lower load expectations.
+• Moisture & Humidity [B]: Relative Humidity must be under 65%. High steam zones (bathrooms) require 1/4" air-gap silicone bumpers behind frames.
+• Surface Contamination [B]: Cooking oils, airborne grease, and silicone residues from household window sprays act as lubricants that cause adhesive detachment.
 
-*Note: Substrate integrity varies widely by building age and humidity; always verify on an inconspicuous corner before hanging heavy fixtures.*`,
+3. "DO NOT PROCEED IF..." HARD STOP CONDITIONS:
+• DO NOT PROCEED IF paint is chalking, flaking, bubbling, or peeling [B].
+• DO NOT PROCEED IF wall surface temperature is below 15°C (59°F) [A].
+• DO NOT PROCEED IF paint was applied less than 30 days ago [A].
+• DO NOT PROCEED IF gross payload exceeds 16 lbs for adhesive systems without mechanical backup [B].
+• DO NOT PROCEED IF mounting directly over a sleeping zone or crib without structural mechanical stud fastening [B].
+
+4. DIAGNOSTIC DECISION TREE & SUMMARY:
+• Step 1: Execute Knuckle-Tap Resonance Test → Determine Drywall / Plaster / Concrete / Tile / Hollow Door [B].
+• Step 2: Conduct Paint Wipe Audit with White Microfiber → Verify zero chalk or paint powder residue [B].
+• Step 3: Weigh Payload on Digital Scale → Categorize into <2 lbs, 2–10 lbs, 10–25 lbs, or >25 lbs [B].
+• Step 4: Environmental Audit → Confirm ambient temperature >15°C and RH <65% [A].
+• Summary Conclusion: "What am I working with, and is this method appropriate to investigate further?" Answer this question before selecting hardware in Chapter 03.`,
         keyTakeaways: [
-          'Know your lease rights: Tenant decorating is permissible provided walls are restored to baseline move-in condition.',
-          'Never assume all walls in a unit are identical: exterior boundary walls often feature masonry or metal furring channels.',
-          'Identify paint age: Paint cured for less than 30 days must never receive pressure-sensitive adhesive.'
+          'Substrate identification is non-negotiable: knuckle-tap resonance distinguishes hollow drywall from brittle heritage plaster [B].',
+          'Paint must be fully cured for >30 days before applying any pressure-sensitive adhesive fastener [A].',
+          'Hard stop conditions immediately protect your security deposit and prevent structural damage [B].'
         ],
         checklistItems: [
-          'Perform knuckle-tap resonance test on each target wall zone.',
-          'Check target wall for underlying electrical switches and plumbing stacks within 12 inches.',
-          'Confirm wall paint is older than 30 days and completely free of bubbling or moisture stains.'
-        ]
+          'Perform knuckle-tap resonance test on target wall zone [B].',
+          'Check paint surface with white microfiber cloth for chalking or moisture stains [B].',
+          'Verify ambient room temperature is at least 15°C (59°F) before installation [A].'
+        ],
+        tableData: {
+          headers: ['Substrate Type', 'Acoustic Resonance', 'Failure Mechanism to Avoid', 'Approved Fastener Type'],
+          rows: [
+            ['Modern Drywall (1/2")', 'Hollow drum resonance', 'Outward paper delamination', 'Dual-lock strips or 3M Claw steel pins [B]'],
+            ['Heritage Plaster & Lath', 'Dense, solid thud', 'Plaster key crater blowout', 'Hardened 45° steel pins or moulding rail hooks [B]'],
+            ['Poured Concrete', 'Solid dead resistance', 'Prohibited percussion drilling', 'High-shear adhesive or tension columns [B]'],
+            ['Ceramic Bathroom Tile', 'High-pitch ceramic clink', 'Tile glaze fracture', 'Silicone vacuum-lever suction brackets [B]'],
+            ['Hollow-Core Door', 'Thin hollow resonance', 'Veneer thread stripping', 'Felt-padded over-door cantilever brackets [B]']
+          ]
+        }
       },
       {
         chapterNumber: 2,
-        title: 'Choosing the Right Hardware & Safe Working Load Protocols',
-        subtitle: 'Shear physics, the conservative 40% Safety Buffer, and choosing fasteners by load bracket',
-        readingMinutes: 6,
-        content: `Commercial packaging claims (e.g., "Holds up to 16 lbs") reflect static vertical shear tests conducted on smooth test substrates in laboratory conditions (such as 3M Command™ testing protocols). In real-world rental apartments, variables like paint flexibility, humidity shifts, and micro-vibrations from closing doors can reduce holding capacity.
+        title: 'MEASURE: Dimensional Parameters, Centerlines, Clearances & Load Calculations',
+        subtitle: 'Standardized formulas, variables, units, worked examples, and practical decisions',
+        readingMinutes: 7,
+        content: `Precise dimensional measurement and empirical load math replace guesswork. Every load calculation in this operating system follows the mandatory structural evaluation sequence: FORMULA → VARIABLES → UNITS → EXAMPLE → INTERPRETATION.
 
-THE CONSERVATIVE 40% SAFETY BUFFER (RULE OF THUMB):
-To account for real-world conditions, conservative practice recommends reducing manufacturer weight ratings by 40% to calculate the Conservative Working Load (CWL):
-$$\\text{CWL} = \\text{Rated Weight} \\times 0.60$$
-*(Important: This is a conservative planning guideline, not a structural guarantee. Real-world capacity depends on substrate condition, paint bond, and installation quality.)*
+1. OBJECT WEIGHT & DIMENSION AUDIT:
+• Gross Tare Weight [B]: Place entire object assembly (frame, glass, art, backboard, hanging hardware) on a digital kitchen scale. Never estimate based on catalog specifications.
+• Depth / Projection [B]: Measure maximum distance from wall plane to the outermost projection edge.
+• Attachment Spacing [B]: Measure center-to-center distance between mounting brackets.
 
-HARDWARE SELECTION BRACKETS (CONSERVATIVE ESTIMATES):
-• UNDER 2 LBS (0.9 KG): Small poster strips or micro adhesive hooks (rated ~1 lb per strip). Ideal for unframed prints, cable clips, and calendar boards.
-• 2 TO 10 LBS (0.9–4.5 KG): Interlocking hook-and-loop picture hanging strips (4 corner pairs minimum; per 3M specifications, 4 pairs of Large strips are rated up to 16 lbs, providing a healthy safety margin for a 10 lb frame).
-• 10 TO 25 LBS (4.5–11.3 KG): Drywall claw hangers (e.g., 3M Claw™ rated for 15–25 lbs on 1/2" drywall) or dual-bracket picture rail hooks in heritage moulding.
-• OVER 25 LBS (11.3+ KG): Strictly floor-grounded leaners with safety anti-tip tether straps anchored into solid wood studs, or floor-to-ceiling compressive tension columns.`,
+2. LOAD & GEOMETRY FORMULAS:
+
+FORMULA 1: CONSERVATIVE WORKING LOAD (CWL)
+• FORMULA: CWL = Rated_Capacity * 0.60 [B]
+• VARIABLES:
+  - CWL = Safe Live Working Load Limit (lbs) [B]
+  - Rated_Capacity = Manufacturer lab static shear rating (lbs) [A]
+  - 0.60 = 40% Renter Safety Buffer for paint flexibility and micro-vibrations [B]
+• UNITS: Pounds (lbs) or Kilograms (kg)
+• EXAMPLE: Four 3M Command Large Strips rated at 16.0 lbs [A]: CWL = 16.0 * 0.60 = 9.6 lbs [C].
+• INTERPRETATION: If your frame weighs 10.2 lbs [D], 4 pairs are insufficient; add 2 additional pairs or upgrade to 3M Claw steel pins to avoid adhesive creep and paint tear [B].
+
+FORMULA 2: 57-INCH GALLERY CENTERLINE EYE-LEVEL FORMULA
+• FORMULA: Hanger_Mark = 57" + (Frame_Height / 2) - Wire_Drop [B]
+• VARIABLES:
+  - 57" = Museum standard viewing eye-level centerline [B]
+  - Frame_Height = Total vertical dimension of frame (inches) [D]
+  - Wire_Drop = Distance from top frame edge to taut hook point (inches) [D]
+• UNITS: Inches (") from finished floor
+• EXAMPLE: Frame height = 24", Wire drop = 3": Hanger_Mark = 57" + (24" / 2) - 3" = 57" + 12" - 3" = 66" [C].
+• INTERPRETATION: Place your pencil tick at exactly 66" from the floor so the artwork's optical center aligns at standard 57" museum eye level [B].
+
+FORMULA 3: CANTILEVER ROTATIONAL TORQUE OVERHANG LIMIT
+• FORMULA: M = Weight * Projection_Depth [C]
+• VARIABLES:
+  - M = Overturn rotational moment (inch-pounds) [C]
+  - Weight = Gross payload weight (lbs) [D]
+  - Projection_Depth = Distance from wall surface to center of mass (inches) [D]
+• UNITS: Inch-Pounds (in-lbs)
+• EXAMPLE: A 4 lb shelf projecting 6" creates M = 4 * 6 = 24 in-lbs of rotational peel force at top mounting strips [C].
+• INTERPRETATION: If Projection_Depth exceeds 3.5", never rely on adhesive strips alone; use diagonal cantilever support struts or floor-resting uprights [B].
+
+FORMULA 4: MULTI-POINT FASTENER SHEAR BALANCE FORMULA
+• FORMULA: Fastener_Pairs = Ceiling(Total_Weight_lbs / 2.5) [B]
+• VARIABLES:
+  - Fastener_Pairs = Required interlocking strip pairs [B]
+  - Total_Weight_lbs = Gross measured weight with glass and frame [D]
+  - 2.5 = Conservative load rating per Large strip pair (lbs) [B]
+• UNITS: Integer Count (Pairs)
+• EXAMPLE: An 8.2 lb mirror: Ceiling(8.2 / 2.5) = Ceiling(3.28) = 4 pairs (one pair applied at each of the 4 frame corners) [C].
+• INTERPRETATION: Distribute pairs to all four corners rather than clustering at the top to prevent lower-edge rotational peeling [B].`,
         keyTakeaways: [
-          'Never hang items near the maximum printed package rating; always apply a conservative safety reduction buffer.',
-          'Interlocking hook-and-loop strips distribute shear load across multiple points far better than single-point adhesive hooks.',
-          'Items over 25 lbs should prioritize floor-grounded support or mechanical stud anchoring.'
+          'Always apply the 40% Safety Buffer (CWL = Rated * 0.60) to account for real-world environmental shifts [B].',
+          'Use the 57" Centerline Formula to establish uniform gallery eye-level alignment across varying frame heights [B].',
+          'Projecting shelves convert vertical loads into rotational peeling torque; limit flat adhesive mounting to items under 3.5" deep [B].'
         ],
         checklistItems: [
-          'Weigh complete object with glass, frame, and mounting wire on a digital kitchen scale.',
-          'Calculate required fastener pairs using: (Total Weight in lbs) / 3.0 = Number of Medium Strip Pairs (conservative estimate).',
-          'Verify that hardware chosen matches the specific load bracket on product packaging.'
+          'Weigh gross object assembly on digital kitchen scale and log exact tare weight [B].',
+          'Calculate Conservative Working Load (CWL) before selecting hardware [C].',
+          'Calculate and mark exact 57" centerline hanger height with tape measure and torpedo level [B].'
         ],
         tableData: {
-          headers: ['Weight Bracket', 'Recommended Hardware', 'Safe Working Load (Est.)', 'Rating Basis / Source'],
+          headers: ['Formula Name', 'Mathematical Expression', 'Key Output Variable', 'Practical Field Impact'],
           rows: [
-            ['Under 2 lbs', 'Poster / Foam Mini Strips', '1.2 lbs max', 'Manufacturer Lab Rating with 40% Safety Buffer'],
-            ['2 to 10 lbs', 'Interlocking Hook-and-Loop (4 corner pairs)', '6.0–8.0 lbs max', '3M Command™ 4-Pair Rating (16 lbs rated)'],
-            ['10 to 25 lbs', 'Curved Drywall Claw / Hardened Steel Pins', '15.0–18.0 lbs max', '3M Claw™ 25lb Rating with 40% Safety Buffer'],
-            ['Over 25 lbs', 'Floor-Grounded Leaner + Anti-Tip Strap', '100+ lbs capacity', 'Gravity Floor Support + Anti-Tip Restraint']
+            ['Conservative Working Load', 'CWL = Rated * 0.60', 'Safe Working Load (lbs) [B]', 'Prevents adhesive creep & substrate paper failure [B]'],
+            ['57" Gallery Centerline', '57" + (H / 2) - Drop', 'Wall Hook Height (") [B]', 'Guarantees museum-standard eye-level alignment [B]'],
+            ['Cantilever Moment', 'M = W * D', 'Rotational Torque (in-lbs) [C]', 'Dictates when diagonal bracing is structurally required [B]'],
+            ['Multi-Point Shear Balance', 'Ceiling(W / 2.5)', 'Interlocking Pair Count [B]', 'Ensures 4-corner balanced load distribution [B]']
           ]
         }
       },
       {
         chapterNumber: 3,
-        title: 'Safe Wall Mounting Decisions by Surface Type',
-        subtitle: 'The comprehensive decision matrix for Drywall, Plaster, Tile, and Hollow Doors',
-        readingMinutes: 7,
-        content: `Fastener failure is frequently a mismatch between the wall substrate and fastener chemistry. What works reliably on smooth drywall can behave differently on textured plaster or glazed ceramic tile.
+        title: 'SELECT: Hardware Decision System, Substrate Matrices & Safe Working Loads',
+        subtitle: 'Comprehensive hardware specifications, substrate compatibility, limitations, and decision matrices',
+        readingMinutes: 8,
+        content: `Hardware selection must match substrate chemistry, object weight, and spatial configuration. Below are the certified hardware option profiles and the multi-dimensional decision matrix for rental environments.
 
-SURFACE-BY-SURFACE DECISION RULES:
+1. HARDWARE PROFILES & RATINGS:
 
-1. MODERN GYPSUM DRYWALL (FLAT/EGGSHELL LATEX):
-• SAFE: Interlocking hook-and-loop strips with 70% IPA solvent prep; curved steel drywall claws.
-• CAUTION: Permanent foam double-sided tape (causes paper peeling during removal).
-• DANGER / AVOID: Heavy expansion plastic plugs in open drywall cavities without stud backing.
+OPTION 1: 3M COMMAND™ LARGE PICTURE HANGING STRIPS (DUAL-LOCK) [A]
+• Compatible Substrates: Painted drywall, smooth sealed wood, painted concrete [A].
+• Applicable Use Cases: Framed artwork, canvas prints, lightweight acrylic mirrors (2–10 lbs) [B].
+• Manufacturer Rated Capacity: 16.0 lbs for 4 pairs [A].
+• SmallSpaceHome Safe Working Load (CWL): 9.6 lbs maximum [B].
+• Required Hardware / Tools: 4 strip pairs; 70% IPA; microfiber cloth; 9" torpedo level [B].
+• Complexity: Level 1 (Beginner) | Reversibility: 100% Zero-Damage via parallel stretch [A].
+• Limitations & Stop Conditions: DO NOT USE on wallpaper, unpainted drywall, high-gloss enamel, or above beds [A].
+• Cost / Reference: ~$14.99 CAD for 8-pair pack (Home Depot CA / Canadian Tire) [B].
 
-2. HERITAGE PLASTER & LATH:
-• SAFE: Hardened steel fine-gauge picture pins (approx. 2mm diameter) driven at a 45-degree angle; top moulding picture rail hooks.
-• CAUTION: Heavy adhesive strips on brittle unprimed lime wash paint (adhesive can pull away top lime plaster skin).
-• DANGER / AVOID: Standard spiral screw anchors (can shatter brittle plaster keys behind lath).
+OPTION 2: 3M CLAW™ DRYWALL PICTURE HANGER (HARDENED STEEL PINS) [A]
+• Compatible Substrates: 1/2" and 5/8" gypsum drywall [A].
+• Applicable Use Cases: Medium-to-heavy mirrors, heavy hardwood frames, acoustic panels (10–25 lbs) [B].
+• Manufacturer Rated Capacity: 15.0 lbs or 25.0 lbs per claw [A].
+• SmallSpaceHome Safe Working Load (CWL): 15.0 lbs on 25 lb claw [B].
+• Required Hardware / Tools: 3M Claw bracket; thumbs for pushing (no hammer required) [A].
+• Complexity: Level 2 (Low) | Reversibility: Leaves two 1mm micro-pinholes easily filled with spackle [B].
+• Limitations & Stop Conditions: DO NOT USE on plaster, concrete, or hollow doors [A].
+• Cost / Reference: ~$8.99 CAD for 4-pack (Home Depot CA / Canadian Tire) [B].
 
-3. BATHROOM CERAMIC TILE & GLASS:
-• SAFE: Heavy-duty vacuum-lock suction cups with silicone seals; non-porous clear acrylic mounting strips.
-• CAUTION: Standard foam tape (breaks down under steam humidity).
-• DANGER / AVOID: Drilling tile grout lines without landlord written permission.
+OPTION 3: OOK® MONKEY & GORILLA SPRING STEEL DRYWALL HOOKS [A]
+• Compatible Substrates: 1/2" gypsum drywall without stud backing [A].
+• Applicable Use Cases: Wire-backed frames, clock assemblies, wall hangings (10–20 lbs) [B].
+• Manufacturer Rated Capacity: 35.0 lbs [A] | CWL: 18.0 lbs [B].
+• Complexity: Level 2 | Reversibility: Leaves single 2mm puncture hole [B].
+• Limitations: Requires 2" hollow cavity clearance behind drywall; cannot penetrate studs [A].
 
-4. HOLLOW-CORE WOOD DOORS (VENEER):
-• SAFE: Padded over-door friction hanging brackets; lightweight micro-strips under 1.5 lbs.
-• CAUTION: Self-adhesive utility hooks loaded with heavy wet towels.
-• DANGER / AVOID: Threaded screw hooks (hollow veneer is typically only 3mm thick and can strip under load).`,
+OPTION 4: LEE VALLEY® SOLID BRASS PICTURE RAIL MOULDING HOOKS [A]
+• Compatible Substrates: Heritage plaster walls with original wood picture rail moulding [B].
+• Applicable Use Cases: Heavy heritage art, ornate mirrors, vertical multi-frame drop lines (5–30 lbs) [B].
+• Rated Capacity: 30.0 lbs per dual hook pair [B] | CWL: 20.0 lbs [B].
+• Complexity: Level 1 | Reversibility: 100% Zero-Damage; hooks rest on top moulding lip with zero fasteners [B].
+• Cost / Reference: ~$4.50 CAD per hook (Lee Valley Tools) [B].
+
+OPTION 5: INDUSTRIAL VACUUM-LEVER SUCTION BRACKETS [A]
+• Compatible Substrates: Glazed ceramic/porcelain tile, glass, polished acrylic [A].
+• Applicable Use Cases: Bathroom shower caddies, kitchen utensil bars (2–12 lbs) [B].
+• Rated Capacity: 15.0 lbs [A] | CWL: 8.0 lbs [B].
+• Limitations: DO NOT USE spanning across grout lines or on porous unglazed stone [B].
+
+OPTION 6: FLOOR-GROUNDED GRAVITY LEANER WITH ANTI-TIP STUD TETHER [B]
+• Compatible Substrates: Any floor surface + drywall/plaster wall [B].
+• Applicable Use Cases: Full-length dressing mirrors, leaning ladder desks (25–65 lbs) [B].
+• Load Mechanics: 85–92% of weight is transferred to floor; wall tether provides stability only [B].
+
+2. MULTI-FACTOR DECISION MATRIX:
+To determine your hardware: Cross-reference your SUBSTRATE + PAYLOAD WEIGHT + SURFACE CONDITION in the matrix below.`,
         keyTakeaways: [
-          'Never use permanent adhesive foam tape on drywall; it lacks parallel stretch-release tabs and can tear drywall paper.',
-          'Plaster walls require top moulding hooks or 45-degree angled hardened pins to minimize crumbling.',
-          'For ceramic tile, non-porous suction levers or removable acrylic gel strips provide reversible mounting.'
+          'Choose hardware based on verified substrate compatibility and the 40% CWL safety buffer [B].',
+          '3M Claw hangers provide high capacity in drywall with only two micro-pinholes repairable in 30 seconds [B].',
+          'Heavy mirrors over 25 lbs should prioritize floor-grounded leaning architecture to bypass wall weight limits [B].'
         ],
         checklistItems: [
-          'Verify surface classification against the Surface Decision Matrix.',
-          'Perform a 24-hour test strip adhesion test on an inconspicuous corner of the target wall.',
-          'Ensure tiles are completely cleaned of soap scum using alcohol before applying suction hardware.'
+          'Match payload weight to the Hardware Selection Matrix before purchasing [B].',
+          'Verify that selected fastener is rated for your specific substrate material [A].',
+          'Purchase certified hardware from authorized Canadian retailers (Home Depot, Lee Valley, Canadian Tire) [B].'
         ],
         tableData: {
-          headers: ['Surface Type', 'Recommended Option (Safe)', 'Caution Option', 'Dangerous Option (Avoid)'],
+          headers: ['Substrate', 'Weight Bracket', 'Recommended Hardware [B]', 'Rated / CWL [A/B]', 'Wall Impact / Reversibility'],
           rows: [
-            ['Modern Drywall', 'Hook-and-Loop Strips + 70% IPA', 'Single-Point Adhesive Hook', 'Expansion Anchors without Studs'],
-            ['Heritage Plaster', 'Hardened Steel Picture Pins (45°)', 'High-Tack Strips on Lime Paint', 'Spiral Drywall Plastic Anchors'],
-            ['Ceramic Tile', 'Vacuum Suction Lever + Silicone', 'Removable Clear Gel Tape', 'Drilling Grout / Glaze'],
-            ['Hollow Core Door', 'Padded Over-Door Hanging Bracket', 'Lightweight 1-lb Hook', 'Threaded Screw Hooks']
+            ['Drywall (1/2")', '< 2 lbs', 'Small Command Poster Strips', '1.0 lb / 0.6 lb', '100% Zero-Damage (0 pinholes) [A]'],
+            ['Drywall (1/2")', '2 to 10 lbs', '4 Large Command Dual-Lock Pairs', '16.0 lbs / 9.6 lbs', '100% Zero-Damage (0 pinholes) [A]'],
+            ['Drywall (1/2")', '10 to 25 lbs', '3M Claw Drywall Picture Hanger', '25.0 lbs / 15.0 lbs', 'Two 1mm micro-pinholes (Spackle fix) [B]'],
+            ['Drywall (1/2")', '> 25 lbs', 'Floor Leaner + Anti-Tip Stud Strap', '100+ lbs / Floor-borne', 'One screw into solid wood stud [B]'],
+            ['Heritage Plaster', '5 to 30 lbs', 'Lee Valley Brass Moulding Hooks', '30.0 lbs / 20.0 lbs', '100% Zero-Damage (Rests on rail) [B]'],
+            ['Bathroom Tile', '2 to 12 lbs', 'Vacuum-Lever Suction Brackets', '15.0 lbs / 8.0 lbs', '100% Zero-Damage (No drilling) [A]']
           ]
         }
       },
       {
         chapterNumber: 4,
-        title: 'Small-Space Layout Planning, Sightlines & Eye-Level Geometry',
-        subtitle: 'The 57" gallery centerline standard and multi-stud weight distribution',
-        readingMinutes: 6,
-        content: `In compact apartments under 700 sq ft, visual clutter shrinks perceived room volume faster than physical furniture. Proper wall zoning organizes sightlines, creates perceived depth, and prevents chaotic clustering.
+        title: 'EXECUTE: Tactical Step-by-Step Blueprints & Field Procedures',
+        subtitle: 'Standardized 10-part operational blueprints for flawless on-site installation',
+        readingMinutes: 9,
+        content: `Every tactical blueprint follows the standardized 10-part operational structure: TACTIC NAME, PURPOSE, BEST FOR, REQUIRED, BEFORE YOU START, PROCEDURE, VERIFICATION, STOP CONDITIONS, COMMON MISTAKES, and TROUBLESHOOTING.
 
-THE 57-INCH CENTERLINE GALLERY FORMULA:
-Museums and galleries standardly position the vertical center of artwork approximately 57 inches (145 cm) from the finished floor—the standard eye-level benchmark.
-$$\\text{Hook Height} = 57\\text{"} + \\frac{\\text{Frame Height}}{2} - \\text{Drop from Top of Frame to Mounting Point}$$
+TACTIC 01: 4-CORNER INTERLOCKING HOOK-AND-LOOP FLUSH MOUNTING
+1. PURPOSE: Mount flat artwork and mirrors to painted drywall with zero surface damage [B].
+2. BEST FOR: Framed prints, stretched canvas, and lightweight mirrors (2–10 lbs) [B].
+3. REQUIRED:
+• Hardware: 4 pairs of 3M Command Large Picture Hanging Strips [A].
+• Tools: 9" magnetic torpedo level, steel tape measure, 2B pencil [B].
+• Materials: 70% Isopropyl Alcohol USP, lint-free microfiber cloth [B].
+4. BEFORE YOU START:
+• Surface Requirements: Smooth, cured latex paint (>30 days), free of grease [A].
+• Measurements: Record gross tare weight; calculate 57" centerline height [B].
+• Environmental: Room temperature >15°C (59°F), relative humidity <65% [A].
+• Manufacturer Requirements: Wipe with 70% IPA; do not use household spray cleaners [A].
+• Preparation: Assemble 4 strip pairs by pressing hook sides together until they click [A].
+5. PROCEDURE:
+• Step 1: Degrease target wall and frame reverse with 70% IPA on microfiber; wait 2 minutes to flash-dry [A].
+• Step 2: Remove red liner from one side of strip pairs; press one pair onto each of the 4 frame corners for 30 seconds [A].
+• Step 3: Remove remaining green liners; align frame using torpedo level and press firmly against wall for 30 seconds [A].
+• Step 4: Disengage frame by grabbing bottom corners and lifting upward (peeling bottom strips up first) [A].
+• Step 5: Press the remaining wall strips firmly with thumbs for 30 seconds each [A].
+• Step 6: Wait mandatory 60 minutes under ZERO load for acrylic polymer cold-flow cure [A].
+• Step 7: Re-engage frame with wall strips, pressing firmly until audible clicks confirm mechanical interlocking [A].
+6. VERIFICATION: Verify all 4 corner pairs are clicked flush; apply gentle 2 lb downward shear test [B].
+7. STOP CONDITIONS: STOP if room temperature is <15°C or if wall strips lift during 60-min cure [A].
+8. COMMON MISTAKES: Skipping 70% IPA prep (causes 80% of bond failures); hanging weight immediately without 60-min cure [B].
+9. TROUBLESHOOTING:
+• Problem: Strip lifts during frame disengagement.
+• Likely Cause: Inadequate initial thumb pressure or grease on paint.
+• What to Check: Microfiber cloth for grease stain; check room temperature.
+• Corrective Action: Re-clean with 70% IPA, apply new strip, press for 45s, and re-cure for 60 mins.
+• Stop Condition: If second strip fails, switch to 3M Claw steel pins [B].
 
-ZONING BY ROOM FUNCTION:
-1. ENTRYWAY LANDING ZONE: Mount drop-shelves and key rails between 42" and 48" from floor. Keep profile under 4" depth to maintain clear 36" corridor flow.
-2. STUDIO LIVING & SLEEP DIVISION: Use vertically suspended acoustic divider panels or open shelving tension columns to divide sleeping zones from desk areas without building physical partitions.
-3. VERTICAL SIGHTLINE EXTENSION: Hang mirrors opposite primary window openings to bounce natural daylight into dark galley corridors, increasing perceived visual depth.`,
+TACTIC 02: 3M CLAW™ MINIMAL-PINHOLE HARDENED STEEL MOUNTING
+1. PURPOSE: High-capacity drywall mounting with zero stud requirement and minimal pinhole impact [B].
+2. BEST FOR: Heavy framed mirrors, gallery art, and solid wood frames (10–25 lbs) [B].
+3. REQUIRED: 3M Claw 25 lb bracket, spot marker tape, 9" torpedo level [A].
+4. PROCEDURE:
+• Step 1: Calculate hook height with 57" Centerline Formula; place temporary spot marker [B].
+• Step 2: Position 3M Claw bracket with prongs facing wall; verify level alignment [A].
+• Step 3: Push thumbs firmly into center indentation until prongs sink flush into drywall (no hammer needed) [A].
+• Step 4: Hang frame directly onto claw hook; verify zero play or wobble [A].
+5. VERIFICATION: Inspect claw collar to confirm it sits tight against drywall paper [B].
+6. STOP CONDITIONS: STOP if prongs hit a metal stud or electrical conduit plate (relocate 2" sideways) [B].`,
         keyTakeaways: [
-          'The 57" centerline formula provides cohesive gallery alignment across varied frame sizes.',
-          'Maintain a minimum 36" clear walkway corridor in tight entryways by keeping wall accessories under 4" depth.',
-          'Position mirrors opposite natural light sources to visually brighten studio apartments.'
+          'The mandatory 60-minute unweighted cure period allows viscoelastic acrylic adhesive to polymerize into paint pores [A].',
+          'Disengage the frame by lifting bottom corners upward to prevent tearing drywall paper during installation [A].',
+          '3M Claw hangers require zero hammers or power drills, sinking hardened prongs with simple thumb pressure [A].'
         ],
         checklistItems: [
-          'Measure from finished floor to mark 57-inch centerline on wall with a faint pencil tick.',
-          'Confirm that entryway wall fixtures leave at least 36 inches of clear walking corridor width.',
-          'Use painter\'s blue tape to mock up frame dimensions on the wall before placing hardware.'
-        ]
+          'Degrease both wall and frame surfaces with 70% IPA and allow 2 minutes to flash-dry [A].',
+          'Set a 60-minute timer for unweighted adhesive curing before re-hanging artwork [A].',
+          'Listen for distinct mechanical clicks when re-engaging interlocking hook-and-loop strips [A].'
+        ],
+        tableData: {
+          headers: ['Tactic Code', 'Tactic Name', 'Primary Substrate', 'Safe Payload (CWL)', 'Mandatory Cure Time'],
+          rows: [
+            ['TACTIC 01', '4-Corner Dual-Lock Mounting', 'Painted Drywall', '9.6 lbs (4 Large Pairs) [B]', '60 Minutes (Unweighted) [A]'],
+            ['TACTIC 02', '3M Claw Hardened Steel Pin', '1/2" Drywall', '15.0 lbs (25 lb Claw) [B]', '0 Minutes (Instant load) [A]'],
+            ['TACTIC 03', 'Brass Picture Rail Moulding Hook', 'Heritage Plaster Rail', '20.0 lbs (Dual hooks) [B]', '0 Minutes (Instant load) [B]'],
+            ['TACTIC 04', 'Floor Leaner + Anti-Tip Tether', 'Floor + Wall Stud', '65.0 lbs [B]', '15 Minutes settling [B]'],
+            ['TACTIC 05', 'Vacuum-Lever Suction Bracket', 'Glazed Ceramic Tile', '8.0 lbs [B]', '10 Minutes seal check [A]']
+          ]
+        }
       },
       {
         chapterNumber: 5,
-        title: 'Zero-Damage Vertical Storage & Heavy Mirror Strutting',
-        subtitle: 'Gravity leaners, tension columns, over-door mechanics, and acoustic floating rails',
-        readingMinutes: 7,
-        content: `When floor space is at a premium, vertical walls are your most valuable storage real estate. However, mounting heavy functional items benefits from mechanical leverage rather than relying solely on adhesive bonds.
+        title: 'VERIFY: Systematic Physical Inspection, Settlement Checks & Load Validation',
+        subtitle: 'Visual gap audits, manual shear test loads, deflection checks, and seasonal audits',
+        readingMinutes: 6,
+        content: `Verification is the quality assurance bridge between execution and long-term stability. Never assume an installation is secure without systematic physical testing.
 
-TACTICAL VERTICAL STORAGE BLUEPRINTS:
+1. THE 5-STEP PHYSICAL VERIFICATION SEQUENCE:
+• Step 1: Perimeter Visual Gap Audit [B]
+  Inspect the perimeter gap between frame and wall. Interlocking hook-and-loop strips must exhibit uniform 1.5mm spacing with zero corner peeling or tape lifting.
+• Step 2: Level & Plumb Verification [B]
+  Place a 9" magnetic torpedo level across the top frame edge. The spirit bubble must sit perfectly centered between guide lines.
+• Step 3: Incremental Shear Settlement Test [B]
+  Place hands on top of the frame and apply gentle downward pressure (approximately 2–3 lbs manual shear) for 10 seconds. Check for any downward micro-slip or popping noises.
+• Step 4: Lateral Deflection & Anti-Rattle Check [B]
+  Gently tap the bottom frame edge horizontally. The frame should feel rigid against the wall without vibration or swinging.
+• Step 5: Substrate Stress Audit [B]
+  Inspect the drywall paper immediately surrounding the fastener. Verify there is zero paper bulging, creasing, or chalk dust extrusion.
 
-1. THE FLOOR-GROUNDED HEAVY MIRROR BLUEPRINT:
-Full-length mirrors (25–65 lbs) make compact rooms look expansive, but hanging them entirely on drywall carries risk of anchor failure.
-• IMPLEMENTATION: Place mirror base on the floor with anti-skid silicone rubber pads set 8–12 inches out from the wall baseboard. Leaning the mirror at a 5°–8° tilt transfers an estimated 85–92% of gross weight directly to the floor.
-• RETENTION: Secure the top frame using a non-load-bearing anti-tip tether strap anchored into a stud or with a fine pin to prevent accidental tipping.
+2. RE-CHECK TIMING PROTOCOLS:
+• Immediate (15 Minutes): Conduct visual gap and level verification immediately after loading [B].
+• 48-Hour Settling Audit: Inspect strip contact perimeter after 48 hours of live payload suspension [B].
+• 30-Day Seasonal Audit: High-humidity summer months or dry winter heating cycles cause thermal expansion. Conduct a quick tactile check every 30 days [B].
 
-2. FLOOR-TO-CEILING TENSION STORAGE COLUMNS:
-Adjustable spring-loaded aluminum tension poles wedge securely between floor and ceiling using compressive spring force with padded rubber feet.
-• CAPACITY: Mount floating shelves, shoe racks, or bike hooks directly to the column with zero screws in walls or ceiling (verify manufacturer ceiling load limits).
-
-3. OVER-DOOR CANTILEVER BRACKET UPGRADES:
-Transform hollow-core bedroom and closet doors into pantry or shoe organizers:
-• Line bracket contact points with 1mm self-adhesive felt tape to prevent door-frame scuffing.
-• Secure bottom of organizer basket with hook-and-loop strips to eliminate door-swing clatter.`,
+3. WARNING SIGNS & CORRECTIVE ACTIONS:
+• Downward Slip > 1mm → Indicates adhesive shear creep; immediately remove payload and add 2 additional strip pairs [B].
+• Forward Cantilever Tilt > 2° → Indicates rotational torque overload; apply silicone bumper pads at bottom corners or switch to 3M Claw [B].
+• Whitening / Lifting at Strip Edge → Indicates surface contamination; strip is de-bonding; remove and re-prep with 70% IPA [B].`,
         keyTakeaways: [
-          'Gravity-grounded leaning mirror setups transfer the majority of weight to the floor while requiring only a light anti-tip tether.',
-          'Tension poles provide structural floor-to-ceiling storage without touching or penetrating drywall.',
-          'Always protect over-door organizer brackets with felt tape to shield painted door frames from abrasion.'
+          'Perform a gentle 2–3 lb manual shear test immediately after hanging to verify mechanical lock [B].',
+          'Inspect installations at 48 hours and 30 days to catch micro-creep before failures occur [B].',
+          'Any visual downward slip exceeding 1mm requires immediate payload removal and hardware reassessment [B].'
         ],
         checklistItems: [
-          'Install silicone anti-slip floor pads beneath bases of leaning mirrors or ladder desks.',
-          'Apply felt protective padding to all over-door hanging bracket hooks.',
-          'Verify tension column compressive lock before loading shelves with heavy items.'
-        ]
+          'Verify levelness with 9" magnetic torpedo level across top horizontal edge [B].',
+          'Execute 10-second gentle downward shear test load by hand [B].',
+          'Log 48-hour follow-up inspection date in your personal maintenance calendar [B].'
+        ],
+        tableData: {
+          headers: ['Inspection Check', 'Inspection Method', 'Pass Criteria', 'Failure Action Protocol'],
+          rows: [
+            ['Perimeter Gap Audit', 'Visual inspection along frame edges', 'Uniform 1.5mm gap; 0 strip lift [B]', 'Re-press strips for 30s or replace strip [A]'],
+            ['Level Alignment', '9" Torpedo spirit level on top rail', 'Bubble centered between lines [B]', 'Adjust hook-and-loop engagement [B]'],
+            ['Manual Shear Test', '2–3 lbs downward hand pressure', 'Zero downward slip or popping [B]', 'Remove payload; add additional strip pair [B]'],
+            ['Lateral Deflection', 'Gentle horizontal side tap', 'Rigid; zero frame vibration [B]', 'Add bottom corner dual-lock strip pair [B]'],
+            ['Drywall Paper Audit', 'Macro inspection around hardware', 'Clean paper; zero bulges/creases [B]', 'Switch to floor-grounded support [B]']
+          ]
+        }
       },
       {
         chapterNumber: 6,
-        title: 'Common Mistakes & The High-Risk Danger Zone',
-        subtitle: 'Overhead zones, cantilever lever arms, and chemical cleaner disasters to strictly avoid',
-        readingMinutes: 6,
-        content: `Understanding what NOT to do is just as important as knowing proper installation techniques. Common mounting failures stem from three preventable mistakes:
+        title: 'REMOVE & RESTORE: Zero-Damage Extraction, Thermal Floss Protocols, Spackle & Deposit Defense',
+        subtitle: 'The 0° parallel stretch technique, broken-tab recovery, spackle restoration, and landlord inspection scripts',
+        readingMinutes: 7,
+        content: `The definitive proof of a renter operating system is the move-out inspection. By following our certified extraction protocols, you can vacate your rental with 100% of your damage deposit intact.
 
-THE THREE FORBIDDEN MOUNTING SINS:
+1. ZERO-DAMAGE REMOVAL SEQUENCE:
+• Step 1: Disengage Payload [A]
+  Grip bottom frame corners and lift upward to disengage interlocking hook-and-loop strips. Set frame aside safely.
+• Step 2: The 0° Parallel Stretch Protocol [A]
+  Grip the pull tab firmly with fingers. Stretch the tab slowly and steadily straight DOWNWARD PARALLEL TO THE WALL (0° vector).
+  > CRITICAL WARNING: NEVER pull the tab outward at a 90° angle away from the wall. Outward tension causes drywall paper tears in 98% of failures [A].
+  Stretch the strip 12 to 15 inches until the elastomeric core releases cleanly from the wall surface with zero paint residue.
 
-1. THE OVERHEAD HEADBOARD HAZARD:
-> DANGER: Never mount heavy glass frames, mirrors, or projecting shelves directly over beds, cribs, or primary sofa seating using adhesive strips alone. Thermal cycling, humidity, and micro-vibrations can cause unexpected release over time.
-• FIX: Use floor-standing headboard units, soft tapestry hangings, or ultra-lightweight foam-core prints under 1 lb.
+2. EMERGENCY BROKEN-TAB & LONG-TERM STRIP EXTRACTION:
+If a pull tab snaps off, or if an adhesive strip has been on the wall for over 2 years [B]:
+• DO NOT PRY with screwdrivers, putty knives, or metal blades (crushes gypsum core) [B].
+• STEP 1: Thermal Softening → Set hair dryer to Medium heat. Direct warm air onto the plastic mount from 4 inches away for 45–60 seconds to soften the acrylic adhesive matrix [B].
+• STEP 2: Dental Floss Sawing → Take an 18-inch length of unflavored dental floss or monofilament line. Slide floss behind top edge of bracket and saw gently downward in a steady slicing motion [B].
+• STEP 3: Thumb Friction Rolling → Roll remaining adhesive rubber film away using firm thumb friction [B].
+• STEP 4: Solvent Wipe → Wipe spot with a drop of 70% IPA on microfiber to dissolve microscopic residue [B].
 
-2. THE CANTILEVER ROTATIONAL TORQUE FACTOR:
-Adhesive strips are engineered primarily for vertical shear (pulling straight down). When you attach a 6-inch deep floating shelf, placing an object on the outer edge creates a rotational lever arm that significantly increases outward peeling force at the top edge.
-• RULE: Floating display shelves should utilize diagonal brackets or floor-grounded vertical supports rather than adhesive strips alone.
+3. MINOR RESTORATION & SPACKLE PROTOCOL:
+For micro-pinholes left by 3M Claw or fine picture pins [B]:
+• Use DAP Fast 'N Final Lightweight Spackling (micro-bubble formulation) [B].
+• Dab a pea-sized amount onto fingertip; press firmly into the 1mm pinhole [B].
+• Immediately wipe the surrounding wall flush with a slightly damp microfiber sponge. Zero sanding is required, creating zero dust and leaving the original wall texture intact [B].
 
-3. CLEANING WALLS WITH SILICONE / WAX-BASED SPRAYS:
-Using household glass sprays, disinfectant wipes, or multi-surface cleaner prior to mounting can leave surfactants or silicone films on paint, compromising adhesive bonding.
-• RULE: Use 70% Isopropyl Alcohol USP for surface degreasing as recommended by adhesive manufacturers (e.g. 3M Command™).`,
+4. "DO NOT REPAIR YOURSELF" ESCALATION THRESHOLDS:
+• DO NOT attempt DIY patching if a drywall blowout cavity exceeds 2 inches in diameter [B].
+• DO NOT attempt DIY patching if active water plumbing pipes or electrical wiring are visible [B].
+• In these cases, report the condition directly to building maintenance [B].
+
+5. TENANT MOVE-OUT DEPOSIT DEFENSE SCRIPT:
+"Dear [Landlord/Property Manager], I have completed the pre-move-out inspection of Unit [Number]. All wall installations have been cleanly removed using non-damaging parallel release protocols and restored to baseline move-in condition. Attached please find high-resolution daylight photographs documenting all wall surfaces. I look forward to completing our joint move-out walkthrough on [Date]." [B]`,
         keyTakeaways: [
-          'Never place adhesive-mounted heavy glass frames above sleeping or high-traffic seating zones.',
-          'Projecting shelves convert vertical loads into outward peeling torque; avoid floating adhesive shelves.',
-          'Common household cleaners contain surfactants that interfere with adhesive bonding.'
+          'Stretch adhesive tabs strictly PARALLEL to the wall (0° angle) — never pull outward at 90° [A].',
+          'Use the Hair Dryer + Dental Floss sawing method to recover snapped pull tabs without drywall damage [B].',
+          'DAP Fast \'N Final lightweight spackle combined with a damp sponge wipe repairs micro-pinholes with zero sanding dust [B].'
         ],
         checklistItems: [
-          'Audit bedroom and sofa zones to ensure zero heavy glass is mounted overhead on adhesive.',
-          'Verify that all adhesive-mounted items are flat to the wall with zero forward cantilever tilt.',
-          'Confirm that only 70% Isopropyl Alcohol was used for pre-installation surface degreasing.'
-        ]
-      },
-      {
-        chapterNumber: 7,
-        title: 'Quick-Win High-Impact Upgrades for Tight Rentals',
-        subtitle: '15-minute entryway drop zones, 30-minute acoustic arrays, and invisible cable channels',
-        readingMinutes: 5,
-        content: `Maximize your living comfort and visual serenity in a single afternoon with these three rapid, renter-certified upgrades:
-
-PROJECT 1: THE 15-MINUTE ENTRYWAY DROP ZONE
-• PROBLEM: Coats, keys, and incoming mail clutter front entryway floors in small apartments lacking hall closets.
-• SOLUTION: Mount a 24-inch solid bamboo key rail with 5 hooks using 3 pairs of Large interlocking strips. Add an ultra-slim 2-inch acrylic letter bin directly below.
-• RESULT: Total entryway decluttering taking under 0.5 sq ft of wall space and supporting up to 9 lbs of daily jackets and bags.
-
-PROJECT 2: THE 30-MINUTE ACOUSTIC RETROFIT
-• PROBLEM: Thin apartment walls transmit hallway footsteps and neighbor conversation noise.
-• SOLUTION: Create a 6-panel hexagonal acoustic felt array on the shared party wall using 3M poster tabs. Felt absorbs high-frequency flutter echoes and doubles as a modern geometric art installation.
-
-PROJECT 3: DAMAGE-FREE CABLE CAMOUFLAGE
-• PROBLEM: Black power cables hanging down from wall-mounted TVs or desk monitors create immediate visual chaos.
-• SOLUTION: Route cables through paintable half-round cord raceways secured with removable low-tack clear adhesive strips. Paint raceway with leftover wall paint to render cords 100% invisible.`,
-        keyTakeaways: [
-          'A vertical entryway drop zone eliminates floor clutter in compact foyers in under 15 minutes.',
-          'Hexagonal acoustic felt tiles reduce ambient noise transmission while acting as contemporary gallery art.',
-          'Low-tack paintable cord raceways eliminate cable clutter without drilling or drywall patching.'
-        ],
-        checklistItems: [
-          'Assemble entryway key rail and weigh intended daily load (keys, bag, coats).',
-          'Map out acoustic tile pattern on floor before mounting on shared party wall.',
-          'Wipe cord raceway mounting track with 70% IPA and allow 2 minutes to dry.'
-        ]
-      },
-      {
-        chapterNumber: 8,
-        title: 'Troubleshooting, Environmental Audits & 24-Hour Maintenance',
-        subtitle: 'Thermal audits, humidity peeling prevention, and the 60-minute cure milestone',
-        readingMinutes: 5,
-        content: `Environmental shifts in rental apartments—such as winter radiator cycling or high-humidity summer days—affect adhesive flexibility. Conducting seasonal health audits ensures your wall systems remain securely bonded year-round.
-
-THE MANDATORY 60-MINUTE COLD-FLOW CURE (PER 3M COMMAND™ INSTRUCTIONS):
-Pressure-sensitive viscoelastic acrylic adhesives require at least 60 minutes under zero load to flow microscopically into paint pores and achieve maximum chemical bond strength.
-> RULE: Always disengage frame from wall strips after initial alignment, press wall strips firmly for 30 seconds each, and wait a full 60 minutes before re-attaching artwork.
-
-SEASONAL THERMAL & HUMIDITY AUDITS:
-• WINTER EXTERIOR WALL AUDIT: Exterior concrete walls in cold climates can drop below 10°C (50°F). Adhesives become glassy and brittle below 12°C. Ensure indoor temperature is maintained at 18°C+ during initial installation.
-• SUMMER HUMIDITY AUDIT: When indoor relative humidity exceeds 70%, moisture can condense behind heavy frames. Use 1/4-inch silicone rubber bumper pads on bottom frame corners to maintain a breathing air gap between frame and wall.`,
-        keyTakeaways: [
-          'The 60-minute cure cycle is essential for viscoelastic adhesive bonding before dynamic loading.',
-          'Exterior walls in cold climates must be thermally stabilized before applying adhesive fasteners.',
-          'Bottom bumper pads provide air circulation and prevent moisture buildup behind frames.'
-        ],
-        checklistItems: [
-          'Set a 60-minute timer after applying wall strips before hanging artwork.',
-          'Verify ambient room temperature is at least 18°C (65°F) during installation.',
-          'Attach soft silicone bumper pads to bottom corners of all framed art.'
-        ]
-      },
-      {
-        chapterNumber: 9,
-        title: 'Move-Out Protocol, Thermal Floss Release & Deposit Defense',
-        subtitle: 'The Hair Dryer + Dental Floss sawing method, micro-spackle restoration, and landlord letters',
-        readingMinutes: 6,
-        content: `The ultimate test of any renter mounting system is the move-out inspection. By following our field-tested thermal release protocol, you can remove wall fixtures cleanly while minimizing paint peel, drywall damage, and deposit disputes.
-
-THE 5-STEP THERMAL FLOSS RELEASE PROTOCOL:
-If an adhesive tab breaks, or if the strip has been on the wall for multiple years:
-1. NEVER PRY WITH A METAL TOOL: Putty knives and screwdrivers can crush drywall gypsum core.
-2. THERMAL SOFTENING: Set a hair dryer to Medium heat. Direct warm air onto the plastic mount for 45–60 seconds from 4 inches away to soften the acrylic polymer matrix.
-3. DENTAL FLOSS SAWING: Take an 18-inch length of unflavored dental floss or nylon fishing line. Wrap ends around your fingers, slide floss behind the top of the bracket, and gently saw downward in a steady slicing motion.
-4. RESIDUE ROLLING: Roll away any remaining adhesive rubber film using firm thumb friction.
-5. SOLVENT FINISH: Wipe the spot with a drop of 70% IPA to remove microscopic residue.
-
-TENANT DEPOSIT DEFENSE SCRIPT:
-When scheduling move-out walkthroughs with landlords, provide a signed pre-inspection checklist confirming all walls have been inspected, restored to baseline condition, and documented with high-resolution daylight photographs.`,
-        keyTakeaways: [
-          'Never pull adhesive tabs outward at 90 degrees; always stretch parallel to the wall surface.',
-          'The Hair Dryer + Dental Floss method safely removes stuck brackets without tearing drywall paper.',
-          'Document wall restoration with dated daylight photographs before your final landlord walkthrough.'
-        ],
-        checklistItems: [
-          'Keep hair dryer and unflavored dental floss in your move-out tool kit.',
-          'Inspect all wall surfaces in bright daylight 48 hours prior to move-out inspection.',
-          'Take wide-angle photographs of all walls for your move-out inspection record.'
+          'Keep a hair dryer and unflavored dental floss in your move-out restoration kit [B].',
+          'Fill micro-pinholes with lightweight spackle and wipe flush with damp sponge [B].',
+          'Capture high-resolution daylight photographs of all restored walls for move-out records [B].'
         ],
         tableData: {
-          headers: ['Removal Scenario', 'Correct Technique', 'Tool Required', 'Estimated Time'],
+          headers: ['Removal Scenario', 'Certified Removal Technique', 'Tool / Solvent Required', 'Estimated Time [B]'],
           rows: [
-            ['Intact Pull Tab', 'Parallel downward stretch (0° angle)', 'Hands Only', '15 Seconds'],
-            ['Broken / Snapped Tab', 'Thermal Hair Dryer + Dental Floss sawing', 'Hair Dryer + Floss', '90 Seconds'],
-            ['Adhesive Residue Dot', 'Friction thumb roll + 70% IPA wipe', '70% IPA + Microfiber', '30 Seconds'],
-            ['Micro Pinhole Fix', 'Lightweight spackle dab + damp sponge wipe', 'Fast \'N Final Spackle', '60 Seconds']
+            ['Intact Pull Tab', 'Parallel downward stretch (0° angle)', 'Hands Only', '15 Seconds [B]'],
+            ['Broken / Snapped Tab', 'Thermal Hair Dryer + Dental Floss sawing', 'Hair Dryer + Floss [B]', '90 Seconds [B]'],
+            ['Adhesive Rubber Film', 'Thumb friction roll + 70% IPA dab', '70% IPA + Microfiber [B]', '30 Seconds [B]'],
+            ['3M Claw Micro-Pinhole', 'Lightweight spackle dab + damp sponge wipe', 'DAP Fast \'N Final [B]', '45 Seconds [B]'],
+            ['Suction Cup Removal', 'Lift silicone edge release tab', 'Fingertip release', '5 Seconds [B]']
           ]
         }
       }
     ],
     pocketCards: [
       {
-        title: 'Pre-Mounting 4-Step Decision Card (4x6")',
-        description: 'Keep this card beside your digital scale and tool kit for every wall project.',
+        title: 'Surface Inspection & 70% IPA Solvent Protocol (4x6")',
+        description: 'Zero-failure adhesive bond activation without paint stripping or surface residue.',
         bulletPoints: [
-          '1. WEIGH: Record exact gross tare weight with glass and hardware on digital kitchen scale.',
-          '2. DIAGNOSE: Knuckle-tap wall to verify modern drywall vs heritage plaster vs concrete.',
-          '3. SOLVENT PREP: Degrease target area with 70% Isopropyl Alcohol USP; wait 2 mins.',
-          '4. 60-MIN CURE: Disengage frame, press wall strips for 30s each, and wait 1 hour before hanging.'
+          '1. KNUCKLE-TAP: Tap wall to confirm modern drywall vs heritage plaster vs solid concrete [B].',
+          '2. PAINT AUDIT: Verify paint is cured (>30 days) and free of moisture, chalking, or bubbling [B].',
+          '3. SOLVENT WIPE: Degrease target area firmly with 70% Isopropyl Alcohol USP on microfiber [A].',
+          '4. FLASH DRY: Allow 2 full minutes for alcohol solvent to evaporate completely [A].',
+          '5. TEMP CHECK: Ensure ambient room temperature is at least 15°C (59°F) [A].'
         ]
       },
       {
-        title: 'Emergency Removal & Floss Release Card (4x6")',
-        description: 'Instant reference for damage-free adhesive removal and broken tab recovery.',
+        title: 'Hardware Decision & Safe Working Load Card (4x6")',
+        description: 'Match payload gross tare weight to certified damage-free hardware with 40% safety margin.',
         bulletPoints: [
-          '1. STANDARD RELEASE: Pull tab strictly parallel to wall (0 degrees down). Never pull out.',
-          '2. BROKEN TAB FIX: Warm bracket with hair dryer on Medium heat for 45–60 seconds.',
-          '3. FLOSS SAWING: Slide unflavored dental floss behind bracket and saw downward.',
-          '4. RESIDUE CLEANUP: Roll away remaining adhesive film with thumb friction and 70% IPA.'
+          '1. WEIGH PAYLOAD: Measure exact weight on digital kitchen scale with frame and glass [B].',
+          '2. APPLY BUFFER: Calculate Safe Working Load: CWL = Rated_Capacity × 0.60 [B].',
+          '3. MATCH FASTENER: 0–2 lbs (Small Strips); 2–10 lbs (4 Large Pairs); 10–25 lbs (3M Claw Steel) [B].',
+          '4. 57" EYE-LEVEL: Mark tick at Height = 57" + (Frame_Height / 2) - Wire_Drop [B].',
+          '5. 30s PRESSURE: Press interlocking strips with firm thumb pressure for 30s per strip [A].',
+          '6. 60-MIN CURE: Disengage frame and wait 1 hour under ZERO load before hanging [A].'
         ]
       },
       {
-        title: 'Surface Safety Decision Reference Card (4x6")',
-        description: 'Quick guide to matching fasteners with wall materials to prevent failures.',
+        title: 'Zero-Damage Shearing & Spackle Touch-Up Card (4x6")',
+        description: 'Execute 100% deposit-safe hardware removal without drywall paper tear or residue.',
         bulletPoints: [
-          '• DRYWALL: Interlocking hook-and-loop strips (<10 lbs) or curved steel drywall claws.',
-          '• PLASTER: 45° angled hardened steel picture pins (2mm) or top moulding rail hooks.',
-          '• TILE / GLASS: Vacuum suction lever cups or non-porous clear acrylic gel strips.',
-          '• AVOID: Never use foam tape on drywall; never hang heavy glass above beds on adhesive.'
+          '1. DISENGAGE: Remove payload by lifting bottom frame edge straight upward [A].',
+          '2. PARALLEL PULL: Grip pull tab and stretch strictly parallel to wall (0° downward) [A].',
+          '3. SLOW EXTENSION: Stretch slowly 12–15 inches until elastomeric core releases cleanly [A].',
+          '4. BROKEN TAB FIX: Warm bracket with hair dryer on Medium for 45s; saw with dental floss [B].',
+          '5. RESIDUE ROLLING: Roll away remaining adhesive rubber film using thumb friction [B].',
+          '6. SPACKLE DAB: Fill micro-pinholes with DAP Fast \'N Final; wipe flush with damp sponge [B].'
+        ]
+      },
+      {
+        title: 'Canadian Retailer Sourcing & Field Tool Kit (4x6")',
+        description: 'Essential shopping list and stop-condition supplies for on-site execution.',
+        bulletPoints: [
+          '• 3M Command Large Picture Hanging Strips (16-pack, Black or White) [A].',
+          '• 3M Claw Drywall Picture Hanger (15lb & 25lb 4-packs) [A].',
+          '• Lee Valley Solid Brass Moulding Hooks (for heritage plaster picture rails) [B].',
+          '• DAP Fast \'N Final Lightweight Spackling (8oz tub) + 2" plastic putty knife [B].',
+          '• 70% Isopropyl Alcohol USP (500ml) + 2 lint-free microfiber cleaning cloths [B].',
+          '• 9" Magnetic Torpedo Level + 16ft Steel Tape Measure + Digital Kitchen Scale [B].'
         ]
       }
     ],

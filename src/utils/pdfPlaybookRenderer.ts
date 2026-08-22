@@ -586,34 +586,43 @@ export function renderPlaybookChapters(ctx: RenderContext) {
 
     // Formula Box on Chapter 2 if available
     if (cIdx === 1 && enrichment.formulas && enrichment.formulas.length > 0) {
-      const form = enrichment.formulas[0];
-      doc.setFillColor(sageLightBg[0], sageLightBg[1], sageLightBg[2]);
-      doc.setDrawColor(sageGreen[0], sageGreen[1], sageGreen[2]);
-      doc.setLineWidth(0.4);
-      doc.roundedRect(margin, chapY, contentWidth, 32, 1.5, 1.5, 'FD');
+      enrichment.formulas.slice(0, 2).forEach((form) => {
+        if (chapY > pageHeight - 45) {
+          doc.addPage();
+          chapY = 24;
+        }
 
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(8);
-      doc.setTextColor(sageGreen[0], sageGreen[1], sageGreen[2]);
-      doc.text(`FIELD MATHEMATICAL FORMULA: ${form.name.toUpperCase()}`, margin + 5, chapY + 5.5);
+        doc.setFillColor(sageLightBg[0], sageLightBg[1], sageLightBg[2]);
+        doc.setDrawColor(sageGreen[0], sageGreen[1], sageGreen[2]);
+        doc.setLineWidth(0.4);
+        doc.roundedRect(margin, chapY, contentWidth, 34, 1.5, 1.5, 'FD');
 
-      doc.setFont('times', 'bold');
-      doc.setFontSize(9.5);
-      doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
-      doc.text(`Formula: ${form.formula}`, margin + 5, chapY + 11.5);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8);
+        doc.setTextColor(sageGreen[0], sageGreen[1], sageGreen[2]);
+        doc.text(`FIELD MATHEMATICAL FORMULA: ${form.name.toUpperCase()}`, margin + 5, chapY + 5.5);
 
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(7.2);
-      doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
-      doc.text(`Worked Example: ${form.workedExample}`, margin + 5, chapY + 16.5);
-      doc.text(`Decision Rule: ${form.practicalDecision}`, margin + 5, chapY + 21.5);
+        doc.setFont('times', 'bold');
+        doc.setFontSize(9);
+        doc.setTextColor(terracotta[0], terracotta[1], terracotta[2]);
+        doc.text(`Formula: ${form.formula} (${form.units})`, margin + 5, chapY + 11);
 
-      doc.setFont('helvetica', 'italic');
-      doc.setFontSize(6.8);
-      doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
-      doc.text(`Assumptions: ${form.assumptions}`, margin + 5, chapY + 27);
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7);
+        doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
+        const exLines = doc.splitTextToSize(`Worked Example: ${form.workedExample}`, contentWidth - 10);
+        doc.text(exLines, margin + 5, chapY + 16);
 
-      chapY += 38;
+        const decLines = doc.splitTextToSize(`Practical Decision: ${form.practicalDecision}`, contentWidth - 10);
+        doc.text(decLines, margin + 5, chapY + 22.5);
+
+        doc.setFont('helvetica', 'italic');
+        doc.setFontSize(6.5);
+        doc.setTextColor(mutedText[0], mutedText[1], mutedText[2]);
+        doc.text(`Assumptions & Conditions: ${form.assumptions}`, margin + 5, chapY + 29.5);
+
+        chapY += 38;
+      });
     }
 
     // Narrative Content
@@ -734,6 +743,46 @@ export function renderPlaybookChapters(ctx: RenderContext) {
         chapY += wrapped.length * 4.2 + 2;
       });
       chapY += 4;
+    }
+
+    // Render Chapter Table Data (Decision Matrices & Specifications)
+    if (chapter.tableData && chapter.tableData.rows && chapter.tableData.rows.length > 0) {
+      if (chapY > pageHeight - 55) {
+        doc.addPage();
+        chapY = 24;
+      }
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(softCharcoal[0], softCharcoal[1], softCharcoal[2]);
+      doc.text('TACTICAL DECISION & SPECIFICATION MATRIX:', margin, chapY);
+      chapY += 4;
+
+      autoTable(doc, {
+        startY: chapY,
+        head: [chapter.tableData.headers],
+        body: chapter.tableData.rows,
+        margin: { left: margin, right: margin },
+        styles: {
+          fontSize: 7,
+          font: 'helvetica',
+          textColor: [43, 40, 37],
+          cellPadding: 2.2,
+          lineColor: [220, 213, 203],
+          lineWidth: 0.2
+        },
+        headStyles: {
+          fillColor: [195, 111, 74],
+          textColor: [250, 247, 242],
+          fontStyle: 'bold'
+        },
+        alternateRowStyles: {
+          fillColor: [250, 247, 242]
+        }
+      });
+
+      // @ts-expect-error - jsPDF autoTable attaches lastAutoTable
+      chapY = doc.lastAutoTable.finalY + 8;
     }
   });
 }
